@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="resultado"></div>
+
+    <script>
+        function minhaTarefaPorExemplo() {
+            var d = 9; 
+            var m = 4; 
+            var a = 2019;
+            
+		if(d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753){
+			
+			if(m == 1 || m == 2){
+				 m +=  12;
+				 a -=  1;
+			}
+			var  s = d + 2*m + 3*(m+1) / 5 + a + a / 4 - a / 100 + a / 400;
+			return Math.trunc(s%7);
+			
+		}
+		else return 0;
+	
+	
+            
+        }
+        
+        window.onload = function() {
+            document.getElementById("resultado").innerHTML = minhaTarefaPorExemplo();
+        };
+    </script>
+</body>
+</html>
+
+
+
