@@ -54,10 +54,214 @@ public class Exercicio {
 		else return 0;
 	}
 	
-}
+
+
 
 	public static int Mod(int x, int y){
-		if()
+		
+		if(y >= 0 && x > 0){
+			int s = x ;
+		
+			while(y <= s){
+				
+				s = s - y;
+			}
+			return s;
+		}
+		else return 0;
+	}
+
+	
+	public static int SomaNaturais(int n){
+		if(n >= 1){
+			int i = 2;
+			int s = 1;
+			while(i <= n){
+				s = s + i;
+				i = i + 1;
+			}
+			return s;
+		}
+		else return 0;
 	}
 
 
+	public static int Fatorial(int n){
+		if(n >= 1){
+			int i = 2;
+			int f = 1;
+			while(i <= n)
+			{
+				f = f * i;
+				i = i + 1;
+			}
+			return f;
+		}
+		else return 0;
+	}
+	
+
+	
+	public static int Produto(int a, int b){
+		if(a >= 0 && b >= b){
+			int totalParcelas = a;
+			int parcela = b;
+			if(b<a){
+				totalParcelas=b;
+				parcela=a;
+			}
+			int i = 1;
+			int s = 0;
+			while(i <= totalParcelas){
+				s = s + parcela;
+				i = i + 1;
+			}
+			return s;
+		}
+		else return 0;
+	}
+	
+	
+	public static int Potencia(int x, int y){
+		if(x >= 0 && y >= 0){
+			int potencia = 1;
+			int i = 1;
+			while(i <= y){
+				potencia = Produto(potencia, x);
+				i = i +1;
+			}
+		return potencia;
+		}
+		else return 0;
+	}
+	
+
+
+	
+	public static double Pi(double n){
+		if(n >= 1){
+			double i = 1;
+			double s = -1;
+			double d = -1;
+			double p = 0;
+			while(i <= n){
+				d = d + 2;
+				d = -1 * s;
+				p = p + 4 * s / d;
+				i = i + 1;
+			}
+			return p;
+		}
+		else return 0;
+	}
+	
+	
+	public static double LogaritmoNatural(double n, double k){
+		if(n >= 1 && k >= 2){
+			double i = 2;
+			double e = 1 + n;
+			double numerador = n;
+			double denominador = 1;
+			while(i <= k){
+				numerador = numerador * numerador;
+				denominador = denominador * i;
+				e = e + numerador / denominador;
+				i = i + 1;
+			}
+			return e;
+		}
+		else return 0;			
+	}
+	
+	public static int RazaoAurea(int x, int y, int k){
+		if(x >= x && y > x && k > 0){
+			int c = y;
+			int a = x;
+			int i = 1;
+			int t;
+			while(i <= k){
+				t = c;
+				c = c + a;
+				a = t;
+				i = i +1;
+			}
+		return c/a;
+		}
+		else return 0;
+	}
+	
+	public static boolean QuadradoPerfeito(double n){
+		if(n >= 1){
+			double i = 1;
+			double s = 1;
+			while(s < n){
+				i = i + 2;
+				s = s + i;
+			}
+			
+		return s == n;
+		}
+		else return false;
+	}
+	
+	public static double Raiz(double n, double i){
+		if(n>0){
+			double r = 1;
+			while( 0 <= i){
+				r = (r + n/r) / 2;
+				i = i -1;
+				
+			}
+			return r;
+		}
+		else return 0;
+	}
+	
+	public static boolean Primo(int n){
+		if(n > 1){
+			int i = 2;
+			while(i < n){
+				if(n % i == 0){
+					return false;
+				}
+				 i = i +1;
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+	public static double MDC(double a, double b){
+		if(b <= a && 0 < b){
+			double m;
+			while(b != 0){
+				m = a % b;
+				a = b;
+				b = m;
+			}
+			return a;
+		}
+		return 0;
+	}
+	
+	
+	public static double MDC2(double a, double b){
+		if(b <= a && 0 < b){
+			while(a != b){
+				if(a>b){
+					a = a - b;
+				}
+				else{
+					b = b - a;
+				}
+				
+			}
+			return a;
+		}
+		return 0;
+	}
+	
+	
+}
