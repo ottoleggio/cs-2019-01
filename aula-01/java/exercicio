@@ -233,7 +233,7 @@ public class Exercicio {
 	
 	
 	
-	  public static int[] CrivoEratostenes(int a[]) {
+	  public static int[] CrivoEratostenes(int[] a) {
 		    if (a.length > 1) {
 		      for (int i = 1; i < a.length; i++) {
 		        if (a[i] != 0) {
