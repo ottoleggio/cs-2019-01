@@ -233,6 +233,28 @@ public class Exercicio {
 	
 	
 	
+	  public static int[] CrivoEratostenes(int a[]) {
+		    if (a.length > 1) {
+		      for (int i = 1; i < a.length; i++) {
+		        if (a[i] != 0) {
+		          return null;
+		        }
+		      }
+
+		      int limite = (int) Math.floor(Raiz(a.length, 100));
+		      for (int i = 1; i < limite; i++) {
+		        if (a[i] == 0) {
+		          for(int multiplo = 2*i; multiplo < a.length; multiplo += i) {
+		            a[multiplo] = 1;
+		          }
+		        }
+		      }
+		      return a;
+		    }
+		    return null;
+		  }
+	
+	
 	public static double MDC(double a, double b){
 		if(b <= a && 0 < b){
 			double m;
@@ -263,5 +285,73 @@ public class Exercicio {
 		return 0;
 	}
 	
+	public static int Horner(int x, int[] vetor){
+	    if(vetor.length >= 1){
+	      int p = vetor[vetor.length-1]; //ultima posicao
+	      for(int i = vetor.length-1;i >= 0;i--){
+	        p = p*x + vetor[i];
+	      }
+	      return p ;
+	    }
+	    return 0;
+	  }
+	
+	public static int Fibonacci(int n) {
+		if(n >= 0) {
+			int a = 0;
+			int c = 1;
+			if(n ==0 || n ==1) {
+				return c;
+			}
+			int i = 2;
+		
+			while(i <= n) {
+				int t = c;
+				c = c + a;
+				a = t;
+				i++;
+			}
+			return c;
+		}
+		return 0;
+	}
+	
+	public static boolean DigitoCPF(int[] vetor) {
+		if(vetor.length == 11) {
+			int j = 0;
+			int k = 0;
+			for (int i = 0; i < 9; i++) {
+				j += ((i+1) * vetor[i]);
+				k += ((i+1) * vetor[i+1]);
+			}
+			int dj = Mod(Mod(j,11), 10);
+			int dk = Mod(Mod(k, 11), 10);
+			if(dj == vetor[9] && dk == vetor[10]) {
+				return true;
+			}
+			else return false;
+		}
+		return false;
+	}
+	
+	public static boolean DigitoCPF2(int[] vetor) {
+		if(vetor.length == 11) {
+			int c = 8;
+			int p = vetor[9];
+			int s = vetor[9];
+			while(1 <= c) {
+				p = p + vetor[c];
+				s = s + p;
+				c = c -1;
+			}
+			int j = Mod(Mod(s, 11), 10);
+			int k = Mod(Mod(s - p + 9*vetor[10], 11), 10);
+			if(j == vetor[9] && k == vetor[10]) {
+				return true;
+			}
+			else return false;
+		}
+		return false;
+	}
 	
 }
