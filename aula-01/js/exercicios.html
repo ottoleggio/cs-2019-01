@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="diaDaSemana"></div>
+    <div id="numero153"></div>
+
+    <script>
+        function diaDaSemana(d, m ,a) {
+            //var d = 9; 
+            //var m = 4; 
+            //var a = 2019;
+            
+		if(d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753){
+			
+			if(m == 1 || m == 2){
+				 m +=  12;
+				 a -=  1;
+			}
+			var  s = d + 2*m + 3*(m+1) / 5 + a + a / 4 - a / 100 + a / 400;
+			return Math.trunc(s%7);
+		}
+		else return 0;
+        }
+        
+        function numero153(n){
+        //var n = 153;
+		if (n >=100 && n <= 999){
+			var  c = n / 100;
+			var du = n % 100;
+			var  d = du / 10;
+			var  u = du % 10;
+			var  cdu = (Math.pow(c, 3)+Math.pow(d, 3)+Math.pow(u, 3));
+			
+			if(cdu == n){
+				return true;
+			}
+			else return false;
+		}
+		else{
+			return false;
+		}
+	}
+        
+
+function boolean numero3025( numero){
+		if (numero >=0 && numero <= 9999){
+			var i;
+			var j;
+			i = numero / 100;
+			j = numero % 100;
+			var resultado =  (Math.pow(j+i,2.0));
+			if (resultado == numero)
+				return true;
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+
+
+	function Mod( x,  y){
+		
+		if(y >= 0 && x > 0){
+			var s = x ;
+		
+			while(y <= s){
+				
+				s = s - y;
+			}
+			return s;
+		}
+		else return 0;
+	}
+
+	function SomaNaturais( n){
+		if(n >= 1){
+			var i = 2;
+			var s = 1;
+			while(i <= n){
+				s = s + i;
+				i = i + 1;
+			}
+			return s;
+		}
+		else return 0;
+	}
+
+
+	function Fatorial( n){
+		if(n >= 1){
+			var i = 2;
+			var f = 1;
+			while(i <= n)
+			{
+				f = f * i;
+				i = i + 1;
+			}
+			return f;
+		}
+		else return 0;
+	}
+
+
+	function Produto( a,  b){
+		if(a >= 0 && b >= b){
+			var totalParcelas = a;
+			var parcela = b;
+			if(b<a){
+				totalParcelas=b;
+				parcela=a;
+			}
+			var i = 1;
+			var s = 0;
+			while(i <= totalParcelas){
+				s = s + parcela;
+				i = i + 1;
+			}
+			return s;
+		}
+		else return 0;
+	}
+
+	function Potencia( x,  y){
+		if(x >= 0 && y >= 0){
+			var potencia = 1;
+			var i = 1;
+			while(i <= y){
+				potencia = Produto(potencia, x);
+				i = i +1;
+			}
+		return potencia;
+		}
+		else return 0;
+	}
+
+	function Pi( n){
+		if(n >= 1){
+			var i = 1;
+			var s = -1;
+			var d = -1;
+			var p = 0;
+			while(i <= n){
+				d = d + 2;
+				d = -1 * s;
+				p = p + 4 * s / d;
+				i = i + 1;
+			}
+			return p;
+		}
+		else return 0;
+	}
+
+	function LogaritmoNatural( n,  k){
+		if(n >= 1 && k >= 2){
+			var i = 2;
+			var e = 1 + n;
+			var numerador = n;
+			var denominador = 1;
+			while(i <= k){
+				numerador = numerador * numerador;
+				denominador = denominador * i;
+				e = e + numerador / denominador;
+				i = i + 1;
+			}
+			return e;
+		}
+		else return 0;			
+	}
+
+	function RazaoAurea( x,  y,  k){
+		if(x >= x && y > x && k > 0){
+			var c = y;
+			var a = x;
+			var i = 1;
+			var t;
+			while(i <= k){
+				t = c;
+				c = c + a;
+				a = t;
+				i = i +1;
+			}
+		return c/a;
+		}
+		else return 0;
+	}
+
+	function QuadradoPerfeito( n){
+		if(n >= 1){
+			var i = 1;
+			var s = 1;
+			while(s < n){
+				i = i + 2;
+				s = s + i;
+			}
+			
+		return s == n;
+		}
+		else return false;
+	}
+
+	function Raiz( n,  i){
+		if(n>0){
+			var r = 1;
+			while( 0 <= i){
+				r = (r + n/r) / 2;
+				i = i -1;
+				
+			}
+			return r;
+		}
+		else return 0;
+	}
+
+	function Primo( n){
+		if(n > 1){
+			var i = 2;
+			while(i < n){
+				if(n % i == 0){
+					return false;
+				}
+				 i = i +1;
+			}
+			return true;
+		}
+		return false;
+	}
+
+
+	function CrivoEratostenes( a){
+		    if (a.length > 1){
+		      for (var i = 1; i < a.length; i++){
+		        if (a[i] != 0){
+		          return null;
+		        }
+		      }
+
+		      var limite =  Math.floor(Raiz(a.length, 100));
+		      for(var i = 1; i < limite; i++){
+		        if (a[i] == 0){
+		          for(var multiplo = 2*i; multiplo < a.length; multiplo += i){
+		            a[multiplo] = 1;
+		          }
+		        }
+		      }
+		      return a;
+		    }
+		    return null;
+		  }
+
+
+	function MDC( a,  b){
+		if(b <= a && 0 < b){
+			var m;
+			while(b != 0){
+				m = a % b;
+				a = b;
+				b = m;
+			}
+			return a;
+		}
+		return 0;
+	}
+
+	function MDC2( a,  b){
+		if(b <= a && 0 < b){
+			while(a != b){
+				if(a>b){
+					a = a - b;
+				}
+				else{
+					b = b - a;
+				}
+				
+			}
+			return a;
+		}
+		return 0;
+	}
+
+	function Horner( x,  vetor){
+	    if(vetor.length >= 1){
+	      var p = vetor[vetor.length-1]; 
+	      for(var i = vetor.length-1;i >= 0;i--){
+	        p = p*x + vetor[i];
+	      }
+	      return p ;
+	    }
+	    return 0;
+	  }
+
+	function Fibonacci( n) {
+		if(n >= 0) {
+			var a = 0;
+			var c = 1;
+			if(n ==0 || n ==1) {
+				return c;
+			}
+			var i = 2;
+		
+			while(i <= n) {
+				var t = c;
+				c = c + a;
+				a = t;
+				i++;
+			}
+			return c;
+		}
+		return 0;
+	}
+
+
+	function DigitoCPF( vetor) {
+		if(vetor.length == 11) {
+			var j = 0;
+			var k = 0;
+			for (var i = 0; i < 9; i++) {
+				j += ((i+1) * vetor[i]);
+				k += ((i+1) * vetor[i+1]);
+			}
+			var dj = Mod(Mod(j,11), 10);
+			var dk = Mod(Mod(k, 11), 10);
+			if(dj == vetor[9] && dk == vetor[10]) {
+				return true;
+			}
+			else return false;
+		}
+		return false;
+	}
+
+
+	function DigitoCPF2( vetor) {
+		if(vetor.length == 11) {
+			var c = 8;
+			var p = vetor[9];
+			var s = vetor[9];
+			while(1 <= c) {
+				p = p + vetor[c];
+				s = s + p;
+				c = c -1;
+			}
+			var j = Mod(Mod(s, 11), 10);
+			var k = Mod(Mod(s - p + 9*vetor[10], 11), 10);
+			if(j == vetor[9] && k == vetor[10]) {
+				return true;
+			}
+			else return false;
+		}
+		return false;
+	}
+
+        
+        window.onload = function() {
+            document.getElementById("diaDaSemana").innerHTML = diaDaSemana();
+            document.getElementById("numero153").innerHTML = numero153();
+        };
+    </script>
+</body>
+</html>
+
+
+
+
