@@ -5,7 +5,9 @@ public class Exercicio {
 	
 	
 	public static boolean numero3025(int numero){
-		if (numero >=0 && numero <= 9999){
+		if (numero < 0 && numero < 9999)
+			throw new IllegalArgumentException("numero >=0 && numero <= 9999");
+			
 			int i;
 			int j;
 			i = numero / 100;
@@ -15,14 +17,15 @@ public class Exercicio {
 				return true;
 			else
 				return false;
-		}
-		else
-			return false;
+		
+
 	}
 	
 
 	public static boolean numero153(int n){
-		if (n >=100 && n <= 999){
+		if (n < 100 && n > 999)
+			throw new IllegalArgumentException("n >=100 && n <= 999");
+			
 			int c = n / 100;
 			int du = n % 100;
 			int d = du / 10;
@@ -34,14 +37,13 @@ public class Exercicio {
 			}
 			else return false;
 		}
-		else{
-			return false;
-		}
-	}
+
+	
 	
 	
 	public static double DiaDaSemana(int d, int m, int a){
-		if(d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753){
+		if(d < 1 && d > 31 && m < 1 && m > 12 && a < 1753)
+			throw new IllegalArgumentException("d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753");
 			
 			if(m == 1 || m == 2){
 				m += 12;
@@ -50,8 +52,7 @@ public class Exercicio {
 			double s = d + 2*m + 3*(m+1) / 5 + a + a / 4 - a / 100 + a / 400;
 			return s%7;
 			
-		}
-		else return 0;
+		
 	}
 	
 
@@ -59,7 +60,9 @@ public class Exercicio {
 
 	public static int Mod(int x, int y){
 		
-		if(y >= 0 && x > 0){
+		if(y < 0 && x <= 0)
+			throw new IllegalArgumentException("y >= 0 && x > 0");
+			
 			int s = x ;
 		
 			while(y <= s){
@@ -67,13 +70,14 @@ public class Exercicio {
 				s = s - y;
 			}
 			return s;
-		}
-		else return 0;
+
 	}
 
 	
 	public static int SomaNaturais(int n){
-		if(n >= 1){
+		if(n < 1)
+			throw new IllegalArgumentException("n >= 1");
+			
 			int i = 2;
 			int s = 1;
 			while(i <= n){
@@ -81,13 +85,14 @@ public class Exercicio {
 				i = i + 1;
 			}
 			return s;
-		}
-		else return 0;
+		
 	}
 
 
 	public static int Fatorial(int n){
-		if(n >= 1){
+		if(n < 1)
+			throw new IllegalArgumentException("n >= 1");	
+			
 			int i = 2;
 			int f = 1;
 			while(i <= n)
@@ -96,14 +101,15 @@ public class Exercicio {
 				i = i + 1;
 			}
 			return f;
-		}
-		else return 0;
+
 	}
 	
 
 	
 	public static int Produto(int a, int b){
-		if(a >= 0 && b >= b){
+		if(a < 0 && b < b)
+			throw new IllegalArgumentException("a >= 0 && b >= b");	
+			
 			int totalParcelas = a;
 			int parcela = b;
 			if(b<a){
@@ -117,13 +123,14 @@ public class Exercicio {
 				i = i + 1;
 			}
 			return s;
-		}
-		else return 0;
+		
 	}
 	
 	
 	public static int Potencia(int x, int y){
-		if(x >= 0 && y >= 0){
+		if(x < 0 && y < 0)
+			throw new IllegalArgumentException("x >= 0 && y >= 0");	
+			
 			int potencia = 1;
 			int i = 1;
 			while(i <= y){
@@ -131,15 +138,16 @@ public class Exercicio {
 				i = i +1;
 			}
 		return potencia;
-		}
-		else return 0;
+
 	}
 	
 
 
 	
 	public static double Pi(double n){
-		if(n >= 1){
+		if(n < 1)
+			throw new IllegalArgumentException("n >= 1");
+			
 			double i = 1;
 			double s = -1;
 			double d = -1;
@@ -151,13 +159,13 @@ public class Exercicio {
 				i = i + 1;
 			}
 			return p;
-		}
-		else return 0;
 	}
 	
 	
 	public static double LogaritmoNatural(double n, double k){
-		if(n >= 1 && k >= 2){
+		if(n < 1 && k < 2)
+			throw new IllegalArgumentException("n >= 1 && k >= 2");
+			
 			double i = 2;
 			double e = 1 + n;
 			double numerador = n;
@@ -169,12 +177,13 @@ public class Exercicio {
 				i = i + 1;
 			}
 			return e;
-		}
-		else return 0;			
+					
 	}
 	
 	public static int RazaoAurea(int x, int y, int k){
-		if(x >= x && y > x && k > 0){
+		if(x < x && y <= x && k <= 0)
+			throw new IllegalArgumentException("x >= x && y > x && k > 0");
+			
 			int c = y;
 			int a = x;
 			int i = 1;
@@ -186,12 +195,15 @@ public class Exercicio {
 				i = i +1;
 			}
 		return c/a;
-		}
-		else return 0;
+		
 	}
 	
+	
+	
 	public static boolean QuadradoPerfeito(double n){
-		if(n >= 1){
+		if(n < 1)
+			throw new IllegalArgumentException("'n' deve ser >= a 1");
+			
 			double i = 1;
 			double s = 1;
 			while(s < n){
@@ -200,12 +212,15 @@ public class Exercicio {
 			}
 			
 		return s == n;
-		}
-		else return false;
+		
 	}
 	
+	
+	
 	public static double Raiz(double n, double i){
-		if(n>0){
+		if(n<=0)
+			throw new IllegalArgumentException("'n' deve ser maior que 0");
+			
 			double r = 1;
 			while( 0 <= i){
 				r = (r + n/r) / 2;
@@ -213,12 +228,13 @@ public class Exercicio {
 				
 			}
 			return r;
-		}
-		else return 0;
+		
 	}
 	
 	public static boolean Primo(int n){
-		if(n > 1){
+		if(n <= 1)
+			throw new IllegalArgumentException("'n' deve ser maior que 1");
+			
 			int i = 2;
 			while(i < n){
 				if(n % i == 0){
@@ -227,14 +243,15 @@ public class Exercicio {
 				 i = i +1;
 			}
 			return true;
-		}
-		return false;
+		
 	}
 	
 	
 	
 	  public static int[] CrivoEratostenes(int[] a) {
-		    if (a.length > 1) {
+		    if (a.length <= 1) 
+		    	throw new IllegalArgumentException("o vetor deve conter no mínimo 2 dígitos");
+
 		      for (int i = 1; i < a.length; i++) {
 		        if (a[i] != 0) {
 		          return null;
@@ -250,13 +267,14 @@ public class Exercicio {
 		        }
 		      }
 		      return a;
-		    }
-		    return null;
+   
 		  }
 	
 	
 	public static double MDC(double a, double b){
-		if(b <= a && 0 < b){
+		if(b > a && 0 >= b)
+			throw new IllegalArgumentException("'b' deve ser <= 'a' e b deve ser < 0");
+			
 			double m;
 			while(b != 0){
 				m = a % b;
@@ -264,13 +282,14 @@ public class Exercicio {
 				b = m;
 			}
 			return a;
-		}
-		return 0;
+		
 	}
 	
 	
 	public static double MDC2(double a, double b){
-		if(b <= a && 0 < b){
+		if(b > a && 0 >= b)
+			throw new IllegalArgumentException("'b' deve ser <= 'a' e b deve ser < 0");
+			
 			while(a != b){
 				if(a>b){
 					a = a - b;
@@ -281,23 +300,27 @@ public class Exercicio {
 				
 			}
 			return a;
-		}
-		return 0;
+		
 	}
 	
 	public static int Horner(int x, int[] vetor){
-	    if(vetor.length >= 1){
+	    if(vetor.length < 1)
+	    	throw new IllegalArgumentException("O cumprimento do vetor deve ser maior ou igual a 1");
+	    	
 	      int p = vetor[vetor.length-1]; //ultima posicao
 	      for(int i = vetor.length-1;i >= 0;i--){
 	        p = p*x + vetor[i];
 	      }
 	      return p ;
-	    }
-	    return 0;
+	    
 	  }
 	
+	
+	
 	public static int Fibonacci(int n) {
-		if(n >= 0) {
+		if(n < 0) 
+			throw new IllegalArgumentException("O número deve ser maior ou igual a 0");
+			
 			int a = 0;
 			int c = 1;
 			if(n ==0 || n ==1) {
@@ -312,12 +335,13 @@ public class Exercicio {
 				i++;
 			}
 			return c;
-		}
-		return 0;
+		
 	}
 	
 	public static boolean DigitoCPF(int[] vetor) {
-		if(vetor.length == 11) {
+		if(vetor.length != 11) 
+			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
+		
 			int j = 0;
 			int k = 0;
 			for (int i = 0; i < 9; i++) {
@@ -330,12 +354,13 @@ public class Exercicio {
 				return true;
 			}
 			else return false;
-		}
-		return false;
+		
 	}
 	
 	public static boolean DigitoCPF2(int[] vetor) {
-		if(vetor.length == 11) {
+		if(vetor.length != 11)
+			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
+			
 			int c = 8;
 			int p = vetor[9];
 			int s = vetor[9];
@@ -351,7 +376,6 @@ public class Exercicio {
 			}
 			else return false;
 		}
-		return false;
-	}
+	
 	
 }
