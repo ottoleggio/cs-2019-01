@@ -316,9 +316,20 @@ function boolean numero3025( numero){
 	}
 
 
-	function DigitoCPF( vetor) {
-		if(vetor.length != 11) 
-			throw new Error( "ocorreu um erro" );  
+	function DigitoCPF(vetor) {
+		if(vetor ==  null || !Array.isArray(vetor)){
+			throw new TypeError("Esperado um vetor como argumento");
+		}
+	
+		if(vetor.length != 11){
+			throw new RangeError( "Um cpf deve conter 11 dígitos" );  
+		}
+		
+		for (var i = 0; i < 11; i++){	
+			if (typeof vetor[i] != "number"){
+				throw new RangeError( "O vetor deve conter somente números inteiros");
+			}
+		}
 	
 		var j = 0;
 		var k = 0;
@@ -336,7 +347,19 @@ function boolean numero3025( numero){
 
 
 	function DigitoCPF2( vetor) {
-		if(vetor.length == 11) {
+		if(vetor ==  null || !Array.isArray(vetor)){
+			throw new TypeError("Esperado um vetor como argumento");
+		}
+	
+		if(vetor.length != 11){
+			throw new RangeError( "Um cpf deve conter 11 dígitos" );  
+		}
+		
+		for (var i = 0; i < 11; i++){	
+			if (typeof vetor[i] != "number"){
+				throw new RangeError( "O vetor deve conter somente números inteiros");
+			}
+		}
 			var c = 8;
 			var p = vetor[9];
 			var s = vetor[9];
@@ -351,8 +374,7 @@ function boolean numero3025( numero){
 				return true;
 			}
 			else return false;
-		}
-		return false;
+		
 	}
 
         
