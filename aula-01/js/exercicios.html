@@ -317,21 +317,21 @@ function boolean numero3025( numero){
 
 
 	function DigitoCPF( vetor) {
-		if(vetor.length == 11) {
-			var j = 0;
-			var k = 0;
-			for (var i = 0; i < 9; i++) {
-				j += ((i+1) * vetor[i]);
-				k += ((i+1) * vetor[i+1]);
-			}
-			var dj = Mod(Mod(j,11), 10);
-			var dk = Mod(Mod(k, 11), 10);
-			if(dj == vetor[9] && dk == vetor[10]) {
-				return true;
-			}
-			else return false;
+		if(vetor.length != 11) 
+			throw new Error( "ocorreu um erro" );  
+	
+		var j = 0;
+		var k = 0;
+		for (var i = 0; i < 9; i++) {
+			j += ((i+1) * vetor[i]);
+			k += ((i+1) * vetor[i+1]);
 		}
-		return false;
+		var dj =  Mod(Mod(j,11), 10);
+		var dk = Mod(Mod(k, 11), 10);
+		
+		return (dj == vetor[9] && dk == vetor[10]);
+		
+		
 	}
 
 
