@@ -1,4 +1,4 @@
-package lista_fabio;
+package com.github.ottoleggio.cs.aula1;
 
 public class Exercicio {
 
@@ -41,7 +41,7 @@ public class Exercicio {
 	
 	
 	
-	public static double DiaDaSemana(int d, int m, int a){
+	public static double diaDaSemana(int d, int m, int a){
 		if(d < 1 && d > 31 && m < 1 && m > 12 && a < 1753)
 			throw new IllegalArgumentException("d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753");
 			
@@ -58,7 +58,7 @@ public class Exercicio {
 
 
 
-	public static int Mod(int x, int y){
+	public static int mod(int x, int y){
 		
 		if(y < 0 && x <= 0)
 			throw new IllegalArgumentException("y >= 0 && x > 0");
@@ -74,7 +74,7 @@ public class Exercicio {
 	}
 
 	
-	public static int SomaNaturais(int n){
+	public static int somaNaturais(int n){
 		if(n < 1)
 			throw new IllegalArgumentException("n >= 1");
 			
@@ -89,7 +89,7 @@ public class Exercicio {
 	}
 
 
-	public static int Fatorial(int n){
+	public static int fatorial(int n){
 		if(n < 1)
 			throw new IllegalArgumentException("n >= 1");	
 			
@@ -106,7 +106,7 @@ public class Exercicio {
 	
 
 	
-	public static int Produto(int a, int b){
+	public static int produto(int a, int b){
 		if(a < 0 && b < b)
 			throw new IllegalArgumentException("a >= 0 && b >= b");	
 			
@@ -127,14 +127,14 @@ public class Exercicio {
 	}
 	
 	
-	public static int Potencia(int x, int y){
+	public static int potencia(int x, int y){
 		if(x < 0 && y < 0)
 			throw new IllegalArgumentException("x >= 0 && y >= 0");	
 			
 			int potencia = 1;
 			int i = 1;
 			while(i <= y){
-				potencia = Produto(potencia, x);
+				potencia = produto(potencia, x);
 				i = i +1;
 			}
 		return potencia;
@@ -144,7 +144,7 @@ public class Exercicio {
 
 
 	
-	public static double Pi(double n){
+	public static double pi(double n){
 		if(n < 1)
 			throw new IllegalArgumentException("n >= 1");
 			
@@ -162,7 +162,7 @@ public class Exercicio {
 	}
 	
 	
-	public static double LogaritmoNatural(double n, double k){
+	public static double logaritmoNatural(double n, double k){
 		if(n < 1 && k < 2)
 			throw new IllegalArgumentException("n >= 1 && k >= 2");
 			
@@ -180,7 +180,7 @@ public class Exercicio {
 					
 	}
 	
-	public static int RazaoAurea(int x, int y, int k){
+	public static int razaoAurea(int x, int y, int k){
 		if(x < x && y <= x && k <= 0)
 			throw new IllegalArgumentException("x >= x && y > x && k > 0");
 			
@@ -200,7 +200,7 @@ public class Exercicio {
 	
 	
 	
-	public static boolean QuadradoPerfeito(double n){
+	public static boolean quadradoPerfeito(double n){
 		if(n < 1)
 			throw new IllegalArgumentException("'n' deve ser >= a 1");
 			
@@ -217,7 +217,7 @@ public class Exercicio {
 	
 	
 	
-	public static double Raiz(double n, double i){
+	public static double raiz(double n, double i){
 		if(n<=0)
 			throw new IllegalArgumentException("'n' deve ser maior que 0");
 			
@@ -231,7 +231,7 @@ public class Exercicio {
 		
 	}
 	
-	public static boolean Primo(int n){
+	public static boolean primo(int n){
 		if(n <= 1)
 			throw new IllegalArgumentException("'n' deve ser maior que 1");
 			
@@ -248,7 +248,7 @@ public class Exercicio {
 	
 	
 	
-	  public static int[] CrivoEratostenes(int[] a) {
+	  public static int[] crivoEratostenes(int[] a) {
 		    if (a.length <= 1) 
 		    	throw new IllegalArgumentException("o vetor deve conter no mínimo 2 dígitos");
 
@@ -258,7 +258,7 @@ public class Exercicio {
 		        }
 		      }
 
-		      int limite = (int) Math.floor(Raiz(a.length, 100));
+		      int limite = (int) Math.floor(raiz(a.length, 100));
 		      for (int i = 1; i < limite; i++) {
 		        if (a[i] == 0) {
 		          for(int multiplo = 2*i; multiplo < a.length; multiplo += i) {
@@ -271,7 +271,7 @@ public class Exercicio {
 		  }
 	
 	
-	public static double MDC(double a, double b){
+	public static double mdc(double a, double b){
 		if(b > a && 0 >= b)
 			throw new IllegalArgumentException("'b' deve ser <= 'a' e b deve ser < 0");
 			
@@ -286,7 +286,7 @@ public class Exercicio {
 	}
 	
 	
-	public static double MDC2(double a, double b){
+	public static double mdc2(double a, double b){
 		if(b > a && 0 >= b)
 			throw new IllegalArgumentException("'b' deve ser <= 'a' e b deve ser < 0");
 			
@@ -303,7 +303,7 @@ public class Exercicio {
 		
 	}
 	
-	public static int Horner(int x, int[] vetor){
+	public static int horner(int x, int[] vetor){
 	    if(vetor.length < 1)
 	    	throw new IllegalArgumentException("O cumprimento do vetor deve ser maior ou igual a 1");
 	    	
@@ -317,7 +317,7 @@ public class Exercicio {
 	
 	
 	
-	public static int Fibonacci(int n) {
+	public static int fibonacci(int n) {
 		if(n < 0) 
 			throw new IllegalArgumentException("O número deve ser maior ou igual a 0");
 			
@@ -338,7 +338,7 @@ public class Exercicio {
 		
 	}
 	
-	public static boolean DigitoCPF(int[] vetor) {
+	public static boolean digitoCPF(int[] vetor) {
 		if(vetor.length != 11) 
 			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
 		
@@ -348,8 +348,8 @@ public class Exercicio {
 				j += ((i+1) * vetor[i]);
 				k += ((i+1) * vetor[i+1]);
 			}
-			int dj = Mod(Mod(j,11), 10);
-			int dk = Mod(Mod(k, 11), 10);
+			int dj = mod(mod(j,11), 10);
+			int dk = mod(mod(k, 11), 10);
 			if(dj == vetor[9] && dk == vetor[10]) {
 				return true;
 			}
@@ -357,7 +357,7 @@ public class Exercicio {
 		
 	}
 	
-	public static boolean DigitoCPF2(int[] vetor) {
+	public static boolean digitoCPF2(int[] vetor) {
 		if(vetor.length != 11)
 			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
 			
@@ -369,8 +369,8 @@ public class Exercicio {
 				s = s + p;
 				c = c -1;
 			}
-			int j = Mod(Mod(s, 11), 10);
-			int k = Mod(Mod(s - p + 9*vetor[10], 11), 10);
+			int j = mod(mod(s, 11), 10);
+			int k = mod(mod(s - p + 9*vetor[10], 11), 10);
 			if(j == vetor[9] && k == vetor[10]) {
 				return true;
 			}
