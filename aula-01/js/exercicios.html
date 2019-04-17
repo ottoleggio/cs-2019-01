@@ -12,20 +12,20 @@
 
     <script>
         function diaDaSemana(d, m ,a) {
-            //var d = 9; 
-            //var m = 4; 
-            //var a = 2019;
-            
-		if(d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753){
-			
+            if(typeof d != "number" || typeof m != "number" || typeof a != "number"){
+            	throw new TypeError("Os argumentos devem ser números inteiros");
+            }      
+		if(d < 1 && d > 31 && m < 1 && m > 12 && a < 1753){
+			throw new RangeError( "d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753" );
+		}
+		
 			if(m == 1 || m == 2){
 				 m +=  12;
 				 a -=  1;
 			}
 			var  s = d + 2*m + 3*(m+1) / 5 + a + a / 4 - a / 100 + a / 400;
 			return Math.trunc(s%7);
-		}
-		else return 0;
+		
         }
         
         function numero153(n){
@@ -66,8 +66,13 @@ function boolean numero3025( numero){
 
 
 	function Mod( x,  y){
+		if(typeof x != "number" || typeof y != "number"){
+            	throw new TypeError("Os argumentos devem ser números inteiros");
+            	}  
+		if(y < 0 && x <= 0){
+			throw new RangeError( "y >= 0 && x > 0" );
+		}
 		
-		if(y >= 0 && x > 0){
 			var s = x ;
 		
 			while(y <= s){
@@ -75,9 +80,8 @@ function boolean numero3025( numero){
 				s = s - y;
 			}
 			return s;
+		
 		}
-		else return 0;
-	}
 
 	function SomaNaturais( n){
 		if(n >= 1){
