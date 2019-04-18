@@ -37,9 +37,9 @@ public class Exercicio {
 			m += 12;
 			a -= 1;
 		}
+
 		double s = d + 2 * m + 3 * (m + 1) / 5 + a + a / 4 - a / 100 + a / 400;
 		return s % 7;
-
 	}
 
     private static boolean diaInvalido(int d) {
