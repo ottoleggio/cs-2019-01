@@ -3,8 +3,9 @@ package com.github.ottoleggio.cs.aula1;
 public class Exercicio {
 
 	public static boolean numero3025(int numero) {
-		if (numero < 0 && numero < 9999)
+		if (numero < 0 && numero < 9999) {
 			throw new IllegalArgumentException("numero >=0 && numero <= 9999");
+		}
 
 		int i;
 		int j;
