@@ -265,7 +265,6 @@ public class Exercicio {
 			} else {
 				b = b - a;
 			}
-
 		}
 
 		return a;
@@ -279,8 +278,8 @@ public class Exercicio {
 		for (int i = vetor.length - 1; i >= 0; i--) {
 			p = p * x + vetor[i];
 		}
-		return p;
 
+		return p;
 	}
 
 	public static int fibonacci(int n) {
@@ -292,16 +291,16 @@ public class Exercicio {
 		if (n == 0 || n == 1) {
 			return c;
 		}
-		int i = 2;
 
+		int i = 2;
 		while (i <= n) {
 			int t = c;
 			c = c + a;
 			a = t;
 			i++;
 		}
-		return c;
 
+		return c;
 	}
 
 	public static boolean digitoCPF(int[] vetor) {
