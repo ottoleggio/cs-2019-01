@@ -53,7 +53,7 @@ public class Exercicio {
 
 		int s = x;
 
-		while (y <= s) {
+		while (s >= y) {
 
 			s = s - y;
 		}
