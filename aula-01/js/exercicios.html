@@ -29,8 +29,13 @@
         }
         
         function numero153(n){
-        //var n = 153;
-		if (n >=100 && n <= 999){
+		if(typeof n != "number" ){
+            	throw new TypeError("Os argumentos devem ser números inteiros");
+            }      
+		if(n <100 && n > 999){
+			throw new RangeError( "n >=100 && n <= 999" );
+		}
+		
 			var  c = n / 100;
 			var du = n % 100;
 			var  d = du / 10;
@@ -41,15 +46,17 @@
 				return true;
 			}
 			else return false;
-		}
-		else{
-			return false;
-		}
 	}
         
 
 function boolean numero3025( numero){
-		if (numero >=0 && numero <= 9999){
+		if(typeof n != "number" ){
+            	throw new TypeError("Os argumentos devem ser números");
+            }      
+		if(numero <0 && numero > 9999){
+			throw new RangeError( "numero >=0 && numero <= 9999" );
+		}
+		
 			var i;
 			var j;
 			i = numero / 100;
@@ -59,9 +66,6 @@ function boolean numero3025( numero){
 				return true;
 			else
 				return false;
-		}
-		else
-			return false;
 	}
 
 
@@ -84,7 +88,13 @@ function boolean numero3025( numero){
 		}
 
 	function SomaNaturais( n){
-		if(n >= 1){
+		if(typeof n != "number"){
+            	throw new TypeError("Os argumentos devem ser números inteiros");
+            	}  
+		if(n <1){
+			throw new RangeError( "n >= 1" );
+		}
+		
 			var i = 2;
 			var s = 1;
 			while(i <= n){
@@ -92,13 +102,17 @@ function boolean numero3025( numero){
 				i = i + 1;
 			}
 			return s;
-		}
-		else return 0;
+
 	}
 
 
 	function Fatorial( n){
-		if(n >= 1){
+		if(typeof n != "number"){
+            	throw new TypeError("Os argumentos devem ser números inteiros");
+            	}  
+		if(n <1){
+			throw new RangeError( "n >= 1" );
+		}
 			var i = 2;
 			var f = 1;
 			while(i <= n)
@@ -107,13 +121,17 @@ function boolean numero3025( numero){
 				i = i + 1;
 			}
 			return f;
-		}
-		else return 0;
 	}
 
 
 	function Produto( a,  b){
-		if(a >= 0 && b >= b){
+		if(typeof a != "number" || typeof b != "number"){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(a < 0 && b < b){
+			throw new RangeError( "a >= 0 && b >= b" );
+		}
+		
 			var totalParcelas = a;
 			var parcela = b;
 			if(b<a){
@@ -127,12 +145,16 @@ function boolean numero3025( numero){
 				i = i + 1;
 			}
 			return s;
-		}
-		else return 0;
 	}
 
 	function Potencia( x,  y){
-		if(x >= 0 && y >= 0){
+		if(typeof x != "number" || typeof y != "number"){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(x < 0 && y < 0){
+			throw new RangeError( "x >= 0 && y >= 0" );
+		}
+		
 			var potencia = 1;
 			var i = 1;
 			while(i <= y){
@@ -140,12 +162,17 @@ function boolean numero3025( numero){
 				i = i +1;
 			}
 		return potencia;
-		}
-		else return 0;
+
 	}
 
 	function Pi( n){
-		if(n >= 1){
+		if(typeof n != "number" ){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(n < 1){
+			throw new RangeError( "n >= 1" );
+		}
+		
 			var i = 1;
 			var s = -1;
 			var d = -1;
@@ -157,12 +184,17 @@ function boolean numero3025( numero){
 				i = i + 1;
 			}
 			return p;
-		}
-		else return 0;
+
 	}
 
 	function LogaritmoNatural( n,  k){
-		if(n >= 1 && k >= 2){
+		if(typeof n != "number" || typeof  k != "number"){
+            	throw new TypeError("Os argumentos devem ser números");
+		}  
+		if(n < 1 && k > 2){
+			throw new RangeError( "n >= 1 && k >= 2" );
+		}
+
 			var i = 2;
 			var e = 1 + n;
 			var numerador = n;
@@ -174,12 +206,15 @@ function boolean numero3025( numero){
 				i = i + 1;
 			}
 			return e;
-		}
-		else return 0;			
 	}
 
 	function RazaoAurea( x,  y,  k){
-		if(x >= x && y > x && k > 0){
+		if(typeof x != "number"  || typeof y != "number" || typeof k != "number"){
+            	throw new TypeError("Os argumentos devem ser números");
+		}  
+		if(x < x && y <= x && k <= 0){
+			throw new RangeError( "x >= x && y > x && k > 0" );
+		}
 			var c = y;
 			var a = x;
 			var i = 1;
@@ -191,12 +226,17 @@ function boolean numero3025( numero){
 				i = i +1;
 			}
 		return c/a;
-		}
-		else return 0;
+
 	}
 
 	function QuadradoPerfeito( n){
-		if(n >= 1){
+		if(typeof n != "number" ){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(n < 1){
+			throw new RangeError( "n >= 1" );
+		}
+
 			var i = 1;
 			var s = 1;
 			while(s < n){
@@ -205,25 +245,32 @@ function boolean numero3025( numero){
 			}
 			
 		return s == n;
-		}
-		else return false;
+
 	}
 
 	function Raiz( n,  i){
-		if(n>0){
+		if(typeof n != "number" || typeof i != "number" ){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(n <= 0){
+			throw new RangeError( "n>0" );
+		}
+
 			var r = 1;
 			while( 0 <= i){
 				r = (r + n/r) / 2;
 				i = i -1;
-				
 			}
 			return r;
-		}
-		else return 0;
 	}
 
 	function Primo( n){
-		if(n > 1){
+		if(typeof n != "number"  ){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(n <= 1){
+			throw new RangeError( "n > 1" );
+		}
 			var i = 2;
 			while(i < n){
 				if(n % i == 0){
@@ -232,13 +279,20 @@ function boolean numero3025( numero){
 				 i = i +1;
 			}
 			return true;
-		}
-		return false;
+
 	}
 
 
 	function CrivoEratostenes( a){
-		    if (a.length > 1){
+		if(a ==  null || !Array.isArray(a)){
+			throw new TypeError("Esperado um vetor como argumento");
+		}
+		for (var i = 0; i < a.length-1; i++){	
+			if (typeof a[i] != "number"){
+				throw new RangeError( "O vetor deve conter somente números inteiros");
+			}
+		}
+
 		      for (var i = 1; i < a.length; i++){
 		        if (a[i] != 0){
 		          return null;
@@ -254,38 +308,42 @@ function boolean numero3025( numero){
 		        }
 		      }
 		      return a;
-		    }
-		    return null;
+
 		  }
 
 
 	function MDC( a,  b){
-		if(b <= a && 0 < b){
+		if(typeof a != "number" || typeof b != "number" ){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(b > a && 0 >= b){
+			throw new RangeError( "b <= a && 0 < b" );
+		}
 			var m;
 			while(b != 0){
 				m = a % b;
 				a = b;
 				b = m;
 			}
-			return a;
-		}
-		return 0;
+	  	return a;
 	}
 
 	function MDC2( a,  b){
-		if(b <= a && 0 < b){
+		if(typeof a != "number" || typeof b != "number" ){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(b > a && 0 >= b){
+			throw new RangeError( "b <= a && 0 < b" );
+		}
 			while(a != b){
 				if(a>b){
 					a = a - b;
 				}
 				else{
 					b = b - a;
-				}
-				
+				}		
 			}
 			return a;
-		}
-		return 0;
 	}
 
 	function Horner( x,  vetor){
@@ -300,7 +358,12 @@ function boolean numero3025( numero){
 	  }
 
 	function Fibonacci( n) {
-		if(n >= 0) {
+		if(typeof n != "number" ){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(n <0){
+			throw new RangeError( "n >= 0" );
+		}
 			var a = 0;
 			var c = 1;
 			if(n ==0 || n ==1) {
@@ -315,8 +378,6 @@ function boolean numero3025( numero){
 				i++;
 			}
 			return c;
-		}
-		return 0;
 	}
 
 
