@@ -287,7 +287,7 @@ function boolean numero3025( numero){
 		if(a ==  null || !Array.isArray(a)){
 			throw new TypeError("Esperado um vetor como argumento");
 		}
-		for (var i = 0; i < a.length-1; i++){	
+		for (var i = 0; i < a.length; i++){	
 			if (typeof a[i] != "number"){
 				throw new RangeError( "O vetor deve conter somente números inteiros");
 			}
@@ -347,14 +347,25 @@ function boolean numero3025( numero){
 	}
 
 	function Horner( x,  vetor){
-	    if(vetor.length >= 1){
+		if(vetor ==  null || !Array.isArray(vetor)){
+			throw new TypeError("Esperado um vetor como argumento");
+		}
+		for (var i = 0; i < vetor.length; i++){	
+			if (typeof vetor[i] != "number"){
+				throw new RangeError( "O vetor deve conter somente números inteiros");
+			}
+		}
+		if(typeof x != "number" ){
+            	throw new TypeError("Os argumentos devem ser números");
+            	}  
+		if(vetor.length < 1){
+			throw new RangeError( "vetor.length >= 1" );
+		}
 	      var p = vetor[vetor.length-1]; 
 	      for(var i = vetor.length-1;i >= 0;i--){
 	        p = p*x + vetor[i];
 	      }
 	      return p ;
-	    }
-	    return 0;
 	  }
 
 	function Fibonacci( n) {
