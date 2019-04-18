@@ -10,11 +10,7 @@ public class Exercicio {
 		int i = numero / 100;
 		int j = numero % 100;
 		int resultado = (int) (Math.pow(j + i, 2.0));
-		if (resultado == numero)
-			return true;
-		else
-			return false;
-
+        return resultado == numero;
 	}
 
 	public static boolean numero153(int n) {
