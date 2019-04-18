@@ -54,11 +54,10 @@ public class Exercicio {
 		int s = x;
 
 		while (s >= y) {
-
 			s = s - y;
 		}
-		return s;
 
+		return s;
 	}
 
 	public static int somaNaturais(int n) {
@@ -71,8 +70,8 @@ public class Exercicio {
 			s = s + i;
 			i = i + 1;
 		}
-		return s;
 
+		return s;
 	}
 
 	public static int fatorial(int n) {
@@ -85,8 +84,8 @@ public class Exercicio {
 			f = f * i;
 			i = i + 1;
 		}
-		return f;
 
+		return f;
 	}
 
 	public static int produto(int a, int b) {
@@ -188,7 +187,6 @@ public class Exercicio {
 		}
 
 		return s == n;
-
 	}
 
 	public static double raiz(double n, double i) {
@@ -201,8 +199,8 @@ public class Exercicio {
 			i = i - 1;
 
 		}
-		return r;
 
+		return r;
 	}
 
 	public static boolean primo(int n) {
@@ -216,8 +214,8 @@ public class Exercicio {
 			}
 			i = i + 1;
 		}
-		return true;
 
+		return true;
 	}
 
 	public static int[] crivoEratostenes(int[] a) {
@@ -226,6 +224,7 @@ public class Exercicio {
 
 		for (int i = 1; i < a.length; i++) {
 			if (a[i] != 0) {
+			    // TODO verifique se o contrato exige null nesta situacao
 				return null;
 			}
 		}
@@ -238,8 +237,8 @@ public class Exercicio {
 				}
 			}
 		}
-		return a;
 
+		return a;
 	}
 
 	public static double mdc(double a, double b) {
@@ -252,8 +251,8 @@ public class Exercicio {
 			a = b;
 			b = m;
 		}
-		return a;
 
+		return a;
 	}
 
 	public static double mdc2(double a, double b) {
@@ -268,8 +267,8 @@ public class Exercicio {
 			}
 
 		}
-		return a;
 
+		return a;
 	}
 
 	public static int horner(int x, int[] vetor) {
