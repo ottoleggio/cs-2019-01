@@ -27,7 +27,7 @@ public class Exercicio {
 	}
 
 	public static double diaDaSemana(int d, int m, int a) {
-		if (d < 1 && d > 31 && m < 1 && m > 12 && a < 1753) {
+		if (diaInvalido(d) && mesInvalido(m) && anoInvalido(a)) {
 			throw new IllegalArgumentException("d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753");
 		}
 
@@ -39,6 +39,18 @@ public class Exercicio {
 		double s = d + 2 * m + 3 * (m + 1) / 5 + a + a / 4 - a / 100 + a / 400;
 		return s % 7;
 	}
+	
+	private static boolean diaInvalido(int d) {
+	        return d < 1 && d > 31;
+	    }
+	
+	private static boolean mesInvalido(int m) {
+	        return m < 1 && m > 12;
+	    }
+
+	private static boolean anoInvalido(int a) {
+	        return a < 1753;
+	    }	
 
 	public static int mod(int x, int y) {
 
