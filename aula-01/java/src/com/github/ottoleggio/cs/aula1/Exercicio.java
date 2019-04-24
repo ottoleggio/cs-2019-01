@@ -13,122 +13,122 @@ public class Exercicio {
 		return resultado == numero;
 	}
 
-	public static boolean numero153(int n) {
-		if (n < 100 && n > 999) {
-			throw new IllegalArgumentException("n >=100 && n <= 999");
+	public static boolean numero153(int numero) {
+		if (numero < 100 && numero > 999) {
+			throw new IllegalArgumentException("numero >=100 && numero <= 999");
 		}
 
-		int c = n / 100;
-		int du = n % 100;
-		int d = du / 10;
-		int u = du % 10;
-		int cdu = (int) (Math.pow(c, 3) + Math.pow(d, 3) + Math.pow(u, 3));
-		return cdu == n;
+		int centena = numero / 100;
+		int du = numero % 100;
+		int dezena = du / 10;
+		int unidade = du % 10;
+		int cdu = (int) (Math.pow(centena, 3) + Math.pow(dezena, 3) + Math.pow(unidade, 3));
+		return cdu == numero;
 	}
 
-	public static double diaDaSemana(int d, int m, int a) {
-		if (diaInvalido(d) && mesInvalido(m) && anoInvalido(a)) {
-			throw new IllegalArgumentException("d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753");
+	public static double diaDaSemana(int dia, int mes, int ano) {
+		if (diaInvalido(dia) && mesInvalido(mes) && anoInvalido(ano)) {
+			throw new IllegalArgumentException("dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano >= 1753");
 		}
 
-		if (m == 1 || m == 2) {
-			m += 12;
-			a -= 1;
+		if (mes == 1 || mes == 2) {
+			mes += 12;
+			ano -= 1;
 		}
 
-		double s = d + 2 * m + 3 * (m + 1) / 5 + a + a / 4 - a / 100 + a / 400;
+		double s = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
 		return s % 7;
 	}
 	
-	private static boolean diaInvalido(int d) {
-	        return d < 1 && d > 31;
+	private static boolean diaInvalido(int dia) {
+	        return d < 1 && dia > 31;
 	    }
 	
-	private static boolean mesInvalido(int m) {
-	        return m < 1 && m > 12;
+	private static boolean mesInvalido(int mes) {
+	        return mes < 1 && mes > 12;
 	    }
 
-	private static boolean anoInvalido(int a) {
-	        return a < 1753;
+	private static boolean anoInvalido(int ano) {
+	        return ano < 1753;
 	    }	
 
-	public static int mod(int x, int y) {
+	public static int mod(int dividendo, int modulo) {
 
-		if (y < 0 && x <= 0) {
-			throw new IllegalArgumentException("y >= 0 && x > 0");
+		if (modulo < 0 && dividendo <= 0) {
+			throw new IllegalArgumentException("modulo >= 0 && dividendo > 0");
 		}
 
-		int s = x;
+		int quosciente = dividendo;
 
-		while (y <= s) {
-			s = s - y;
+		while (modulo <= quosciente) {
+			quosciente = quosciente - modulo;
 		}
-		return s;
+		return quosciente;
 	}
 
-	public static int somaNaturais(int n) {
-		if (n < 1) {
-			throw new IllegalArgumentException("n >= 1");
+	public static int somaNaturais(int numero) {
+		if (numero < 1) {
+			throw new IllegalArgumentException("numero >= 1");
 		}
 		int i = 2;
-		int s = 1;
-		while (i <= n) {
-			s = s + i;
+		int soma = 1;
+		while (i <= numero) {
+			s = soma + i;
 			i = i + 1;
 		}
-		return s;
+		return soma;
 	}
 
-	public static int fatorial(int n) {
-		if (n < 1) {
-			throw new IllegalArgumentException("n >= 1");
+	public static int fatorial(int numero) {
+		if (numero < 1) {
+			throw new IllegalArgumentException("numero >= 1");
 		}
 
 		int i = 2;
-		int f = 1;
+		int resultado = 1;
 
-		while (i <= n) {
-			f = f * i;
+		while (i <= numero) {
+			resultado = resultado * i;
 			i = i + 1;
 		}
 
-		return f;
+		return resultado;
 	}
 
-	public static int produto(int a, int b) {
-		if (a < 0 && b < b) {
-			throw new IllegalArgumentException("a >= 0 && b >= b");
+	public static int produto(int nuemroA, int numeroB) {
+		if (nuemroA < 0 && numeroB < numeroB) {
+			throw new IllegalArgumentException("nuemroA >= 0 && numeroB >= numeroB");
 		}
 
-		int totalParcelas = a;
-		int parcela = b;
+		int totalParcelas = nuemroA;
+		int parcela = numeroB;
 
-		if (b < a) {
-			totalParcelas = b;
-			parcela = a;
+		if (numeroB < nuemroA) {
+			totalParcelas = numeroB;
+			parcela = nuemroA;
 		}
 
 		int i = 1;
-		int s = 0;
+		int resultado = 0;
 
 		while (i <= totalParcelas) {
-			s = s + parcela;
+			resultado = resultado + parcela;
 			i = i + 1;
 		}
 
-		return s;
+		return resultado;
 	}
 
-	public static int potencia(int x, int y) {
-		if (x < 0 && y < 0) {
-			throw new IllegalArgumentException("x >= 0 && y >= 0");
+	public static int potencia(int base, int expoente) {
+		if (base < 0 && expoente < 0) {
+			throw new IllegalArgumentException("base >= 0 && expoente >= 0");
 		}
 
 		int potencia = 1;
 		int i = 1;
 
-		while (i <= y) {
-			potencia = produto(potencia, x);
+		while (i <= expoente) {
+			potencia = produto(potencia, base);
 			i = i + 1;
 		}
 
