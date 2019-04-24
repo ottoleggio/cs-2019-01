@@ -361,18 +361,18 @@ public class Exercicio {
 			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
 		}
 
-		int c = 8;
-		int p = vetor[9];
-		int s = vetor[9];
+		int c = 7;
+		int p = vetor[8];
+		int s = vetor[8];
 
-		while (1 <= c) {
+		while (0 <= c) {
 			p = p + vetor[c];
 			s = s + p;
 			c = c - 1;
 		}
 
 		int j = mod(mod(s, 11), 10);
-		int k = mod(mod(s - p + 9 * vetor[10], 11), 10);
+		int k = mod(mod(s - p + (9 * vetor[9]), 11), 10);
 
 		return (j == vetor[9] && k == vetor[10]);
 	}
