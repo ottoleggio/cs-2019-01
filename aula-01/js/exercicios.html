@@ -20,399 +20,492 @@ head > <
         div id = "diaDaSemana" > < /div> <
 div id = "numero153" > < /div> <
 script >
-        function diaDaSemana(d, m, a) {
-                if (typeof d != "number" || typeof m != "number" || typeof a != "number") {
-                        throw new TypeError("Os argumentos devem ser números inteiros");
-                }
-                if (d < 1 && d > 31 && m < 1 && m > 12 && a < 1753) {
-                        throw new RangeError("d >= 1 && d <= 31 && m >= 1 && m <= 12 && a >= 1753");
-                }
-                if (m == 1 || m == 2) {
-                        m += 12;
-                        a -= 1;
-                }
-                var s = d + 2 * m + 3 * (m + 1) / 5 + a + a / 4 - a / 100 + a / 400;
-                return Math.trunc(s % 7);
-        }
+	function diaDaSemana(dia, mes, ano) {
+		if (typeof dia != "number" || typeof mes != "number" || typeof ano != "number") {
+		        throw new TypeError("Os argumentos devem ser números inteiros");
+		}
 
-function numero153(n) {
-        if (typeof n != "number") {
-                throw new TypeError("Os argumentos devem ser números inteiros");
-        }
-        if (n < 100 && n > 999) {
-                throw new RangeError("n >=100 && n <= 999");
-        }
-        var c = n / 100;
-        var du = n % 100;
-        var d = du / 10;
-        var u = du % 10;
-        var cdu = (Math.pow(c, 3) + Math.pow(d, 3) + Math.pow(u, 3));
-        if (cdu == n) {
-                return true;
-        } else return false;
-}
+		if (diaInvalido(dia) && mesInvalido(mes) && anoInvalido(ano)) {
+		        throw new RangeError("dia >= 1 && d <= 31 && mes >= 1 && m <= 12 && a >= 1753");
+		}
 
-function boolean numero3025(numero) {
-        if (typeof n != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (numero < 0 && numero > 9999) {
-                throw new RangeError("numero >=0 && numero <= 9999");
-        }
-        var i;
-        var j;
-        i = numero / 100;
-        j = numero % 100;
-        var resultado = (Math.pow(j + i, 2.0));
-        if (resultado == numero)
-                return true;
-        else
-                return false;
-}
+		if (mes == 1 || mes == 2) {
+		        mes += 12;
+		        a -= 1;
+		}
 
-function Mod(x, y) {
-        if (typeof x != "number" || typeof y != "number") {
-                throw new TypeError("Os argumentos devem ser números inteiros");
-        }
-        if (y < 0 && x <= 0) {
-                throw new RangeError("y >= 0 && x > 0");
-        }
-        var s = x;
-        while (y <= s) {
-                s = s - y;
-        }
-        return s;
-}
+		var resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
+		return Math.trunc(resultado % 7);
+		}
 
-function SomaNaturais(n) {
-        if (typeof n != "number") {
-                throw new TypeError("Os argumentos devem ser números inteiros");
-        }
-        if (n < 1) {
-                throw new RangeError("n >= 1");
-        }
-        var i = 2;
-        var s = 1;
-        while (i <= n) {
-                s = s + i;
-                i = i + 1;
-        }
-        return s;
-}
+	function diaInvalido(dia) {
+	        return dia < 1 && dia > 31;
+	   	}
+	
+	function mesInvalido(mes) {
+	        return mes < 1 && mes > 12;
+		}
 
-function Fatorial(n) {
-        if (typeof n != "number") {
-                throw new TypeError("Os argumentos devem ser números inteiros");
-        }
-        if (n < 1) {
-                throw new RangeError("n >= 1");
-        }
-        var i = 2;
-        var f = 1;
-        while (i <= n) {
-                f = f * i;
-                i = i + 1;
-        }
-        return f;
-}
+	function anoInvalido(ano) {
+	        return ano < 1753;
+		} 	
 
-function Produto(a, b) {
-        if (typeof a != "number" || typeof b != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (a < 0 && b < b) {
-                throw new RangeError("a >= 0 && b >= b");
-        }
-        var totalParcelas = a;
-        var parcela = b;
-        if (b < a) {
-                totalParcelas = b;
-                parcela = a;
-        }
-        var i = 1;
-        var s = 0;
-        while (i <= totalParcelas) {
-                s = s + parcela;
-                i = i + 1;
-        }
-        return s;
-}
+	function numero153(numero) {
+		if (typeof numero != "number") {
+		        throw new TypeError("Os argumentos devem ser números inteiros");
+		}
 
-function Potencia(x, y) {
-        if (typeof x != "number" || typeof y != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (x < 0 && y < 0) {
-                throw new RangeError("x >= 0 && y >= 0");
-        }
-        var potencia = 1;
-        var i = 1;
-        while (i <= y) {
-                potencia = Produto(potencia, x);
-                i = i + 1;
-        }
-        return potencia;
-}
+		if (numero < 100 && numero > 999) {
+		        throw new RangeError("numero >=100 && numero <= 999");
+		}
 
-function Pi(n) {
-        if (typeof n != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (n < 1) {
-                throw new RangeError("n >= 1");
-        }
-        var i = 1;
-        var s = -1;
-        var d = -1;
-        var p = 0;
-        while (i <= n) {
-                d = d + 2;
-                d = -1 * s;
-                p = p + 4 * s / d;
-                i = i + 1;
-        }
-        return p;
-}
+		var centena = numero / 100;
+		var du = numero % 100;
+		var dezena = du / 10;
+		var unidade = du % 10;
+		var cdu = (Math.pow(centena, 3) + Math.pow(dezena, 3) + Math.pow(unidade, 3));
+		return cdu == numero
+	}
 
-function LogaritmoNatural(n, k) {
-        if (typeof n != "number" || typeof k != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (n < 1 && k > 2) {
-                throw new RangeError("n >= 1 && k >= 2");
-        }
-        var i = 2;
-        var e = 1 + n;
-        var numerador = n;
-        var denominador = 1;
-        while (i <= k) {
-                numerador = numerador * numerador;
-                denominador = denominador * i;
-                e = e + numerador / denominador;
-                i = i + 1;
-        }
-        return e;
-}
+	function boolean numero3025(numero) {
+		if (typeof numero != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
 
-function RazaoAurea(x, y, k) {
-        if (typeof x != "number" || typeof y != "number" || typeof k != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (x < x && y <= x && k <= 0) {
-                throw new RangeError("x >= x && y > x && k > 0");
-        }
-        var c = y;
-        var a = x;
-        var i = 1;
-        var t;
-        while (i <= k) {
-                t = c;
-                c = c + a;
-                a = t;
-                i = i + 1;
-        }
-        return c / a;
-}
+		if (numero < 0 && numero > 9999) {
+		        throw new RangeError("numero >=0 && numero <= 9999");
+		}
 
-function QuadradoPerfeito(n) {
-        if (typeof n != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (n < 1) {
-                throw new RangeError("n >= 1");
-        }
-        var i = 1;
-        var s = 1;
-        while (s < n) {
-                i = i + 2;
-                s = s + i;
-        }
-        return s == n;
-}
+		var i;
+		var j;
+		i = numero / 100;
+		j = numero % 100;
+		var resultado = (Math.pow(j + i, 2.0));
+		return resultado == numero
+	}
 
-function Raiz(n, i) {
-        if (typeof n != "number" || typeof i != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (n <= 0) {
-                throw new RangeError("n>0");
-        }
-        var r = 1;
-        while (0 <= i) {
-                r = (r + n / r) / 2;
-                i = i - 1;
-        }
-        return r;
-}
+	function mod(x, y) {
+		if (typeof x != "number" || typeof y != "number") {
+		        throw new TypeError("Os argumentos devem ser números inteiros");
+		}
 
-function Primo(n) {
-        if (typeof n != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (n <= 1) {
-                throw new RangeError("n > 1");
-        }
-        var i = 2;
-        while (i < n) {
-                if (n % i == 0) {
-                        return false;
-                }
-                i = i + 1;
-        }
-        return true;
-}
+		if (y < 0 && x <= 0) {
+		        throw new RangeError("y >= 0 && x > 0");
+		}
 
-function CrivoEratostenes(a) {
-        if (a == null || !Array.isArray(a)) {
-                throw new TypeError("Esperado um vetor como argumento");
-        }
-        for (var i = 0; i < a.length; i++) {
-                if (typeof a[i] != "number") {
-                        throw new RangeError("O vetor deve conter somente números inteiros");
-                }
-        }
-        for (var i = 1; i < a.length; i++) {
-                if (a[i] != 0) {
-                        return null;
-                }
-        }
-        var limite = Math.floor(Raiz(a.length, 100));
-        for (var i = 1; i < limite; i++) {
-                if (a[i] == 0) {
-                        for (var multiplo = 2 * i; multiplo < a.length; multiplo += i) {
-                                a[multiplo] = 1;
-                        }
-                }
-        }
-        return a;
-}
+		var s = x;
 
-function MDC(a, b) {
-        if (typeof a != "number" || typeof b != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (b > a && 0 >= b) {
-                throw new RangeError("b <= a && 0 < b");
-        }
-        var m;
-        while (b != 0) {
-                m = a % b;
-                a = b;
-                b = m;
-        }
-        return a;
-}
+		while (y <= s) {
+		        s = s - y;
+		}
 
-function MDC2(a, b) {
-        if (typeof a != "number" || typeof b != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (b > a && 0 >= b) {
-                throw new RangeError("b <= a && 0 < b");
-        }
-        while (a != b) {
-                if (a > b) {
-                        a = a - b;
-                } else {
-                        b = b - a;
-                }
-        }
-        return a;
-}
+		return s;
+	}
 
-function Horner(x, vetor) {
-        if (vetor == null || !Array.isArray(vetor)) {
-                throw new TypeError("Esperado um vetor como argumento");
-        }
-        for (var i = 0; i < vetor.length; i++) {
-                if (typeof vetor[i] != "number") {
-                        throw new RangeError("O vetor deve conter somente números inteiros");
-                }
-        }
-        if (typeof x != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (vetor.length < 1) {
-                throw new RangeError("vetor.length >= 1");
-        }
-        var p = vetor[vetor.length - 1];
-        for (var i = vetor.length - 1; i >= 0; i--) {
-                p = p * x + vetor[i];
-        }
-        return p;
-}
+	function somaNaturais(n) {
+		if (typeof n != "number") {
+		        throw new TypeError("Os argumentos devem ser números inteiros");
+		}
 
-function Fibonacci(n) {
-        if (typeof n != "number") {
-                throw new TypeError("Os argumentos devem ser números");
-        }
-        if (n < 0) {
-                throw new RangeError("n >= 0");
-        }
-        var a = 0;
-        var c = 1;
-        if (n == 0 || n == 1) {
-                return c;
-        }
-        var i = 2;
-        while (i <= n) {
-                var t = c;
-                c = c + a;
-                a = t;
-                i++;
-        }
-        return c;
-}
+		if (n < 1) {
+		        throw new RangeError("n >= 1");
+		}
 
-function DigitoCPF(vetor) {
-        if (vetor == null || !Array.isArray(vetor)) {
-                throw new TypeError("Esperado um vetor como argumento");
-        }
-        if (vetor.length != 11) {
-                throw new RangeError("Um cpf deve conter 11 dígitos");
-        }
-        for (var i = 0; i < 11; i++) {
-                if (typeof vetor[i] != "number") {
-                        throw new RangeError("O vetor deve conter somente números inteiros");
-                }
-        }
-        var j = 0;
-        var k = 0;
-        for (var i = 0; i < 9; i++) {
-                j += ((i + 1) * vetor[i]);
-                k += ((i + 1) * vetor[i + 1]);
-        }
-        var dj = Mod(Mod(j, 11), 10);
-        var dk = Mod(Mod(k, 11), 10);
-        return (dj == vetor[9] && dk == vetor[10]);
-}
+		var i = 2;
+		var s = 1;
 
-function DigitoCPF2(vetor) {
-        if (vetor == null || !Array.isArray(vetor)) {
-                throw new TypeError("Esperado um vetor como argumento");
-        }
-        if (vetor.length != 11) {
-                throw new RangeError("Um cpf deve conter 11 dígitos");
-        }
-        for (var i = 0; i < 11; i++) {
-                if (typeof vetor[i] != "number") {
-                        throw new RangeError("O vetor deve conter somente números inteiros");
-                }
-        }
-        var c = 8;
-        var p = vetor[9];
-        var s = vetor[9];
-        while (1 <= c) {
-                p = p + vetor[c];
-                s = s + p;
-                c = c - 1;
-        }
-        var j = Mod(Mod(s, 11), 10);
-        var k = Mod(Mod(s - p + 9 * vetor[10], 11), 10);
-        if (j == vetor[9] && k == vetor[10]) {
-                return true;
-        } else return false;
-}
+		while (i <= n) {
+		        s = s + i;
+		        i = i + 1;
+		}
+
+		return s;
+	}
+
+	function fatorial(n) {
+		if (typeof n != "number") {
+		        throw new TypeError("Os argumentos devem ser números inteiros");
+		}
+
+		if (n < 1) {
+		        throw new RangeError("n >= 1");
+		}
+
+		var i = 2;
+		var f = 1;
+
+		while (i <= n) {
+		        f = f * i;
+		        i = i + 1;
+		}
+
+		return f;
+	}
+
+	function produto(a, b) {
+		if (typeof a != "number" || typeof b != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (a < 0 && b < b) {
+		        throw new RangeError("a >= 0 && b >= b");
+		}
+
+		var totalParcelas = a;
+		var parcela = b;
+		if (b < a) {
+		        totalParcelas = b;
+		        parcela = a;
+		}
+
+		var i = 1;
+		var s = 0;
+		while (i <= totalParcelas) {
+		        s = s + parcela;
+		        i = i + 1;
+		}
+
+		return s;
+	}
+
+	function potencia(x, y) {
+		if (typeof x != "number" || typeof y != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (x < 0 && y < 0) {
+		        throw new RangeError("x >= 0 && y >= 0");
+		}
+
+		var potencia = 1;
+		var i = 1;
+		while (i <= y) {
+		        potencia = Produto(potencia, x);
+		        i = i + 1;
+		}
+
+		return potencia;
+	}
+
+	function pi(n) {
+		if (typeof n != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (n < 1) {
+		        throw new RangeError("n >= 1");
+		}
+
+		var i = 1;
+		var s = -1;
+		var d = -1;
+		var p = 0;
+
+		while (i <= n) {
+		        d = d + 2;
+		        d = -1 * s;
+		        p = p + 4 * s / d;
+		        i = i + 1;
+		}
+
+		return p;
+	}
+
+	function logaritmoNatural(n, k) {
+		if (typeof n != "number" || typeof k != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (n < 1 && k > 2) {
+		        throw new RangeError("n >= 1 && k >= 2");
+		}
+
+		var i = 2;
+		var e = 1 + n;
+		var numerador = n;
+		var denominador = 1;
+
+		while (i <= k) {
+		        numerador = numerador * numerador;
+		        denominador = denominador * i;
+		        e = e + numerador / denominador;
+		        i = i + 1;
+		}
+
+		return e;
+	}
+
+	function razaoAurea(x, y, k) {
+		if (typeof x != "number" || typeof y != "number" || typeof k != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (x < x && y <= x && k <= 0) {
+		        throw new RangeError("x >= x && y > x && k > 0");
+		}
+
+		var c = y;
+		var a = x;
+		var i = 1;
+		var t;
+
+		while (i <= k) {
+		        t = c;
+		        c = c + a;
+		        a = t;
+		        i = i + 1;
+		}
+
+		return c / a;
+	}
+
+	function quadradoPerfeito(n) {
+		if (typeof n != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (n < 1) {
+		        throw new RangeError("n >= 1");
+		}
+
+		var i = 1;
+		var s = 1;
+
+		while (s < n) {
+		        i = i + 2;
+		        s = s + i;
+		}
+
+		return s == n;
+	}
+
+	function raiz(n, i) {
+		if (typeof n != "number" || typeof i != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (n <= 0) {
+		        throw new RangeError("n>0");
+		}
+
+		var r = 1;
+
+		while (0 <= i) {
+		        r = (r + n / r) / 2;
+		        i = i - 1;
+		}
+
+		return r;
+	}
+
+	function primo(n) {
+		if (typeof n != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (n <= 1) {
+		        throw new RangeError("n > 1");
+		}
+
+		var i = 2;
+
+		while (i < n) {
+	        	if (n % i == 0) {
+		                return false;
+		        }
+
+		        i = i + 1;
+		}
+
+		return true;
+	}
+
+	function crivoEratostenes(a) {
+		if (a == null || !Array.isArray(a)) {
+		        throw new TypeError("Esperado um vetor como argumento");
+		}
+
+		for (var i = 0; i < a.length; i++) {
+		        if (typeof a[i] != "number") {
+		                throw new RangeError("O vetor deve conter somente números inteiros");
+		        }
+		}
+
+		for (var i = 1; i < a.length; i++) {
+		        if (a[i] != 0) {
+		                return null;
+		        }
+		}
+
+		var limite = Math.floor(Raiz(a.length, 100));
+
+		for (var i = 1; i < limite; i++) {
+		        if (a[i] == 0) {
+		                for (var multiplo = 2 * i; multiplo < a.length; multiplo += i) {
+		                        a[multiplo] = 1;
+		                }
+		        }
+		}
+
+		return a;
+	}
+
+	function mdc(a, b) {
+		if (typeof a != "number" || typeof b != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (b > a && 0 >= b) {
+		        throw new RangeError("b <= a && 0 < b");
+		}
+
+		var m;
+
+		while (b != 0) {
+		        m = a % b;
+		        a = b;
+		        b = m;
+		}
+
+		return a;
+	}
+
+	function mdc2(a, b) {
+		if (typeof a != "number" || typeof b != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (b > a && 0 >= b) {
+		        throw new RangeError("b <= a && 0 < b");
+		}
+
+		while (a != b) {
+		        if (a > b) {
+		                a = a - b;
+		        } else {
+		                b = b - a;
+		        }
+		}
+
+		return a;
+	}
+
+	function horner(x, vetor) {
+		if (vetor == null || !Array.isArray(vetor)) {
+		        throw new TypeError("Esperado um vetor como argumento");
+		}
+
+		for (var i = 0; i < vetor.length; i++) {
+		        if (typeof vetor[i] != "number") {
+		                throw new RangeError("O vetor deve conter somente números inteiros");
+		        }
+		}
+
+		if (typeof x != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (vetor.length < 1) {
+		        throw new RangeError("vetor.length >= 1");
+		}
+
+		var p = vetor[vetor.length - 1];
+
+		for (var i = vetor.length - 1; i >= 0; i--) {
+		        p = p * x + vetor[i];
+		}
+
+		return p;
+	}
+
+	function fibonacci(n) {
+		if (typeof n != "number") {
+		        throw new TypeError("Os argumentos devem ser números");
+		}
+
+		if (n < 0) {
+		        throw new RangeError("n >= 0");
+		}
+
+		var a = 0;
+		var c = 1;
+
+		if (n == 0 || n == 1) {
+		        return c;
+		}
+
+		var i = 2;
+
+		while (i <= n) {
+		        var t = c;
+		        c = c + a;
+		        a = t;
+		        i++;
+		}
+
+		return c;
+	}
+
+	function digitoCPF(vetor) {
+		if (vetor == null || !Array.isArray(vetor)) {
+		        throw new TypeError("Esperado um vetor como argumento");
+		}
+
+		if (vetor.length != 11) {
+		        throw new RangeError("Um cpf deve conter 11 dígitos");
+		}
+
+		for (var i = 0; i < 11; i++) {
+		        if (typeof vetor[i] != "number") {
+		                throw new RangeError("O vetor deve conter somente números inteiros");
+		        }
+		}
+
+		var j = 0;
+		var k = 0;
+
+		for (var i = 0; i < 9; i++) {
+		        j += ((i + 1) * vetor[i]);
+		        k += ((i + 1) * vetor[i + 1]);
+		}
+
+		var dj = mod(mod(j, 11), 10);
+		var dk = mod(mod(k, 11), 10);
+
+		return (dj == vetor[9] && dk == vetor[10]);
+	}
+
+	function digitoCPF2(vetor) {
+		if (vetor == null || !Array.isArray(vetor)) {
+		        throw new TypeError("Esperado um vetor como argumento");
+		}
+
+		if (vetor.length != 11) {
+		        throw new RangeError("Um cpf deve conter 11 dígitos");
+		}
+
+		for (var i = 0; i < 11; i++) {
+		        if (typeof vetor[i] != "number") {
+		                throw new RangeError("O vetor deve conter somente números inteiros");
+		        }
+		}
+
+		var c = 8;
+		var p = vetor[9];
+		var s = vetor[9];
+
+		while (1 <= c) {
+		        p = p + vetor[c];
+		        s = s + p;
+		        c = c - 1;
+		}
+
+		var j = mod(mod(s, 11), 10);
+		var k = mod(mod(s - p + 9 * vetor[10], 11), 10);
+
+		return (j == vetor[9] && k == vetor[10]);
+
+	}
 window.onload = function() {
         document.getElementById("diaDaSemana").innerHTML = diaDaSemana();
         document.getElementById("numero153").innerHTML = numero153();
