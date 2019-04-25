@@ -36,12 +36,12 @@ public class Exercicio {
 			ano -= 1;
 		}
 
-		double s = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
-		return s % 7;
+		double resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
+		return resultado % 7;
 	}
 	
 	private static boolean diaInvalido(int dia) {
-	        return d < 1 && dia > 31;
+	        return dia < 1 && dia > 31;
 	    }
 	
 	private static boolean mesInvalido(int mes) {
