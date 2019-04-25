@@ -284,58 +284,58 @@ public class Exercicio {
 		return numeroA;
 	}
 
-	public static double mdc2(double a, double b) {
-		if (b > a && 0 >= b) {
-			throw new IllegalArgumentException("'b' deve ser <= 'a' e b deve ser < 0");
+	public static double mdc2(double numeroA, double numeroB) {
+		if (numeroB > numeroA && 0 >= numeroB) {
+			throw new IllegalArgumentException("'numeroB' deve ser <= 'numeroA' e numeroB deve ser < 0");
 		}
 
-		while (a != b) {
-			if (a > b) {
-				a = a - b;
+		while (numeroA != numeroB) {
+			if (numeroA > numeroB) {
+				numeroA = numeroA - numeroB;
 			} else {
-				b = b - a;
+				numeroB = numeroB - numeroA;
 			}
 
 		}
 
-		return a;
+		return numeroA;
 	}
 
-	public static int horner(int x, int[] vetor) {
+	public static int horner(int numero, int[] vetor) {
 		if (vetor.length < 1) {
-			throw new IllegalArgumentException("O cumprimento do vetor deve ser maior ou igual a 1");
+			throw new IllegalArgumentException("O comprimento do vetor deve ser maior ou igual a 1");
 		}
 
-		int p = vetor[vetor.length - 1];
+		int resultado = vetor[vetor.length - 1];
 
 		for (int i = vetor.length - 1; i >= 0; i--) {
-			p = p * x + vetor[i];
+			resultado = resultado * numero + vetor[i];
 		}
 
-		return p;
+		return resultado;
 	}
 
-	public static int fibonacci(int n) {
-		if (n < 0) {
+	public static int fibonacci(int numero) {
+		if (numero < 0) {
 			throw new IllegalArgumentException("O número deve ser maior ou igual a 0");
 		}
 
-		int a = 0;
-		int c = 1;
+		int soma = 0;
+		int resultado = 1;
 
-		if (n == 0 || n == 1) {
-			return c;
+		if (numero == 0 || numero == 1) {
+			return resultado;
 		}
 
 		int i = 2;
 
-		while (i <= n) {
-			int t = c;
-			c = c + a;
-			a = t;
+		while (i <= numero) {
+			int aux = resultado;
+			resultado = resultado + soma;
+			soma = aux;
 			i++;
 		}
-		return c;
+		return resultado;
 	}
 
 	public static boolean digitoCPF(int[] vetor) {
@@ -343,17 +343,17 @@ public class Exercicio {
 			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
 		}
 
-		int j = 0;
-		int k = 0;
+		int testeA = 0;
+		int testeB = 0;
 
 		for (int i = 0; i < 9; i++) {
-			j += ((i + 1) * vetor[i]);
-			k += ((i + 1) * vetor[i + 1]);
+			testeA += ((i + 1) * vetor[i]);
+			testeB += ((i + 1) * vetor[i + 1]);
 		}
 
-		int dj = mod(mod(j, 11), 10);
-		int dk = mod(mod(k, 11), 10);
-		return (dj == vetor[9] && dk == vetor[10]);
+		int digitoA = mod(mod(testeA, 11), 10);
+		int digitoB = mod(mod(testeB, 11), 10);
+		return (digitoA == vetor[9] && digitoB == vetor[10]);
 	}
 
 	public static boolean digitoCPF2(int[] vetor) {
@@ -361,20 +361,20 @@ public class Exercicio {
 			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
 		}
 
-		int c = 7;
-		int p = vetor[8];
-		int s = vetor[8];
+		int i = 7;
+		int testeA = vetor[8];
+		int testeB = vetor[8];
 
-		while (0 <= c) {
-			p = p + vetor[c];
-			s = s + p;
-			c = c - 1;
+		while (0 <= i) {
+			testeA = testeA + vetor[c];
+			testeB = testeB + testeA;
+			i = i - 1;
 		}
 
-		int j = mod(mod(s, 11), 10);
-		int k = mod(mod(s - p + (9 * vetor[9]), 11), 10);
+		int digitoA = mod(mod(testeB, 11), 10);
+		int digitoB = mod(mod(testeB - testeA + (9 * vetor[9]), 11), 10);
 
-		return (j == vetor[9] && k == vetor[10]);
+		return (digitoA == vetor[9] && digitoB == vetor[10]);
 	}
 }
 
