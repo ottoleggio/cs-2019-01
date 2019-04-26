@@ -76,187 +76,186 @@ script >
 		        throw new RangeError("numero >=0 && numero <= 9999");
 		}
 
-		var i;
-		var j;
-		i = numero / 100;
-		j = numero % 100;
-		var resultado = (Math.pow(j + i, 2.0));
+		var divisao = numero / 100;
+		var resto = numero % 100;
+		
+		var resultado = (Math.pow(resto + divisao, 2.0));
 		return resultado == numero
 	}
 
-	function mod(x, y) {
-		if (typeof x != "number" || typeof y != "number") {
+	function mod(numeroA, numeroB) {
+		if (typeof numeroA != "number" || typeof numeroB != "number") {
 		        throw new TypeError("Os argumentos devem ser números inteiros");
 		}
 
-		if (y < 0 && x <= 0) {
+		if (numeroB < 0 && numeroA <= 0) {
 		        throw new RangeError("y >= 0 && x > 0");
 		}
 
-		var s = x;
+		var resultado = numeroA;
 
-		while (y <= s) {
-		        s = s - y;
+		while (numeroB <= resultado) {
+		        resultado = resultado - numeroB;
 		}
 
-		return s;
+		return resultado;
 	}
 
-	function somaNaturais(n) {
-		if (typeof n != "number") {
+	function somaNaturais(numero) {
+		if (typeof numero != "number") {
 		        throw new TypeError("Os argumentos devem ser números inteiros");
 		}
 
-		if (n < 1) {
-		        throw new RangeError("n >= 1");
+		if (numero < 1) {
+		        throw new RangeError("numero >= 1");
 		}
 
 		var i = 2;
-		var s = 1;
+		var resultado = 1;
 
-		while (i <= n) {
-		        s = s + i;
+		while (i <= numero) {
+		        resultado = resultado + i;
 		        i = i + 1;
 		}
 
-		return s;
+		return resultado;
 	}
 
-	function fatorial(n) {
-		if (typeof n != "number") {
+	function fatorial(numero) {
+		if (typeof numero != "number") {
 		        throw new TypeError("Os argumentos devem ser números inteiros");
 		}
 
-		if (n < 1) {
-		        throw new RangeError("n >= 1");
+		if (numero < 1) {
+		        throw new RangeError("numero >= 1");
 		}
 
 		var i = 2;
-		var f = 1;
+		var soma = 1;
 
-		while (i <= n) {
-		        f = f * i;
+		while (i <= numero) {
+		        soma = soma * i;
 		        i = i + 1;
 		}
 
-		return f;
+		return soma;
 	}
 
-	function produto(a, b) {
-		if (typeof a != "number" || typeof b != "number") {
+	function produto(numeroA, numeroB) {
+		if (typeof numeroA != "number" || typeof numeroB != "number") {
 		        throw new TypeError("Os argumentos devem ser números");
 		}
 
-		if (a < 0 && b < b) {
+		if (numeroA < 0 && numeroB < numeroB) {
 		        throw new RangeError("a >= 0 && b >= b");
 		}
 
-		var totalParcelas = a;
-		var parcela = b;
-		if (b < a) {
-		        totalParcelas = b;
-		        parcela = a;
+		var totalParcelas = numeroA;
+		var parcela = numeroB;
+		if (numeroB < numeroA) {
+		        totalParcelas = numeroB;
+		        parcela = numeroA;
 		}
 
 		var i = 1;
-		var s = 0;
+		var resultado = 0;
 		while (i <= totalParcelas) {
-		        s = s + parcela;
+		        resultado = resultado + parcela;
 		        i = i + 1;
 		}
 
-		return s;
+		return resultado;
 	}
 
-	function potencia(x, y) {
-		if (typeof x != "number" || typeof y != "number") {
+	function potencia(base, expoente) {
+		if (typeof base != "number" || typeof expoente != "number") {
 		        throw new TypeError("Os argumentos devem ser números");
 		}
 
-		if (x < 0 && y < 0) {
+		if (base < 0 && expoente < 0) {
 		        throw new RangeError("x >= 0 && y >= 0");
 		}
 
 		var potencia = 1;
 		var i = 1;
-		while (i <= y) {
-		        potencia = Produto(potencia, x);
+		while (i <= expoente) {
+		        potencia = Produto(potencia, base);
 		        i = i + 1;
 		}
 
 		return potencia;
 	}
 
-	function pi(n) {
-		if (typeof n != "number") {
+	function pi(numero) {
+		if (typeof numero != "number") {
 		        throw new TypeError("Os argumentos devem ser números");
 		}
 
-		if (n < 1) {
+		if (numero < 1) {
 		        throw new RangeError("n >= 1");
 		}
 
 		var i = 1;
 		var s = -1;
 		var d = -1;
-		var p = 0;
+		var resultado = 0;
 
-		while (i <= n) {
+		while (i <= numero) {
 		        d = d + 2;
 		        d = -1 * s;
-		        p = p + 4 * s / d;
+		        resultado = resultado + 4 * s / d;
 		        i = i + 1;
 		}
 
-		return p;
+		return resultado;
 	}
 
-	function logaritmoNatural(n, k) {
-		if (typeof n != "number" || typeof k != "number") {
+	function logaritmoNatural(numero, repeticoes) {
+		if (typeof numero != "number" || typeof repeticoes != "number") {
 		        throw new TypeError("Os argumentos devem ser números");
 		}
 
-		if (n < 1 && k > 2) {
+		if (numero < 1 && repeticoes > 2) {
 		        throw new RangeError("n >= 1 && k >= 2");
 		}
 
 		var i = 2;
-		var e = 1 + n;
-		var numerador = n;
+		var potenciaE = 1 + numero;
+		var numerador = numero;
 		var denominador = 1;
 
-		while (i <= k) {
+		while (i <= repeticoes) {
 		        numerador = numerador * numerador;
 		        denominador = denominador * i;
-		        e = e + numerador / denominador;
+		        potenciaE = potenciaE + numerador / denominador;
 		        i = i + 1;
 		}
 
-		return e;
+		return potenciaE;
 	}
 
-	function razaoAurea(x, y, k) {
-		if (typeof x != "number" || typeof y != "number" || typeof k != "number") {
+	function razaoAurea(numeroA, numeroB, repeticoes) {
+		if (typeof numeroA != "number" || typeof y != "number" || typeof repeticoes != "number") {
 		        throw new TypeError("Os argumentos devem ser números");
 		}
 
-		if (x < x && y <= x && k <= 0) {
+		if (numeroA < numeroA && y <= numeroA && repeticoes <= 0) {
 		        throw new RangeError("x >= x && y > x && k > 0");
 		}
 
-		var c = y;
-		var a = x;
+		var dividendo = y;
+		var divisor = numeroA;
 		var i = 1;
 		var t;
 
-		while (i <= k) {
-		        t = c;
-		        c = c + a;
-		        a = t;
+		while (i <= repeticoes) {
+		        t = dividendo;
+		        dividendo = dividendo + divisor;
+		        divisor = t;
 		        i = i + 1;
 		}
 
-		return c / a;
+		return dividendo / divisor;
 	}
 
 	function quadradoPerfeito(n) {
