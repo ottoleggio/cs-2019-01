@@ -299,9 +299,10 @@ public class Exercicio {
 
         for (int i = 1; i < limite; i++) {
             if (vetor[i] == 0) {
-                for (int multiplo = 2 * i; multiplo < vetor.length;
-                     multiplo += i) {
+                int multiplo = 2 * i;
+                while (multiplo < vetor.length) {
                     vetor[multiplo] = 1;
+                    multiplo = multiplo + i;
                 }
             }
         }
