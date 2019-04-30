@@ -42,7 +42,7 @@ function numero153(numero) {
     var du = numero % 100;
     var dezena = du / 10;
     var unidade = du % 10;
-    var cdu = (Math.pow(centena, 3) + Math.pow(dezena, 3) + Math.pow(unidade, 3));
+    const cdu = centena**3 + dezena**3 + unidade**3;
     return cdu == numero
 }
 
