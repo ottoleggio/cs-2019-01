@@ -43,9 +43,9 @@ public class Exercicio {
             ano -= 1;
         }
 
-        int resultado =
+        int drDobbsExpr =
                 dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
-        return resultado % 7;
+        return drDobbsExpr % 7;
     }
 
     private static void verificaData(int dia, int mes, int ano) {
