@@ -177,7 +177,7 @@ public class Exercicio {
         double d = -1;
         double resultado = 0;
 
-        while (i <= n) {
+        while (i <= numero) {
             d = d + 2;
             d = -1 * s;
             resultado = resultado + 4 * s / d;
