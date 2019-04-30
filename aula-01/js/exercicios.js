@@ -37,6 +37,7 @@ function numero153(numero) {
         throw new RangeError("numero >=100 && numero <= 999");
     }
 
+    // TODO defina como constantes, pois são constantes
     var centena = numero / 100;
     var du = numero % 100;
     var dezena = du / 10;
