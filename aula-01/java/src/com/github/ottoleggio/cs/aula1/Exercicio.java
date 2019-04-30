@@ -251,6 +251,7 @@ public class Exercicio {
 
         double raizR = 1;
 
+        // FIXME fator??
         while (0 <= i) {
             raizR = (raizR + numero / fator) / 2;
             i = i - 1;
@@ -282,8 +283,8 @@ public class Exercicio {
             throw new IllegalArgumentException("o vetor deve conter no mínimo 2 dígitos");
         }
 
-        for (int i = 1; i < vetorA.length; i++) {
-            if (vetorA[i] != 0) {
+        for (int valor : vetorA) {
+            if (valor != 0) {
                 return null;
             }
         }
