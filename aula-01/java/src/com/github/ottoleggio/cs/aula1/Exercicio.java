@@ -1,5 +1,8 @@
 package com.github.ottoleggio.cs.aula1;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
+
 public class Exercicio {
 
     public static boolean numero3025(int numero) {
@@ -33,9 +36,7 @@ public class Exercicio {
     }
 
     public static double diaDaSemana(int dia, int mes, int ano) {
-        if (dataInvalida(dia, mes, ano)) {
-            throw new IllegalArgumentException("dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano >= 1753");
-        }
+        verificaData(dia, mes, ano);
 
         if (mes == 1 || mes == 2) {
             mes += 12;
@@ -46,20 +47,35 @@ public class Exercicio {
         return resultado % 7;
     }
 
-    private static boolean dataInvalida(int dia, int mes, int ano) {
-        return diaInvalido(dia) && mesInvalido(mes) && anoInvalido(ano);
+    private static void verificaData(int dia, int mes, int ano) {
+        verificaDia(dia);
+        verificaMes(mes);
+        verificaAno(ano);
+
+        try {
+            LocalDate.of(ano, mes, dia);
+        } catch (DateTimeException exp) {
+            final String msg = String.format("%d/%d/%d", dia, mes, ano);
+            throw new IllegalArgumentException("data inválida: " + msg, exp);
+        }
     }
 
-    private static boolean diaInvalido(int dia) {
-        return dia < 1 && dia > 31;
+    private static void verificaDia(int dia) {
+        if (dia < 1 && dia > 31) {
+            throw new IllegalArgumentException("dia inválido");
+        }
     }
 
-    private static boolean mesInvalido(int mes) {
-        return mes < 1 && mes > 12;
+    private static void verificaMes(int mes) {
+        if (mes < 1 && mes > 12) {
+            throw new IllegalArgumentException("mês inválido");
+        }
     }
 
-    private static boolean anoInvalido(int ano) {
-        return ano < 1753;
+    private static void verificaAno(int ano) {
+        if (ano < 1753) {
+            throw new IllegalArgumentException("ano inválido");
+        }
     }
 
     public static int mod(int dividendo, int modulo) {
