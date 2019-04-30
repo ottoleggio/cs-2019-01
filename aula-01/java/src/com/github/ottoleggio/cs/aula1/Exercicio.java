@@ -178,6 +178,7 @@ public class Exercicio {
         double resultado = 0;
 
         while (i <= numero) {
+            // FIXME possivelmente bug, valor de d é perdido?
             d = d + 2;
             d = -1 * s;
             resultado = resultado + 4 * s / d;
@@ -240,7 +241,7 @@ public class Exercicio {
             soma = soma + i;
         }
 
-        return s == numero;
+        return soma == numero;
     }
 
     public static double raiz(double numero, double i) {
