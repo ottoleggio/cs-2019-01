@@ -279,6 +279,8 @@ public class Exercicio {
     }
 
     public static int[] crivoEratostenes(final int[] original) {
+        // TODO teste se original é null
+
         // TODO veja https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#clone()
         // TODO melhor ainda https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#arraycopy%28java.lang.Object,%20int,%20java.lang.Object,%20int,%20int%29
         int[] vetor = original.clone();
@@ -297,7 +299,8 @@ public class Exercicio {
 
         for (int i = 1; i < limite; i++) {
             if (vetor[i] == 0) {
-                for (int multiplo = 2 * i; multiplo < vetor.length; multiplo += i) {
+                for (int multiplo = 2 * i; multiplo < vetor.length;
+                     multiplo += i) {
                     vetor[multiplo] = 1;
                 }
             }
