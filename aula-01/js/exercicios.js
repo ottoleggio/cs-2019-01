@@ -72,7 +72,7 @@ function mod(numeroA, numeroB) {
         throw new RangeError("y >= 0 && x > 0");
     }
 
-    var resultado = numeroA;
+    let resultado = numeroA;
 
     while (numeroB <= resultado) {
         resultado = resultado - numeroB;
