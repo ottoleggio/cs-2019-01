@@ -12,7 +12,7 @@ function diaDaSemana(dia, mes, ano) {
         a -= 1;
     }
 
-    var resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
+    const resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
     return Math.trunc(resultado % 7);
 }
 
