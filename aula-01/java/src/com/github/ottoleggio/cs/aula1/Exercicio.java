@@ -7,9 +7,14 @@ public class Exercicio {
             throw new IllegalArgumentException("numero >=0 && numero <= 9999");
         }
 
-        final int divisao = numero / 100;
-        final int resto = numero % 100;
-        final int quadrado = (resto + divisao) * (resto + divisao);
+        // Dois primeiros dígitos do número mcdu (primeira dezena)
+        final int mc = numero / 100;
+
+        // Dois últimos dígitos (segunda dezena)
+        final int du = numero % 100;
+
+        // Quadrado das somas das dezenas
+        final int quadrado = (mc + du) * (mc + du);
 
         return quadrado == numero;
     }
