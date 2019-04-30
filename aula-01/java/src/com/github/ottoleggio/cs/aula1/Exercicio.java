@@ -100,12 +100,14 @@ public class Exercicio {
         if (numero < 1) {
             throw new IllegalArgumentException("numero >= 1");
         }
+
         int i = 2;
         int soma = 1;
         while (i <= numero) {
-            s = soma + i;
+            soma = soma + i;
             i = i + 1;
         }
+
         return soma;
     }
 
