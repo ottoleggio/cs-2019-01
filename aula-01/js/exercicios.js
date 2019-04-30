@@ -9,7 +9,7 @@ function diaDaSemana(dia, mes, ano) {
 
     if (mes == 1 || mes == 2) {
         mes += 12;
-        a -= 1;
+        ano -= 1;
     }
 
     const resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
