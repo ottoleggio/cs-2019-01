@@ -9,9 +9,9 @@ public class Exercicio {
 
         final int divisao = numero / 100;
         final int resto = numero % 100;
-        final int resultado = (resto + divisao) * (resto + divisao);
+        final int quadrado = (resto + divisao) * (resto + divisao);
 
-        return resultado == numero;
+        return quadrado == numero;
     }
 
     public static boolean numero153(int numero) {
