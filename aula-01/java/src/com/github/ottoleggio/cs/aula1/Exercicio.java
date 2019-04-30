@@ -9,7 +9,7 @@ public class Exercicio {
 
         final int divisao = numero / 100;
         final int resto = numero % 100;
-        final int resultado = (int) (Math.pow(resto + divisao, 2.0));
+        final int resultado = (resto + divisao) * (resto + divisao);
 
         return resultado == numero;
     }
