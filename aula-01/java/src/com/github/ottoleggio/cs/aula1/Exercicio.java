@@ -43,7 +43,8 @@ public class Exercicio {
             ano -= 1;
         }
 
-        double resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
+        int resultado =
+                dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
         return resultado % 7;
     }
 
