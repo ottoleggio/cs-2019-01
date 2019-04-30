@@ -278,28 +278,32 @@ public class Exercicio {
         return true;
     }
 
-    public static int[] crivoEratostenes(int[] vetorA) {
-        if (vetorA.length <= 1) {
+    public static int[] crivoEratostenes(final int[] original) {
+        // TODO veja https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#clone()
+        // TODO melhor ainda https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#arraycopy%28java.lang.Object,%20int,%20java.lang.Object,%20int,%20int%29
+        int[] vetor = original.clone();
+
+        if (vetor.length <= 1) {
             throw new IllegalArgumentException("o vetor deve conter no mínimo 2 dígitos");
         }
 
-        for (int valor : vetorA) {
+        for (int valor : vetor) {
             if (valor != 0) {
                 return null;
             }
         }
 
-        int limite = (int) Math.floor(raiz(vetorA.length, 100));
+        int limite = (int) Math.floor(raiz(vetor.length, 100));
 
         for (int i = 1; i < limite; i++) {
-            if (vetorA[i] == 0) {
-                for (int multiplo = 2 * i; multiplo < vetorA.length; multiplo += i) {
-                    vetorA[multiplo] = 1;
+            if (vetor[i] == 0) {
+                for (int multiplo = 2 * i; multiplo < vetor.length; multiplo += i) {
+                    vetor[multiplo] = 1;
                 }
             }
         }
 
-        return vetorA;
+        return vetor;
     }
 
     public static double mdc(double numeroA, double numeroB) {
