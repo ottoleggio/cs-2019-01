@@ -33,7 +33,7 @@ public class Exercicio {
     }
 
     public static double diaDaSemana(int dia, int mes, int ano) {
-        if (diaInvalido(dia) && mesInvalido(mes) && anoInvalido(ano)) {
+        if (dataInvalida(dia, mes, ano)) {
             throw new IllegalArgumentException("dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano >= 1753");
         }
 
@@ -44,6 +44,10 @@ public class Exercicio {
 
         double resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
         return resultado % 7;
+    }
+
+    private static boolean dataInvalida(int dia, int mes, int ano) {
+        return diaInvalido(dia) && mesInvalido(mes) && anoInvalido(ano);
     }
 
     private static boolean diaInvalido(int dia) {
