@@ -299,7 +299,7 @@ public class Exercicio {
             }
         }
 
-        return a;
+        return vetorA;
     }
 
     public static double mdc(double numeroA, double numeroB) {
