@@ -80,17 +80,19 @@ public class Exercicio {
         }
     }
 
+    // TODO verifique confusao aqui, nao seria dividendo e divisor
     public static int mod(int dividendo, int modulo) {
 
         if (modulo < 0 && dividendo <= 0) {
             throw new IllegalArgumentException("modulo >= 0 && dividendo > 0");
         }
 
+        // TODO não seria melhor "resto"?
         int quosciente = dividendo;
-
         while (modulo <= quosciente) {
             quosciente = quosciente - modulo;
         }
+
         return quosciente;
     }
 
