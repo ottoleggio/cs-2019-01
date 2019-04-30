@@ -7,10 +7,10 @@ public class Exercicio {
             throw new IllegalArgumentException("numero >=0 && numero <= 9999");
         }
 
-        int divisao = numero / 100;
-        int resto = numero % 100;
-        int resultado = (int) (Math.pow(resto + divisao, 2.0));
-        
+        final int divisao = numero / 100;
+        final int resto = numero % 100;
+        final int resultado = (int) (Math.pow(resto + divisao, 2.0));
+
         return resultado == numero;
     }
 
