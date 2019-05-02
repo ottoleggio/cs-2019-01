@@ -1,4 +1,21 @@
+/**
+ * Funções matemáticas diversas com propósito de estudo das ferramentas
+ * e boas práticas da disciplina de construção de software
+ */
+
+
+/**Produz um numero inteiro que representa o dia da semana
+ * a partir da data fornecida
+ * 
+ * @param dia inteiro que representa o dia do mês
+ * @param mes inteiro que representa o mês no ano
+ * @param ano inteiro que representa o ano
+ * 
+ * @returns O valor retornado é 0 para segunda-feira, 
+ * 1 para terça-feira e assim sucessivamente.
+ */ 
 function diaDaSemana(dia, mes, ano) {
+
     if (typeof dia != "number" || typeof mes != "number" || typeof ano != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
@@ -16,18 +33,46 @@ function diaDaSemana(dia, mes, ano) {
     return Math.trunc(resultado % 7);
 }
 
+/**Valida se o dia usado como parametro está nos critérios estabelecidos
+ * da função diaDaSemana
+ * 
+ * @param dia inteiro que representa o dia do mês
+ * 
+ * @returns Retorna verdadeiro ou falso de acordo com a entrada
+ */ 
 function diaInvalido(dia) {
     return dia < 1 && dia > 31;
 }
 
+/**Valida se o mes usado como parametro está nos critérios estabelecidos
+ * da função diaDaSemana
+ * 
+ * @param mes inteiro que representa o mês do ano
+ * 
+ * @returns Retorna verdadeiro ou falso de acordo com a entrada
+ */ 
 function mesInvalido(mes) {
     return mes < 1 && mes > 12;
 }
 
+/**Valida se o ano usado como parametro está nos critérios estabelecidos
+ * da função diaDaSemana
+ * 
+ * @param ano inteiro que representa o ano
+ * 
+ * @returns Retorna verdadeiro ou falso de acordo com a entrada
+ */ 
 function anoInvalido(ano) {
     return ano < 1753;
 }
 
+/**Função que verifica se a soma dos cubos dos dígitos fornecidos como entrada
+ * somam 153
+ * 
+ * @param number inteiro que terá os dígitos somados
+ * 
+ * @returns Retorna verdadeiro ou falso de acordo com a entrada
+ */ 
 function numero153(numero) {
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
@@ -46,6 +91,13 @@ function numero153(numero) {
     return cdu == numero
 }
 
+/**Função que verifica se o quadrado da soma das dezenas da entrada
+ * resulta no próprio número
+ * 
+ * @param number inteiro que terá as dezenas somadas
+ * 
+ * @returns Retorna verdadeiro ou falso de acordo com a entrada
+ */ 
 function numero3025(numero)
 {
     if (typeof numero != "number") {
@@ -63,6 +115,14 @@ function numero3025(numero)
     return resultado == numero
 }
 
+/**Função matemática que retorna o resto de uma divisão entre
+ * dois numeros
+ * 
+ * @param numeroA inteiro que será o dividendo da operação
+ * @param numeroB inteiro que será o divisor da operação
+ * 
+ * @returns Retorna o resto da divisao entre os dois parametros
+ */ 
 function mod(numeroA, numeroB) {
     if (typeof numeroA != "number" || typeof numeroB != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
@@ -81,6 +141,13 @@ function mod(numeroA, numeroB) {
     return resultado;
 }
 
+/**Função que retorna a soma de numeros naturais dada a quantidade de
+ * numeros a serem sequencialmente somados
+ * 
+ * @param numero inteiro que representa a quantidade de numeros a serem somados
+ * 
+ * @returns Retorna a soma dos numeros naturais somados
+ */ 
 function somaNaturais(numero) {
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
@@ -101,6 +168,12 @@ function somaNaturais(numero) {
     return resultado;
 }
 
+/**Funçao matemática que retorna o fatorial do numero fornecido na entrada
+ * 
+ * @param numero Inteiro que representa o fatorial a ser calculado
+ * 
+ * @returns Resultado do número fatorial
+ */ 
 function fatorial(numero) {
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
@@ -121,6 +194,13 @@ function fatorial(numero) {
     return soma;
 }
 
+/**Função que retorna o produto entre dois numeros fornecidos como entrada
+ * 
+ * @param numeroA inteiro que representa o primeiro fator do produto
+ * @param numeroB inteiro que representa o segundo fator do produto
+ * 
+ * @returns Retorna o produto das duas entradas
+ */ 
 function produto(numeroA, numeroB) {
     if (typeof numeroA != "number" || typeof numeroB != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -147,6 +227,13 @@ function produto(numeroA, numeroB) {
     return resultado;
 }
 
+/**Função matemática que executa a operação de potenciação
+ * 
+ * @param base inteiro que representa a base da potenciação
+ * @param expoente inteiro que representa o expoente da potenciação
+ * 
+ * @returns Retorna o resultado da operação entre as duas entradas
+ */ 
 function potencia(base, expoente) {
     if (typeof base != "number" || typeof expoente != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -166,6 +253,13 @@ function potencia(base, expoente) {
     return potencia;
 }
 
+/**Função que retorna n números das casas decimais de pi
+ * 
+ * @param numero inteiro que representa a quantidade de casas decimais
+ * a serem representadas
+ * 
+ * @returns Retorna o numero pi
+ */ 
 function pi(numero) {
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -190,6 +284,13 @@ function pi(numero) {
     return resultado;
 }
 
+/**Função que retorna a potência do numero de Euler
+ * 
+ * @param numero inteiro que representa o numerador
+ * @param repeticoes define a precisao do calculo
+ * 
+ * @returns Retorna a potência do numero de Euler
+ */ 
 function logaritmoNatural(numero, repeticoes) {
     if (typeof numero != "number" || typeof repeticoes != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -214,6 +315,14 @@ function logaritmoNatural(numero, repeticoes) {
     return potenciaE;
 }
 
+/**Função que calcula a Razao Áurea
+ * 
+ * @param numeroA inteiro utilizado na soma
+ * @param numeroB inteiro utilizado na soma
+ * @param repeticoes define a quantidade de iterações da soma a ser realizada
+ * 
+ * @returns Retorna a Razão Áurea
+ */ 
 function razaoAurea(numeroA, numeroB, repeticoes) {
     if (typeof numeroA != "number" || typeof y != "number" || typeof repeticoes != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -238,6 +347,12 @@ function razaoAurea(numeroA, numeroB, repeticoes) {
     return dividendo / divisor;
 }
 
+/**Função que verifica se a operação é um quadrado perfeito
+ * 
+ * @param n número a ser elevado a enésima potencia
+ * 
+ * @returns Retorna verdadeiro ou falso
+ */
 function quadradoPerfeito(n) {
     if (typeof n != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -258,6 +373,13 @@ function quadradoPerfeito(n) {
     return s == n;
 }
 
+/**Função matemática que faz o cálculo da raiz
+ * 
+ * @param n inteiro que representa o radicando
+ * @param i inteiro que representa o índice
+ * 
+ * @returns Retorna o resultado da raiz
+ */
 function raiz(n, i) {
     if (typeof n != "number" || typeof i != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -277,6 +399,12 @@ function raiz(n, i) {
     return r;
 }
 
+/**Função que verifica se o número é primo
+ * 
+ * @param n inteiro a ser verificado
+ * 
+ * @returns Retorna verdadeiro ou falso
+ */
 function primo(n) {
     if (typeof n != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -299,6 +427,12 @@ function primo(n) {
     return true;
 }
 
+/**Função que calcula o Crivo de Eratostenes
+ * 
+ * @param a vetor utilizado na operação
+ * 
+ * @returns Retorna o valor do Crivo de Eratostenes
+ */
 function crivoEratostenes(a) {
     if (a == null || !Array.isArray(a)) {
         throw new TypeError("Esperado um vetor como argumento");
@@ -329,6 +463,13 @@ function crivoEratostenes(a) {
     return a;
 }
 
+/**Função que calcula o maior divisor comum
+ * 
+ * @param a inteiro que representa o dividendo
+ * @param b inteiro que representa o divisor
+ * 
+ * @returns Retorna o maior divisor comum
+ */
 function mdc(a, b) {
     if (typeof a != "number" || typeof b != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -349,6 +490,13 @@ function mdc(a, b) {
     return a;
 }
 
+/**Função que calcula o maior divisor comum
+ * 
+ * @param a inteiro que representa o dividendo
+ * @param b inteiro que representa o divisor
+ * 
+ * @returns Retorna o maior divisor comum
+ */
 function mdc2(a, b) {
     if (typeof a != "number" || typeof b != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -369,6 +517,13 @@ function mdc2(a, b) {
     return a;
 }
 
+/**Função que avalia um polinômio de acordo com a regra de Horner
+ * 
+ * @param x inteiro utilizado no calculo
+ * @param vetor inteiro que representa o polinomio
+ * 
+ * @returns Retorna o resultado do polinomio
+ */
 function horner(x, vetor) {
     if (vetor == null || !Array.isArray(vetor)) {
         throw new TypeError("Esperado um vetor como argumento");
@@ -397,6 +552,12 @@ function horner(x, vetor) {
     return p;
 }
 
+/**Função que obtém o n-ésimo número de Fibonacci
+ * 
+ * @param n inteiro que representa a quantidade de iterações do cálculo
+ * 
+ * @returns Retorna o número de Fibonnaci na n-ésima posição
+ */
 function fibonacci(n) {
     if (typeof n != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -425,6 +586,12 @@ function fibonacci(n) {
     return c;
 }
 
+/**Função que valida um número de CPF de acordo com seus dígitos verificadores
+ * 
+ * @param vetor sequência de números que representa um CPF
+ * 
+ * @returns Retorna verdadeiro ou falso 
+ */
 function digitoCPF(vetor) {
     if (vetor == null || !Array.isArray(vetor)) {
         throw new TypeError("Esperado um vetor como argumento");
@@ -454,6 +621,12 @@ function digitoCPF(vetor) {
     return (dj == vetor[9] && dk == vetor[10]);
 }
 
+/**Função que valida um número de CPF de acordo com seus dígitos verificadores
+ * 
+ * @param vetor sequência de números que representa um CPF
+ * 
+ * @returns Retorna verdadeiro ou falso 
+ */
 function digitoCPF2(vetor) {
     if (vetor == null || !Array.isArray(vetor)) {
         throw new TypeError("Esperado um vetor como argumento");
