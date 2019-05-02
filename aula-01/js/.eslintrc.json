@@ -11,7 +11,7 @@
     "rules": {
         "no-console" : [ 0 ],
         "indent": [
-            "error",
+            "warn",
             4
         ],
         "linebreak-style": 0,
