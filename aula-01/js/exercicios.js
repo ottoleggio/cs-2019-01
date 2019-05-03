@@ -3,6 +3,7 @@
  * e boas práticas da disciplina de construção de software
  */
 
+module.exports = { f1 : numero3025 }
 
 /**Produz um numero inteiro que representa o dia da semana
  * a partir da data fornecida
@@ -87,7 +88,7 @@ function numero153(numero) {
     var du = numero % 100;
     var dezena = du / 10;
     var unidade = du % 10;
-    const cdu = Math.pow(centena,3) + Math.pow(dezena,3) + (Math.pow(unidade,3);
+    const cdu = Math.pow(centena,3) + Math.pow(dezena,3) + Math.pow(unidade,3);
     return cdu == numero
 }
 
@@ -104,15 +105,19 @@ function numero3025(numero)
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numero < 0 && numero > 9999) {
+    if (numero < 0 || numero > 9999) {
         throw new RangeError("numero >=0 && numero <= 9999");
     }
 
-    var divisao = numero / 100;
-    var resto = numero % 100;
+    if (Math.trunc(numero) != numero) {
+        throw new RangeError("o argumento deve ser um inteiro");
+    }
 
-    var resultado = (Math.pow(resto + divisao, 2.0));
-    return resultado == numero
+    var divisao = Math.round((numero / 100) , );     
+    var resto = numero % 100;       
+
+    var resultado = (Math.pow((resto + divisao), 2.0));
+    return resultado  == numero
 }
 
 /**Função matemática que retorna o resto de uma divisão entre
