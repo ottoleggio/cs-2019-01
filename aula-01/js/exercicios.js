@@ -4,7 +4,7 @@
  */
 
 module.exports = { f1 : numero3025 }
-
+									,f2 : digitoCPF }
 /**Produz um numero inteiro que representa o dia da semana
  * a partir da data fornecida
  * 
