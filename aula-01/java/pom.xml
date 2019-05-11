@@ -121,7 +121,7 @@
     <build>
 
         <!-- Define o nome do arquivo a ser gerado (.jar é acrescentada) -->
-        <finalName>exemplo</finalName>
+        <finalName>exercicio_ottoleggio</finalName>
 
         <plugins>            
 
@@ -500,11 +500,11 @@
                         <configuration>
                             <targetClasses>
                                 <param>
-                                    com.github.kyriosdata.exemplo.domain.Calendario
+                                    com.github.ottoleggio.cs.aula1.domain.Exercicio
                                 </param>
                             </targetClasses>
                             <targetTests>
-                                <param>com.github.kyriosdata.exemplo.*</param>
+                                <param>com.github.ottoleggio.cs.aula1.*</param>
                             </targetTests>
                         </configuration>
                     </plugin>
@@ -534,7 +534,7 @@
                             <repository>spotify/foobar</repository>
                             <tag>${project.version}</tag>
                             <buildArgs>
-                                <JAR_FILE>target/exemplo-unico.jar</JAR_FILE>
+                                <JAR_FILE>target/exercicio-unico.jar</JAR_FILE>
                             </buildArgs>
                         </configuration>
                     </plugin>
@@ -623,7 +623,7 @@
                         <configuration>
                             <apiToken>${snyk.token}</apiToken>
                             <failOnSeverity>low</failOnSeverity>
-                            <org>kyriosdata</org>
+                            <org>ottoleggio</org>
                         </configuration>
                     </plugin>
 
@@ -670,7 +670,7 @@
                         <artifactId>maven-jar-plugin</artifactId>
                         <version>3.0.2</version>
                         <configuration>
-                            <finalName>exemplo-dir</finalName>
+                            <finalName>exercicio_ottoleggio-dir</finalName>
                             <archive>
                                 <!-- Evita inclusão dir 'maven' em META-INF -->
                                 <addMavenDescriptor>false</addMavenDescriptor>
@@ -704,7 +704,7 @@
                                     <goal>single</goal>
                                 </goals>
                                 <configuration>
-                                    <finalName>exemplo-unico</finalName>
+                                    <finalName>exercicio-unico</finalName>
                                     <archive>
                                         <manifest>
                                             <mainClass>${project.mainClass}
