@@ -67,7 +67,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.mainClass>
-            com.github.ottoleggio.cs.aula1.application.console.Main
+            com.github.ottoleggio.cs.aula1.application.console.ProgramaExercicio
         </project.mainClass>
     </properties>
 
