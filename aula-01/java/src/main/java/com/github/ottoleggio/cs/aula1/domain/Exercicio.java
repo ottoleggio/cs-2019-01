@@ -1,4 +1,4 @@
-package com.github.ottoleggio.cs.aula1;
+package com.github.ottoleggio.cs.aula1.domain;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -13,9 +13,9 @@ public class Exercicio {
 	 * Função que verifica se o quadrado da soma das dezenas da entrada resulta no
 	 * próprio número
 	 * 
-	 * @param {int} numero inteiro que terá as dezenas somadas
+	 * @param numero inteiro que terá as dezenas somadas
 	 * 
-	 * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
+	 * @return {boolean} Retorna verdadeiro ou falso de acordo com a entrada
 	 */
 	public static boolean numero3025(int numero) {
 		if (numero < 0 && numero < 9999) {
@@ -38,9 +38,9 @@ public class Exercicio {
 	 * Função que verifica se a soma dos cubos dos dígitos fornecidos como entrada
 	 * somam 153
 	 * 
-	 * @param {int} numero inteiro que terá os dígitos somados
+	 * @param numero inteiro que terá os dígitos somados
 	 * 
-	 * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
+	 * @return {boolean} Retorna verdadeiro ou falso de acordo com a entrada
 	 */
 	public static boolean numero153(int numero) {
 		if (numero < 100 && numero > 999) {
@@ -59,11 +59,11 @@ public class Exercicio {
 	 * Produz um numero inteiro que representa o dia da semana a partir da data
 	 * fornecida
 	 * 
-	 * @param {int} dia inteiro que representa o dia do mês
-	 * @param {int} mes inteiro que representa o mês no ano
-	 * @param {int} ano inteiro que representa o ano
+	 * @param dia inteiro que representa o dia do mês
+	 * @param mes inteiro que representa o mês no ano
+	 * @param ano inteiro que representa o ano
 	 * 
-	 * @returns {double} O valor retornado é 0 para segunda-feira, 1 para
+	 * @return {double} O valor retornado é 0 para segunda-feira, 1 para
 	 *          terça-feira e assim sucessivamente.
 	 */
 	public static double diaDaSemana(int dia, int mes, int ano) {
@@ -83,10 +83,9 @@ public class Exercicio {
 	 * Valida se a data usada como parametro está nos critérios estabelecidos da
 	 * função diaDaSemana
 	 * 
-	 * @param {int} dia inteiro que representa o dia do mês
-	 * @param {int} mes inteiro que representa o mês do ano
-	 * @param {int} ano inteiro que representa o ano
-	 * 
+	 * @param dia inteiro que representa o dia do mês
+	 * @param mes inteiro que representa o mês do ano
+	 * @param ano inteiro que representa o ano
 	 * 
 	 */
 	private static void verificaData(int dia, int mes, int ano) {
@@ -123,10 +122,10 @@ public class Exercicio {
 	/**
 	 * Função matemática que retorna o resto de uma divisão entre dois numeros
 	 * 
-	 * @param {int} dividendo inteiro que será o dividendo da operação
-	 * @param {int} divisor inteiro que será o divisor da operação
+	 * @param dividendo inteiro que será o dividendo da operação
+	 * @param divisor inteiro que será o divisor da operação
 	 * 
-	 * @returns {int} Retorna o resto da divisao entre os dois parametros
+	 * @return {int} Retorna o resto da divisao entre os dois parametros
 	 */
 	public static int mod(int dividendo, int divisor) {
 
@@ -147,10 +146,10 @@ public class Exercicio {
 	 * Função que retorna a soma de numeros naturais dada a quantidade de numeros a
 	 * serem sequencialmente somados
 	 * 
-	 * @param {int} numero inteiro que representa a quantidade de numeros a serem
+	 * @param numero inteiro que representa a quantidade de numeros a serem
 	 *              somados
 	 * 
-	 * @returns {int} Retorna a soma dos numeros naturais somados
+	 * @return {int} Retorna a soma dos numeros naturais somados
 	 */
 	public static int somaNaturais(int numero) {
 		if (numero < 1) {
@@ -170,9 +169,9 @@ public class Exercicio {
 	/**
 	 * Funçao matemática que retorna o fatorial do numero fornecido na entrada
 	 * 
-	 * @param {int} numero Inteiro que representa o fatorial a ser calculado
+	 * @param numero Inteiro que representa o fatorial a ser calculado
 	 * 
-	 * @returns {int} Resultado do número fatorial
+	 * @return {int} Resultado do número fatorial
 	 */
 	public static int fatorial(int numero) {
 		if (numero < 1) {
@@ -193,10 +192,10 @@ public class Exercicio {
 	/**
 	 * Função que retorna o produto entre dois numeros fornecidos como entrada
 	 * 
-	 * @param {int} numeroA inteiro que representa o primeiro fator do produto
-	 * @param {int} numeroB inteiro que representa o segundo fator do produto
+	 * @param numeroA inteiro que representa o primeiro fator do produto
+	 * @param numeroB inteiro que representa o segundo fator do produto
 	 * 
-	 * @returns {int} Retorna o produto das duas entradas
+	 * @return {int} Retorna o produto das duas entradas
 	 */
 	public static int produto(int numeroA, int numeroB) {
 		if (numeroA < 0 && numeroB < numeroB) {
@@ -225,10 +224,10 @@ public class Exercicio {
 	/**
 	 * Função matemática que executa a operação de potenciação
 	 * 
-	 * @param {int} base inteiro que representa a base da potenciação
-	 * @param {int} expoente inteiro que representa o expoente da potenciação
+	 * @param base inteiro que representa a base da potenciação
+	 * @param expoente inteiro que representa o expoente da potenciação
 	 * 
-	 * @returns {int} Retorna o resultado da operação entre as duas entradas
+	 * @return {int} Retorna o resultado da operação entre as duas entradas
 	 */
 	public static int potencia(int base, int expoente) {
 		if (base < 0 && expoente < 0) {
@@ -249,10 +248,10 @@ public class Exercicio {
 	/**
 	 * Função que retorna n números das casas decimais de pi
 	 * 
-	 * @param {double} numero inteiro que representa a quantidade de casas decimais
+	 * @param numero inteiro que representa a quantidade de casas decimais
 	 *                 a serem representadas
 	 * 
-	 * @returns {double} Retorna o numero pi
+	 * @return {double} {double} Retorna o numero pi
 	 */
 	public static double pi(double numero) {
 		if (numero < 1) {
@@ -278,10 +277,10 @@ public class Exercicio {
 	/**
 	 * Função que retorna a potência do numero de Euler
 	 * 
-	 * @param {double} numero inteiro que representa o numerador
-	 * @param {double} repeticoes define a precisao do calculo
+	 * @param numero inteiro que representa o numerador
+	 * @param repeticoes define a precisao do calculo
 	 * 
-	 * @returns {double} Retorna a potência do numero de Euler
+	 * @return {double} Retorna a potência do numero de Euler
 	 */
 	public static double logaritmoNatural(double numero, double repeticoes) {
 		if (numero < 1 && repeticoes < 2) {
@@ -306,12 +305,12 @@ public class Exercicio {
 	/**
 	 * Função que calcula a Razao Áurea
 	 * 
-	 * @param {int} numeroA inteiro utilizado na soma
-	 * @param {int} numeroB inteiro utilizado na soma
-	 * @param {int} repeticoes define a quantidade de iterações da soma a ser
+	 * @param numeroA inteiro utilizado na soma
+	 * @param numeroB inteiro utilizado na soma
+	 * @param repeticoes define a quantidade de iterações da soma a ser
 	 *              realizada
 	 * 
-	 * @returns {int} Retorna a Razão Áurea
+	 * @return {int} Retorna a Razão Áurea
 	 */
 	public static int razaoAurea(int numeroA, int numeroB, int repeticoes) {
 		if (0 < numeroA && numeroB <= numeroA && repeticoes <= 0) {
@@ -336,9 +335,9 @@ public class Exercicio {
 	/**
 	 * Função que verifica se a operação é um quadrado perfeito
 	 * 
-	 * @param {double} numero número a ser elevado a enésima potencia
+	 * @param numero número a ser elevado a enésima potencia
 	 * 
-	 * @returns {boolean} Retorna verdadeiro ou falso
+	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean quadradoPerfeito(double numero) {
 		if (numero < 1) {
@@ -359,10 +358,10 @@ public class Exercicio {
 	/**
 	 * Função matemática que faz o cálculo da raiz
 	 * 
-	 * @param {double} numero inteiro que representa o radicando
-	 * @param {double} i inteiro que representa o índice
+	 * @param numero inteiro que representa o radicando
+	 * @param i inteiro que representa o índice
 	 * 
-	 * @returns {double} Retorna o resultado da raiz
+	 * @return {double} Retorna o resultado da raiz
 	 */
 	public static double raiz(double numero, double i) {
 		if (numero <= 0) {
@@ -383,9 +382,9 @@ public class Exercicio {
 	/**
 	 * Função que verifica se o número é primo
 	 * 
-	 * @param {int} numero inteiro a ser verificado
+	 * @param numero inteiro a ser verificado
 	 * 
-	 * @returns {boolean} Retorna verdadeiro ou falso
+	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean primo(int numero) {
 		if (numero <= 1) {
@@ -407,9 +406,9 @@ public class Exercicio {
 	/**
 	 * Função que calcula o Crivo de Eratostenes
 	 * 
-	 * @param {int[]} original vetor utilizado na operação
+	 * @param original vetor utilizado na operação
 	 * 
-	 * @returns {int} Retorna o valor do Crivo de Eratostenes
+	 * @return {int[]} Retorna o valor do Crivo de Eratostenes
 	 */
 	public static int[] crivoEratostenes(final int[] original) {
 		// TODO teste se original é null
@@ -448,10 +447,10 @@ public class Exercicio {
 	/**
 	 * Função que calcula o maior divisor comum
 	 * 
-	 * @param {double} numeroA inteiro que representa o dividendo
-	 * @param {double} numeroB inteiro que representa o divisor
+	 * @param numeroA inteiro que representa o dividendo
+	 * @param numeroB inteiro que representa o divisor
 	 * 
-	 * @returns {double} Retorna o maior divisor comum
+	 * @return {double} Retorna o maior divisor comum
 	 */
 	public static double mdc(double numeroA, double numeroB) {
 		if (numeroB > numeroA && 0 >= numeroB) {
@@ -472,10 +471,10 @@ public class Exercicio {
 	/**
 	 * Função que calcula o maior divisor comum
 	 * 
-	 * @param {double} numeroA inteiro que representa o dividendo
-	 * @param {double} numeroB inteiro que representa o divisor
+	 * @param numeroA inteiro que representa o dividendo
+	 * @param numeroB inteiro que representa o divisor
 	 * 
-	 * @returns {double} Retorna o maior divisor comum
+	 * @return {double} Retorna o maior divisor comum
 	 */
 	public static double mdc2(double numeroA, double numeroB) {
 		if (numeroB > numeroA && 0 >= numeroB) {
@@ -497,10 +496,10 @@ public class Exercicio {
 	/**
 	 * Função que avalia um polinômio de acordo com a regra de Horner
 	 * 
-	 * @param {int}   numero inteiro utilizado no calculo
-	 * @param {int[]} vetor inteiro que representa o polinomio
+	 * @param numero inteiro utilizado no calculo
+	 * @param vetor inteiro que representa o polinomio
 	 * 
-	 * @returns {int} Retorna o resultado do polinomio
+	 * @return {int} Retorna o resultado do polinomio
 	 */
 	public static int horner(int numero, int[] vetor) {
 		if (vetor.length < 1) {
@@ -519,10 +518,10 @@ public class Exercicio {
 	/**
 	 * Função que obtém o n-ésimo número de Fibonacci
 	 * 
-	 * @param {int} numero inteiro que representa a quantidade de iterações do
+	 * @param numero inteiro que representa a quantidade de iterações do
 	 *              cálculo
 	 * 
-	 * @returns {int} Retorna o número de Fibonnaci na n-ésima posição
+	 * @return {int} Retorna o número de Fibonnaci na n-ésima posição
 	 */
 	public static int fibonacci(int numero) {
 		if (numero < 0) {
@@ -550,9 +549,9 @@ public class Exercicio {
 	/**
 	 * Função que valida um número de CPF de acordo com seus dígitos verificadores
 	 * 
-	 * @param {int[]} vetor sequência de números que representa um CPF
+	 * @param vetor sequência de números que representa um CPF
 	 * 
-	 * @returns {boolean} Retorna verdadeiro ou falso
+	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean digitoCPF(int[] vetor) {
 		if (vetor.length != 11) {
@@ -575,9 +574,9 @@ public class Exercicio {
 	/**
 	 * Função que valida um número de CPF de acordo com seus dígitos verificadores
 	 * 
-	 * @param {int[]} vetor sequência de números que representa um CPF
+	 * @param vetor sequência de números que representa um CPF
 	 * 
-	 * @returns {boolean} Retorna verdadeiro ou falso
+	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean digitoCPF2(int[] vetor) {
 		if (vetor.length != 11) {
