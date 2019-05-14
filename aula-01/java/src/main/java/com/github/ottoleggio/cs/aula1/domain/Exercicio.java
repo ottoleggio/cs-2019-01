@@ -18,7 +18,7 @@ public class Exercicio {
 	 * @return {boolean} Retorna verdadeiro ou falso de acordo com a entrada
 	 */
 	public static boolean numero3025(int numero) {
-		if (numero < 0 && numero < 9999) {
+		if (numero < 0 || numero < 9999) {
 			throw new IllegalArgumentException("numero >=0 && numero <= 9999");
 		}
 
@@ -43,7 +43,7 @@ public class Exercicio {
 	 * @return {boolean} Retorna verdadeiro ou falso de acordo com a entrada
 	 */
 	public static boolean numero153(int numero) {
-		if (numero < 100 && numero > 999) {
+		if (numero < 100 || numero > 999) {
 			throw new IllegalArgumentException("numero >=100 && numero <= 999");
 		}
 
@@ -129,7 +129,7 @@ public class Exercicio {
 	 */
 	public static int mod(int dividendo, int divisor) {
 
-		if (divisor < 0 && dividendo <= 0) {
+		if (divisor <= 0 || dividendo < 0) {
 			throw new IllegalArgumentException("divisor >= 0 && dividendo > 0");
 		}
 
@@ -197,8 +197,8 @@ public class Exercicio {
 	 * @return {int} Retorna o produto das duas entradas
 	 */
 	public static int produto(int numeroA, int numeroB) {
-		if (numeroA < 0 && numeroB < numeroB) {
-			throw new IllegalArgumentException("numeroA >= 0 && numeroB >= numeroB");
+		if (numeroA < 0 || numeroB < 0) {
+			throw new IllegalArgumentException("numeroA >= 0 && numeroB < 0");
 		}
 
 		int totalParcelas = numeroA;
@@ -229,7 +229,7 @@ public class Exercicio {
 	 * @return {int} Retorna o resultado da operação entre as duas entradas
 	 */
 	public static int potencia(int base, int expoente) {
-		if (base < 0 && expoente < 0) {
+		if (base < 0 || expoente < 0) {
 			throw new IllegalArgumentException("base >= 0 && expoente >= 0");
 		}
 
@@ -282,7 +282,7 @@ public class Exercicio {
 	 * @return {double} Retorna a potência do numero de Euler
 	 */
 	public static double logaritmoNatural(double numero, double repeticoes) {
-		if (numero < 1 && repeticoes < 2) {
+		if (numero < 1 || repeticoes < 2) {
 			throw new IllegalArgumentException("numero >= 1 && repeticoes >= 2");
 		}
 
@@ -312,7 +312,7 @@ public class Exercicio {
 	 * @return {int} Retorna a Razão Áurea
 	 */
 	public static int razaoAurea(int numeroA, int numeroB, int repeticoes) {
-		if (0 < numeroA && numeroB <= numeroA && repeticoes <= 0) {
+		if (0 < numeroA || numeroB <= numeroA || repeticoes <= 0) {
 			throw new IllegalArgumentException("numeroA >= 0 && numeroB > numeroA && repeticoes > 0");
 		}
 
@@ -452,7 +452,7 @@ public class Exercicio {
 	 * @return {double} Retorna o maior divisor comum
 	 */
 	public static double mdc(double numeroA, double numeroB) {
-		if (numeroB > numeroA && 0 >= numeroB) {
+		if (numeroB > numeroA || 0 >= numeroB) {
 			throw new IllegalArgumentException("'numeroB' deve ser <= 'numeroA' e numeroB deve ser < 0");
 		}
 
@@ -476,7 +476,7 @@ public class Exercicio {
 	 * @return {double} Retorna o maior divisor comum
 	 */
 	public static double mdc2(double numeroA, double numeroB) {
-		if (numeroB > numeroA && 0 >= numeroB) {
+		if (numeroB > numeroA || 0 >= numeroB) {
 			throw new IllegalArgumentException("'numeroB' deve ser <= 'numeroA' e numeroB deve ser < 0");
 		}
 

@@ -27,7 +27,7 @@ public final class ProgramaExercicio {
 
 		System.out.println(Exercicio.digitoCPF(cpf));
 		System.out.println(Exercicio.razaoAurea(2, 4, 2));
-		
+		System.out.println(Exercicio.numero153(99));
 	}
 	
 	
