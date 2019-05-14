@@ -133,13 +133,12 @@ public class Exercicio {
 			throw new IllegalArgumentException("divisor >= 0 && dividendo > 0");
 		}
 
-		// TODO não seria melhor "resto"?
-		int quosciente = dividendo;
-		while (divisor <= quosciente) {
-			quosciente = quosciente - divisor;
+		int resto = dividendo;
+		while (divisor <= resto) {
+			resto = resto - divisor;
 		}
 
-		return quosciente;
+		return resto;
 	}
 
 	/**
