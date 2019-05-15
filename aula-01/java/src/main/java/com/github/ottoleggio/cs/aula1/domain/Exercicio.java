@@ -1,5 +1,6 @@
 package com.github.ottoleggio.cs.aula1.domain;
 
+import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
@@ -350,8 +351,9 @@ public class Exercicio {
 			i = i + 2;
 			soma = soma + i;
 		}
-
-		return soma == numero;
+		BigDecimal soma2 = new BigDecimal(soma);
+		BigDecimal numero2 = new BigDecimal(numero);	
+		return soma2.compareTo(numero2)==0;
 	}
 
 	/**
@@ -480,7 +482,10 @@ public class Exercicio {
 			throw new IllegalArgumentException("'numeroB' deve ser <= 'numeroA' e numeroB deve ser < 0");
 		}
 
-		while (numeroA != numeroB) {
+		BigDecimal numeroA2 = new BigDecimal(numeroA);
+		BigDecimal numeroB2 = new BigDecimal(numeroB);
+		
+		while (numeroA2.compareTo(numeroB2)==1) {
 			if (numeroA > numeroB) {
 				numeroA = numeroA - numeroB;
 			} else {
@@ -488,6 +493,8 @@ public class Exercicio {
 			}
 
 		}
+		
+	
 
 		return numeroA;
 	}
