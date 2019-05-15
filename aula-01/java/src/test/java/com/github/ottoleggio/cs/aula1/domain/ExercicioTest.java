@@ -154,9 +154,9 @@ class ExercicioTest {
 	@Test
 	void testDigitoCPF2() {
 		int[] test1 = { 3 };
-        assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF(test1));
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF2(test1));
 		int[] test2 = { 3,2,3,4,5,6,7,8,9,0,1,2 };
-        assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF(test2));
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF2(test2));
         
 		int[] cpf1 = { 3, 2, 5, 3, 8, 6, 4, 9, 8, 7, 0 };
 		assertTrue(Exercicio.digitoCPF(cpf1));
