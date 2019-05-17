@@ -11,23 +11,27 @@ import java.time.LocalDate;
 public class Exercicio {
 
 	/**
-	 * Função que verifica se o quadrado da soma das dezenas da entrada resulta no
-	 * próprio número
-	 * 
+	 * Função que verifica se o quadrado da soma das dezenas da
+	 * entrada resulta no próprio número.
+	 *
 	 * @param numero inteiro que terá as dezenas somadas
-	 * 
+	 *
 	 * @return {boolean} Retorna verdadeiro ou falso de acordo com a entrada
 	 */
-	public static boolean numero3025(int numero) {
-		if (numero < 0 || numero < 9999) {
+	public static boolean numero3025(final int numero) {
+		final int limiteMax = 9999;
+		final int mimiteMin = 0;
+		final int centena = 100;
+
+		if (numero < mimiteMin || numero < limiteMax) {
 			throw new IllegalArgumentException("numero >=0 && numero <= 9999");
 		}
 
 		// Dois primeiros dígitos do número mcdu (primeira dezena)
-		final int mc = numero / 100;
+		final int mc = numero / centena;
 
 		// Dois últimos dígitos (segunda dezena)
-		final int du = numero % 100;
+		final int du = numero % centena;
 
 		// Quadrado das somas das dezenas
 		final int quadrado = (mc + du) * (mc + du);
@@ -36,58 +40,68 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que verifica se a soma dos cubos dos dígitos fornecidos como entrada
-	 * somam 153
-	 * 
+	 * Função que verifica se a soma dos cubos dos dígitos fornecidos
+	 * como entrada somam 153.
+	 *
 	 * @param numero inteiro que terá os dígitos somados
-	 * 
+	 *
 	 * @return {boolean} Retorna verdadeiro ou falso de acordo com a entrada
 	 */
 	public static boolean numero153(int numero) {
-		if (numero < 100 || numero > 999) {
-			throw new IllegalArgumentException("numero >=100 && numero <= 999");
+		final int limiteMax = 999;
+		final int limiteMin = 100;
+		final int cem = 100;
+		final int dez = 10;
+		
+		if (numero < limiteMin || numero > limiteMax) {
+			throw new IllegalArgumentException("numero >=100 & "
+					+ "numero <= 999");
 		}
 
-		int centena = numero / 100;
-		int du = numero % 100;
-		int dezena = du / 10;
-		int unidade = du % 10;
-		int cdu = (int) (Math.pow(centena, 3) + Math.pow(dezena, 3) + Math.pow(unidade, 3));
+		int divisorCem = cem;
+		int divisoDez = dez;
+		int centena = numero / divisorCem;
+		int du = numero % divisorCem;
+		int dezena = du / divisoDez;
+		int unidade = du % divisoDez;
+		int cdu = (int) (Math.pow(centena, 3) + 
+				Math.pow(dezena, 3) + Math.pow(unidade, 3));
 		return cdu == numero;
 	}
 
 	/**
 	 * Produz um numero inteiro que representa o dia da semana a partir da data
-	 * fornecida
-	 * 
+	 * fornecida.
+	 *
 	 * @param dia inteiro que representa o dia do mês
 	 * @param mes inteiro que representa o mês no ano
 	 * @param ano inteiro que representa o ano
-	 * 
-	 * @return {double} O valor retornado é 0 para segunda-feira, 1 para
-	 *          terça-feira e assim sucessivamente.
+	 *
+	 * @return {double} O valor retornado é 0 para segunda-feira,
+	 * 1 para terça-feira e assim sucessivamente.
 	 */
 	public static double diaDaSemana(int dia, int mes, int ano) {
 		verificaData(dia, mes, ano);
-
+		
 		if (mes == 1 || mes == 2) {
 			mes += 12;
 			ano -= 1;
 		}
 
-		int drDobbsExpr = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
+		int drDobbsExpr = dia + 2 * mes + 3 * (mes + 1) 
+				/ 5 + ano + ano / 4 - ano / 100 + ano / 400;
 
 		return drDobbsExpr % 7;
 	}
 
 	/**
 	 * Valida se a data usada como parametro está nos critérios estabelecidos da
-	 * função diaDaSemana
-	 * 
+	 * função diaDaSemana.
+	 *
 	 * @param dia inteiro que representa o dia do mês
-	 * @param mes inteiro que representa o mês do ano
+	 * @param mes inteiro que rep10resenta o mês do ano
 	 * @param ano inteiro que representa o ano
-	 * 
+	 *
 	 */
 	private static void verificaData(int dia, int mes, int ano) {
 		verificaDia(dia);
@@ -103,13 +117,19 @@ public class Exercicio {
 	}
 
 	private static void verificaDia(int dia) {
-		if (dia < 1 && dia > 31) {
+		final int limiteMin = 1;
+		final int limiteMax = 31;
+		
+		if (dia < limiteMin || dia > limiteMax) {
 			throw new IllegalArgumentException("dia inválido");
 		}
 	}
 
 	private static void verificaMes(int mes) {
-		if (mes < 1 && mes > 12) {
+		final int limiteMin = 1;
+		final int limiteMax = 12;
+		
+		if (mes < limiteMin || mes > limiteMax) {
 			throw new IllegalArgumentException("mês inválido");
 		}
 	}
@@ -122,10 +142,10 @@ public class Exercicio {
 
 	/**
 	 * Função matemática que retorna o resto de uma divisão entre dois numeros
-	 * 
+	 *
 	 * @param dividendo inteiro que será o dividendo da operação
 	 * @param divisor inteiro que será o divisor da operação
-	 * 
+	 *
 	 * @return {int} Retorna o resto da divisao entre os dois parametros
 	 */
 	public static int mod(int dividendo, int divisor) {
@@ -145,10 +165,10 @@ public class Exercicio {
 	/**
 	 * Função que retorna a soma de numeros naturais dada a quantidade de numeros a
 	 * serem sequencialmente somados
-	 * 
+	 *
 	 * @param numero inteiro que representa a quantidade de numeros a serem
 	 *              somados
-	 * 
+	 *
 	 * @return {int} Retorna a soma dos numeros naturais somados
 	 */
 	public static int somaNaturais(int numero) {
@@ -168,9 +188,9 @@ public class Exercicio {
 
 	/**
 	 * Funçao matemática que retorna o fatorial do numero fornecido na entrada
-	 * 
+	 *
 	 * @param numero Inteiro que representa o fatorial a ser calculado
-	 * 
+	 *
 	 * @return {int} Resultado do número fatorial
 	 */
 	public static int fatorial(int numero) {
@@ -191,10 +211,10 @@ public class Exercicio {
 
 	/**
 	 * Função que retorna o produto entre dois numeros fornecidos como entrada
-	 * 
+	 *
 	 * @param numeroA inteiro que representa o primeiro fator do produto
 	 * @param numeroB inteiro que representa o segundo fator do produto
-	 * 
+	 *
 	 * @return {int} Retorna o produto das duas entradas
 	 */
 	public static int produto(int numeroA, int numeroB) {
@@ -223,10 +243,10 @@ public class Exercicio {
 
 	/**
 	 * Função matemática que executa a operação de potenciação
-	 * 
+	 *
 	 * @param base inteiro que representa a base da potenciação
 	 * @param expoente inteiro que representa o expoente da potenciação
-	 * 
+	 *
 	 * @return {int} Retorna o resultado da operação entre as duas entradas
 	 */
 	public static int potencia(int base, int expoente) {
@@ -247,10 +267,10 @@ public class Exercicio {
 
 	/**
 	 * Função que retorna n números das casas decimais de pi
-	 * 
+	 *
 	 * @param numero inteiro que representa a quantidade de casas decimais
 	 *                 a serem representadas
-	 * 
+	 *
 	 * @return {double} {double} Retorna o numero pi
 	 */
 	public static double pi(double numero) {
@@ -264,7 +284,6 @@ public class Exercicio {
 		double resultado = 0;
 
 		while (i <= numero) {
-			// FIXME possivelmente bug, valor de d é perdido?
 			d = d + 2;
 			d = -1 * s;
 			resultado = resultado + 4 * s / d;
@@ -276,10 +295,10 @@ public class Exercicio {
 
 	/**
 	 * Função que retorna a potência do numero de Euler
-	 * 
+	 *
 	 * @param numero inteiro que representa o numerador
 	 * @param repeticoes define a precisao do calculo
-	 * 
+	 *
 	 * @return {double} Retorna a potência do numero de Euler
 	 */
 	public static double logaritmoNatural(double numero, double repeticoes) {
@@ -304,12 +323,12 @@ public class Exercicio {
 
 	/**
 	 * Função que calcula a Razao Áurea
-	 * 
+	 *
 	 * @param numeroA inteiro utilizado na soma
 	 * @param numeroB inteiro utilizado na soma
 	 * @param repeticoes define a quantidade de iterações da soma a ser
 	 *              realizada
-	 * 
+	 *
 	 * @return {int} Retorna a Razão Áurea
 	 */
 	public static int razaoAurea(int numeroA, int numeroB, int repeticoes) {
@@ -334,9 +353,9 @@ public class Exercicio {
 
 	/**
 	 * Função que verifica se a operação é um quadrado perfeito
-	 * 
+	 *
 	 * @param numero número a ser elevado a enésima potencia
-	 * 
+	 *
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean quadradoPerfeito(double numero) {
@@ -358,10 +377,10 @@ public class Exercicio {
 
 	/**
 	 * Função matemática que faz o cálculo da raiz
-	 * 
+	 *
 	 * @param numero inteiro que representa o radicando
 	 * @param i inteiro que representa o índice
-	 * 
+	 *
 	 * @return {double} Retorna o resultado da raiz
 	 */
 	public static double raiz(double numero, double i) {
@@ -382,9 +401,9 @@ public class Exercicio {
 
 	/**
 	 * Função que verifica se o número é primo
-	 * 
+	 *
 	 * @param numero inteiro a ser verificado
-	 * 
+	 *
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean primo(int numero) {
@@ -406,9 +425,9 @@ public class Exercicio {
 
 	/**
 	 * Função que calcula o Crivo de Eratostenes
-	 * 
+	 *
 	 * @param original vetor utilizado na operação
-	 * 
+	 *
 	 * @return {int[]} Retorna o valor do Crivo de Eratostenes
 	 */
 	public static int[] crivoEratostenes(final int[] original) {
@@ -447,10 +466,10 @@ public class Exercicio {
 
 	/**
 	 * Função que calcula o maior divisor comum
-	 * 
+	 *
 	 * @param numeroA inteiro que representa o dividendo
 	 * @param numeroB inteiro que representa o divisor
-	 * 
+	 *
 	 * @return {double} Retorna o maior divisor comum
 	 */
 	public static double mdc(double numeroA, double numeroB) {
@@ -471,10 +490,10 @@ public class Exercicio {
 
 	/**
 	 * Função que calcula o maior divisor comum
-	 * 
+	 *
 	 * @param numeroA inteiro que representa o dividendo
 	 * @param numeroB inteiro que representa o divisor
-	 * 
+	 *
 	 * @return {double} Retorna o maior divisor comum
 	 */
 	public static double mdc2(double numeroA, double numeroB) {
@@ -501,10 +520,10 @@ public class Exercicio {
 
 	/**
 	 * Função que avalia um polinômio de acordo com a regra de Horner
-	 * 
+	 *
 	 * @param numero inteiro utilizado no calculo
 	 * @param vetor inteiro que representa o polinomio
-	 * 
+	 *
 	 * @return {int} Retorna o resultado do polinomio
 	 */
 	public static int horner(int numero, int[] vetor) {
@@ -523,10 +542,10 @@ public class Exercicio {
 
 	/**
 	 * Função que obtém o n-ésimo número de Fibonacci
-	 * 
+	 *
 	 * @param numero inteiro que representa a quantidade de iterações do
 	 *              cálculo
-	 * 
+	 *
 	 * @return {int} Retorna o número de Fibonnaci na n-ésima posição
 	 */
 	public static int fibonacci(int numero) {
@@ -554,9 +573,9 @@ public class Exercicio {
 
 	/**
 	 * Função que valida um número de CPF de acordo com seus dígitos verificadores
-	 * 
+	 *
 	 * @param vetor sequência de números que representa um CPF
-	 * 
+	 *
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean digitoCPF(int[] vetor) {
@@ -579,9 +598,9 @@ public class Exercicio {
 
 	/**
 	 * Função que valida um número de CPF de acordo com seus dígitos verificadores
-	 * 
+	 *
 	 * @param vetor sequência de números que representa um CPF
-	 * 
+	 *
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean digitoCPF2(int[] vetor) {

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class ExercicioTest {
+class TestExercicio {
 
 	@Test
 	void testNumero3025() {
@@ -22,6 +22,8 @@ class ExercicioTest {
 
 	@Test
 	void testDiaDaSemana() {
+        Exception exp = assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(0,12,2019));
+        assertTrue(exp.getMessage().contains("dia"));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(40,12,2019));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(10,13,2019));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(10,12,1750));
