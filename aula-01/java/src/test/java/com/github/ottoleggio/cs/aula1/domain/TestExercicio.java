@@ -8,7 +8,7 @@ class TestExercicio {
 
 	@Test
 	void testNumero3025() {
-		assertEquals(3025, 3025);
+		assertEquals(3025, Exercicio.numero3025(3025));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.numero3025(-1));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.numero3025(1000));
 	}
@@ -69,13 +69,15 @@ class TestExercicio {
 	@Test
 	void testPi() {
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.pi(0));
+		assertEquals(3.1425916543395442, Exercicio.pi(1000));
 	}
 
 	@Test
 	void testLogaritmoNatural() {
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.logaritmoNatural(-1.0 , 3.0));
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.logaritmoNatural(2.0 , -3.0));
-		assertEquals(Exercicio.logaritmoNatural(2, 2),5.0);
+		assertEquals(5.0, Exercicio.logaritmoNatural(2, 2));
+		
 	}
 
 	@Test
@@ -83,6 +85,7 @@ class TestExercicio {
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(-1,1,0));
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(1,1,0));
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(1,2,-1));
+		assertEquals(1.618033988749895, Exercicio.razaoAurea(1, 2, 1000));
 	}
 
 	@Test
@@ -95,6 +98,7 @@ class TestExercicio {
 	@Test
 	void testRaiz() {
         assertThrows(IllegalArgumentException.class,() -> Exercicio.raiz(-1,2));
+        assertEquals(2.0, Exercicio.raiz(4, 100));
 	}
 
 	@Test
@@ -109,31 +113,48 @@ class TestExercicio {
 
 	@Test
 	void testCrivoEratostenes() {
-		int[] test1 = { 3 };
-        assertThrows(IllegalArgumentException.class,() -> Exercicio.crivoEratostenes(test1));
+		int[] test1 = new int[19];
+		for (int i = 1; i < 19; i++) {
+			test1[i] = 0;
+		}
+     //   assertThrows(IllegalArgumentException.class,() -> Exercicio.crivoEratostenes(test1));
+        assertEquals(true, Exercicio.crivoEratostenes(test1));
+	}
+	
+	@Test
+	void testCrivoEratostenesVazio() {
+		int[] test2 = new int[1];
+			test2[0] = 0;
+
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.crivoEratostenes(test2));
+
 	}
 
 	@Test
 	void testMdc() {
         assertThrows(IllegalArgumentException.class,() -> Exercicio.mdc(3,0));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.mdc(3,4));
+        assertEquals(5.0, Exercicio.mdc(95, 50));
 	}
 
 	@Test
 	void testMdc2() {
         assertThrows(IllegalArgumentException.class,() -> Exercicio.mdc2(3,0));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.mdc2(3,4));
+        assertEquals(5.0, Exercicio.mdc2(95, 50));
 	}
 
 	@Test
 	void testHorner() {
-		int[] test1 = {  };
+		int[] test1 = {0,1,2};
         assertThrows(IllegalArgumentException.class,() -> Exercicio.horner(1,test1));
-	}
+        assertEquals(12, Exercicio.horner(1, test1));
+ 	}
 
 	@Test
 	void testFibonacci() {
         assertThrows(IllegalArgumentException.class,() -> Exercicio.fibonacci(-1));
+        assertEquals(13, Exercicio.fibonacci(6));
 	}
 
 	@Test

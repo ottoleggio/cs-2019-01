@@ -278,16 +278,17 @@ public class Exercicio {
 			throw new IllegalArgumentException("numero >= 1");
 		}
 
-		double i = 1;
+		int i = 0;
 		double s = -1;
 		double d = -1;
 		double resultado = 0;
 
 		while (i <= numero) {
+			final int consta = 4;
 			d = d + 2;
-			d = -1 * s;
-			resultado = resultado + 4 * s / d;
-			i = i + 1;
+			s = -1 * s;
+			resultado = resultado + ((consta * s) / d);
+			i++;
 		}
 
 		return resultado;
@@ -329,28 +330,28 @@ public class Exercicio {
 	 * @param repeticoes define a quantidade de iterações da soma a ser
 	 *              realizada
 	 *
-	 * @return {int} Retorna a Razão Áurea
+	 * @return {double} Retorna a Razão Áurea
 	 */
-	public static int razaoAurea(int numeroA, int numeroB, int repeticoes) {
-		if (0 < numeroA || numeroB <= numeroA || repeticoes <= 0) {
+	public static double razaoAurea(int numeroA, int numeroB, int repeticoes) {
+		if (numeroA < 0 || numeroB < numeroA || repeticoes <= 0) {
 			throw new IllegalArgumentException("numeroA >= 0 && numeroB > numeroA && repeticoes > 0");
 		}
 
-		int dividendo = numeroB;
-		int divisor = numeroA;
+		double dividendo = numeroB;
+		double divisor = numeroA;
 		int i = 1;
-		int t;
+		double t;
 
 		while (i <= repeticoes) {
 			t = dividendo;
 			dividendo = dividendo + divisor;
 			divisor = t;
-			i = i + 1;
+			i ++;
 		}
 
 		return dividendo / divisor;
 	}
-
+	
 	/**
 	 * Função que verifica se a operação é um quadrado perfeito
 	 *
@@ -430,38 +431,28 @@ public class Exercicio {
 	 *
 	 * @return {int[]} Retorna o valor do Crivo de Eratostenes
 	 */
-	public static int[] crivoEratostenes(final int[] original) {
-		// TODO teste se original é null
-
-		// TODO veja
-		// https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#clone()
-		// TODO melhor ainda
-		// https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#arraycopy%28java.lang.Object,%20int,%20java.lang.Object,%20int,%20int%29
+	public static boolean crivoEratostenes(final int[] original) {
 		int[] vetor = original.clone();
 
 		if (vetor.length <= 1) {
 			throw new IllegalArgumentException("o vetor deve conter no mínimo 2 dígitos");
 		}
 
-		for (int valor : vetor) {
-			if (valor != 0) {
-				return null;
-			}
-		}
+		final int tamanho = vetor.length-1;
 
-		int limite = (int) Math.floor(raiz(vetor.length, 100));
+		double limite =  Math.floor(Math.sqrt(tamanho));
 
-		for (int i = 1; i < limite; i++) {
+		for (int i = 2; i <= limite; i++) {
 			if (vetor[i] == 0) {
-				int multiplo = 2 * i;
-				while (multiplo < vetor.length) {
+				int multiplo = i + i;
+				while (multiplo <= tamanho) {
 					vetor[multiplo] = 1;
 					multiplo = multiplo + i;
 				}
 			}
 		}
 
-		return vetor;
+		return vetor[tamanho] == 1;
 	}
 
 	/**
@@ -534,7 +525,7 @@ public class Exercicio {
 		int resultado = vetor[vetor.length - 1];
 
 		for (int i = vetor.length - 1; i >= 0; i--) {
-			resultado = resultado * numero + vetor[i];
+			resultado = resultado * (numero + vetor[i]);
 		}
 
 		return resultado;
