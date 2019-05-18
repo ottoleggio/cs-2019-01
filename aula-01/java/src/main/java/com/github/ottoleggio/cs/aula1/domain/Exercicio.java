@@ -52,7 +52,7 @@ public class Exercicio {
 		final int limiteMin = 100;
 		final int cem = 100;
 		final int dez = 10;
-		
+
 		if (numero < limiteMin || numero > limiteMax) {
 			throw new IllegalArgumentException("numero >=100 & "
 					+ "numero <= 999");
@@ -64,7 +64,7 @@ public class Exercicio {
 		int du = numero % divisorCem;
 		int dezena = du / divisoDez;
 		int unidade = du % divisoDez;
-		int cdu = (int) (Math.pow(centena, 3) + 
+		int cdu = (int) (Math.pow(centena, 3) +
 				Math.pow(dezena, 3) + Math.pow(unidade, 3));
 		return cdu == numero;
 	}
@@ -80,15 +80,15 @@ public class Exercicio {
 	 * @return {double} O valor retornado é 0 para segunda-feira,
 	 * 1 para terça-feira e assim sucessivamente.
 	 */
-	public static double diaDaSemana(int dia, int mes, int ano) {
+	public static double diaDaSemana(final int dia,final int mes,final int ano) {
 		verificaData(dia, mes, ano);
-		
+
 		if (mes == 1 || mes == 2) {
 			mes += 12;
 			ano -= 1;
 		}
 
-		int drDobbsExpr = dia + 2 * mes + 3 * (mes + 1) 
+		int drDobbsExpr = dia + 2 * mes + 3 * (mes + 1)
 				/ 5 + ano + ano / 4 - ano / 100 + ano / 400;
 
 		return drDobbsExpr % 7;
@@ -103,7 +103,7 @@ public class Exercicio {
 	 * @param ano inteiro que representa o ano
 	 *
 	 */
-	private static void verificaData(int dia, int mes, int ano) {
+	private static void verificaData(final int dia,final int mes,final int ano) {
 		verificaDia(dia);
 		verificaMes(mes);
 		verificaAno(ano);
@@ -116,39 +116,39 @@ public class Exercicio {
 		}
 	}
 
-	private static void verificaDia(int dia) {
+	private static void verificaDia(final int dia) {
 		final int limiteMin = 1;
 		final int limiteMax = 31;
-		
+
 		if (dia < limiteMin || dia > limiteMax) {
 			throw new IllegalArgumentException("dia inválido");
 		}
 	}
 
-	private static void verificaMes(int mes) {
+	private static void verificaMes(final int mes) {
 		final int limiteMin = 1;
 		final int limiteMax = 12;
-		
+
 		if (mes < limiteMin || mes > limiteMax) {
 			throw new IllegalArgumentException("mês inválido");
 		}
 	}
 
-	private static void verificaAno(int ano) {
+	private static void verificaAno(final int ano) {
 		if (ano < 1753) {
 			throw new IllegalArgumentException("ano inválido");
 		}
 	}
 
 	/**
-	 * Função matemática que retorna o resto de uma divisão entre dois numeros
+	 * Função matemática que retorna o resto de uma divisão entre dois numeros.
 	 *
 	 * @param dividendo inteiro que será o dividendo da operação
 	 * @param divisor inteiro que será o divisor da operação
 	 *
 	 * @return {int} Retorna o resto da divisao entre os dois parametros
 	 */
-	public static int mod(int dividendo, int divisor) {
+	public static int mod(final int dividendo,final int divisor) {
 
 		if (divisor <= 0 || dividendo < 0) {
 			throw new IllegalArgumentException("divisor >= 0 && dividendo > 0");
@@ -164,14 +164,14 @@ public class Exercicio {
 
 	/**
 	 * Função que retorna a soma de numeros naturais dada a quantidade de numeros a
-	 * serem sequencialmente somados
+	 * serem sequencialmente somados.
 	 *
 	 * @param numero inteiro que representa a quantidade de numeros a serem
 	 *              somados
 	 *
 	 * @return {int} Retorna a soma dos numeros naturais somados
 	 */
-	public static int somaNaturais(int numero) {
+	public static int somaNaturais(final int numero) {
 		if (numero < 1) {
 			throw new IllegalArgumentException("numero >= 1");
 		}
@@ -187,13 +187,13 @@ public class Exercicio {
 	}
 
 	/**
-	 * Funçao matemática que retorna o fatorial do numero fornecido na entrada
+	 * Funçao matemática que retorna o fatorial do numero fornecido na entrada.
 	 *
 	 * @param numero Inteiro que representa o fatorial a ser calculado
 	 *
 	 * @return {int} Resultado do número fatorial
 	 */
-	public static int fatorial(int numero) {
+	public static int fatorial(final int numero) {
 		if (numero < 1) {
 			throw new IllegalArgumentException("numero >= 1");
 		}
@@ -210,14 +210,14 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que retorna o produto entre dois numeros fornecidos como entrada
+	 * Função que retorna o produto entre dois numeros fornecidos como entrada.
 	 *
 	 * @param numeroA inteiro que representa o primeiro fator do produto
 	 * @param numeroB inteiro que representa o segundo fator do produto
 	 *
 	 * @return {int} Retorna o produto das duas entradas
 	 */
-	public static int produto(int numeroA, int numeroB) {
+	public static int produto(final int numeroA,final int numeroB) {
 		if (numeroA < 0 || numeroB < 0) {
 			throw new IllegalArgumentException("numeroA >= 0 && numeroB < 0");
 		}
@@ -242,14 +242,14 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função matemática que executa a operação de potenciação
+	 * Função matemática que executa a operação de potenciação.
 	 *
 	 * @param base inteiro que representa a base da potenciação
 	 * @param expoente inteiro que representa o expoente da potenciação
 	 *
 	 * @return {int} Retorna o resultado da operação entre as duas entradas
 	 */
-	public static int potencia(int base, int expoente) {
+	public static int potencia(final int base,final int expoente) {
 		if (base < 0 || expoente < 0) {
 			throw new IllegalArgumentException("base >= 0 && expoente >= 0");
 		}
@@ -266,14 +266,14 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que retorna n números das casas decimais de pi
+	 * Função que retorna n números das casas decimais de pi.
 	 *
 	 * @param numero inteiro que representa a quantidade de casas decimais
 	 *                 a serem representadas
 	 *
 	 * @return {double} {double} Retorna o numero pi
 	 */
-	public static double pi(double numero) {
+	public static double pi(final double numero) {
 		if (numero < 1) {
 			throw new IllegalArgumentException("numero >= 1");
 		}
@@ -295,14 +295,14 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que retorna a potência do numero de Euler
+	 * Função que retorna a potência do numero de Euler.
 	 *
 	 * @param numero inteiro que representa o numerador
 	 * @param repeticoes define a precisao do calculo
 	 *
 	 * @return {double} Retorna a potência do numero de Euler
 	 */
-	public static double logaritmoNatural(double numero, double repeticoes) {
+	public static double logaritmoNatural(final double numero,final double repeticoes) {
 		if (numero < 1 || repeticoes < 2) {
 			throw new IllegalArgumentException("numero >= 1 && repeticoes >= 2");
 		}
@@ -323,7 +323,7 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que calcula a Razao Áurea
+	 * Função que calcula a Razao Áurea.
 	 *
 	 * @param numeroA inteiro utilizado na soma
 	 * @param numeroB inteiro utilizado na soma
@@ -332,7 +332,7 @@ public class Exercicio {
 	 *
 	 * @return {double} Retorna a Razão Áurea
 	 */
-	public static double razaoAurea(int numeroA, int numeroB, int repeticoes) {
+	public static double razaoAurea(final int numeroA,final int numeroB,final int repeticoes) {
 		if (numeroA < 0 || numeroB < numeroA || repeticoes <= 0) {
 			throw new IllegalArgumentException("numeroA >= 0 && numeroB > numeroA && repeticoes > 0");
 		}
@@ -346,20 +346,20 @@ public class Exercicio {
 			t = dividendo;
 			dividendo = dividendo + divisor;
 			divisor = t;
-			i ++;
+			i++;
 		}
 
 		return dividendo / divisor;
 	}
-	
+
 	/**
-	 * Função que verifica se a operação é um quadrado perfeito
+	 * Função que verifica se a operação é um quadrado perfeito.
 	 *
 	 * @param numero número a ser elevado a enésima potencia
 	 *
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
-	public static boolean quadradoPerfeito(double numero) {
+	public static boolean quadradoPerfeito(final double numero) {
 		if (numero < 1) {
 			throw new IllegalArgumentException("'numero' deve ser >= a 1");
 		}
@@ -372,19 +372,19 @@ public class Exercicio {
 			soma = soma + i;
 		}
 		BigDecimal soma2 = new BigDecimal(soma);
-		BigDecimal numero2 = new BigDecimal(numero);	
-		return soma2.compareTo(numero2)==0;
+		BigDecimal numero2 = new BigDecimal(numero);
+		return soma2.compareTo(numero2) == 0;
 	}
 
 	/**
-	 * Função matemática que faz o cálculo da raiz
+	 * Função matemática que faz o cálculo da raiz.
 	 *
 	 * @param numero inteiro que representa o radicando
 	 * @param i inteiro que representa o índice
 	 *
 	 * @return {double} Retorna o resultado da raiz
 	 */
-	public static double raiz(double numero, double i) {
+	public static double raiz(final double numero,final double i) {
 		if (numero <= 0) {
 			throw new IllegalArgumentException("'numero' deve ser maior que 0");
 		}
@@ -401,13 +401,13 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que verifica se o número é primo
+	 * Função que verifica se o número é primo.
 	 *
 	 * @param numero inteiro a ser verificado
 	 *
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
-	public static boolean primo(int numero) {
+	public static boolean primo(final int numero) {
 		if (numero <= 1) {
 			throw new IllegalArgumentException("'numero' deve ser maior que 1");
 		}
@@ -425,7 +425,7 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que calcula o Crivo de Eratostenes
+	 * Função que calcula o Crivo de Eratostenes.
 	 *
 	 * @param original vetor utilizado na operação
 	 *
@@ -438,7 +438,7 @@ public class Exercicio {
 			throw new IllegalArgumentException("o vetor deve conter no mínimo 2 dígitos");
 		}
 
-		final int tamanho = vetor.length-1;
+		final int tamanho = vetor.length - 1;
 
 		double limite =  Math.floor(Math.sqrt(tamanho));
 
@@ -456,14 +456,14 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que calcula o maior divisor comum
+	 * Função que calcula o maior divisor comum.
 	 *
 	 * @param numeroA inteiro que representa o dividendo
 	 * @param numeroB inteiro que representa o divisor
 	 *
 	 * @return {double} Retorna o maior divisor comum
 	 */
-	public static double mdc(double numeroA, double numeroB) {
+	public static double mdc(final double numeroA,final double numeroB) {
 		if (numeroB > numeroA || 0 >= numeroB) {
 			throw new IllegalArgumentException("'numeroB' deve ser <= 'numeroA' e numeroB deve ser < 0");
 		}
@@ -480,22 +480,22 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que calcula o maior divisor comum
+	 * Função que calcula o maior divisor comum.
 	 *
 	 * @param numeroA inteiro que representa o dividendo
 	 * @param numeroB inteiro que representa o divisor
 	 *
 	 * @return {double} Retorna o maior divisor comum
 	 */
-	public static double mdc2(double numeroA, double numeroB) {
+	public static double mdc2(final double numeroA,final double numeroB) {
 		if (numeroB > numeroA || 0 >= numeroB) {
 			throw new IllegalArgumentException("'numeroB' deve ser <= 'numeroA' e numeroB deve ser < 0");
 		}
 
 		BigDecimal numeroA2 = new BigDecimal(numeroA);
 		BigDecimal numeroB2 = new BigDecimal(numeroB);
-		
-		while (numeroA2.compareTo(numeroB2)==1) {
+
+		while (numeroA2.compareTo(numeroB2) == 1) {
 			if (numeroA > numeroB) {
 				numeroA = numeroA - numeroB;
 			} else {
@@ -503,21 +503,20 @@ public class Exercicio {
 			}
 
 		}
-		
-	
+
 
 		return numeroA;
 	}
 
 	/**
-	 * Função que avalia um polinômio de acordo com a regra de Horner
+	 * Função que avalia um polinômio de acordo com a regra de Horner.
 	 *
 	 * @param numero inteiro utilizado no calculo
 	 * @param vetor inteiro que representa o polinomio
 	 *
 	 * @return {int} Retorna o resultado do polinomio
 	 */
-	public static int horner(int numero, int[] vetor) {
+	public static int horner(final int numero,final int[] vetor) {
 		if (vetor.length < 1) {
 			throw new IllegalArgumentException("O comprimento do vetor deve ser maior ou igual a 1");
 		}
@@ -532,7 +531,7 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que obtém o n-ésimo número de Fibonacci
+	 * Função que obtém o n-ésimo número de Fibonacci.
 	 *
 	 * @param numero inteiro que representa a quantidade de iterações do
 	 *              cálculo
@@ -563,13 +562,13 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que valida um número de CPF de acordo com seus dígitos verificadores
+	 * Função que valida um número de CPF de acordo com seus dígitos verificadores.
 	 *
 	 * @param vetor sequência de números que representa um CPF
 	 *
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
-	public static boolean digitoCPF(int[] vetor) {
+	public static boolean digitoCPF(final int[] vetor) {
 		if (vetor.length != 11) {
 			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
 		}
@@ -588,13 +587,13 @@ public class Exercicio {
 	}
 
 	/**
-	 * Função que valida um número de CPF de acordo com seus dígitos verificadores
+	 * Função que valida um número de CPF de acordo com seus dígitos verificadores.
 	 *
 	 * @param vetor sequência de números que representa um CPF
 	 *
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
-	public static boolean digitoCPF2(int[] vetor) {
+	public static boolean digitoCPF2(final int[] vetor) {
 		if (vetor.length != 11) {
 			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
 		}
@@ -615,3 +614,4 @@ public class Exercicio {
 		return (digitoA == vetor[9]) && (digitoB == vetor[10]);
 	}
 }
+
