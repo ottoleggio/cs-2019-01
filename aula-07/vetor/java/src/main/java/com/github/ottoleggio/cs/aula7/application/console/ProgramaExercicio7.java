@@ -2,6 +2,7 @@ package com.github.ottoleggio.cs.aula7.application.console;
 
 import com.github.ottoleggio.cs.aula7.domain.Exercicio7;
 import com.github.ottoleggio.cs.aula7.domain.FrequenciaAleatoria;
+import com.github.ottoleggio.cs.aula7.domain.PalavraFrequente;
 
 import java.nio.file.CopyOption;
 import java.util.ArrayList;
@@ -29,9 +30,11 @@ public final class ProgramaExercicio7 {
 	public static void main(String[] args) {
 		logger.info("iniciado");
 		//System.out.println(Exercicio7.contaLetras("octavio aug   s"));
-		ArrayList<Integer> teste = new ArrayList<Integer>();
-		teste.addAll(FrequenciaAleatoria.geraFrequencia());
-		System.out.println(teste.get(0) + " " + teste.get(1));
+		//ArrayList<Integer> teste = new ArrayList<Integer>();
+		//teste.addAll(FrequenciaAleatoria.geraFrequencia());
+		//System.out.println(teste.get(0) + " " + teste.get(1));
+		
+		PalavraFrequente.palavra("vamo testar essa bagaça po po po bagaça");
 	}
 	
 	

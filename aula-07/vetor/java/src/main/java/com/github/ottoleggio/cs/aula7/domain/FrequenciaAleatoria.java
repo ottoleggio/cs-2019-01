@@ -24,7 +24,7 @@ public class FrequenciaAleatoria {
 
 		while (vetor.get(i) == vetor.get(i + 1)) {
 			contador++;
-			System.out.println("um encontrado");
+			//System.out.println("um encontrado");
 			i++;
 		}
 		resultado.add(contador); // armazena a frequencia na posição 0
