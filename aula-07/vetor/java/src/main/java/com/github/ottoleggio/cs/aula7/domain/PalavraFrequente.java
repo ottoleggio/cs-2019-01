@@ -42,7 +42,9 @@ public class PalavraFrequente {
 						toMap(e -> e.getKey(), e -> e.getValue(), (e1,e2) -> e2,
 								LinkedHashMap::new));
 				
-		
+		for(String i : sorted.keySet()) {
+			System.out.println(i + " " + sorted.get(i));
+		}
 		
 		/*
 		Set<Entry<String, Integer>> entrySet = contador.entrySet();
