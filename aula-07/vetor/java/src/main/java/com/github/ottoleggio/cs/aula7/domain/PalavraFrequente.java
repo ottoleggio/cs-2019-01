@@ -56,3 +56,9 @@ public class PalavraFrequente {
 	}
 
 }
+
+/*referencias
+https://javaconceptoftheday.com/find-most-repeated-word-in-text-file-in-java/
+https://www.w3schools.com/java/java_hashmap.asp
+https://www.javacodegeeks.com/2017/09/java-8-sorting-hashmap-values-ascending-descending-order.html
+*/
