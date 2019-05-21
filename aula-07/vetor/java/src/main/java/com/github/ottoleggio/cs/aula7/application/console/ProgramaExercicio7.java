@@ -34,7 +34,7 @@ public final class ProgramaExercicio7 {
 		//teste.addAll(FrequenciaAleatoria.geraFrequencia());
 		//System.out.println(teste.get(0) + " " + teste.get(1));
 		
-		PalavraFrequente.palavra("vamo testar essa bagaça po po po bagaça");
+		System.out.println(PalavraFrequente.palavra("alo alo oh oh alo ih ah oh oh"));
 	}
 	
 	
