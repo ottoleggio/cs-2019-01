@@ -12,7 +12,7 @@ test("valor não é um número", () => {
   expect(() => { funcao.f2("a"); }).toThrow(TypeError);
 });
 
-test("valor fora do range", () => {
+test("valor fora da faixa", () => {
   expect(() => funcao.f2(10000)).toThrow(RangeError);
 });
 
