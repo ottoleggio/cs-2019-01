@@ -1,9 +1,8 @@
 /**
  * Funções matemáticas diversas com propósito de estudo das ferramentas
- * e boas práticas da disciplina de construção de software
+ * e boas práticas da disciplina de construção de software.
  */
-//{ f1 : numero3025 
-//,f2 : numero153 
+
 module.exports = { f1 : diaDaSemana 
                 ,f2 : numero153 
                 ,f3 : numero3025
@@ -26,7 +25,7 @@ module.exports = { f1 : diaDaSemana
 				,f20 : digitoCPF 
                 ,f21 : digitoCPF2 }
 /**Produz um numero inteiro que representa o dia da semana
- * a partir da data fornecida
+ * a partir da data fornecida.
  * 
  * @param dia inteiro que representa o dia do mês
  * @param mes inteiro que representa o mês no ano
@@ -52,10 +51,11 @@ function diaDaSemana(dia, mes, ano) {
 
     const resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
     return Math.trunc(resultado % 7);
+    
 }
 
 /**Valida se o dia usado como parametro está nos critérios estabelecidos
- * da função diaDaSemana
+ * da função diaDaSemana.
  * 
  * @param dia inteiro que representa o dia do mês
  * 
@@ -66,7 +66,7 @@ function diaInvalido(dia) {
 }
 
 /**Valida se o mes usado como parametro está nos critérios estabelecidos
- * da função diaDaSemana
+ * da função diaDaSemana.
  * 
  * @param mes inteiro que representa o mês do ano
  * 
@@ -77,7 +77,7 @@ function mesInvalido(mes) {
 }
 
 /**Valida se o ano usado como parametro está nos critérios estabelecidos
- * da função diaDaSemana
+ * da função diaDaSemana.
  * 
  * @param ano inteiro que representa o ano
  * 
@@ -87,9 +87,9 @@ function anoInvalido(ano) {
     return ano < 1753;
 }
 
-/**Função que verifica se a soma dos cubos dos dígitos fornecidos como entrada
- * somam 153
- * 
+/**Verifica se a soma dos cubos dos dígitos de um número de três
+ * dígitos resulta no próprio número.
+ *
  * @param number inteiro que terá os dígitos somados
  * 
  * @returns Retorna verdadeiro ou falso de acordo com a entrada
@@ -113,7 +113,7 @@ function numero153(numero) {
 }
 
 /**Função que verifica se o quadrado da soma das dezenas da entrada
- * resulta no próprio número
+ * resulta no próprio número.
  * 
  * @param number inteiro que terá as dezenas somadas
  * 
@@ -129,7 +129,7 @@ function numero3025(numero)
         throw new RangeError("numero >=0 && numero <= 9999");
     }
 
-    if (Math.trunc(numero) != numero) {
+    if (!Number.isInteger(numero)) {
         throw new RangeError("o argumento deve ser um inteiro");
     }
 
@@ -141,7 +141,7 @@ function numero3025(numero)
 }
 
 /**Função matemática que retorna o resto de uma divisão entre
- * dois numeros
+ * dois numeros.
  * 
  * @param numeroA inteiro que será o dividendo da operação
  * @param numeroB inteiro que será o divisor da operação
@@ -167,7 +167,7 @@ function mod(numeroA, numeroB) {
 }
 
 /**Função que retorna a soma de numeros naturais dada a quantidade de
- * numeros a serem sequencialmente somados
+ * numeros a serem sequencialmente somados.
  * 
  * @param numero inteiro que representa a quantidade de numeros a serem somados
  * 
@@ -193,7 +193,7 @@ function somaNaturais(numero) {
     return resultado;
 }
 
-/**Funçao matemática que retorna o fatorial do numero fornecido na entrada
+/**Funçao matemática que retorna o fatorial do numero fornecido na entrada.
  * 
  * @param numero Inteiro que representa o fatorial a ser calculado
  * 
@@ -219,7 +219,7 @@ function fatorial(numero) {
     return soma;
 }
 
-/**Função que retorna o produto entre dois numeros fornecidos como entrada
+/**Função que retorna o produto entre dois numeros fornecidos como entrada.
  * 
  * @param numeroA inteiro que representa o primeiro fator do produto
  * @param numeroB inteiro que representa o segundo fator do produto
@@ -252,7 +252,7 @@ function produto(numeroA, numeroB) {
     return resultado;
 }
 
-/**Função matemática que executa a operação de potenciação
+/**Função matemática que executa a operação de potenciação.
  * 
  * @param base inteiro que representa a base da potenciação
  * @param expoente inteiro que representa o expoente da potenciação
@@ -278,7 +278,7 @@ function potencia(base, expoente) {
     return potencia;
 }
 
-/**Função que retorna n números das casas decimais de pi
+/**Função que retorna n números das casas decimais de pi.
  * 
  * @param numero inteiro que representa a quantidade de casas decimais
  * a serem representadas
@@ -308,7 +308,7 @@ return resultado;
 
 }
 
-/**Função que retorna a potência do numero de Euler
+/**Função que retorna a potência do numero de Euler.
  * 
  * @param numero inteiro que representa o numerador
  * @param repeticoes define a precisao do calculo
@@ -339,7 +339,7 @@ function logaritmoNatural(numero, repeticoes) {
     return potenciaE;
 }
 
-/**Função que calcula a Razao Áurea
+/**Função que calcula a Razao Áurea.
  * 
  * @param numeroA inteiro utilizado na soma
  * @param numeroB inteiro utilizado na soma
@@ -371,7 +371,7 @@ function razaoAurea(numeroA, numeroB, repeticoes) {
     return dividendo / divisor;
 }
 
-/**Função que verifica se a operação é um quadrado perfeito
+/**Função que verifica se a operação é um quadrado perfeito.
  * 
  * @param n número a ser elevado a enésima potencia
  * 
@@ -397,7 +397,7 @@ function quadradoPerfeito(n) {
     return s == n;
 }
 
-/**Função matemática que faz o cálculo da raiz
+/**Função matemática que faz o cálculo da raiz.
  * 
  * @param n inteiro que representa o radicando
  * @param i inteiro que representa o índice
@@ -423,7 +423,7 @@ function raiz(n, i) {
     return r;
 }
 
-/**Função que verifica se o número é primo
+/**Função que verifica se o número é primo.
  * 
  * @param n inteiro a ser verificado
  * 
@@ -451,7 +451,7 @@ function primo(n) {
     return true;
 }
 
-/**Função que calcula o Crivo de Eratostenes
+/**Função que calcula o Crivo de Eratostenes.
  * 
  * @param a vetor utilizado na operação
  * 
@@ -487,7 +487,7 @@ function crivoEratostenes(a) {
     return a;
 }
 
-/**Função que calcula o maior divisor comum
+/**Função que calcula o maior divisor comum.
  * 
  * @param a inteiro que representa o dividendo
  * @param b inteiro que representa o divisor
@@ -514,7 +514,7 @@ function mdc(a, b) {
     return a;
 }
 
-/**Função que calcula o maior divisor comum
+/**Função que calcula o maior divisor comum.
  * 
  * @param a inteiro que representa o dividendo
  * @param b inteiro que representa o divisor
@@ -541,7 +541,7 @@ function mdc2(a, b) {
     return a;
 }
 
-/**Função que avalia um polinômio de acordo com a regra de Horner
+/**Função que avalia um polinômio de acordo com a regra de Horner.
  * 
  * @param x inteiro utilizado no calculo
  * @param vetor inteiro que representa o polinomio
@@ -576,7 +576,7 @@ function horner(x, vetor) {
     return p;
 }
 
-/**Função que obtém o n-ésimo número de Fibonacci
+/**Função que obtém o n-ésimo número de Fibonacci.
  * 
  * @param n inteiro que representa a quantidade de iterações do cálculo
  * 
@@ -645,7 +645,7 @@ function digitoCPF(vetor) {
     return (dj == vetor[9] && dk == vetor[10]);
 }
 
-/**Função que valida um número de CPF de acordo com seus dígitos verificadores
+/**Função que valida um número de CPF de acordo com seus dígitos verificadores.
  * 
  * @param vetor sequência de números que representa um CPF
  * 
