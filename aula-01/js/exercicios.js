@@ -2,9 +2,27 @@
  * Funções matemáticas diversas com propósito de estudo das ferramentas
  * e boas práticas da disciplina de construção de software
  */
-
-module.exports = { f1 : numero3025 
-				,f2 : numero153 
+//{ f1 : numero3025 
+//,f2 : numero153 
+module.exports = { f1 : diaDaSemana 
+                ,f2 : numero153 
+                ,f3 : numero3025
+                ,f4 : mod
+                ,f5 : somaNaturais
+                ,f6 : fatorial
+                ,f7 : produto
+                ,f8 : potencia
+                ,f9 : pi
+                ,f10 : logaritmoNatural
+                ,f11 : razaoAurea
+                ,f12 : quadradoPerfeito
+                ,f13 : raiz
+                ,f14 : primo
+                ,f15 : crivoEratostenes
+                ,f16 : mdc
+                ,f17 : mdc2
+                ,f18 : horner
+                ,f19 : fibonacci
 				,f20 : digitoCPF 
                 ,f21 : digitoCPF2 }
 /**Produz um numero inteiro que representa o dia da semana
@@ -23,7 +41,7 @@ function diaDaSemana(dia, mes, ano) {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
-    if (diaInvalido(dia) && mesInvalido(mes) && anoInvalido(ano)) {
+    if (diaInvalido(dia) || mesInvalido(mes) || anoInvalido(ano)) {
         throw new RangeError("dia >= 1 && d <= 31 && mes >= 1 && m <= 12 && a >= 1753");
     }
 
@@ -44,7 +62,7 @@ function diaDaSemana(dia, mes, ano) {
  * @returns Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function diaInvalido(dia) {
-    return dia < 1 && dia > 31;
+    return dia < 1 || dia > 31;
 }
 
 /**Valida se o mes usado como parametro está nos critérios estabelecidos
@@ -55,7 +73,7 @@ function diaInvalido(dia) {
  * @returns Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function mesInvalido(mes) {
-    return mes < 1 && mes > 12;
+    return mes < 1 || mes > 12;
 }
 
 /**Valida se o ano usado como parametro está nos critérios estabelecidos
@@ -81,14 +99,14 @@ function numero153(numero) {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
-    if (numero < 100 && numero > 999) {
+    if (numero < 100 || numero > 999) {
         throw new RangeError("numero >=100 && numero <= 999");
     }
 
     // TODO defina como constantes, pois são constantes
-    var centena = numero / 100;
+    var centena = Math.trunc(numero / 100);
     var du = numero % 100;
-    var dezena = du / 10;
+    var dezena = Math.trunc(du / 10);
     var unidade = du % 10;
     const cdu = Math.pow(centena,3) + Math.pow(dezena,3) + Math.pow(unidade,3);
     return cdu == numero
@@ -135,7 +153,7 @@ function mod(numeroA, numeroB) {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
-    if (numeroB < 0 && numeroA <= 0) {
+    if (numeroB <= 0 || numeroA < 0) {
         throw new RangeError("y >= 0 && x > 0");
     }
 
@@ -213,7 +231,7 @@ function produto(numeroA, numeroB) {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numeroA < 0 && numeroB < numeroB) {
+    if (numeroA < 0 || numeroB < 0) {
         throw new RangeError("a >= 0 && b >= b");
     }
 
@@ -246,14 +264,14 @@ function potencia(base, expoente) {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (base < 0 && expoente < 0) {
+    if (base < 0 || expoente < 0) {
         throw new RangeError("x >= 0 && y >= 0");
     }
 
     var potencia = 1;
     var i = 1;
     while (i <= expoente) {
-        potencia = Produto(potencia, base);
+        potencia = produto(potencia, base);
         i = i + 1;
     }
 
@@ -276,19 +294,18 @@ function pi(numero) {
         throw new RangeError("n >= 1");
     }
 
-    var i = 1;
-    var s = -1;
-    var d = -1;
-    var resultado = 0;
+    let s = -1;
+    let d = -1;
+    let resultado = 0;
 
-    while (i <= numero) {
+    for (let i = 1; i <= numero; i++) {
         d = d + 2;
-        d = -1 * s;
-        resultado = resultado + 4 * s / d;
-        i = i + 1;
+        s = -1 * s;
+        resultado = resultado + ((4 * s) / d);
     }
 
-    return resultado;
+return resultado;
+
 }
 
 /**Função que retorna a potência do numero de Euler
@@ -303,7 +320,7 @@ function logaritmoNatural(numero, repeticoes) {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numero < 1 && repeticoes > 2) {
+    if (numero < 1 || repeticoes > 2) {
         throw new RangeError("n >= 1 && k >= 2");
     }
 
