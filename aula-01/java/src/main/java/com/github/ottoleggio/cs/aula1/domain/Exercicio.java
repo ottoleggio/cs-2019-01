@@ -80,7 +80,7 @@ public class Exercicio {
 	 * @return {double} O valor retornado é 0 para segunda-feira,
 	 * 1 para terça-feira e assim sucessivamente.
 	 */
-	public static double diaDaSemana(final int dia,final int mes,final int ano) {
+	public static double diaDaSemana(final int dia, int mes, int ano) {
 		verificaData(dia, mes, ano);
 
 		if (mes == 1 || mes == 2) {
@@ -384,7 +384,7 @@ public class Exercicio {
 	 *
 	 * @return {double} Retorna o resultado da raiz
 	 */
-	public static double raiz(final double numero,final double i) {
+	public static double raiz(final double numero, double i) {
 		if (numero <= 0) {
 			throw new IllegalArgumentException("'numero' deve ser maior que 0");
 		}
@@ -463,7 +463,7 @@ public class Exercicio {
 	 *
 	 * @return {double} Retorna o maior divisor comum
 	 */
-	public static double mdc(final double numeroA,final double numeroB) {
+	public static double mdc(double numeroA, double numeroB) {
 		if (numeroB > numeroA || 0 >= numeroB) {
 			throw new IllegalArgumentException("'numeroB' deve ser <= 'numeroA' e numeroB deve ser < 0");
 		}
@@ -487,7 +487,7 @@ public class Exercicio {
 	 *
 	 * @return {double} Retorna o maior divisor comum
 	 */
-	public static double mdc2(final double numeroA,final double numeroB) {
+	public static double mdc2(double numeroA, double numeroB) {
 		if (numeroB > numeroA || 0 >= numeroB) {
 			throw new IllegalArgumentException("'numeroB' deve ser <= 'numeroA' e numeroB deve ser < 0");
 		}
