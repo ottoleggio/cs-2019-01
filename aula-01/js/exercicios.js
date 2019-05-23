@@ -3,27 +3,27 @@
  * e boas práticas da disciplina de construção de software.
  */
 
-module.exports = { f1 : diaDaSemana 
-                ,f2 : numero153 
-                ,f3 : numero3025
-                ,f4 : mod
-                ,f5 : somaNaturais
-                ,f6 : fatorial
-                ,f7 : produto
-                ,f8 : potencia
-                ,f9 : pi
-                ,f10 : logaritmoNatural
-                ,f11 : razaoAurea
-                ,f12 : quadradoPerfeito
-                ,f13 : raiz
-                ,f14 : primo
-                ,f15 : crivoEratostenes
-                ,f16 : mdc
-                ,f17 : mdc2
-                ,f18 : horner
-                ,f19 : fibonacci
-				,f20 : digitoCPF 
-                ,f21 : digitoCPF2 }
+module.exports = { diaDaSemana : diaDaSemana 
+                ,numero153 : numero153 
+                ,numero3025 : numero3025
+                ,mod : mod
+                ,somaNaturais : somaNaturais
+                ,fatorial : fatorial
+                ,produto : produto
+                ,potencia : potencia
+                ,pi : pi
+                ,logaritmoNatural : logaritmoNatural
+                ,razaoAurea : razaoAurea
+                ,quadradoPerfeito : quadradoPerfeito
+                ,raiz : raiz
+                ,primo : primo
+                ,crivoEratostenes : crivoEratostenes
+                ,mdc : mdc
+                ,mdc2 : mdc2
+                ,horner : horner
+                ,fibonacci : fibonacci
+				,digitoCPF : digitoCPF 
+                ,digitoCPF2 : digitoCPF2 }
 /**Produz um numero inteiro que representa o dia da semana
  * a partir da data fornecida.
  * 
