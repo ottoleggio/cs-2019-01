@@ -27,11 +27,11 @@ module.exports = { f1 : diaDaSemana
 /**Produz um numero inteiro que representa o dia da semana
  * a partir da data fornecida.
  * 
- * @param dia inteiro que representa o dia do mês
- * @param mes inteiro que representa o mês no ano
- * @param ano inteiro que representa o ano
+ * @param {number} dia inteiro que representa o dia do mês
+ * @param {number} mes inteiro que representa o mês no ano
+ * @param {number} ano inteiro que representa o ano
  * 
- * @returns O valor retornado é 0 para segunda-feira, 
+ * @returns {number} O valor retornado é 0 para segunda-feira, 
  * 1 para terça-feira e assim sucessivamente.
  */ 
 function diaDaSemana(dia, mes, ano) {
@@ -57,9 +57,9 @@ function diaDaSemana(dia, mes, ano) {
 /**Valida se o dia usado como parametro está nos critérios estabelecidos
  * da função diaDaSemana.
  * 
- * @param dia inteiro que representa o dia do mês
+ * @param {number} dia inteiro que representa o dia do mês
  * 
- * @returns Retorna verdadeiro ou falso de acordo com a entrada
+ * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function diaInvalido(dia) {
     return dia < 1 || dia > 31;
@@ -79,9 +79,9 @@ function mesInvalido(mes) {
 /**Valida se o ano usado como parametro está nos critérios estabelecidos
  * da função diaDaSemana.
  * 
- * @param ano inteiro que representa o ano
+ * @param {number} ano inteiro que representa o ano
  * 
- * @returns Retorna verdadeiro ou falso de acordo com a entrada
+ * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function anoInvalido(ano) {
     return ano < 1753;
@@ -90,9 +90,9 @@ function anoInvalido(ano) {
 /**Verifica se a soma dos cubos dos dígitos de um número de três
  * dígitos resulta no próprio número.
  *
- * @param number inteiro que terá os dígitos somados
+ * @param {number} number inteiro que terá os dígitos somados
  * 
- * @returns Retorna verdadeiro ou falso de acordo com a entrada
+ * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function numero153(numero) {
     if (typeof numero != "number") {
@@ -115,9 +115,9 @@ function numero153(numero) {
 /**Função que verifica se o quadrado da soma das dezenas da entrada
  * resulta no próprio número.
  * 
- * @param number inteiro que terá as dezenas somadas
+ * @param {number} numero inteiro que terá as dezenas somadas
  * 
- * @returns Retorna verdadeiro ou falso de acordo com a entrada
+ * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function numero3025(numero)
 {
@@ -143,10 +143,10 @@ function numero3025(numero)
 /**Função matemática que retorna o resto de uma divisão entre
  * dois numeros.
  * 
- * @param numeroA inteiro que será o dividendo da operação
- * @param numeroB inteiro que será o divisor da operação
+ * @param {number} numeroA inteiro que será o dividendo da operação
+ * @param {number} numeroB inteiro que será o divisor da operação
  * 
- * @returns Retorna o resto da divisao entre os dois parametros
+ * @returns {number} Retorna o resto da divisao entre os dois parametros
  */ 
 function mod(numeroA, numeroB) {
     if (typeof numeroA != "number" || typeof numeroB != "number") {
@@ -169,9 +169,9 @@ function mod(numeroA, numeroB) {
 /**Função que retorna a soma de numeros naturais dada a quantidade de
  * numeros a serem sequencialmente somados.
  * 
- * @param numero inteiro que representa a quantidade de numeros a serem somados
+ * @param {number} numero inteiro que representa a quantidade de numeros a serem somados
  * 
- * @returns Retorna a soma dos numeros naturais somados
+ * @returns {number} Retorna a soma dos numeros naturais somados
  */ 
 function somaNaturais(numero) {
     if (typeof numero != "number") {
@@ -195,9 +195,9 @@ function somaNaturais(numero) {
 
 /**Funçao matemática que retorna o fatorial do numero fornecido na entrada.
  * 
- * @param numero Inteiro que representa o fatorial a ser calculado
+ * @param {number} numero Inteiro que representa o fatorial a ser calculado
  * 
- * @returns Resultado do número fatorial
+ * @returns {number} Resultado do número fatorial
  */ 
 function fatorial(numero) {
     if (typeof numero != "number") {
@@ -221,10 +221,10 @@ function fatorial(numero) {
 
 /**Função que retorna o produto entre dois numeros fornecidos como entrada.
  * 
- * @param numeroA inteiro que representa o primeiro fator do produto
- * @param numeroB inteiro que representa o segundo fator do produto
+ * @param {number} numeroA inteiro que representa o primeiro fator do produto
+ * @param {number} numeroB inteiro que representa o segundo fator do produto
  * 
- * @returns Retorna o produto das duas entradas
+ * @returns {number} Retorna o produto das duas entradas
  */ 
 function produto(numeroA, numeroB) {
     if (typeof numeroA != "number" || typeof numeroB != "number") {
@@ -254,10 +254,10 @@ function produto(numeroA, numeroB) {
 
 /**Função matemática que executa a operação de potenciação.
  * 
- * @param base inteiro que representa a base da potenciação
- * @param expoente inteiro que representa o expoente da potenciação
+ * @param {number} base inteiro que representa a base da potenciação
+ * @param {number} expoente inteiro que representa o expoente da potenciação
  * 
- * @returns Retorna o resultado da operação entre as duas entradas
+ * @returns {number} Retorna o resultado da operação entre as duas entradas
  */ 
 function potencia(base, expoente) {
     if (typeof base != "number" || typeof expoente != "number") {
@@ -280,10 +280,10 @@ function potencia(base, expoente) {
 
 /**Função que retorna n números das casas decimais de pi.
  * 
- * @param numero inteiro que representa a quantidade de casas decimais
+ * @param {number} numero inteiro que representa a quantidade de casas decimais
  * a serem representadas
  * 
- * @returns Retorna o numero pi
+ * @returns {number} Retorna o numero pi
  */ 
 function pi(numero) {
     if (typeof numero != "number") {
@@ -310,10 +310,10 @@ return resultado;
 
 /**Função que retorna a potência do numero de Euler.
  * 
- * @param numero inteiro que representa o numerador
- * @param repeticoes define a precisao do calculo
+ * @param {number} numero inteiro que representa o numerador
+ * @param {number} repeticoes define a precisao do calculo
  * 
- * @returns Retorna a potência do numero de Euler
+ * @returns {number} Retorna a potência do numero de Euler
  */ 
 function logaritmoNatural(numero, repeticoes) {
     if (typeof numero != "number" || typeof repeticoes != "number") {
@@ -341,11 +341,11 @@ function logaritmoNatural(numero, repeticoes) {
 
 /**Função que calcula a Razao Áurea.
  * 
- * @param numeroA inteiro utilizado na soma
- * @param numeroB inteiro utilizado na soma
- * @param repeticoes define a quantidade de iterações da soma a ser realizada
+ * @param {number} numeroA inteiro utilizado na soma
+ * @param {number} numeroB inteiro utilizado na soma
+ * @param {number} repeticoes define a quantidade de iterações da soma a ser realizada
  * 
- * @returns Retorna a Razão Áurea
+ * @returns {number} Retorna a Razão Áurea
  */ 
 function razaoAurea(numeroA, numeroB, repeticoes) {
     if (typeof numeroA != "number" || typeof numeroB != "number" || typeof repeticoes != "number") {
@@ -376,9 +376,9 @@ function razaoAurea(numeroA, numeroB, repeticoes) {
 
 /**Função que verifica se a operação é um quadrado perfeito.
  * 
- * @param n número a ser elevado a enésima potencia
+ * @param {number} n número a ser elevado a enésima potencia
  * 
- * @returns Retorna verdadeiro ou falso
+ * @returns {boolean}Retorna verdadeiro ou falso
  */
 function quadradoPerfeito(n) {
     if (typeof n != "number") {
@@ -402,10 +402,10 @@ function quadradoPerfeito(n) {
 
 /**Função matemática que faz o cálculo da raiz.
  * 
- * @param n inteiro que representa o radicando
- * @param i inteiro que representa o índice
+ * @param {number} n inteiro que representa o radicando
+ * @param {number} i inteiro que representa o índice
  * 
- * @returns Retorna o resultado da raiz
+ * @returns {number} Retorna o resultado da raiz
  */
 function raiz(n, i) {
     if (typeof n != "number" || typeof i != "number") {
@@ -428,9 +428,9 @@ function raiz(n, i) {
 
 /**Função que verifica se o número é primo.
  * 
- * @param n inteiro a ser verificado
+ * @param {number} n inteiro a ser verificado
  * 
- * @returns Retorna verdadeiro ou falso
+ * @returns {boolean} Retorna verdadeiro ou falso
  */
 function primo(n) {
     if (typeof n != "number") {
@@ -456,9 +456,9 @@ function primo(n) {
 
 /**Função que calcula o Crivo de Eratostenes.
  * 
- * @param a vetor utilizado na operação
+ * @param {number} a vetor utilizado na operação
  * 
- * @returns Retorna o valor do Crivo de Eratostenes
+ * @returns {number} Retorna o valor do Crivo de Eratostenes
  */
 function crivoEratostenes(a) {
     if (a == null || !Array.isArray(a)) {
@@ -491,10 +491,10 @@ function crivoEratostenes(a) {
 
 /**Função que calcula o maior divisor comum.
  * 
- * @param a inteiro que representa o dividendo
- * @param b inteiro que representa o divisor
+ * @param {number} a inteiro que representa o dividendo
+ * @param {number} b inteiro que representa o divisor
  * 
- * @returns Retorna o maior divisor comum
+ * @returns {number} Retorna o maior divisor comum
  */
 function mdc(a, b) {
     if (typeof a != "number" || typeof b != "number") {
@@ -518,10 +518,10 @@ function mdc(a, b) {
 
 /**Função que calcula o maior divisor comum.
  * 
- * @param a inteiro que representa o dividendo
- * @param b inteiro que representa o divisor
+ * @param {number} a inteiro que representa o dividendo
+ * @param {number} b inteiro que representa o divisor
  * 
- * @returns Retorna o maior divisor comum
+ * @returns {number} Retorna o maior divisor comum
  */
 function mdc2(a, b) {
     if (typeof a != "number" || typeof b != "number") {
@@ -546,10 +546,10 @@ function mdc2(a, b) {
 
 /**Função que avalia um polinômio de acordo com a regra de Horner.
  * 
- * @param x inteiro utilizado no calculo
- * @param vetor inteiro que representa o polinomio
+ * @param {number} x inteiro utilizado no calculo
+ * @param {number} vetor inteiro que representa o polinomio
  * 
- * @returns Retorna o resultado do polinomio
+ * @returns {number} Retorna o resultado do polinomio
  */
 function horner(x, vetor) {
     if (vetor == null || !Array.isArray(vetor)) {
@@ -581,9 +581,9 @@ function horner(x, vetor) {
 
 /**Função que obtém o n-ésimo número de Fibonacci.
  * 
- * @param n inteiro que representa a quantidade de iterações do cálculo
+ * @param {number} n inteiro que representa a quantidade de iterações do cálculo
  * 
- * @returns Retorna o número de Fibonnaci na n-ésima posição
+ * @returns {number} Retorna o número de Fibonnaci na n-ésima posição
  */
 function fibonacci(numero) {
     if (typeof numero != "number") {
@@ -615,9 +615,9 @@ function fibonacci(numero) {
 
 /**Função que valida um número de CPF de acordo com seus dígitos verificadores
  * 
- * @param vetor sequência de números que representa um CPF
+ * @param {number} vetor sequência de números que representa um CPF
  * 
- * @returns Retorna verdadeiro ou falso 
+ * @returns {boolean} Retorna verdadeiro ou falso 
  */
 function digitoCPF(vetor) {
     if (vetor == null || !Array.isArray(vetor)) {
@@ -650,9 +650,9 @@ function digitoCPF(vetor) {
 
 /**Função que valida um número de CPF de acordo com seus dígitos verificadores.
  * 
- * @param vetor sequência de números que representa um CPF
+ * @param {number} vetor sequência de números que representa um CPF
  * 
- * @returns Retorna verdadeiro ou falso 
+ * @returns {number} Retorna verdadeiro ou falso 
  */
 function digitoCPF2(vetor) {
     if (vetor == null || !Array.isArray(vetor)) {
