@@ -1,2 +1,3 @@
 # Pastas a serem excluidas do git
 node_modules/
+out/
