@@ -348,15 +348,18 @@ function logaritmoNatural(numero, repeticoes) {
  * @returns Retorna a Razão Áurea
  */ 
 function razaoAurea(numeroA, numeroB, repeticoes) {
-    if (typeof numeroA != "number" || typeof y != "number" || typeof repeticoes != "number") {
+    if (typeof numeroA != "number" || typeof numeroB != "number" || typeof repeticoes != "number") {
+        throw new TypeError("Os argumentos devem ser números");
+    }
+    if (typeof numeroB != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numeroA < numeroA && y <= numeroA && repeticoes <= 0) {
+    if (numeroA < 0 || numeroB < numeroA || repeticoes <= 0) {
         throw new RangeError("x >= x && y > x && k > 0");
     }
 
-    var dividendo = y;
+    var dividendo = numeroB;
     var divisor = numeroA;
     var i = 1;
     var t;
@@ -468,23 +471,22 @@ function crivoEratostenes(a) {
         }
     }
 
-    for (var i = 1; i < a.length; i++) {
-        if (a[i] != 0) {
-            return null;
-        }
-    }
+    var tamanho = a.length-1;
 
-    var limite = Math.floor(Raiz(a.length, 100));
+    var limite = Math.floor(Math.sqrt(tamanho));
 
-    for (var i = 1; i < limite; i++) {
+    for (var i = 2; i <= limite; i++) {
         if (a[i] == 0) {
-            for (var multiplo = 2 * i; multiplo < a.length; multiplo += i) {
+            var multiplo = i + i;
+            while ( multiplo <= tamanho) {
                 a[multiplo] = 1;
+                multiplo = multiplo + i;
             }
         }
     }
 
-    return a;
+    return a[tamanho] == 1;
+
 }
 
 /**Função que calcula o maior divisor comum.
@@ -499,7 +501,7 @@ function mdc(a, b) {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (b > a && 0 >= b) {
+    if (b > a || 0 >= b) {
         throw new RangeError("b <= a && 0 < b");
     }
 
@@ -526,14 +528,15 @@ function mdc2(a, b) {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (b > a && 0 >= b) {
-        throw new RangeError("b <= a && 0 < b");
+    if (b > a || b < 1) {
+        throw new RangeError("b <= a && b >= 1");
     }
 
     while (a != b) {
         if (a > b) {
             a = a - b;
-        } else {
+        } 
+        else {
             b = b - a;
         }
     }
@@ -570,7 +573,7 @@ function horner(x, vetor) {
     var p = vetor[vetor.length - 1];
 
     for (var i = vetor.length - 1; i >= 0; i--) {
-        p = p * x + vetor[i];
+        p = p * (x + vetor[i]);
     }
 
     return p;
@@ -582,32 +585,32 @@ function horner(x, vetor) {
  * 
  * @returns Retorna o número de Fibonnaci na n-ésima posição
  */
-function fibonacci(n) {
-    if (typeof n != "number") {
+function fibonacci(numero) {
+    if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (n < 0) {
+    if (numero < 0) {
         throw new RangeError("n >= 0");
     }
 
-    var a = 0;
-    var c = 1;
+    var soma = 0;
+    var resultado = 1;
 
-    if (n == 0 || n == 1) {
-        return c;
+    if (numero == 0 || numero == 1) {
+        return resultado;
     }
 
     var i = 2;
 
-    while (i <= n) {
-        var t = c;
-        c = c + a;
-        a = t;
+    while (i <= numero) {
+        var aux = resultado;
+        resultado = resultado + soma;
+        soma = aux;
         i++;
     }
 
-    return c;
+    return resultado;
 }
 
 /**Função que valida um número de CPF de acordo com seus dígitos verificadores
