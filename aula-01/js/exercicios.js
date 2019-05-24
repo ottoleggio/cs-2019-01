@@ -121,24 +121,24 @@ function numero3025(numero)
 /**Função matemática que retorna o resto de uma divisão entre
  * dois numeros.
  * 
- * @param {number} numeroA inteiro que será o dividendo da operação
- * @param {number} numeroB inteiro que será o divisor da operação
+ * @param {number} numerador inteiro que será o dividendo da operação
+ * @param {number} denominador inteiro que será o divisor da operação
  * 
  * @returns {number} Retorna o resto da divisao entre os dois parametros
  */ 
-function mod(numeroA, numeroB) {
-    if (typeof numeroA != "number" || typeof numeroB != "number") {
+function mod(numerador, denominador) {
+    if (typeof numerador != "number" || typeof denominador != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
-    if (numeroB <= 0 || numeroA < 0) {
+    if (denominador <= 0 || numerador < 0) {
         throw new RangeError("y >= 0 && x > 0");
     }
 
-    let resultado = numeroA;
+    let resultado = numerador;
 
-    while (numeroB <= resultado) {
-        resultado = resultado - numeroB;
+    while (denominador <= resultado) {
+        resultado = resultado - denominador;
     }
 
     return resultado;
@@ -199,25 +199,25 @@ function fatorial(numero) {
 
 /**Função que retorna o produto entre dois numeros fornecidos como entrada.
  * 
- * @param {number} numeroA inteiro que representa o primeiro fator do produto
- * @param {number} numeroB inteiro que representa o segundo fator do produto
+ * @param {number} produtoA inteiro que representa o primeiro fator do produto
+ * @param {number} produtoB inteiro que representa o segundo fator do produto
  * 
  * @returns {number} Retorna o produto das duas entradas
  */ 
-function produto(numeroA, numeroB) {
-    if (typeof numeroA != "number" || typeof numeroB != "number") {
+function produto(produtoA, produtoB) {
+    if (typeof produtoA != "number" || typeof produtoB != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numeroA < 0 || numeroB < 0) {
+    if (produtoA < 0 || produtoB < 0) {
         throw new RangeError("a >= 0 && b >= b");
     }
 
-    var totalParcelas = numeroA;
-    var parcela = numeroB;
-    if (numeroB < numeroA) {
-        totalParcelas = numeroB;
-        parcela = numeroA;
+    var totalParcelas = produtoA;
+    var parcela = produtoB;
+    if (produtoB < produtoA) {
+        totalParcelas = produtoB;
+        parcela = produtoA;
     }
 
     var i = 1;
