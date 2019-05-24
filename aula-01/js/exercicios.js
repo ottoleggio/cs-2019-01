@@ -111,7 +111,7 @@ function numero3025(numero)
         throw new RangeError("o argumento deve ser um inteiro");
     }
 
-    const divisao = Math.round((numero / 100) , );     
+    const divisao = Math.round((numero / 100));     
     const resto = numero % 100;       
 
     var resultado = (Math.pow((resto + divisao), 2.0));
