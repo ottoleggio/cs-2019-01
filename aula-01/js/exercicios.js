@@ -5,11 +5,11 @@
 
 /**Produz um numero inteiro que representa o dia da semana
  * a partir da data fornecida.
- * 
+ *
  * @param {number} dia inteiro que representa o dia do mês
  * @param {number} mes inteiro que representa o mês no ano
  * @param {number} ano inteiro que representa o ano
- * 
+ *
  * @returns {number} O valor retornado é 0 para segunda-feira, 
  * 1 para terça-feira e assim sucessivamente.
  */ 
@@ -35,9 +35,9 @@ function diaDaSemana(dia, mes, ano) {
 
 /**Valida se o dia usado como parametro está nos critérios estabelecidos
  * da função diaDaSemana.
- * 
+ *
  * @param {number} dia inteiro que representa o dia do mês
- * 
+ *
  * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function diaInvalido(dia) {
@@ -46,9 +46,9 @@ function diaInvalido(dia) {
 
 /**Valida se o mes usado como parametro está nos critérios estabelecidos
  * da função diaDaSemana.
- * 
+ *
  * @param mes inteiro que representa o mês do ano
- * 
+ *
  * @returns Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function mesInvalido(mes) {
@@ -57,9 +57,9 @@ function mesInvalido(mes) {
 
 /**Valida se o ano usado como parametro está nos critérios estabelecidos
  * da função diaDaSemana.
- * 
+ *
  * @param {number} ano inteiro que representa o ano
- * 
+ *
  * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function anoInvalido(ano) {
@@ -70,7 +70,7 @@ function anoInvalido(ano) {
  * dígitos resulta no próprio número.
  *
  * @param {number} number inteiro que terá os dígitos somados
- * 
+ *
  * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function numero153(numero) {
@@ -92,9 +92,9 @@ function numero153(numero) {
 
 /**Função que verifica se o quadrado da soma das dezenas da entrada
  * resulta no próprio número.
- * 
+ *
  * @param {number} numero inteiro que terá as dezenas somadas
- * 
+ *
  * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function numero3025(numero)
@@ -120,10 +120,10 @@ function numero3025(numero)
 
 /**Função matemática que retorna o resto de uma divisão entre
  * dois numeros.
- * 
+ *
  * @param {number} numerador inteiro que será o dividendo da operação
  * @param {number} denominador inteiro que será o divisor da operação
- * 
+ *
  * @returns {number} Retorna o resto da divisao entre os dois parametros
  */ 
 function mod(numerador, denominador) {
@@ -146,9 +146,9 @@ function mod(numerador, denominador) {
 
 /**Função que retorna a soma de numeros naturais dada a quantidade de
  * numeros a serem sequencialmente somados.
- * 
+ *
  * @param {number} numero inteiro que representa a quantidade de numeros a serem somados
- * 
+ *
  * @returns {number} Retorna a soma dos numeros naturais somados
  */ 
 function somaNaturais(numero) {
@@ -172,9 +172,9 @@ function somaNaturais(numero) {
 }
 
 /**Funçao matemática que retorna o fatorial do numero fornecido na entrada.
- * 
+ *
  * @param {number} numero Inteiro que representa o fatorial a ser calculado
- * 
+ *
  * @returns {number} Resultado do número fatorial
  */ 
 function fatorial(numero) {
@@ -198,10 +198,10 @@ function fatorial(numero) {
 }
 
 /**Função que retorna o produto entre dois numeros fornecidos como entrada.
- * 
+ *
  * @param {number} produtoA inteiro que representa o primeiro fator do produto
  * @param {number} produto inteiro que representa o segundo fator do produto
- * 
+ *
  * @returns {number} Retorna o produto das duas entradas
  */ 
 function produto(produtoA, produto) {
@@ -231,10 +231,10 @@ function produto(produtoA, produto) {
 }
 
 /**Função matemática que executa a operação de potenciação.
- * 
+ *
  * @param {number} base inteiro que representa a base da potenciação
  * @param {number} expoente inteiro que representa o expoente da potenciação
- * 
+ *
  * @returns {number} Retorna o resultado da operação entre as duas entradas
  */ 
 function potencia(base, expoente) {
@@ -257,10 +257,10 @@ function potencia(base, expoente) {
 }
 
 /**Função que retorna n números das casas decimais de pi.
- * 
+ *
  * @param {number} numero inteiro que representa a quantidade de casas decimais
  * a serem representadas
- * 
+ *
  * @returns {number} Retorna o numero pi
  */ 
 function pi(numero) {
@@ -287,10 +287,10 @@ return resultado;
 }
 
 /**Função que retorna a potência do numero de Euler.
- * 
+ *
  * @param {number} numero inteiro que representa o numerador
  * @param {number} repeticoes define a precisao do calculo
- * 
+ *
  * @returns {number} Retorna a potência do numero de Euler
  */ 
 function logaritmoNatural(numero, repeticoes) {
@@ -318,11 +318,11 @@ function logaritmoNatural(numero, repeticoes) {
 }
 
 /**Função que calcula a Razao Áurea.
- * 
+ *
  * @param {number} numeroA inteiro utilizado na soma
  * @param {number} numeroB inteiro utilizado na soma
  * @param {number} repeticoes define a quantidade de iterações da soma a ser realizada
- * 
+ *
  * @returns {number} Retorna a Razão Áurea
  */ 
 function razaoAurea(numeroA, numeroB, repeticoes) {
@@ -353,9 +353,9 @@ function razaoAurea(numeroA, numeroB, repeticoes) {
 }
 
 /**Função que verifica se a operação é um quadrado perfeito.
- * 
+ *
  * @param {number} n número a ser elevado a enésima potencia
- * 
+ *
  * @returns {boolean}Retorna verdadeiro ou falso
  */
 function quadradoPerfeito(n) {
@@ -379,10 +379,10 @@ function quadradoPerfeito(n) {
 }
 
 /**Função matemática que faz o cálculo da raiz.
- * 
+ *
  * @param {number} n inteiro que representa o radicando
  * @param {number} i inteiro que representa o índice
- * 
+ *
  * @returns {number} Retorna o resultado da raiz
  */
 function raiz(n, i) {
@@ -405,9 +405,9 @@ function raiz(n, i) {
 }
 
 /**Função que verifica se o número é primo.
- * 
+ *
  * @param {number} n inteiro a ser verificado
- * 
+ *
  * @returns {boolean} Retorna verdadeiro ou falso
  */
 function primo(n) {
@@ -433,9 +433,9 @@ function primo(n) {
 }
 
 /**Função que calcula o Crivo de Eratostenes.
- * 
+ *
  * @param {number} a vetor utilizado na operação
- * 
+ *
  * @returns {number} Retorna o valor do Crivo de Eratostenes
  */
 function crivoEratostenes(a) {
@@ -468,10 +468,10 @@ function crivoEratostenes(a) {
 }
 
 /**Função que calcula o maior divisor comum.
- * 
+ *
  * @param {number} a inteiro que representa o dividendo
  * @param {number} b inteiro que representa o divisor
- * 
+ *
  * @returns {number} Retorna o maior divisor comum
  */
 function mdc(a, b) {
@@ -495,10 +495,10 @@ function mdc(a, b) {
 }
 
 /**Função que calcula o maior divisor comum.
- * 
+ *
  * @param {number} a inteiro que representa o dividendo
  * @param {number} b inteiro que representa o divisor
- * 
+ *
  * @returns {number} Retorna o maior divisor comum
  */
 function mdc2(a, b) {
@@ -523,10 +523,10 @@ function mdc2(a, b) {
 }
 
 /**Função que avalia um polinômio de acordo com a regra de Horner.
- * 
+ *
  * @param {number} x inteiro utilizado no calculo
  * @param {number} vetor inteiro que representa o polinomio
- * 
+ *
  * @returns {number} Retorna o resultado do polinomio
  */
 function horner(x, vetor) {
@@ -558,9 +558,9 @@ function horner(x, vetor) {
 }
 
 /**Função que obtém o n-ésimo número de Fibonacci.
- * 
+ *
  * @param {number} n inteiro que representa a quantidade de iterações do cálculo
- * 
+ *
  * @returns {number} Retorna o número de Fibonnaci na n-ésima posição
  */
 function fibonacci(numero) {
@@ -592,9 +592,9 @@ function fibonacci(numero) {
 }
 
 /**Função que valida um número de CPF de acordo com seus dígitos verificadores
- * 
+ *
  * @param {number} vetor sequência de números que representa um CPF
- * 
+ *
  * @returns {boolean} Retorna verdadeiro ou falso 
  */
 function digitoCPF(vetor) {
@@ -627,9 +627,9 @@ function digitoCPF(vetor) {
 }
 
 /**Função que valida um número de CPF de acordo com seus dígitos verificadores.
- * 
+ *
  * @param {number} vetor sequência de números que representa um CPF
- * 
+ *
  * @returns {number} Retorna verdadeiro ou falso 
  */
 function digitoCPF2(vetor) {
@@ -663,6 +663,9 @@ function digitoCPF2(vetor) {
     return (j == vetor[9]) && (k == vetor[10]);
 }
 
+/**Exporta os métodos para testes.
+ *
+ */
 module.exports = { verificaDiaDaSemana : diaDaSemana 
                 ,verificaNumero153 : numero153 
                 ,verificaNumero3025 : numero3025
