@@ -8,14 +8,14 @@ class TestExercicio {
 
 	@Test
 	void testNumero3025() {
-		assertEquals(3025, Exercicio.numero3025(3025));
+		assertTrue(Exercicio.numero3025(3025));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.numero3025(-1));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.numero3025(1000));
 	}
 
 	@Test
 	void testNumero153() {
-		assertEquals(153, 153);
+		assertTrue(Exercicio.numero153(153));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.numero153(99));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.numero153(1020));
 	}
@@ -27,8 +27,10 @@ class TestExercicio {
         assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(40,12,2019));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(10,13,2019));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(10,12,1750));
-		assertEquals(Exercicio.diaDaSemana(14, 05, 2019), 1);
-		assertEquals(Exercicio.diaDaSemana(9, 05, 2017), 1);
+		assertEquals(Exercicio.diaDaSemana(14, 5, 2019), 1);
+		assertEquals(Exercicio.diaDaSemana(9, 5, 2017), 1);
+		assertEquals(Exercicio.diaDaSemana(9, 1, 2017), 0);
+		assertEquals(Exercicio.diaDaSemana(9, 2, 2017), 3);
 	}
 
 	@Test
@@ -85,7 +87,7 @@ class TestExercicio {
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(-1,1,0));
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(1,1,0));
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(1,2,-1));
-		assertEquals(1.618033988749895, Exercicio.razaoAurea(1, 2, 1000));
+		assertEquals(1.6180339887498947, Exercicio.razaoAurea(1, 2, 1000));
 	}
 
 	@Test
@@ -147,14 +149,15 @@ class TestExercicio {
 	@Test
 	void testHorner() {
 		int[] test1 = {0,1,2};
-        assertThrows(IllegalArgumentException.class,() -> Exercicio.horner(1,test1));
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.horner(0,test1));
         assertEquals(12, Exercicio.horner(1, test1));
  	}
 
 	@Test
 	void testFibonacci() {
         assertThrows(IllegalArgumentException.class,() -> Exercicio.fibonacci(-1));
-        assertEquals(13, Exercicio.fibonacci(6));
+        assertEquals(8, Exercicio.fibonacci(6));
+        assertEquals(1, Exercicio.fibonacci(1));
 	}
 
 	@Test
@@ -163,6 +166,10 @@ class TestExercicio {
         assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF(test1));
 		int[] test2 = { 3,2,3,4,5,6,7,8,9,0,1,2 };
         assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF(test2));
+		int[] test3 = { 3,2,3,4,5,6,7,8,9,0,10 };
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF(test3));
+		int[] test4 = { 3,2,3,4,5,6,7,8,9,0,-1 };
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF(test4));
 		
 		int[] cpf1 = { 3, 2, 5, 3, 8, 6, 4, 9, 8, 7, 0 };
 		assertTrue(Exercicio.digitoCPF(cpf1));
@@ -180,15 +187,19 @@ class TestExercicio {
         assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF2(test1));
 		int[] test2 = { 3,2,3,4,5,6,7,8,9,0,1,2 };
         assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF2(test2));
+		int[] test3 = { 3,2,3,4,5,6,7,8,9,0,10 };
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF2(test3));
+		int[] test4 = { 3,2,3,4,5,6,7,8,9,0,-1 };
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.digitoCPF2(test4));
         
 		int[] cpf1 = { 3, 2, 5, 3, 8, 6, 4, 9, 8, 7, 0 };
-		assertTrue(Exercicio.digitoCPF(cpf1));
+		assertTrue(Exercicio.digitoCPF2(cpf1));
 		
 		int[] cpf2 = { 3, 2, 5, 3, 8, 6, 4, 9, 8, 7, 3 };
-		assertFalse(Exercicio.digitoCPF(cpf2));
+		assertFalse(Exercicio.digitoCPF2(cpf2));
 		
 		int[] cpf3 = { 3, 2, 5, 3, 8, 6, 4, 9, 8, 8, 0 };
-		assertFalse(Exercicio.digitoCPF(cpf3));
+		assertFalse(Exercicio.digitoCPF2(cpf3));
 	}
 
 }

@@ -23,7 +23,7 @@ public class Exercicio {
 		final int mimiteMin = 0;
 		final int centena = 100;
 
-		if (numero < mimiteMin || numero < limiteMax) {
+		if (numero < mimiteMin || numero > limiteMax) {
 			throw new IllegalArgumentException("numero >=0 && numero <= 9999");
 		}
 
@@ -107,13 +107,6 @@ public class Exercicio {
 		verificaDia(dia);
 		verificaMes(mes);
 		verificaAno(ano);
-
-		try {
-			LocalDate.of(ano, mes, dia);
-		} catch (DateTimeException exp) {
-			final String msg = String.format("%d/%d/%d", dia, mes, ano);
-			throw new IllegalArgumentException("data inválida: " + msg, exp);
-		}
 	}
 
 	private static void verificaDia(final int dia) {
@@ -487,15 +480,12 @@ public class Exercicio {
 	 *
 	 * @return {double} Retorna o maior divisor comum
 	 */
-	public static double mdc2(double numeroA, double numeroB) {
+	public static double mdc2(int numeroA, int numeroB) {
 		if (numeroB > numeroA || 0 >= numeroB) {
 			throw new IllegalArgumentException("'numeroB' deve ser <= 'numeroA' e numeroB deve ser < 0");
 		}
 
-		BigDecimal numeroA2 = new BigDecimal(numeroA);
-		BigDecimal numeroB2 = new BigDecimal(numeroB);
-
-		while (numeroA2.compareTo(numeroB2) == 1) {
+		while (numeroA != numeroB) {
 			if (numeroA > numeroB) {
 				numeroA = numeroA - numeroB;
 			} else {
@@ -503,7 +493,6 @@ public class Exercicio {
 			}
 
 		}
-
 
 		return numeroA;
 	}
@@ -517,7 +506,7 @@ public class Exercicio {
 	 * @return {int} Retorna o resultado do polinomio
 	 */
 	public static int horner(final int numero,final int[] vetor) {
-		if (vetor.length < 1) {
+		if (numero < 1) {
 			throw new IllegalArgumentException("O comprimento do vetor deve ser maior ou igual a 1");
 		}
 
@@ -573,10 +562,18 @@ public class Exercicio {
 			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
 		}
 
+		int i = 0;
+		
+		for (i = 0; i < 11; i++) {
+			if(vetor[i] > 9 || vetor[i] < 0) {
+				throw new IllegalArgumentException("O número deve estar entre 0 e 9");
+			}
+		}
+		
 		int testeA = 0;
 		int testeB = 0;
 
-		for (int i = 0; i < 9; i++) {
+		for (i = 0; i < 9; i++) {
 			testeA += ((i + 1) * vetor[i]);
 			testeB += ((i + 1) * vetor[i + 1]);
 		}
@@ -597,8 +594,16 @@ public class Exercicio {
 		if (vetor.length != 11) {
 			throw new IllegalArgumentException("Insira a quantidade correta de dígitos (11)");
 		}
+		
+		int i = 0;
+		
+		for (i = 0; i < 11; i++) {
+			if(vetor[i] > 9 || vetor[i] < 0) {
+				throw new IllegalArgumentException("O número deve estar entre 0 e 9");
+			}
+		}
 
-		int i = 7;
+		i = 7;
 		int testeA = vetor[8];
 		int testeB = vetor[8];
 
