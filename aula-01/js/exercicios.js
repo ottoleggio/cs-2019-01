@@ -111,8 +111,8 @@ function numero3025(numero)
         throw new RangeError("o argumento deve ser um inteiro");
     }
 
-    var divisao = Math.round((numero / 100) , );     
-    var resto = numero % 100;       
+    const divisao = Math.round((numero / 100) , );     
+    const resto = numero % 100;       
 
     var resultado = (Math.pow((resto + divisao), 2.0));
     return resultado  == numero
@@ -451,7 +451,7 @@ function crivoEratostenes(a) {
 
     var tamanho = a.length-1;
 
-    var limite = Math.floor(Math.sqrt(tamanho));
+    const limite = Math.floor(Math.sqrt(tamanho));
 
     for (var i = 2; i <= limite; i++) {
         if (a[i] == 0) {
