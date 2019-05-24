@@ -87,7 +87,7 @@ function numero153(numero) {
     const dezena = Math.trunc(du / 10);
     const unidade = du % 10;
     const cdu = Math.pow(centena,3) + Math.pow(dezena,3) + Math.pow(unidade,3);
-    return cdu == numero
+    return cdu == numero;
 }
 
 /**Função que verifica se o quadrado da soma das dezenas da entrada
@@ -115,7 +115,7 @@ function numero3025(numero)
     const resto = numero % 100;       
 
     var resultado = (Math.pow((resto + divisao), 2.0));
-    return resultado  == numero
+    return resultado  == numero;
 }
 
 /**Função matemática que retorna o resto de uma divisão entre
@@ -282,7 +282,7 @@ function pi(numero) {
         resultado = resultado + ((4 * s) / d);
     }
 
-return resultado;
+    return resultado;
 
 }
 
@@ -443,7 +443,9 @@ function crivoEratostenes(a) {
         throw new TypeError("Esperado um vetor como argumento");
     }
 
-    for (var i = 0; i < a.length; i++) {
+    var i = 0;
+
+    for (i; i < a.length; i++) {
         if (typeof a[i] != "number") {
             throw new RangeError("O vetor deve conter somente números inteiros");
         }
@@ -453,7 +455,7 @@ function crivoEratostenes(a) {
 
     const limite = Math.floor(Math.sqrt(tamanho));
 
-    for (var i = 2; i <= limite; i++) {
+    for (i = 2; i <= limite; i++) {
         if (a[i] == 0) {
             var multiplo = i + i;
             while ( multiplo <= tamanho) {
@@ -534,7 +536,9 @@ function horner(x, vetor) {
         throw new TypeError("Esperado um vetor como argumento");
     }
 
-    for (var i = 0; i < vetor.length; i++) {
+    var i = 0;
+
+    for (i; i < vetor.length; i++) {
         if (typeof vetor[i] != "number") {
             throw new RangeError("O vetor deve conter somente números inteiros");
         }
@@ -550,7 +554,7 @@ function horner(x, vetor) {
 
     var p = vetor[vetor.length - 1];
 
-    for (var i = vetor.length - 1; i >= 0; i--) {
+    for (i = vetor.length - 1; i >= 0; i--) {
         p = p * (x + vetor[i]);
     }
 
@@ -606,7 +610,9 @@ function digitoCPF(vetor) {
         throw new RangeError("Um cpf deve conter 11 dígitos");
     }
 
-    for (var i = 0; i < 11; i++) {
+    var i = 0;
+
+    for (i; i < 11; i++) {
         if (typeof vetor[i] != "number" || vetor[i] >9 || vetor[i] < 0) {
             throw new RangeError("O vetor deve conter somente números inteiros");
         }
@@ -615,7 +621,7 @@ function digitoCPF(vetor) {
     var j = 0;
     var k = 0;
 
-    for (var i = 0; i < 9; i++) {
+    for (i = 0; i < 9; i++) {
         j += ((i + 1) * vetor[i]);
         k += ((i + 1) * vetor[i + 1]);
     }
@@ -667,23 +673,23 @@ function digitoCPF2(vetor) {
  *
  */
 module.exports = { verificaDiaDaSemana : diaDaSemana 
-                ,verificaNumero153 : numero153 
-                ,verificaNumero3025 : numero3025
-                ,verificaMod : mod
-                ,verificaSomaNaturais : somaNaturais
-                ,verificaFatorial : fatorial
-                ,verificaProduto : produto
-                ,verificaPotencia : potencia
-                ,verificaPi : pi
-                ,verificaLogaritmoNatural : logaritmoNatural
-                ,verificaRazaoAurea : razaoAurea
-                ,verificaQuadradoPerfeito : quadradoPerfeito
-                ,verificaRaiz : raiz
-                ,verificaPrimo : primo
-                ,verificaCrivoEratostenes : crivoEratostenes
-                ,verificaMdc : mdc
-                ,verificaMdc2 : mdc2
-                ,verificaHorner : horner
-                ,verificaFibonacci : fibonacci
-				,verificaDigitoCPF : digitoCPF 
-                ,verificaDigitoCPF2 : digitoCPF2 }
+    ,verificaNumero153 : numero153 
+    ,verificaNumero3025 : numero3025
+    ,verificaMod : mod
+    ,verificaSomaNaturais : somaNaturais
+    ,verificaFatorial : fatorial
+    ,verificaProduto : produto
+    ,verificaPotencia : potencia
+    ,verificaPi : pi
+    ,verificaLogaritmoNatural : logaritmoNatural
+    ,verificaRazaoAurea : razaoAurea
+    ,verificaQuadradoPerfeito : quadradoPerfeito
+    ,verificaRaiz : raiz
+    ,verificaPrimo : primo
+    ,verificaCrivoEratostenes : crivoEratostenes
+    ,verificaMdc : mdc
+    ,verificaMdc2 : mdc2
+    ,verificaHorner : horner
+    ,verificaFibonacci : fibonacci
+    ,verificaDigitoCPF : digitoCPF 
+    ,verificaDigitoCPF2 : digitoCPF2 };
