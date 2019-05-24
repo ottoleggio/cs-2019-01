@@ -82,11 +82,10 @@ function numero153(numero) {
         throw new RangeError("numero >=100 && numero <= 999");
     }
 
-    // TODO defina como constantes, pois são constantes
-    var centena = Math.trunc(numero / 100);
-    var du = numero % 100;
-    var dezena = Math.trunc(du / 10);
-    var unidade = du % 10;
+    const centena = Math.trunc(numero / 100);
+    const du = numero % 100;
+    const dezena = Math.trunc(du / 10);
+    const unidade = du % 10;
     const cdu = Math.pow(centena,3) + Math.pow(dezena,3) + Math.pow(unidade,3);
     return cdu == numero
 }
