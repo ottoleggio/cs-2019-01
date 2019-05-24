@@ -36,6 +36,18 @@ test("tamanho do vetor nao satisfaz", () => {
   expect(() => { funcao.verificaDigitoCPF(test6); }).toThrow(RangeError);
 });
 
+var test7 = [3,2,5,3,8,6,4,9,8,7,10];
+
+test("tamanho do vetor nao satisfaz", () => {
+  expect(() => { funcao.verificaDigitoCPF(test7); }).toThrow(RangeError);
+});
+
+var test8 = [3,2,5,3,8,6,4,9,8,7,-1];
+
+test("tamanho do vetor nao satisfaz", () => {
+  expect(() => { funcao.verificaDigitoCPF(test8); }).toThrow(RangeError);
+});
+
 test("argumento null/undefined", () => {
   expect(() => { funcao.verificaDigitoCPF(); }).toThrow(TypeError);
 });

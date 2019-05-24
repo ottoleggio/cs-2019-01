@@ -82,11 +82,10 @@ function numero153(numero) {
         throw new RangeError("numero >=100 && numero <= 999");
     }
 
-    // TODO defina como constantes, pois são constantes
-    var centena = Math.trunc(numero / 100);
-    var du = numero % 100;
-    var dezena = Math.trunc(du / 10);
-    var unidade = du % 10;
+    const centena = Math.trunc(numero / 100);
+    const du = numero % 100;
+    const dezena = Math.trunc(du / 10);
+    const unidade = du % 10;
     const cdu = Math.pow(centena,3) + Math.pow(dezena,3) + Math.pow(unidade,3);
     return cdu == numero
 }
@@ -112,8 +111,8 @@ function numero3025(numero)
         throw new RangeError("o argumento deve ser um inteiro");
     }
 
-    var divisao = Math.round((numero / 100) , );     
-    var resto = numero % 100;       
+    const divisao = Math.round((numero / 100) , );     
+    const resto = numero % 100;       
 
     var resultado = (Math.pow((resto + divisao), 2.0));
     return resultado  == numero
@@ -122,24 +121,24 @@ function numero3025(numero)
 /**Função matemática que retorna o resto de uma divisão entre
  * dois numeros.
  * 
- * @param {number} numeroA inteiro que será o dividendo da operação
- * @param {number} numeroB inteiro que será o divisor da operação
+ * @param {number} numerador inteiro que será o dividendo da operação
+ * @param {number} denominador inteiro que será o divisor da operação
  * 
  * @returns {number} Retorna o resto da divisao entre os dois parametros
  */ 
-function mod(numeroA, numeroB) {
-    if (typeof numeroA != "number" || typeof numeroB != "number") {
+function mod(numerador, denominador) {
+    if (typeof numerador != "number" || typeof denominador != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
-    if (numeroB <= 0 || numeroA < 0) {
+    if (denominador <= 0 || numerador < 0) {
         throw new RangeError("y >= 0 && x > 0");
     }
 
-    let resultado = numeroA;
+    let resultado = numerador;
 
-    while (numeroB <= resultado) {
-        resultado = resultado - numeroB;
+    while (denominador <= resultado) {
+        resultado = resultado - denominador;
     }
 
     return resultado;
@@ -200,25 +199,25 @@ function fatorial(numero) {
 
 /**Função que retorna o produto entre dois numeros fornecidos como entrada.
  * 
- * @param {number} numeroA inteiro que representa o primeiro fator do produto
- * @param {number} numeroB inteiro que representa o segundo fator do produto
+ * @param {number} produtoA inteiro que representa o primeiro fator do produto
+ * @param {number} produto inteiro que representa o segundo fator do produto
  * 
  * @returns {number} Retorna o produto das duas entradas
  */ 
-function produto(numeroA, numeroB) {
-    if (typeof numeroA != "number" || typeof numeroB != "number") {
+function produto(produtoA, produto) {
+    if (typeof produtoA != "number" || typeof produto != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numeroA < 0 || numeroB < 0) {
+    if (produtoA < 0 || produto < 0) {
         throw new RangeError("a >= 0 && b >= b");
     }
 
-    var totalParcelas = numeroA;
-    var parcela = numeroB;
-    if (numeroB < numeroA) {
-        totalParcelas = numeroB;
-        parcela = numeroA;
+    var totalParcelas = produtoA;
+    var parcela = produto;
+    if (produto < produtoA) {
+        totalParcelas = produto;
+        parcela = produtoA;
     }
 
     var i = 1;
@@ -452,7 +451,7 @@ function crivoEratostenes(a) {
 
     var tamanho = a.length-1;
 
-    var limite = Math.floor(Math.sqrt(tamanho));
+    const limite = Math.floor(Math.sqrt(tamanho));
 
     for (var i = 2; i <= limite; i++) {
         if (a[i] == 0) {
@@ -608,7 +607,7 @@ function digitoCPF(vetor) {
     }
 
     for (var i = 0; i < 11; i++) {
-        if (typeof vetor[i] != "number") {
+        if (typeof vetor[i] != "number" || vetor[i] >9 || vetor[i] < 0) {
             throw new RangeError("O vetor deve conter somente números inteiros");
         }
     }
@@ -643,7 +642,7 @@ function digitoCPF2(vetor) {
     }
 
     for (var i = 0; i < 11; i++) {
-        if (typeof vetor[i] != "number") {
+        if (typeof vetor[i] != "number" || vetor[i] >9 || vetor[i] < 0) {
             throw new RangeError("O vetor deve conter somente números inteiros");
         }
     }
