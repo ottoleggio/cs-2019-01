@@ -200,23 +200,23 @@ function fatorial(numero) {
 /**Função que retorna o produto entre dois numeros fornecidos como entrada.
  * 
  * @param {number} produtoA inteiro que representa o primeiro fator do produto
- * @param {number} produtoB inteiro que representa o segundo fator do produto
+ * @param {number} produto inteiro que representa o segundo fator do produto
  * 
  * @returns {number} Retorna o produto das duas entradas
  */ 
-function produto(produtoA, produtoB) {
-    if (typeof produtoA != "number" || typeof produtoB != "number") {
+function produto(produtoA, produto) {
+    if (typeof produtoA != "number" || typeof produto != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (produtoA < 0 || produtoB < 0) {
+    if (produtoA < 0 || produto < 0) {
         throw new RangeError("a >= 0 && b >= b");
     }
 
     var totalParcelas = produtoA;
-    var parcela = produtoB;
-    if (produtoB < produtoA) {
-        totalParcelas = produtoB;
+    var parcela = produto;
+    if (produto < produtoA) {
+        totalParcelas = produto;
         parcela = produtoA;
     }
 
@@ -607,7 +607,7 @@ function digitoCPF(vetor) {
     }
 
     for (var i = 0; i < 11; i++) {
-        if (typeof vetor[i] != "number") {
+        if (typeof vetor[i] != "number" || vetor[i] >9 || vetor[i] < 0) {
             throw new RangeError("O vetor deve conter somente números inteiros");
         }
     }
@@ -642,7 +642,7 @@ function digitoCPF2(vetor) {
     }
 
     for (var i = 0; i < 11; i++) {
-        if (typeof vetor[i] != "number") {
+        if (typeof vetor[i] != "number" || vetor[i] >9 || vetor[i] < 0) {
             throw new RangeError("O vetor deve conter somente números inteiros");
         }
     }
