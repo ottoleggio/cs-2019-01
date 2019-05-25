@@ -1,8 +1,6 @@
 package com.github.ottoleggio.cs.aula1.domain;
 
 import java.math.BigDecimal;
-import java.time.DateTimeException;
-import java.time.LocalDate;
 
 /**
  * Funções matemáticas diversas com propósito de estudo das ferramentas e boas
