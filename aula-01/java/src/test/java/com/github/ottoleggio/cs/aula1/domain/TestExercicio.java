@@ -10,7 +10,7 @@ class TestExercicio {
 	void testNumero3025() {
 		assertTrue(Exercicio.numero3025(3025));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.numero3025(-1));
-        assertThrows(IllegalArgumentException.class,() -> Exercicio.numero3025(1000));
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.numero3025(10000));
 	}
 
 	@Test
