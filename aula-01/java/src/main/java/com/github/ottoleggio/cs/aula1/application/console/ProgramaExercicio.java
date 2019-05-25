@@ -1,12 +1,20 @@
 package com.github.ottoleggio.cs.aula1.application.console;
 
-import com.github.ottoleggio.cs.aula1.domain.Exercicio;
+//import com.github.ottoleggio.cs.aula1.domain.Exercicio;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Programa responsável por rodar exercicios realizados
+ * na disciplina de Construção de Software.
+ *
+ */
 public final class ProgramaExercicio {
-
-	private static final Logger logger = LogManager.getLogger(ProgramaExercicio.class);
+	/**
+	 * Cria Log de execução.
+	 */
+	private static final Logger logger =
+	LogManager.getLogger(ProgramaExercicio.class);
 
 	/**
 	 * Restringe criação de instância.
@@ -20,11 +28,9 @@ public final class ProgramaExercicio {
 	 *
 	 * @param args Ignorados.
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 
 		logger.info("iniciado");
 
 	}
-	
-	
 }

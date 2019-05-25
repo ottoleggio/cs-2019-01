@@ -42,15 +42,16 @@ public class Exercicio {
 	 * Função que verifica se a soma dos cubos dos dígitos fornecidos
 	 * como entrada somam 153.
 	 *
-	 * @param numero inteiro que terá os dígitos somados
+	 * @param valor inteiro que terá os dígitos somados
 	 *
 	 * @return {boolean} Retorna verdadeiro ou falso de acordo com a entrada
 	 */
-	public static boolean numero153(int numero) {
+	public static boolean numero153(final int valor) {
 		final int limiteMax = 999;
 		final int limiteMin = 100;
 		final int cem = 100;
 		final int dez = 10;
+		int numero = valor;
 
 		if (numero < limiteMin || numero > limiteMax) {
 			throw new IllegalArgumentException("numero >=100 & "
@@ -80,9 +81,13 @@ public class Exercicio {
 	 * @return {double} O valor retornado é 0 para segunda-feira,
 	 * 1 para terça-feira e assim sucessivamente.
 	 */
-	public static double diaDaSemana(final int dia, int mes, int ano) {
+	public static double diaDaSemana(final int dia,
+	final int mes, final int ano) {
 		verificaData(dia, mes, ano);
 
+		int funcDia = dia;
+		int funcMes = mes;
+		int funcAno = ano;
 		final int umAno = 12;
 		final int umMes = 1;
 		final int tresMes = 3;
@@ -92,14 +97,14 @@ public class Exercicio {
 		final int quatrocentosAno = 400;
 		final int seteDia = 7;
 
-		if (mes == 1 || mes == 2) {
-			mes += umAno;
-			ano -= umMes;
+		if (funcMes == 1 || funcMes == 2) {
+			funcMes += umAno;
+			funcAno -= umMes;
 		}
 
-		int diaSemana = dia + 2 * mes + tresMes * (mes + 1)
-		/ cincoAno + ano + ano / quatroAno - ano
-		/ cemAno + ano / quatrocentosAno;
+		int diaSemana = funcDia + 2 * funcMes + tresMes * (funcMes + 1)
+		/ cincoAno + funcAno + funcAno / quatroAno - funcAno
+		/ cemAno + funcAno / quatrocentosAno;
 
 		return diaSemana % seteDia;
 	}
@@ -417,12 +422,14 @@ public class Exercicio {
 	/**
 	 * Função matemática que faz o cálculo da raiz.
 	 *
-	 * @param numero inteiro que representa o radicando
-	 * @param i      inteiro que representa o índice
+	 * @param numero número que representa o radicando
+	 * @param repeticoes número que representa o índice
 	 *
 	 * @return {double} Retorna o resultado da raiz
 	 */
-	public static double raiz(final double numero, double i) {
+	public static double raiz(final double numero,
+	final double repeticoes) {
+		double funcRepeticoes = repeticoes;
 		if (numero <= 0) {
 			throw new IllegalArgumentException("'numero' deve"
 			+ " ser maior que 0");
@@ -430,9 +437,9 @@ public class Exercicio {
 
 		double raizR = 1;
 
-		while (0 <= i) {
+		while (0 <= funcRepeticoes) {
 			raizR = (raizR + numero / raizR) / 2;
-			i = i - 1;
+			funcRepeticoes = funcRepeticoes - 1;
 
 		}
 
@@ -504,21 +511,25 @@ public class Exercicio {
 	 *
 	 * @return {double} Retorna o maior divisor comum
 	 */
-	public static double mdc(double numeroA, double numeroB) {
-		if (numeroB > numeroA || 0 >= numeroB) {
+	public static double mdc(final double numeroA,
+	final double numeroB) {
+		double funcNumeroA = numeroA;
+		double funcNumeroB = numeroB;
+
+		if (funcNumeroB > funcNumeroA || 0 >= funcNumeroB) {
 			throw new IllegalArgumentException("'numeroB' deve ser"
 			+ " <= 'numeroA' e numeroB deve ser < 0");
 		}
 
 		double resto;
 
-		while (numeroB != 0) {
-			resto = numeroA % numeroB;
-			numeroA = numeroB;
-			numeroB = resto;
+		while (funcNumeroB != 0) {
+			resto = funcNumeroA % funcNumeroB;
+			funcNumeroA = funcNumeroB;
+			funcNumeroB = resto;
 		}
 
-		return numeroA;
+		return funcNumeroA;
 	}
 
 	/**
@@ -529,22 +540,25 @@ public class Exercicio {
 	 *
 	 * @return {double} Retorna o maior divisor comum
 	 */
-	public static double mdc2(int numeroA, int numeroB) {
-		if (numeroB > numeroA || 0 >= numeroB) {
+	public static double mdc2(final int numeroA, final int numeroB) {
+		int funcNumeroA = numeroA;
+		int funcNumeroB = numeroB;
+
+		if (funcNumeroB > funcNumeroA || 0 >= funcNumeroB) {
 			throw new IllegalArgumentException("'numeroB' deve"
 			+ " ser <= 'numeroA' e numeroB deve ser < 0");
 		}
 
-		while (numeroA != numeroB) {
-			if (numeroA > numeroB) {
-				numeroA = numeroA - numeroB;
+		while (funcNumeroA != funcNumeroB) {
+			if (funcNumeroA > funcNumeroB) {
+				funcNumeroA = funcNumeroA - funcNumeroB;
 			} else {
-				numeroB = numeroB - numeroA;
+				funcNumeroB = funcNumeroB - funcNumeroA;
 			}
 
 		}
 
-		return numeroA;
+		return funcNumeroA;
 	}
 
 	/**
@@ -578,8 +592,9 @@ public class Exercicio {
 	 *
 	 * @return {int} Retorna o número de Fibonnaci na n-ésima posição
 	 */
-	public static int fibonacci(int numero) {
-		if (numero < 0) {
+	public static int fibonacci(final int numero) {
+		int funcNumero = numero;
+		if (funcNumero < 0) {
 			throw new IllegalArgumentException("O número deve"
 			+ " ser maior ou igual a 0");
 		}
@@ -587,13 +602,13 @@ public class Exercicio {
 		int soma = 0;
 		int resultado = 1;
 
-		if (numero == 0 || numero == 1) {
+		if (funcNumero == 0 || funcNumero == 1) {
 			return resultado;
 		}
 
 		int i = 2;
 
-		while (i <= numero) {
+		while (i <= funcNumero) {
 			int aux = resultado;
 			resultado = resultado + soma;
 			soma = aux;
