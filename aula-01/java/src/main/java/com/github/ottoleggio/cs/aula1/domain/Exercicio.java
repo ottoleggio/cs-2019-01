@@ -56,15 +56,16 @@ public class Exercicio {
 			throw new IllegalArgumentException("numero >=100 & "
 		+ "numero <= 999");
 		}
-
+		final int potencia = 3;
 		int divisorCem = cem;
 		int divisoDez = dez;
 		int centena = numero / divisorCem;
 		int du = numero % divisorCem;
 		int dezena = du / divisoDez;
 		int unidade = du % divisoDez;
-		int cdu = (int) (Math.pow(centena, 3) + Math.pow(dezena, 3)
-		+ Math.pow(unidade, 3));
+		int cdu = (int) (Math.pow(centena, potencia)
+		+ Math.pow(dezena, potencia)
+		+ Math.pow(unidade, potencia));
 		return cdu == numero;
 	}
 
@@ -82,15 +83,25 @@ public class Exercicio {
 	public static double diaDaSemana(final int dia, int mes, int ano) {
 		verificaData(dia, mes, ano);
 
+		final int umAno = 12;
+		final int umMes = 1;
+		final int tresMes = 3;
+		final int cincoAno = 5;
+		final int quatroAno = 4;
+		final int cemAno = 100;
+		final int quatrocentosAno = 400;
+		final int seteDia = 7;
+
 		if (mes == 1 || mes == 2) {
-			mes += 12;
-			ano -= 1;
+			mes += umAno;
+			ano -= umMes;
 		}
 
-		int drDobbsExpr = dia + 2 * mes + 3 * (mes + 1)
-		/ 5 + ano + ano / 4 - ano / 100 + ano / 400;
+		int diaSemana = dia + 2 * mes + tresMes * (mes + 1)
+		/ cincoAno + ano + ano / quatroAno - ano
+		/ cemAno + ano / quatrocentosAno;
 
-		return drDobbsExpr % 7;
+		return diaSemana % seteDia;
 	}
 
 	/**
@@ -149,7 +160,9 @@ public class Exercicio {
 	 *
 	 */
 	private static void verificaAno(final int ano) {
-		if (ano < 1753) {
+		final int limiteMax = 1753;
+
+		if (ano < limiteMax) {
 			throw new IllegalArgumentException("ano inválido");
 		}
 	}
@@ -598,15 +611,20 @@ public class Exercicio {
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean digitoCPF(final int[] vetor) {
-		if (vetor.length != 11) {
+		final int limiteCpf = 11;
+		final int limiteDigitos = 9;
+		final int primeiroDigito = 10;
+		final int segundoDigito = 11;
+
+		if (vetor.length != limiteCpf) {
 			throw new IllegalArgumentException("Insira a quantidade"
 			+ " correta de dígitos (11)");
 		}
 
 		int i = 0;
 
-		for (i = 0; i < 11; i++) {
-			if (vetor[i] > 9 || vetor[i] < 0) {
+		for (i = 0; i < limiteCpf; i++) {
+			if (vetor[i] > limiteDigitos || vetor[i] < 0) {
 				throw new IllegalArgumentException("O número"
 				+ " deve estar entre 0 e 9");
 			}
@@ -615,14 +633,15 @@ public class Exercicio {
 		int testeA = 0;
 		int testeB = 0;
 
-		for (i = 0; i < 9; i++) {
+		for (i = 0; i < limiteDigitos; i++) {
 			testeA += ((i + 1) * vetor[i]);
 			testeB += ((i + 1) * vetor[i + 1]);
 		}
 
-		int digitoA = mod(mod(testeA, 11), 10);
-		int digitoB = mod(mod(testeB, 11), 10);
-		return (digitoA == vetor[9] && digitoB == vetor[10]);
+		int digitoA = mod(mod(testeA, segundoDigito), primeiroDigito);
+		int digitoB = mod(mod(testeB, segundoDigito), primeiroDigito);
+		return (digitoA == vetor[limiteDigitos]
+		&& digitoB == vetor[primeiroDigito]);
 	}
 
 	/**
@@ -634,23 +653,32 @@ public class Exercicio {
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean digitoCPF2(final int[] vetor) {
-		if (vetor.length != 11) {
+		final int limiteCpf = 11;
+		final int limiteDigitos = 9;
+		final int primeiroDigito = 10;
+		final int segundoDigito = 11;
+		final int limiteDigitosVetor = 8;
+		final int primeiroDigitoVetor = 9;
+		final int segundoDigitoVetor = 10;
+		final int caminhaDigitos = 7;
+
+		if (vetor.length != limiteCpf) {
 			throw new IllegalArgumentException("Insira a quantidade"
 			+ " correta de dígitos (11)");
 		}
 
 		int i = 0;
 
-		for (i = 0; i < 11; i++) {
-			if (vetor[i] > 9 || vetor[i] < 0) {
+		for (i = 0; i < limiteCpf; i++) {
+			if (vetor[i] > limiteDigitos || vetor[i] < 0) {
 				throw new IllegalArgumentException(
 				"O número deve estar entre 0 e 9");
 			}
 		}
 
-		i = 7;
-		int testeA = vetor[8];
-		int testeB = vetor[8];
+		i = caminhaDigitos;
+		int testeA = vetor[limiteDigitosVetor];
+		int testeB = vetor[limiteDigitosVetor];
 
 		while (0 <= i) {
 			testeA = testeA + vetor[i];
@@ -658,10 +686,12 @@ public class Exercicio {
 			i = i - 1;
 		}
 
-		int digitoA = mod(mod(testeB, 11), 10);
-		int digitoB = mod(mod(testeB - testeA + 
-		(9 * vetor[9]), 11), 10);
+		int digitoA = mod(mod(testeB, segundoDigito), primeiroDigito);
+		int digitoB = mod(mod(testeB - testeA
+		+ (limiteDigitos * vetor[limiteDigitos]), segundoDigito),
+		primeiroDigito);
 
-		return (digitoA == vetor[9]) && (digitoB == vetor[10]);
+		return (digitoA == vetor[primeiroDigitoVetor])
+		&& (digitoB == vetor[segundoDigitoVetor]);
 	}
 }
