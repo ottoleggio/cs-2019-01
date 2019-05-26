@@ -216,7 +216,7 @@ public class Exercicio {
 		int soma = 1;
 		while (i <= numero) {
 			soma = soma + i;
-			i = i + 1;
+			i++;
 		}
 
 		return soma;
@@ -240,7 +240,7 @@ public class Exercicio {
 
 		while (i <= numero) {
 			resultado = resultado * i;
-			i = i + 1;
+			i++;
 		}
 
 		return resultado;
@@ -274,7 +274,7 @@ public class Exercicio {
 
 		while (i <= totalParcelas) {
 			resultado = resultado + parcela;
-			i = i + 1;
+			i++;
 		}
 
 		return resultado;
@@ -299,7 +299,7 @@ public class Exercicio {
 
 		while (i <= expoente) {
 			potencia = produto(potencia, base);
-			i = i + 1;
+			i++;
 		}
 
 		return potencia;
@@ -358,7 +358,7 @@ public class Exercicio {
 			numerador = numerador * numerador;
 			denominador = denominador * i;
 			potenciaE = potenciaE + numerador / denominador;
-			i = i + 1;
+			i++;
 		}
 
 		return potenciaE;
@@ -384,12 +384,12 @@ public class Exercicio {
 		double dividendo = numeroB;
 		double divisor = numeroA;
 		int i = 1;
-		double t;
+		double aux;
 
 		while (i <= repeticoes) {
-			t = dividendo;
+			aux = dividendo;
 			dividendo = dividendo + divisor;
-			divisor = t;
+			divisor = aux;
 			i++;
 		}
 
@@ -467,7 +467,7 @@ public class Exercicio {
 			if (numero % i == 0) {
 				return false;
 			}
-			i = i + 1;
+			i++;
 		}
 
 		return true;
@@ -702,7 +702,7 @@ public class Exercicio {
 		while (0 <= i) {
 			testeA = testeA + vetor[i];
 			testeB = testeB + testeA;
-			i = i - 1;
+			i--;
 		}
 
 		final int digitoA = mod(mod(testeB, segundoDigito),
