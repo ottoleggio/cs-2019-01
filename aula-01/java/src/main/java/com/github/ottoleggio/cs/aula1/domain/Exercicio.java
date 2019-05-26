@@ -27,13 +27,14 @@ public class Exercicio {
 		}
 
 		// Dois primeiros dígitos do número mcdu (primeira dezena)
-		final int mc = numero / centena;
+		final int primDezena = numero / centena;
 
 		// Dois últimos dígitos (segunda dezena)
-		final int du = numero % centena;
+		final int degDezena = numero % centena;
 
 		// Quadrado das somas das dezenas
-		final int quadrado = (mc + du) * (mc + du);
+		final int quadrado = (primDezena + degDezena)
+		* (primDezena + degDezena);
 
 		return quadrado == numero;
 	}
@@ -51,20 +52,20 @@ public class Exercicio {
 		final int limiteMin = 100;
 		final int cem = 100;
 		final int dez = 10;
-		int numero = valor;
+		final int numero = valor;
 
 		if (numero < limiteMin || numero > limiteMax) {
 			throw new IllegalArgumentException("numero >=100 & "
 		+ "numero <= 999");
 		}
 		final int potencia = 3;
-		int divisorCem = cem;
-		int divisoDez = dez;
-		int centena = numero / divisorCem;
-		int du = numero % divisorCem;
-		int dezena = du / divisoDez;
-		int unidade = du % divisoDez;
-		int cdu = (int) (Math.pow(centena, potencia)
+		final int divisorCem = cem;
+		final int divisoDez = dez;
+		final int centena = numero / divisorCem;
+		final int resto = numero % divisorCem;
+		final int dezena = resto / divisoDez;
+		final int unidade = resto % divisoDez;
+		final int cdu = (int) (Math.pow(centena, potencia)
 		+ Math.pow(dezena, potencia)
 		+ Math.pow(unidade, potencia));
 		return cdu == numero;
@@ -85,7 +86,7 @@ public class Exercicio {
 	final int mes, final int ano) {
 		verificaData(dia, mes, ano);
 
-		int funcDia = dia;
+		final int funcDia = dia;
 		int funcMes = mes;
 		int funcAno = ano;
 		final int umAno = 12;
@@ -102,7 +103,8 @@ public class Exercicio {
 			funcAno -= umMes;
 		}
 
-		int diaSemana = funcDia + 2 * funcMes + tresMes * (funcMes + 1)
+		final int diaSemana = funcDia + 2 * funcMes
+		+ tresMes * (funcMes + 1)
 		/ cincoAno + funcAno + funcAno / quatroAno - funcAno
 		/ cemAno + funcAno / quatrocentosAno;
 
@@ -488,7 +490,7 @@ public class Exercicio {
 
 		final int tamanho = vetor.length - 1;
 
-		double limite = Math.floor(Math.sqrt(tamanho));
+		final double limite = Math.floor(Math.sqrt(tamanho));
 
 		for (int i = 2; i <= limite; i++) {
 			if (vetor[i] == 0) {
@@ -593,7 +595,7 @@ public class Exercicio {
 	 * @return {int} Retorna o número de Fibonnaci na n-ésima posição
 	 */
 	public static int fibonacci(final int numero) {
-		int funcNumero = numero;
+		final int funcNumero = numero;
 		if (funcNumero < 0) {
 			throw new IllegalArgumentException("O número deve"
 			+ " ser maior ou igual a 0");
@@ -609,7 +611,7 @@ public class Exercicio {
 		int i = 2;
 
 		while (i <= funcNumero) {
-			int aux = resultado;
+			final int aux = resultado;
 			resultado = resultado + soma;
 			soma = aux;
 			i++;
@@ -649,14 +651,16 @@ public class Exercicio {
 		int testeB = 0;
 
 		for (i = 0; i < limiteDigitos; i++) {
-			testeA += ((i + 1) * vetor[i]);
-			testeB += ((i + 1) * vetor[i + 1]);
+			testeA += (i + 1 * vetor[i]);
+			testeB += (i + 1 * vetor[i + 1]);
 		}
 
-		int digitoA = mod(mod(testeA, segundoDigito), primeiroDigito);
-		int digitoB = mod(mod(testeB, segundoDigito), primeiroDigito);
-		return (digitoA == vetor[limiteDigitos]
-		&& digitoB == vetor[primeiroDigito]);
+		final int digitoA = mod(mod(testeA, segundoDigito),
+		primeiroDigito);
+		final int digitoB = mod(mod(testeB, segundoDigito),
+		primeiroDigito);
+		return digitoA == vetor[limiteDigitos]
+		&& digitoB == vetor[primeiroDigito];
 	}
 
 	/**
@@ -701,8 +705,9 @@ public class Exercicio {
 			i = i - 1;
 		}
 
-		int digitoA = mod(mod(testeB, segundoDigito), primeiroDigito);
-		int digitoB = mod(mod(testeB - testeA
+		final int digitoA = mod(mod(testeB, segundoDigito),
+		primeiroDigito);
+		final int digitoB = mod(mod(testeB - testeA
 		+ (limiteDigitos * vetor[limiteDigitos]), segundoDigito),
 		primeiroDigito);
 
