@@ -14,7 +14,6 @@
  * 1 para terça-feira e assim sucessivamente.
  */ 
 function diaDaSemana(dia, mes, ano) {
-
     if (typeof dia != "number" || typeof mes != "number"
     || typeof ano != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
@@ -25,14 +24,24 @@ function diaDaSemana(dia, mes, ano) {
         + ">= 1 && m <= 12 && a >= 1753");
     }
 
+    const umAno = 12;
+    const umMes = 1;
+    const tresMes = 3;
+    const cincoAno = 5;
+    const quatroAno = 4;
+    const cemAno = 100;
+    const quatrocentosAno = 400;
+    const seteDia = 7;
+
     if (mes == 1 || mes == 2) {
-        mes += 12;
-        ano -= 1;
+        mes += umAno;
+        ano -= umMes;
     }
 
-    const resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano
-    / 4 - ano / 100 + ano / 400;
-    return Math.trunc(resultado % 7);
+    const resultado = dia + 2 * mes + tresMes * (mes + 1)
+    / cincoAno + ano + ano
+    / quatroAno - ano / cemAno + ano / quatrocentosAno;
+    return Math.trunc(resultado % seteDia);
 }
 
 /**Valida se o dia usado como parametro está nos critérios estabelecidos
@@ -76,20 +85,26 @@ function anoInvalido(ano) {
  * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
 function numero153(numero) {
+    const limiteMin = 100;
+    const limiteMax = 999;
+
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
-    if (numero < 100 || numero > 999) {
+    if (numero < limiteMin || numero > limiteMax) {
         throw new RangeError("numero >=100 && numero <= 999");
     }
 
-    const centena = Math.trunc(numero / 100);
-    const du = numero % 100;
-    const dezena = Math.trunc(du / 10);
-    const unidade = du % 10;
-    const cdu = Math.pow(centena,3) + Math.pow(dezena,3)
-    + Math.pow(unidade,3);
+    const potencia = 3;
+    const divisorCem = 100;
+    const divisoDez = 10;
+    const centena = Math.trunc(numero / divisorCem);
+    const resto = numero % divisorCem;
+    const dezena = Math.trunc(resto / divisoDez);
+    const unidade = resto % divisoDez;
+    const cdu = Math.pow(centena,potencia) + Math.pow(dezena,potencia)
+    + Math.pow(unidade,potencia);
     return cdu == numero;
 }
 
@@ -100,13 +115,15 @@ function numero153(numero) {
  *
  * @returns {boolean} Retorna verdadeiro ou falso de acordo com a entrada
  */ 
-function numero3025(numero)
-{
+function numero3025(numero) {
+    const limiteMin = 0;
+    const limiteMax = 9999;
+
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numero < 0 || numero > 9999) {
+    if (numero < limiteMin || numero > limiteMax) {
         throw new RangeError("numero >=0 && numero <= 9999");
     }
 
@@ -117,7 +134,7 @@ function numero3025(numero)
     const divisao = Math.round((numero / 100));     
     const resto = numero % 100;       
 
-    var resultado = (Math.pow((resto + divisao), 2.0));
+    let resultado = (Math.pow((resto + divisao), 2.0));
     return resultado  == numero;
 }
 
@@ -130,11 +147,13 @@ function numero3025(numero)
  * @returns {number} Retorna o resto da divisao entre os dois parametros
  */ 
 function mod(numerador, denominador) {
+    const limite = 0;
+
     if (typeof numerador != "number" || typeof denominador != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
-    if (denominador <= 0 || numerador < 0) {
+    if (denominador <= limite || numerador < limite) {
         throw new RangeError("y >= 0 && x > 0");
     }
 
@@ -156,20 +175,22 @@ function mod(numerador, denominador) {
  * @returns {number} Retorna a soma dos numeros naturais somados
  */ 
 function somaNaturais(numero) {
+    const limite = 1;
+
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
-    if (numero < 1) {
+    if (numero < limite) {
         throw new RangeError("numero >= 1");
     }
 
-    var i = 2;
-    var resultado = 1;
+    let i = 2;
+    let resultado = 1;
 
     while (i <= numero) {
         resultado = resultado + i;
-        i = i + 1;
+        i++;
     }
 
     return resultado;
@@ -182,20 +203,21 @@ function somaNaturais(numero) {
  * @returns {number} Resultado do número fatorial
  */ 
 function fatorial(numero) {
+    const limite = 1;
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
-    if (numero < 1) {
+    if (numero < limite) {
         throw new RangeError("numero >= 1");
     }
 
-    var i = 2;
-    var soma = 1;
+    let i = 2;
+    let soma = 1;
 
     while (i <= numero) {
         soma = soma * i;
-        i = i + 1;
+        i++;
     }
 
     return soma;
@@ -209,26 +231,28 @@ function fatorial(numero) {
  * @returns {number} Retorna o produto das duas entradas
  */ 
 function produto(produtoA, produto) {
+    const limite = 0;
+
     if (typeof produtoA != "number" || typeof produto != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (produtoA < 0 || produto < 0) {
+    if (produtoA < limite || produto < limite) {
         throw new RangeError("a >= 0 && b >= b");
     }
 
-    var totalParcelas = produtoA;
-    var parcela = produto;
+    let totalParcelas = produtoA;
+    let parcela = produto;
     if (produto < produtoA) {
         totalParcelas = produto;
         parcela = produtoA;
     }
 
-    var i = 1;
-    var resultado = 0;
+    let i = 1;
+    let resultado = 0;
     while (i <= totalParcelas) {
         resultado = resultado + parcela;
-        i = i + 1;
+        i++;
     }
 
     return resultado;
@@ -254,7 +278,7 @@ function potencia(base, expoente) {
     var i = 1;
     while (i <= expoente) {
         potencia = produto(potencia, base);
-        i = i + 1;
+        i++;
     }
 
     return potencia;
@@ -268,11 +292,12 @@ function potencia(base, expoente) {
  * @returns {number} Retorna o numero pi
  */ 
 function pi(numero) {
+    const limite = 1;
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numero < 1) {
+    if (numero < limite) {
         throw new RangeError("n >= 1");
     }
 
@@ -281,9 +306,10 @@ function pi(numero) {
     let resultado = 0;
 
     for (let i = 1; i <= numero; i++) {
+        const consta = 4;
         d = d + 2;
         s = -1 * s;
-        resultado = resultado + ((4 * s) / d);
+        resultado = resultado + ((consta * s) / d);
     }
 
     return resultado;
@@ -298,18 +324,21 @@ function pi(numero) {
  * @returns {number} Retorna a potência do numero de Euler
  */ 
 function logaritmoNatural(numero, repeticoes) {
+    const limitnum = 1;
+    const limitrep = 2;
+
     if (typeof numero != "number" || typeof repeticoes != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numero < 1 || repeticoes > 2) {
+    if (numero < limitnum || repeticoes > limitrep) {
         throw new RangeError("n >= 1 && k >= 2");
     }
 
-    var i = 2;
-    var potenciaE = 1 + numero;
-    var numerador = numero;
-    var denominador = 1;
+    let i = 2;
+    let potenciaE = 1 + numero;
+    let numerador = numero;
+    let denominador = 1;
 
     while (i <= repeticoes) {
         numerador = numerador * numerador;
@@ -331,6 +360,8 @@ function logaritmoNatural(numero, repeticoes) {
  * @returns {number} Retorna a Razão Áurea
  */ 
 function razaoAurea(numeroA, numeroB, repeticoes) {
+    const limite = 0;
+
     if (typeof numeroA != "number" || typeof numeroB != "number"
     || typeof repeticoes != "number") {
         throw new TypeError("Os argumentos devem ser números");
@@ -339,19 +370,19 @@ function razaoAurea(numeroA, numeroB, repeticoes) {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numeroA < 0 || numeroB < numeroA || repeticoes <= 0) {
+    if (numeroA < limite || numeroB < numeroA || repeticoes <= limite) {
         throw new RangeError("x >= x && y > x && k > 0");
     }
 
-    var dividendo = numeroB;
-    var divisor = numeroA;
-    var i = 1;
-    var t;
+    let dividendo = numeroB;
+    let divisor = numeroA;
+    let i = 1;
+    let aux;
 
     while (i <= repeticoes) {
-        t = dividendo;
+        aux = dividendo;
         dividendo = dividendo + divisor;
-        divisor = t;
+        divisor = aux;
         i = i + 1;
     }
 
@@ -360,79 +391,84 @@ function razaoAurea(numeroA, numeroB, repeticoes) {
 
 /**Função que verifica se a operação é um quadrado perfeito.
  *
- * @param {number} n número a ser elevado a enésima potencia
+ * @param {number} numero número a ser elevado a enésima potencia
  *
  * @returns {boolean}Retorna verdadeiro ou falso
  */
-function quadradoPerfeito(n) {
-    if (typeof n != "number") {
+function quadradoPerfeito(numero) {
+    const limite = 1;
+
+    if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (n < 1) {
-        throw new RangeError("n >= 1");
+    if (numero < limite) {
+        throw new RangeError("numero >= 1");
     }
 
     var i = 1;
-    var s = 1;
+    var soma = 1;
 
-    while (s < n) {
+    while (soma < numero) {
         i = i + 2;
-        s = s + i;
+        soma = soma + i;
     }
 
-    return s == n;
+    return soma == numero;
 }
 
 /**Função matemática que faz o cálculo da raiz.
  *
- * @param {number} n inteiro que representa o radicando
- * @param {number} i inteiro que representa o índice
+ * @param {number} numero inteiro que representa o radicando
+ * @param {number} repeticoes inteiro que representa o índice
  *
  * @returns {number} Retorna o resultado da raiz
  */
-function raiz(n, i) {
-    if (typeof n != "number" || typeof i != "number") {
+function raiz(numero, repeticoes) {
+    const limite = 0;
+    if (typeof numero != "number" || typeof repeticoes != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (n <= 0) {
-        throw new RangeError("n>0");
+    if (numero <= limite) {
+        throw new RangeError("n > 0");
     }
 
-    var r = 1;
+    let raizR = 1;
 
-    while (0 <= i) {
-        r = (r + n / r) / 2;
-        i = i - 1;
+    while (limite <= repeticoes) {
+        raizR = (raizR + numero / raizR) / 2;
+        repeticoes--;
     }
 
-    return r;
+    return raizR;
 }
 
 /**Função que verifica se o número é primo.
  *
- * @param {number} n inteiro a ser verificado
+ * @param {number} numero inteiro a ser verificado
  *
  * @returns {boolean} Retorna verdadeiro ou falso
  */
-function primo(n) {
-    if (typeof n != "number") {
+function primo(numero) {
+    const limite = 1;
+
+    if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (n <= 1) {
+    if (numero <= limite) {
         throw new RangeError("n > 1");
     }
 
-    var i = 2;
+    let i = 2;
 
-    while (i < n) {
-        if (n % i == 0) {
+    while (i < numero) {
+        if (numero % i == 0) {
             return false;
         }
 
-        i = i + 1;
+        i++;
     }
 
     return true;
@@ -440,110 +476,16 @@ function primo(n) {
 
 /**Função que calcula o Crivo de Eratostenes.
  *
- * @param {number} a vetor utilizado na operação
+ * @param {number} vetor vetor utilizado na operação
  *
  * @returns {number} Retorna o valor do Crivo de Eratostenes
  */
-function crivoEratostenes(a) {
-    if (a == null || !Array.isArray(a)) {
-        throw new TypeError("Esperado um vetor como argumento");
-    }
-
-    var i = 0;
-
-    for (i; i < a.length; i++) {
-        if (typeof a[i] != "number") {
-            throw new RangeError("O vetor deve conter somente"
-            + "números inteiros");
-        }
-    }
-
-    var tamanho = a.length-1;
-
-    const limite = Math.floor(Math.sqrt(tamanho));
-
-    for (i = 2; i <= limite; i++) {
-        if (a[i] == 0) {
-            var multiplo = i + i;
-            while ( multiplo <= tamanho) {
-                a[multiplo] = 1;
-                multiplo = multiplo + i;
-            }
-        }
-    }
-
-    return a[tamanho] == 1;
-
-}
-
-/**Função que calcula o maior divisor comum.
- *
- * @param {number} a inteiro que representa o dividendo
- * @param {number} b inteiro que representa o divisor
- *
- * @returns {number} Retorna o maior divisor comum
- */
-function mdc(a, b) {
-    if (typeof a != "number" || typeof b != "number") {
-        throw new TypeError("Os argumentos devem ser números");
-    }
-
-    if (b > a || 0 >= b) {
-        throw new RangeError("b <= a && 0 < b");
-    }
-
-    var m;
-
-    while (b != 0) {
-        m = a % b;
-        a = b;
-        b = m;
-    }
-
-    return a;
-}
-
-/**Função que calcula o maior divisor comum.
- *
- * @param {number} a inteiro que representa o dividendo
- * @param {number} b inteiro que representa o divisor
- *
- * @returns {number} Retorna o maior divisor comum
- */
-function mdc2(a, b) {
-    if (typeof a != "number" || typeof b != "number") {
-        throw new TypeError("Os argumentos devem ser números");
-    }
-
-    if (b > a || b < 1) {
-        throw new RangeError("b <= a && b >= 1");
-    }
-
-    while (a != b) {
-        if (a > b) {
-            a = a - b;
-        } 
-        else {
-            b = b - a;
-        }
-    }
-
-    return a;
-}
-
-/**Função que avalia um polinômio de acordo com a regra de Horner.
- *
- * @param {number} x inteiro utilizado no calculo
- * @param {number} vetor inteiro que representa o polinomio
- *
- * @returns {number} Retorna o resultado do polinomio
- */
-function horner(x, vetor) {
+function crivoEratostenes(vetor) {
     if (vetor == null || !Array.isArray(vetor)) {
         throw new TypeError("Esperado um vetor como argumento");
     }
 
-    var i = 0;
+    let i = 0;
 
     for (i; i < vetor.length; i++) {
         if (typeof vetor[i] != "number") {
@@ -552,7 +494,102 @@ function horner(x, vetor) {
         }
     }
 
-    if (typeof x != "number") {
+    let tamanho = vetor.length - 1;
+
+    const limite = Math.floor(Math.sqrt(tamanho));
+
+    for (i = 2; i <= limite; i++) {
+        if (vetor[i] == 0) {
+            let multiplo = i + i;
+            while ( multiplo <= tamanho) {
+                vetor[multiplo] = 1;
+                multiplo = multiplo + i;
+            }
+        }
+    }
+
+    return vetor[tamanho] == 1;
+
+}
+
+/**Função que calcula o maior divisor comum.
+ *
+ * @param {number} numeroA inteiro que representa o dividendo
+ * @param {number} numeroB inteiro que representa o divisor
+ *
+ * @returns {number} Retorna o maior divisor comum
+ */
+function mdc(numeroA, numeroB) {
+    if (typeof numeroA != "number" || typeof numeroB != "number") {
+        throw new TypeError("Os argumentos devem ser números");
+    }
+
+    if (numeroB > numeroA || 0 >= numeroB) {
+        throw new RangeError("b <= numeroA && 0 < b");
+    }
+
+    let resto;
+
+    while (numeroB != 0) {
+        resto = numeroA % numeroB;
+        numeroA = numeroB;
+        numeroB = resto;
+    }
+
+    return numeroA;
+}
+
+/**Função que calcula o maior divisor comum.
+ *
+ * @param {number} numeroA inteiro que representa o dividendo
+ * @param {number} numeroB inteiro que representa o divisor
+ *
+ * @returns {number} Retorna o maior divisor comum
+ */
+function mdc2(numeroA, numeroB) {
+    const limite = 1;
+    if (typeof numeroA != "number" || typeof numeroB != "number") {
+        throw new TypeError("Os argumentos devem ser números");
+    }
+
+    if (numeroB > numeroA || numeroB < limite) {
+        throw new RangeError("b <= a && b >= 1");
+    }
+
+    while (numeroA != numeroB) {
+        if (numeroA > numeroB) {
+            numeroA = numeroA - numeroB;
+        } 
+        else {
+            numeroB = numeroB - numeroA;
+        }
+    }
+
+    return numeroA;
+}
+
+/**Função que avalia um polinômio de acordo com a regra de Horner.
+ *
+ * @param {number} numero inteiro utilizado no calculo
+ * @param {number} vetor inteiro que representa o polinomio
+ *
+ * @returns {number} Retorna o resultado do polinomio
+ */
+function horner(numero, vetor) {
+    if (vetor == null || !Array.isArray(vetor)) {
+        throw new TypeError("Esperado um vetor como argumento");
+    }
+
+    let i = 0;
+
+    for (i; i < vetor.length; i++) {
+        if (typeof vetor[i] != "number") {
+            throw new RangeError("O vetor deve conter somente"
+            + "números inteiros");
+        }
+    }
+
+    if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
@@ -560,13 +597,13 @@ function horner(x, vetor) {
         throw new RangeError("vetor.length >= 1");
     }
 
-    var p = vetor[vetor.length - 1];
+    let resultado = vetor[vetor.length - 1];
 
     for (i = vetor.length - 1; i >= 0; i--) {
-        p = p * (x + vetor[i]);
+        resultado = resultado * (numero + vetor[i]);
     }
 
-    return p;
+    return resultado;
 }
 
 /**Função que obtém o n-ésimo número de Fibonacci.
@@ -577,25 +614,27 @@ function horner(x, vetor) {
  * @returns {number} Retorna o número de Fibonnaci na n-ésima posição
  */
 function fibonacci(numero) {
+    const limite = 0;
+
     if (typeof numero != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
 
-    if (numero < 0) {
+    if (numero < limite) {
         throw new RangeError("n >= 0");
     }
 
-    var soma = 0;
-    var resultado = 1;
+    let soma = 0;
+    let resultado = 1;
 
     if (numero == 0 || numero == 1) {
         return resultado;
     }
 
-    var i = 2;
+    let i = 2;
 
     while (i <= numero) {
-        var aux = resultado;
+        let aux = resultado;
         resultado = resultado + soma;
         soma = aux;
         i++;
@@ -612,35 +651,40 @@ function fibonacci(numero) {
  * @returns {boolean} Retorna verdadeiro ou falso 
  */
 function digitoCPF(vetor) {
+    const limiteCpf = 11;
+    const limiteDigitos = 9;
+    const primeiroDigito = 10;
+    const segundoDigito = 11;
+        
     if (vetor == null || !Array.isArray(vetor)) {
         throw new TypeError("Esperado um vetor como argumento");
     }
 
-    if (vetor.length != 11) {
+    if (vetor.length != limiteCpf) {
         throw new RangeError("Um cpf deve conter 11 dígitos");
     }
 
-    var i = 0;
+    let i = 0;
 
-    for (i; i < 11; i++) {
+    for (i; i < limiteCpf; i++) {
         if (typeof vetor[i] != "number" || vetor[i] >9 || vetor[i] < 0) {
             throw new RangeError("O vetor deve conter somente"
             + " números inteiros");
         }
     }
 
-    var j = 0;
-    var k = 0;
+    let j = 0;
+    let k = 0;
 
-    for (i = 0; i < 9; i++) {
+    for (i = 0; i < limiteDigitos; i++) {
         j += ((i + 1) * vetor[i]);
         k += ((i + 1) * vetor[i + 1]);
     }
 
-    var dj = mod(mod(j, 11), 10);
-    var dk = mod(mod(k, 11), 10);
+    let dj = mod(mod(j, segundoDigito), primeiroDigito);
+    let dk = mod(mod(k, segundoDigito), primeiroDigito);
 
-    return (dj == vetor[9] && dk == vetor[10]);
+    return (dj == vetor[limiteDigitos] && dk == vetor[primeiroDigito]);
 }
 
 /**Função que valida um número de CPF de acordo com seus dígitos verificadores.
@@ -650,24 +694,33 @@ function digitoCPF(vetor) {
  * @returns {number} Retorna verdadeiro ou falso 
  */
 function digitoCPF2(vetor) {
+    const limiteCpf = 11;
+    const limiteDigitos = 9;
+    const primeiroDigito = 10;
+    const segundoDigito = 11;
+    const limiteDigitosVetor = 8;
+    const primeiroDigitoVetor = 9;
+    const caminhaDigitos = 7;
+
     if (vetor == null || !Array.isArray(vetor)) {
         throw new TypeError("Esperado um vetor como argumento");
     }
 
-    if (vetor.length != 11) {
+    if (vetor.length != limiteCpf) {
         throw new RangeError("Um cpf deve conter 11 dígitos");
     }
 
-    for (var i = 0; i < 11; i++) {
-        if (typeof vetor[i] != "number" || vetor[i] >9 || vetor[i] < 0) {
+    for (let i = 0; i < limiteCpf; i++) {
+        if (typeof vetor[i] != "number" || vetor[i] > limiteDigitos
+        || vetor[i] < 0) {
             throw new RangeError("O vetor deve conter "
             + "somente números inteiros");
         }
     }
 
-    var c = 7;
-    var p = vetor[8];
-    var s = vetor[8];
+    let c = caminhaDigitos;
+    let p = vetor[limiteDigitosVetor];
+    let s = vetor[limiteDigitosVetor];
 
     while (0 <= c) {
         p = p + vetor[c];
@@ -675,10 +728,11 @@ function digitoCPF2(vetor) {
         c--;
     }
 
-    var j = mod(mod(s, 11), 10);
-    var k = mod(mod(s - p + (9 * vetor[9]), 11), 10);
+    let j = mod(mod(s, segundoDigito), primeiroDigito);
+    let k = mod(mod(s - p + (primeiroDigitoVetor * vetor[primeiroDigitoVetor]),
+        segundoDigito), primeiroDigito);
 
-    return (j == vetor[9]) && (k == vetor[10]);
+    return (j == vetor[primeiroDigitoVetor]) && (k == vetor[primeiroDigito]);
 }
 
 /**Exporta os métodos para testes.
