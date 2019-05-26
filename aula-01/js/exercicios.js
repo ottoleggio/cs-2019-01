@@ -15,12 +15,14 @@
  */ 
 function diaDaSemana(dia, mes, ano) {
 
-    if (typeof dia != "number" || typeof mes != "number" || typeof ano != "number") {
+    if (typeof dia != "number" || typeof mes != "number"
+    || typeof ano != "number") {
         throw new TypeError("Os argumentos devem ser números inteiros");
     }
 
     if (diaInvalido(dia) || mesInvalido(mes) || anoInvalido(ano)) {
-        throw new RangeError("dia >= 1 && d <= 31 && mes >= 1 && m <= 12 && a >= 1753");
+        throw new RangeError("dia >= 1 && d <= 31 && mes "
+        + ">= 1 && m <= 12 && a >= 1753");
     }
 
     if (mes == 1 || mes == 2) {
@@ -28,9 +30,9 @@ function diaDaSemana(dia, mes, ano) {
         ano -= 1;
     }
 
-    const resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
+    const resultado = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano
+    / 4 - ano / 100 + ano / 400;
     return Math.trunc(resultado % 7);
-    
 }
 
 /**Valida se o dia usado como parametro está nos critérios estabelecidos
@@ -86,7 +88,8 @@ function numero153(numero) {
     const du = numero % 100;
     const dezena = Math.trunc(du / 10);
     const unidade = du % 10;
-    const cdu = Math.pow(centena,3) + Math.pow(dezena,3) + Math.pow(unidade,3);
+    const cdu = Math.pow(centena,3) + Math.pow(dezena,3)
+    + Math.pow(unidade,3);
     return cdu == numero;
 }
 
@@ -147,7 +150,8 @@ function mod(numerador, denominador) {
 /**Função que retorna a soma de numeros naturais dada a quantidade de
  * numeros a serem sequencialmente somados.
  *
- * @param {number} numero inteiro que representa a quantidade de numeros a serem somados
+ * @param {number} numero inteiro que representa a quantidade 
+ * de numeros a serem somados
  *
  * @returns {number} Retorna a soma dos numeros naturais somados
  */ 
@@ -321,12 +325,14 @@ function logaritmoNatural(numero, repeticoes) {
  *
  * @param {number} numeroA inteiro utilizado na soma
  * @param {number} numeroB inteiro utilizado na soma
- * @param {number} repeticoes define a quantidade de iterações da soma a ser realizada
+ * @param {number} repeticoes define a quantidade de iterações
+ * da soma a ser realizada
  *
  * @returns {number} Retorna a Razão Áurea
  */ 
 function razaoAurea(numeroA, numeroB, repeticoes) {
-    if (typeof numeroA != "number" || typeof numeroB != "number" || typeof repeticoes != "number") {
+    if (typeof numeroA != "number" || typeof numeroB != "number"
+    || typeof repeticoes != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
     if (typeof numeroB != "number") {
@@ -447,7 +453,8 @@ function crivoEratostenes(a) {
 
     for (i; i < a.length; i++) {
         if (typeof a[i] != "number") {
-            throw new RangeError("O vetor deve conter somente números inteiros");
+            throw new RangeError("O vetor deve conter somente"
+            + "números inteiros");
         }
     }
 
@@ -540,7 +547,8 @@ function horner(x, vetor) {
 
     for (i; i < vetor.length; i++) {
         if (typeof vetor[i] != "number") {
-            throw new RangeError("O vetor deve conter somente números inteiros");
+            throw new RangeError("O vetor deve conter somente"
+            + "números inteiros");
         }
     }
 
@@ -563,7 +571,8 @@ function horner(x, vetor) {
 
 /**Função que obtém o n-ésimo número de Fibonacci.
  *
- * @param {number} n inteiro que representa a quantidade de iterações do cálculo
+ * @param {number} n inteiro que representa a quantidade de
+ * iterações do cálculo
  *
  * @returns {number} Retorna o número de Fibonnaci na n-ésima posição
  */
@@ -595,7 +604,8 @@ function fibonacci(numero) {
     return resultado;
 }
 
-/**Função que valida um número de CPF de acordo com seus dígitos verificadores
+/**Função que valida um número de CPF de acordo com seus
+ * dígitos verificadores
  *
  * @param {number} vetor sequência de números que representa um CPF
  *
@@ -614,7 +624,8 @@ function digitoCPF(vetor) {
 
     for (i; i < 11; i++) {
         if (typeof vetor[i] != "number" || vetor[i] >9 || vetor[i] < 0) {
-            throw new RangeError("O vetor deve conter somente números inteiros");
+            throw new RangeError("O vetor deve conter somente"
+            + " números inteiros");
         }
     }
 
@@ -649,7 +660,8 @@ function digitoCPF2(vetor) {
 
     for (var i = 0; i < 11; i++) {
         if (typeof vetor[i] != "number" || vetor[i] >9 || vetor[i] < 0) {
-            throw new RangeError("O vetor deve conter somente números inteiros");
+            throw new RangeError("O vetor deve conter "
+            + "somente números inteiros");
         }
     }
 
