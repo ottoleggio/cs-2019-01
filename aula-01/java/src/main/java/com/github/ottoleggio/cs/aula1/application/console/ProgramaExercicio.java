@@ -1,6 +1,6 @@
 package com.github.ottoleggio.cs.aula1.application.console;
 
-//import com.github.ottoleggio.cs.aula1.domain.Exercicio;
+//import com.github.ottoleggio.cs.aula1.domain.Algoritmos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
