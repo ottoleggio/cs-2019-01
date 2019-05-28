@@ -4,15 +4,27 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FrequenciaAleatoria {
+public final class FrequenciaAleatoria {
 
+    /**
+	 * Método construtor.
+	 */
+	private FrequenciaAleatoria() {
+
+	}
+
+	/**
+	 * Função que gera 1.000.000 números aleatórios de
+	 * 0 a 1000 e elenca os mais frequentes.
+	 */
 	public static ArrayList<Integer> geraFrequencia() {
 		Random rand = new Random();
 
 		ArrayList<Integer> vetor = new ArrayList<Integer>();
-
-		for (int i = 1; i <= 1000000; i++) {
-			vetor.add(rand.nextInt(1001));
+		final int abrangencia = 1001;
+		final int tamanho = 1000000;
+		for (int i = 1; i <= tamanho; i++) {
+			vetor.add(rand.nextInt(abrangencia));
 		}
 
 		Collections.sort(vetor);
@@ -27,10 +39,12 @@ public class FrequenciaAleatoria {
 			//System.out.println("um encontrado");
 			i++;
 		}
-		resultado.add(contador); // armazena a frequencia na posição 0
-	
-		resultado.add(vetor.get(i)); // começa a armazenar os numeros com maxima frequencia
-		
+		// armazena a frequencia na posição 0
+		resultado.add(contador);
+
+		// começa a armazenar os numeros com maxima frequencia
+		resultado.add(vetor.get(i));
+
 		int frequencia = contador;
 		while (frequencia == contador) {
 			contador = 0;
@@ -39,7 +53,7 @@ public class FrequenciaAleatoria {
 				contador++;
 				i++;
 			}
-			if(contador == frequencia) {
+			if (contador == frequencia) {
 				resultado.add(vetor.get(i));
 			}
 		}

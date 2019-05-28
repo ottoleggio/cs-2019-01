@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 public final class ProgramaExercicio7 {
 
-	private static final Logger logger = LogManager.getLogger(ProgramaExercicio7.class);
+    private static final Logger logger = LogManager.getLogger(ProgramaExercicio7.class);
 
 	/**
 	 * Restringe criação de instância.
@@ -33,9 +33,7 @@ public final class ProgramaExercicio7 {
 		//ArrayList<Integer> teste = new ArrayList<Integer>();
 		//teste.addAll(FrequenciaAleatoria.geraFrequencia());
 		//System.out.println(teste.get(0) + " " + teste.get(1));
-		
+
 		System.out.println(PalavraFrequente.palavra("alo alo oh oh alo ih ah oh oh"));
 	}
-	
-	
 }
