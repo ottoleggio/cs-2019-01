@@ -7,8 +7,14 @@ import org.junit.jupiter.api.Test;
 class TestExercicio {
 
 	@Test
+    public void testCobertura() {
+        assertNotNull(new Exercicio());
+	}
+
+	@Test
 	void testNumero3025() {
 		assertTrue(Exercicio.numero3025(3025));
+		assertFalse(Exercicio.numero3025(3024));
 	}
 
 	@Test
@@ -20,6 +26,7 @@ class TestExercicio {
 	@Test
 	void testNumero153() {
 		assertTrue(Exercicio.numero153(153));
+		assertFalse(Exercicio.numero153(154));
 	}
 
 	@Test
@@ -42,6 +49,7 @@ class TestExercicio {
 		assertTrue(exp.getMessage().contains("dia"));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(40,12,2019));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(10,13,2019));
+        assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(10,0,2019));
         assertThrows(IllegalArgumentException.class,() -> Exercicio.diaDaSemana(10,12,1750));
 	}
 
@@ -129,7 +137,7 @@ class TestExercicio {
 	@Test
 	void testExcepRazaoAurea() {
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(-1,1,0));
-		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(1,1,0));
+		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(1,0,0));
 		assertThrows(IllegalArgumentException.class,() -> Exercicio.razaoAurea(1,2,-1));
 	}
 
@@ -175,6 +183,12 @@ class TestExercicio {
 			test1[i] = 0;
 		}
         assertEquals(true, Exercicio.crivoEratostenes(test1));
+        
+		int[] test2 = new int[18];
+		for (int i = 1; i < 18; i++) {
+			test2[i] = 0;
+		}
+        assertEquals(false, Exercicio.crivoEratostenes(test2));
 	}
 	
 	@Test
@@ -223,6 +237,7 @@ class TestExercicio {
 	void testFibonacci() {
         assertEquals(8, Exercicio.fibonacci(6));
         assertEquals(1, Exercicio.fibonacci(1));
+        assertEquals(1, Exercicio.fibonacci(0));
 	}
 
 	@Test
