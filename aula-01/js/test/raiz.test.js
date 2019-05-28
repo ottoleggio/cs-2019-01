@@ -1,4 +1,4 @@
-const funcao = require("../exercicios.js");
+const funcao = require("../algoritmos.js");
 
 test("raiz satisfaz (caso classico)", () => {
     expect(funcao.verificaRaiz(4, 100)).toBe(2.0);

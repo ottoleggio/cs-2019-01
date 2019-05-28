@@ -366,9 +366,6 @@ function razaoAurea(numeroA, numeroB, repeticoes) {
     || typeof repeticoes != "number") {
         throw new TypeError("Os argumentos devem ser números");
     }
-    if (typeof numeroB != "number") {
-        throw new TypeError("Os argumentos devem ser números");
-    }
 
     if (numeroA < limite || numeroB < numeroA || repeticoes <= limite) {
         throw new RangeError("x >= x && y > x && k > 0");

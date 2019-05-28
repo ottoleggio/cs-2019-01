@@ -1,4 +1,4 @@
-const funcao = require("../exercicios.js");
+const funcao = require("../algoritmos.js");
 
 var test1 = [0,1,2];
 
@@ -12,6 +12,10 @@ test("valor não é um número", () => {
 
 test("valor não é um número", () => {
     expect(() => { funcao.verificaHorner(1, "a"); }).toThrow(TypeError);
+});
+
+test("valor não é um número", () => {
+    expect(() => { funcao.verificaHorner("a", test1); }).toThrow(TypeError);
 });
 
 var test2 = [0,1,"2"];

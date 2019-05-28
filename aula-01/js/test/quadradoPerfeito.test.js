@@ -1,4 +1,4 @@
-const funcao = require("../exercicios.js");
+const funcao = require("../algoritmos.js");
 
 test("quadradoPerfeito satisfaz (caso classico)", () => {
     expect(funcao.verificaQuadradoPerfeito(25)).toBe(true);

@@ -1,4 +1,4 @@
-const funcao = require("../exercicios.js");
+const funcao = require("../algoritmos.js");
 
 test("mod satisfaz (caso classico)", () => {
     expect(funcao.verificaFatorial(5)).toBe(120);

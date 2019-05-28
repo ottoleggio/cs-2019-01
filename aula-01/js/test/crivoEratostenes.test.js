@@ -1,4 +1,4 @@
-const funcao = require("../exercicios.js");
+const funcao = require("../algoritmos.js");
 
 var test1 = [0];
 for (let i = 1; i < 19; i++) {

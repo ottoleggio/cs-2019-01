@@ -1,4 +1,4 @@
-const funcao = require("../exercicios.js");
+const funcao = require("../algoritmos.js");
 
 test("razaoAurea satisfaz (caso classico)", () => {
     expect(funcao.verificaRazaoAurea(1, 2, 1000)).toBe(1.6180339887498947);
