@@ -69,6 +69,12 @@
         <project.mainClass>
             com.github.ottoleggio.cs.aula1.application.console.ProgramaExercicio
         </project.mainClass>
+
+        <tools.dir>${project.basedir}/tools</tools.dir>
+        <pmd.plugin>3.12.0</pmd.plugin>
+        <pmd.version>6.15.0</pmd.version>
+        <checkstyle.plugin>3.1.0</checkstyle.plugin>
+        <checkstyle.version>8.21</checkstyle.version>
     </properties>
 
     <dependencies>
