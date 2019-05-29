@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1559061851536" clover="3.2.0">
-  <project timestamp="1559061851537" name="All files">
+<coverage generated="1559144320445" clover="3.2.0">
+  <project timestamp="1559144320446" name="All files">
     <metrics statements="289" coveredstatements="289" conditionals="174" coveredconditionals="174" methods="24" coveredmethods="24" elements="487" coveredelements="487" complexity="0" loc="289" ncloc="289" packages="1" files="1" classes="1"/>
     <file name="algoritmos.js" path="/home/otto/repos/cs-2019-01/aula-01/js/algoritmos.js">
       <metrics statements="289" coveredstatements="289" conditionals="174" coveredconditionals="174" methods="24" coveredmethods="24"/>

@@ -15,55 +15,72 @@ public final class FrequenciaAleatoria {
 	private FrequenciaAleatoria() {
 
 	}
-
-	/**
-	 * Função que gera 1.000.000 números aleatórios de
-	 * 0 a 1000 e elenca os mais frequentes.
-	 *
-	 * @return {ArrayList<Integer>} Retorna uma lista
-	 * com os numeros mais frequentes
-	 */
-	public static ArrayList<Integer> geraFrequencia() {
+	
+	public static ArrayList<Integer> geraAleatorio(int tamanho, int abrangencia) {
 		Random rand = new Random();
 
 		ArrayList<Integer> vetor = new ArrayList<Integer>();
-		final int abrangencia = 1001;
-		final int tamanho = 1000000;
-		for (int i = 1; i <= tamanho; i++) {
-			vetor.add(rand.nextInt(abrangencia));
+		
+		final int abrangenciaFunc = abrangencia + 1;
+		final int tamanhoFunc = tamanho;
+		
+		for (int i = 1; i <= tamanhoFunc; i++) {
+			vetor.add(rand.nextInt(abrangenciaFunc));
 		}
 
 		Collections.sort(vetor);
-
+		
+		return vetor;
+	}
+	
+	/**
+	 * Elenca os números mais frequentes de uma lista.
+	 * 
+	 * @param {ArrayList<Integer>} lista com números
+	 *
+	 * @return {ArrayList<Integer>} Retorna uma lista
+	 * com os numeros mais frequentes, sendo a posição
+	 * 0 a frequência
+	 */
+	public static ArrayList<Integer> encontraFrequente(ArrayList<Integer> vetor) {
 		ArrayList<Integer> resultado = new ArrayList<Integer>();
+		ArrayList<Integer> vetorAux = vetor;
+		//garante lista ordenada
+		Collections.sort(vetorAux);
 
 		int i = 0;
 		int contador = 0;
 
-		while (vetor.get(i) == vetor.get(i + 1)) {
+		while (vetorAux.get(i) == vetorAux.get(i + 1)) {
 			contador++;
 			//System.out.println("um encontrado");
 			i++;
 		}
 		// armazena a frequencia na posição 0
-		resultado.add(contador);
+		resultado.add(contador+1);
 
 		// começa a armazenar os numeros com maxima frequencia
-		resultado.add(vetor.get(i));
-
+		resultado.add(vetorAux.get(i));
+		
+		contador++;
+		i++;
 		int frequencia = contador;
-		while (frequencia == contador) {
-			contador = 0;
+		for (int j = 0; j < vetorAux.size(); j++) {
+			contador = 1;
 
-			while (vetor.get(i) == vetor.get(i + 1)) {
+			while (vetorAux.get(i) == vetorAux.get(i + 1)) {
 				contador++;
 				i++;
+				if(vetorAux.size() == i + 1) {
+					break;
+				}
 			}
 			if (contador == frequencia) {
-				resultado.add(vetor.get(i));
+				resultado.add(vetorAux.get(i));
 			}
+			i++;
+			j = i;
 		}
 		return resultado;
 	}
-
 }
