@@ -4,11 +4,14 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Classe responsavel pelo metodo FrequenciaAleatoria
+ */
 public final class FrequenciaAleatoria {
 
     /**
-	 * Método construtor.
-	 */
+     * Método construtor.
+     */
 	private FrequenciaAleatoria() {
 
 	}
@@ -16,6 +19,9 @@ public final class FrequenciaAleatoria {
 	/**
 	 * Função que gera 1.000.000 números aleatórios de
 	 * 0 a 1000 e elenca os mais frequentes.
+	 *
+	 * @return {ArrayList<Integer>} Retorna uma lista
+	 * com os numeros mais frequentes
 	 */
 	public static ArrayList<Integer> geraFrequencia() {
 		Random rand = new Random();
