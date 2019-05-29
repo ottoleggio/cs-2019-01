@@ -11,7 +11,11 @@ import java.util.ArrayList;
 import static java.util.stream.Collectors.*;
 import static java.util.Map.Entry.*;
 
-public class PalavraFrequente {
+public final class PalavraFrequente {
+	
+	private PalavraFrequente() {
+
+	}
 
 	public static String palavra(String frase) {
 		// cria contador
