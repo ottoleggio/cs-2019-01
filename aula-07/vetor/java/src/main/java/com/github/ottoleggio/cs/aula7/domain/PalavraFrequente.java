@@ -1,18 +1,15 @@
 package com.github.ottoleggio.cs.aula7.domain;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.ArrayList;
 
 import static java.util.stream.Collectors.*;
 import static java.util.Map.Entry.*;
 
 public final class PalavraFrequente {
-	
+
 	private PalavraFrequente() {
 
 	}
@@ -37,7 +34,7 @@ public final class PalavraFrequente {
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
 				.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
 
-		return (String)sorted.keySet().toArray()[0];
+		return (String) sorted.keySet().toArray()[0];
 	}
 
 }

@@ -15,28 +15,28 @@ public final class FrequenciaAleatoria {
 	private FrequenciaAleatoria() {
 
 	}
-	
+
 	public static ArrayList<Integer> geraAleatorio(int tamanho, int abrangencia) {
 		Random rand = new Random();
 
 		ArrayList<Integer> vetor = new ArrayList<Integer>();
-		
+
 		final int abrangenciaFunc = abrangencia + 1;
 		final int tamanhoFunc = tamanho;
-		
+
 		for (int i = 1; i <= tamanhoFunc; i++) {
 			vetor.add(rand.nextInt(abrangenciaFunc));
 		}
 
 		Collections.sort(vetor);
-		
+
 		return vetor;
 	}
-	
+
 	/**
 	 * Elenca os números mais frequentes de uma lista.
-	 * 
-	 * @param {ArrayList<Integer>} lista com números
+	 *
+	 * @param vetor lista com números
 	 *
 	 * @return {ArrayList<Integer>} Retorna uma lista
 	 * com os numeros mais frequentes, sendo a posição
@@ -57,11 +57,11 @@ public final class FrequenciaAleatoria {
 			i++;
 		}
 		// armazena a frequencia na posição 0
-		resultado.add(contador+1);
+		resultado.add(contador + 1);
 
 		// começa a armazenar os numeros com maxima frequencia
 		resultado.add(vetorAux.get(i));
-		
+
 		contador++;
 		i++;
 		int frequencia = contador;
@@ -71,7 +71,7 @@ public final class FrequenciaAleatoria {
 			while (vetorAux.get(i) == vetorAux.get(i + 1)) {
 				contador++;
 				i++;
-				if(vetorAux.size() == i + 1) {
+				if (vetorAux.size() == i + 1) {
 					break;
 				}
 			}
