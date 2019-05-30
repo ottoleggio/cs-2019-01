@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * Funções matemáticas diversas com propósito de estudo das ferramentas e boas
- * práticas da disciplina de construção de software
+ * práticas da disciplina de construção de software.
  */
 public final class Vetores {
 
