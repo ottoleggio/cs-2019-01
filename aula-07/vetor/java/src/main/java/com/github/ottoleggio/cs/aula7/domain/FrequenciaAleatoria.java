@@ -57,7 +57,7 @@ public final class FrequenciaAleatoria {
 			i++;
 		}
 		// armazena a frequencia na posição 0
-		resultado.add(contador + 1);
+ 		resultado.add(contador + 1);
 
 		// começa a armazenar os numeros com maxima frequencia
 		resultado.add(vetorAux.get(i));
@@ -68,12 +68,9 @@ public final class FrequenciaAleatoria {
 		for (int j = 0; j < vetorAux.size(); j++) {
 			contador = 1;
 
-			while (vetorAux.get(i) == vetorAux.get(i + 1)) {
+			if (vetorAux.get(i) == vetorAux.get(i + 1)) {
 				contador++;
 				i++;
-				if (vetorAux.size() == i + 1) {
-					break;
-				}
 			}
 			if (contador == frequencia) {
 				resultado.add(vetorAux.get(i));

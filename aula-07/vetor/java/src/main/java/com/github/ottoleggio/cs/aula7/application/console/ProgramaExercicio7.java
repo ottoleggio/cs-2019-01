@@ -32,10 +32,9 @@ public final class ProgramaExercicio7 {
 		logger.info("iniciado");
 		ArrayList<Integer> resultado = new ArrayList<Integer>();
 		resultado.add(50);
-		resultado.add(10);
-		resultado.add(10);
 		resultado.add(50);
-		resultado.add(20);
+		resultado.add(10);
+		resultado.add(10);
 		System.out.println(resultado);
 		Collections.sort(resultado);
 		System.out.println(resultado);
@@ -46,6 +45,6 @@ public final class ProgramaExercicio7 {
 		System.out.println(FrequenciaAleatoria.encontraFrequente(resultado));
 		//System.out.println(teste.get(0) + " " + teste.get(1));
 
-		//System.out.println(PalavraFrequente.palavra("alo alo oh oh alo ih ah oh oh"));
+		//System.out.println(PalavraFrequente.palavra("oh"));
 	}
 }
