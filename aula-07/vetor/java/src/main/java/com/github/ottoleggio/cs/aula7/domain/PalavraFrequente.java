@@ -13,6 +13,13 @@ public final class PalavraFrequente {
 
 	}
 
+	/**
+	 * Função que encontra a palavra mais frequente.
+	 *
+	 * @param frase String contendo uma frase.
+	 *
+	 * @return {int} Retorna a palavra mais frequente.
+	 */
 	public static String palavra(String frase) {
 		// cria contador
 		HashMap<String, Integer> contador = new HashMap<String, Integer>();
