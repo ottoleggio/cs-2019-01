@@ -36,5 +36,19 @@ class FrequenciaAleatoriaTest {
 		resultadoEsperado.add(50);
 		assertEquals(resultadoEsperado, FrequenciaAleatoria.encontraFrequente(test1));
 	}
+	
+	@Test
+	void testEncontraFrequente2() {
+		ArrayList<Integer> test1 = new ArrayList<Integer>();
+		test1.add(50);
+		test1.add(50);
+		test1.add(10);
+		test1.add(10);
+		ArrayList<Integer> resultadoEsperado = new ArrayList<Integer>();
+		resultadoEsperado.add(2);
+		resultadoEsperado.add(10);
+		resultadoEsperado.add(50);
+		assertEquals(resultadoEsperado, FrequenciaAleatoria.encontraFrequente(test1));
+	}
 
 }

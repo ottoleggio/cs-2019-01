@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.stream.Collectors.*;
-import static java.util.Map.Entry.*;
 
 public final class PalavraFrequente {
 
