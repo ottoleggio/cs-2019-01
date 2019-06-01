@@ -8,15 +8,9 @@ import java.math.BigDecimal;
  */
 public final class Algoritmos {
 
-<<<<<<< HEAD
     private Algoritmos() {
 
     }
-=======
-	private Algoritmos() {
-
-	}
->>>>>>> refactoring/projetoAula7
 
 	/**
 	 * Função que verifica se o quadrado da soma das dezenas da entrada
