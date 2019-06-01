@@ -23,13 +23,13 @@ public final class Algoritmos {
 	public static boolean numero3025(final int numero) {
 		final int limiteMax = 9999;
 		final int mimiteMin = 0;
-		final int centena = 100;
 
 		if (numero < mimiteMin || numero > limiteMax) {
 			throw new IllegalArgumentException("numero >=0 && "
 					+ "numero <= 9999");
 		}
 
+		final int centena = 100;
 		// Dois primeiros dígitos do número mcdu (primeira dezena)
 		final int primDezena = numero / centena;
 
@@ -54,14 +54,15 @@ public final class Algoritmos {
 	public static boolean numero153(final int valor) {
 		final int limiteMax = 999;
 		final int limiteMin = 100;
-		final int cem = 100;
-		final int dez = 10;
+
 		final int numero = valor;
 
 		if (numero < limiteMin || numero > limiteMax) {
 			throw new IllegalArgumentException("numero >=100 & "
 		+ "numero <= 999");
 		}
+		final int cem = 100;
+		final int dez = 10;
 		final int potencia = 3;
 		final int divisorCem = cem;
 		final int divisoDez = dez;
@@ -212,7 +213,8 @@ public final class Algoritmos {
 	 * @return {int} Retorna a soma dos numeros naturais somados
 	 */
 	public static int somaNaturais(final int numero) {
-		if (numero < 1) {
+		final int limite = 1;
+		if (numero < limite) {
 			throw new IllegalArgumentException("numero >= 1");
 		}
 
@@ -235,7 +237,8 @@ public final class Algoritmos {
 	 * @return {int} Resultado do número fatorial
 	 */
 	public static int fatorial(final int numero) {
-		if (numero < 1) {
+		final int limite = 1;
+		if (numero < limite) {
 			throw new IllegalArgumentException("numero >= 1");
 		}
 
@@ -318,7 +321,8 @@ public final class Algoritmos {
 	 * @return {double} {double} Retorna o numero pi
 	 */
 	public static double pi(final double numero) {
-		if (numero < 1) {
+		final int limite = 1;
+		if (numero < limite) {
 			throw new IllegalArgumentException("numero >= 1");
 		}
 
@@ -408,7 +412,8 @@ public final class Algoritmos {
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean quadradoPerfeito(final double numero) {
-		if (numero < 1) {
+		final int limite = 1;
+		if (numero < limite) {
 			throw new IllegalArgumentException("'numero' deve"
 			+ " ser >= a 1");
 		}
@@ -420,8 +425,8 @@ public final class Algoritmos {
 			i = i + 2;
 			soma = soma + i;
 		}
-		BigDecimal soma2 = new BigDecimal(soma);
-		BigDecimal numero2 = new BigDecimal(numero);
+		final BigDecimal soma2 = new BigDecimal(soma);
+		final BigDecimal numero2 = new BigDecimal(numero);
 		return soma2.compareTo(numero2) == 0;
 	}
 
@@ -435,12 +440,12 @@ public final class Algoritmos {
 	 */
 	public static double raiz(final double numero,
 	final double repeticoes) {
-		double funcRepeticoes = repeticoes;
 		if (numero <= 0) {
 			throw new IllegalArgumentException("'numero' deve"
 			+ " ser maior que 0");
 		}
 
+		double funcRepeticoes = repeticoes;
 		double raizR = 1;
 
 		while (0 <= funcRepeticoes) {
@@ -460,7 +465,8 @@ public final class Algoritmos {
 	 * @return {boolean} Retorna verdadeiro ou falso
 	 */
 	public static boolean primo(final int numero) {
-		if (numero <= 1) {
+		final int limite = 1;
+		if (numero <= limite) {
 			throw new IllegalArgumentException("'numero' deve"
 			+ " ser maior que 1");
 		}
@@ -486,8 +492,9 @@ public final class Algoritmos {
 	 */
 	public static boolean crivoEratostenes(final int[] original) {
 		int[] vetor = original.clone();
+		final int limiteUm = 1;
 
-		if (vetor.length <= 1) {
+		if (vetor.length <= limiteUm) {
 			throw new IllegalArgumentException("o vetor deve"
 			+ " conter no mínimo 2 dígitos");
 		}
@@ -576,7 +583,8 @@ public final class Algoritmos {
 	 * @return {int} Retorna o resultado do polinomio
 	 */
 	public static int horner(final int numero, final int[] vetor) {
-		if (numero < 1) {
+		final int limite = 1;
+		if (numero < limite) {
 			throw new IllegalArgumentException("O comprimento"
 			+ " do vetor deve ser maior ou igual a 1");
 		}
@@ -605,13 +613,13 @@ public final class Algoritmos {
 			+ " ser maior ou igual a 0");
 		}
 
-		int soma = 0;
 		int resultado = 1;
 
 		if (funcNumero == 0 || funcNumero == 1) {
 			return resultado;
 		}
 
+		int soma = 0;
 		int i = 2;
 
 		while (i <= funcNumero) {
@@ -633,15 +641,13 @@ public final class Algoritmos {
 	 */
 	public static boolean digitoCPF(final int[] vetor) {
 		final int limiteCpf = 11;
-		final int limiteDigitos = 9;
-		final int primeiroDigito = 10;
-		final int segundoDigito = 11;
 
 		if (vetor.length != limiteCpf) {
 			throw new IllegalArgumentException("Insira a quantidade"
 			+ " correta de dígitos (11)");
 		}
 
+		final int limiteDigitos = 9;
 		int i = 0;
 
 		for (i = 0; i < limiteCpf; i++) {
@@ -655,10 +661,12 @@ public final class Algoritmos {
 		int testeB = 0;
 
 		for (i = 0; i < limiteDigitos; i++) {
-			testeA += (i + 1 * vetor[i]);
-			testeB += (i + 1 * vetor[i + 1]);
+			testeA += i + 1 * vetor[i];
+			testeB += i + 1 * vetor[i + 1];
 		}
 
+		final int segundoDigito = 11;
+		final int primeiroDigito = 10;
 		final int digitoA = mod(mod(testeA, segundoDigito),
 		primeiroDigito);
 		final int digitoB = mod(mod(testeB, segundoDigito),
@@ -677,19 +685,13 @@ public final class Algoritmos {
 	 */
 	public static boolean digitoCPF2(final int[] vetor) {
 		final int limiteCpf = 11;
-		final int limiteDigitos = 9;
-		final int primeiroDigito = 10;
-		final int segundoDigito = 11;
-		final int limiteDigitosVetor = 8;
-		final int primeiroDigitoVetor = 9;
-		final int segundoDigitoVetor = 10;
-		final int caminhaDigitos = 7;
 
 		if (vetor.length != limiteCpf) {
 			throw new IllegalArgumentException("Insira a quantidade"
 			+ " correta de dígitos (11)");
 		}
 
+		final int limiteDigitos = 9;
 		int i = 0;
 
 		for (i = 0; i < limiteCpf; i++) {
@@ -699,9 +701,11 @@ public final class Algoritmos {
 			}
 		}
 
+		final int limDigiVet = 8;
+		final int caminhaDigitos = 7;
 		i = caminhaDigitos;
-		int testeA = vetor[limiteDigitosVetor];
-		int testeB = vetor[limiteDigitosVetor];
+		int testeA = vetor[limDigiVet];
+		int testeB = vetor[limDigiVet];
 
 		while (0 <= i) {
 			testeA = testeA + vetor[i];
@@ -709,13 +713,17 @@ public final class Algoritmos {
 			i--;
 		}
 
+		final int segundoDigito = 11;
+		final int primeiroDigito = 10;
 		final int digitoA = mod(mod(testeB, segundoDigito),
 		primeiroDigito);
 		final int digitoB = mod(mod(testeB - testeA
 		+ (limiteDigitos * vetor[limiteDigitos]), segundoDigito),
 		primeiroDigito);
+		final int priDigiVetor = 9;
+		final int segDigiVetor = 10;
 
-		return (digitoA == vetor[primeiroDigitoVetor])
-		&& (digitoB == vetor[segundoDigitoVetor]);
+		return digitoA == vetor[priDigiVetor]
+		&& digitoB == vetor[segDigiVetor];
 	}
 }
