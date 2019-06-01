@@ -14,6 +14,12 @@ class PalavraFrequenteTest {
 		String test2 = "oh";
 		assertEquals(PalavraFrequente.palavra(test2),"oh");
 
+		String test3 = " oh";
+		assertEquals(PalavraFrequente.palavra(test3),"oh");
+		
+		String test4 = "oh ";
+		assertEquals(PalavraFrequente.palavra(test4),"oh");
+
 	}
 
 }

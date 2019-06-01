@@ -30,21 +30,22 @@ public final class ProgramaExercicio7 {
 	 */
 	public static void main(String[] args) {
 		logger.info("iniciado");
-		ArrayList<Integer> resultado = new ArrayList<Integer>();
+		/*ArrayList<Integer> resultado = new ArrayList<Integer>();
 		resultado.add(50);
 		resultado.add(50);
 		resultado.add(10);
 		resultado.add(10);
 		System.out.println(resultado);
 		Collections.sort(resultado);
-		System.out.println(resultado);
+		System.out.println(resultado);*/
 		
 		//int[] cpf3 = { 3, 2, 5, 3, 8, 6, 4, 9, 8, 8, 0 };
 		//System.out.println(Vetores.somaImpares(cpf3));
 		//ArrayList<Integer> teste = new ArrayList<Integer>();
-		System.out.println(FrequenciaAleatoria.encontraFrequente(resultado));
+		//System.out.println(FrequenciaAleatoria.encontraFrequente(resultado));
 		//System.out.println(teste.get(0) + " " + teste.get(1));
 
-		//System.out.println(PalavraFrequente.palavra("oh"));
+		//System.out.println(PalavraFrequente.palavra(" oh"));
+		System.out.println(FrequenciaAleatoria.geraAleatorio(-1,1));
 	}
 }

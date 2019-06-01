@@ -15,8 +15,28 @@ public final class FrequenciaAleatoria {
 	private FrequenciaAleatoria() {
 
 	}
-
+	
+	/**
+	 * Gera uma lista com números aleatórios.
+	 *
+	 * @param tamanho Tamanho da lista
+	 * @param abrangencia Variação de números aleatórios
+	 *
+	 * @return {ArrayList<Integer>} Retorna uma lista
+	 * com os numeros mais frequentes, sendo a posição
+	 * 0 a frequência
+	 */
 	public static ArrayList<Integer> geraAleatorio(int tamanho, int abrangencia) {
+		if (abrangencia < 0) {
+			throw new IllegalArgumentException("A abrangência deve"
+					+ "ser maior que 0");
+		}
+
+		if (tamanho < 0) {
+			throw new IllegalArgumentException("O tamanho deve"
+					+ "ser maior que 0");
+		}
+
 		Random rand = new Random();
 
 		ArrayList<Integer> vetor = new ArrayList<Integer>();
