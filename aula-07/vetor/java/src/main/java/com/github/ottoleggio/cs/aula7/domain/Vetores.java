@@ -8,6 +8,9 @@ import java.util.Arrays;
  */
 public final class Vetores {
 
+	/**
+	 * Método construtor.
+	 */
 	private Vetores() {
 
 	}
@@ -21,7 +24,7 @@ public final class Vetores {
 	 * @return {double[]} Retorna A menor temperatura encontrada.
 	 */
 	public static double menorTemp(final double[] vetor) {
-		double[] vetorAux = vetor;
+		final double[] vetorAux = vetor;
 		Arrays.sort(vetorAux);
 
 		return vetorAux[0];
@@ -35,7 +38,7 @@ public final class Vetores {
 	 * @return {int} Retorna a soma dos números ímpares no vetor.
 	 */
 	public static int somaImpares(final int[] vetor) {
-		int[] vetorAux = vetor;
+		final int[] vetorAux = vetor;
 		int somaImpar = 0;
 
 		for (int i = 0; i < vetorAux.length; i++) {
@@ -56,7 +59,7 @@ public final class Vetores {
 	 * @return {int} Retorna a soma dos números ímpares no vetor.
 	 */
 	public static int contaLetras(final String str) {
-		String frase = str;
+		final String frase = str;
 		int contador = 0;
 		for (int i = 0; i < frase.length(); i++) {
 			if (Character.isLetter(frase.charAt(i))) {

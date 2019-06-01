@@ -7,8 +7,14 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.*;
 
+/**
+ * Classe que contém a funçao Palavra.
+ */
 public final class PalavraFrequente {
 
+	/**
+	 * Método construtor.
+	 */
 	private PalavraFrequente() {
 
 	}
@@ -21,10 +27,9 @@ public final class PalavraFrequente {
 	 * @return {int} Retorna a palavra mais frequente.
 	 */
 	public static String palavra(final String frase) {
-				// cria contador
-		HashMap<String, Integer> contador = new HashMap<String, Integer>();
+		// cria contador
+		final HashMap<String, Integer> contador = new HashMap<String, Integer>();
 
-		// separa palavras da String
 		frase.toLowerCase();
 
 		String[] palavras = {""};
@@ -35,7 +40,7 @@ public final class PalavraFrequente {
 			palavras = frase.split(" ");
 		}
 
-		for (String palavra : palavras) {
+		for (final String palavra : palavras) {
 			if (contador.containsKey(palavra)) {
 				contador.put(palavra, contador.get(palavra) + 1);
 			} else {
@@ -43,7 +48,7 @@ public final class PalavraFrequente {
 			}
 		}
 
-		Map<String, Integer> sorted = contador.entrySet().stream()
+		final Map<String, Integer> sorted = contador.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
 				.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
 
