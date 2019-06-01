@@ -13,15 +13,20 @@ class FrequenciaAleatoriaTest {
 		ArrayList<Integer> resultadoEsperado1 = new ArrayList<Integer>();
 		resultadoEsperado1.add(0);
 		assertEquals(resultadoEsperado1, FrequenciaAleatoria.geraAleatorio(1,0));
-		
+
 		ArrayList<Integer> resultadoEsperado2 = new ArrayList<Integer>();
 		resultadoEsperado2.add(0);
 		resultadoEsperado2.add(0);
 		resultadoEsperado2.add(0);
 		assertEquals(resultadoEsperado2, FrequenciaAleatoria.geraAleatorio(3,0));
-		
 	}
-	
+
+	@Test
+	void testExcepGeraAleatorio() {
+	assertThrows(IllegalArgumentException.class,() -> FrequenciaAleatoria.geraAleatorio(1,-1));
+	assertThrows(IllegalArgumentException.class,() -> FrequenciaAleatoria.geraAleatorio(-1,1));
+	}
+
 	@Test
 	void testEncontraFrequente() {
 		ArrayList<Integer> test1 = new ArrayList<Integer>();
@@ -36,7 +41,7 @@ class FrequenciaAleatoriaTest {
 		resultadoEsperado.add(50);
 		assertEquals(resultadoEsperado, FrequenciaAleatoria.encontraFrequente(test1));
 	}
-	
+
 	@Test
 	void testEncontraFrequente2() {
 		ArrayList<Integer> test1 = new ArrayList<Integer>();
@@ -50,5 +55,4 @@ class FrequenciaAleatoriaTest {
 		resultadoEsperado.add(50);
 		assertEquals(resultadoEsperado, FrequenciaAleatoria.encontraFrequente(test1));
 	}
-
 }

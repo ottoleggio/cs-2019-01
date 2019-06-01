@@ -20,13 +20,20 @@ public final class PalavraFrequente {
 	 *
 	 * @return {int} Retorna a palavra mais frequente.
 	 */
-	public static String palavra(String frase) {
-		// cria contador
+	public static String palavra(final String frase) {
+				// cria contador
 		HashMap<String, Integer> contador = new HashMap<String, Integer>();
 
 		// separa palavras da String
 		frase.toLowerCase();
-		String[] palavras = frase.split(" ");
+
+		String[] palavras = {""};
+
+		if (frase.startsWith(" ")) {
+			palavras = frase.substring(1).split(" ");
+		} else {
+			palavras = frase.split(" ");
+		}
 
 		for (String palavra : palavras) {
 			if (contador.containsKey(palavra)) {
