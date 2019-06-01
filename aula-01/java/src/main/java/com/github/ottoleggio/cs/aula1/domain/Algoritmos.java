@@ -6,7 +6,11 @@ import java.math.BigDecimal;
  * Funções matemáticas diversas com propósito de estudo das ferramentas e boas
  * práticas da disciplina de construção de software.
  */
-public class Algoritmos {
+public final class Algoritmos {
+
+	private Algoritmos() {
+
+	}
 
 	/**
 	 * Função que verifica se o quadrado da soma das dezenas da entrada

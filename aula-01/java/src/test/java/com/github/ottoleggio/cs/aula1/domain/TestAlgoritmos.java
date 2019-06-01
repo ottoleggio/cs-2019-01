@@ -7,11 +7,6 @@ import org.junit.jupiter.api.Test;
 class TestAlgoritmos {
 
 	@Test
-    public void testCobertura() {
-        assertNotNull(new Algoritmos());
-	}
-
-	@Test
 	void testNumero3025() {
 		assertTrue(Algoritmos.numero3025(3025));
 		assertFalse(Algoritmos.numero3025(3024));

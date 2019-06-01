@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Classe responsavel pelo metodo FrequenciaAleatoria
+ * Classe responsavel pelo metodo FrequenciaAleatoria.
  */
 public final class FrequenciaAleatoria {
 
@@ -15,7 +15,7 @@ public final class FrequenciaAleatoria {
 	private FrequenciaAleatoria() {
 
 	}
-	
+
 	/**
 	 * Gera uma lista com números aleatórios.
 	 *
@@ -26,7 +26,7 @@ public final class FrequenciaAleatoria {
 	 * com os numeros mais frequentes, sendo a posição
 	 * 0 a frequência
 	 */
-	public static ArrayList<Integer> geraAleatorio(int tamanho, int abrangencia) {
+	public static ArrayList<Integer> geraAleatorio(final int tamanho, final int abrangencia) {
 		if (abrangencia < 0) {
 			throw new IllegalArgumentException("A abrangência deve"
 					+ "ser maior que 0");
@@ -62,7 +62,7 @@ public final class FrequenciaAleatoria {
 	 * com os numeros mais frequentes, sendo a posição
 	 * 0 a frequência
 	 */
-	public static ArrayList<Integer> encontraFrequente(ArrayList<Integer> vetor) {
+	public static ArrayList<Integer> encontraFrequente(final ArrayList<Integer> vetor) {
 		ArrayList<Integer> resultado = new ArrayList<Integer>();
 		ArrayList<Integer> vetorAux = vetor;
 		//garante lista ordenada
