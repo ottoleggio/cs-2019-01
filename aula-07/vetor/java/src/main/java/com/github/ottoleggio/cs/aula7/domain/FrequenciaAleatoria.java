@@ -37,9 +37,9 @@ public final class FrequenciaAleatoria {
 					+ "ser maior que 0");
 		}
 
-		Random rand = new Random();
+		final Random rand = new Random();
 
-		ArrayList<Integer> vetor = new ArrayList<Integer>();
+		final ArrayList<Integer> vetor = new ArrayList<Integer>();
 
 		final int abrangenciaFunc = abrangencia + 1;
 		final int tamanhoFunc = tamanho;
@@ -63,8 +63,8 @@ public final class FrequenciaAleatoria {
 	 * 0 a frequência
 	 */
 	public static ArrayList<Integer> encontraFrequente(final ArrayList<Integer> vetor) {
-		ArrayList<Integer> resultado = new ArrayList<Integer>();
-		ArrayList<Integer> vetorAux = vetor;
+		final ArrayList<Integer> resultado = new ArrayList<Integer>();
+		final ArrayList<Integer> vetorAux = vetor;
 		//garante lista ordenada
 		Collections.sort(vetorAux);
 
@@ -84,7 +84,7 @@ public final class FrequenciaAleatoria {
 
 		contador++;
 		i++;
-		int frequencia = contador;
+		final int frequencia = contador;
 		for (int j = 0; j < vetorAux.size(); j++) {
 			contador = 1;
 
