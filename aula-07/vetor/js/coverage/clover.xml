@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1559506524613" clover="3.2.0">
+  <project timestamp="1559506524614" name="All files">
+    <metrics statements="20" coveredstatements="20" conditionals="12" coveredconditionals="12" methods="3" coveredmethods="3" elements="35" coveredelements="35" complexity="0" loc="20" ncloc="20" packages="1" files="1" classes="1"/>
+    <file name="exercicios7.js" path="/home/otto/repos/cs-2019-01/aula-07/vetor/js/exercicios7.js">
+      <metrics statements="20" coveredstatements="20" conditionals="12" coveredconditionals="12" methods="3" coveredmethods="3"/>
+      <line num="16" count="3" type="stmt"/>
+      <line num="17" count="23" type="cond" truecount="2" falsecount="0"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="25" count="2" type="stmt"/>
+      <line num="36" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="37" count="1" type="stmt"/>
+      <line num="40" count="2" type="stmt"/>
+      <line num="41" count="12" type="cond" truecount="2" falsecount="0"/>
+      <line num="42" count="1" type="stmt"/>
+      <line num="47" count="1" type="stmt"/>
+      <line num="49" count="1" type="stmt"/>
+      <line num="50" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="51" count="4" type="stmt"/>
+      <line num="55" count="1" type="stmt"/>
+      <line num="67" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="68" count="1" type="stmt"/>
+      <line num="71" count="2" type="stmt"/>
+      <line num="73" count="2" type="stmt"/>
+      <line num="79" count="3" type="stmt"/>
+    </file>
+  </project>
+</coverage>
