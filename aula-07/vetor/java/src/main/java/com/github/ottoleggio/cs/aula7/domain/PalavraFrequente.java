@@ -30,14 +30,12 @@ public final class PalavraFrequente {
         // cria contador
         final HashMap<String, Integer> contador = new HashMap<String, Integer>();
 
-        frase.toLowerCase();
-
         String[] palavras = {""};
 
         if (frase.startsWith(" ")) {
-            palavras = frase.substring(1).split(" ");
+            palavras = frase.toLowerCase().substring(1).split(" ");
         } else {
-            palavras = frase.split(" ");
+            palavras = frase.toLowerCase().split(" ");
         }
 
         for (final String palavra : palavras) {
