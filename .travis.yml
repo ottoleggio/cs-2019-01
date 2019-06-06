@@ -7,4 +7,5 @@ cache:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar/cache"
 jdk:
-  - oraclejdk9
+  - openjdk8
+  
