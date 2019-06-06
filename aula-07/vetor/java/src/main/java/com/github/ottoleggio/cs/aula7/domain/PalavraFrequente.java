@@ -5,55 +5,55 @@ import java.util.LinkedHashMap;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toMap;
 
 /**
  * Classe que contém a funçao Palavra.
  */
 public final class PalavraFrequente {
 
-	/**
-	 * Método construtor.
-	 */
-	private PalavraFrequente() {
+    /**
+     * Método construtor.
+     */
+    private PalavraFrequente() {
 
-	}
+    }
 
-	/**
-	 * Função que encontra a palavra mais frequente.
-	 *
-	 * @param frase String contendo uma frase.
-	 *
-	 * @return {int} Retorna a palavra mais frequente.
-	 */
-	public static String palavra(final String frase) {
-		// cria contador
-		final HashMap<String, Integer> contador = new HashMap<String, Integer>();
+    /**
+     * Função que encontra a palavra mais frequente.
+     *
+     * @param frase String contendo uma frase.
+     *
+     * @return {int} Retorna a palavra mais frequente.
+     */
+    public static String palavra(final String frase) {
+        // cria contador
+        final HashMap<String, Integer> contador = new HashMap<String, Integer>();
 
-		frase.toLowerCase();
+        frase.toLowerCase();
 
-		String[] palavras = {""};
+        String[] palavras = {""};
 
-		if (frase.startsWith(" ")) {
-			palavras = frase.substring(1).split(" ");
-		} else {
-			palavras = frase.split(" ");
-		}
+        if (frase.startsWith(" ")) {
+            palavras = frase.substring(1).split(" ");
+        } else {
+            palavras = frase.split(" ");
+        }
 
-		for (final String palavra : palavras) {
-			if (contador.containsKey(palavra)) {
-				contador.put(palavra, contador.get(palavra) + 1);
-			} else {
-				contador.put(palavra, 1);
-			}
-		}
+        for (final String palavra : palavras) {
+            if (contador.containsKey(palavra)) {
+                contador.put(palavra, contador.get(palavra) + 1);
+            } else {
+                contador.put(palavra, 1);
+            }
+        }
 
-		final Map<String, Integer> sorted = contador.entrySet().stream()
-				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-				.collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
+        final Map<String, Integer> sorted = contador.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
 
-		return (String) sorted.keySet().toArray()[0];
-	}
+        return (String) sorted.keySet().toArray()[0];
+    }
 
 }
 
