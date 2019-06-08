@@ -14,6 +14,6 @@ public final class ProgramaJpeg {
         //System.out.println(ImprimeHexa.leByteFile("/home/otto/repos/"
         //        + "cs-2019-01/aula-08/jpeg/src/test/resources/imagem.jpg"));
         System.out.println(VerificaFormato.seJpeg("/home/otto/repos/"
-                + "cs-2019-01/aula-08/jpeg/src/test/resources/imagem.jpg"));
+                + "cs-2019-01/aula-08/jpeg/src/test/resources/vazio.txt"));
     }
 }
