@@ -7,12 +7,24 @@ import java.io.IOException;
 
 public final class ImprimeHexa {
 
+	/**
+	 * Método construtor da classe.
+	 */
 	private ImprimeHexa() {
 
 	}
 
-	public static String leByteFile(String arquivo) throws IOException {
-		File teste = new File(arquivo);
+	/**
+	 * Método que retorna os primeiros quatro bytes em formato
+	 * hexadecimal de um arquivo enviado como parâmetro.
+	 *
+	 * @param enderecoArquivo Endereço do arquivo a ser lido
+	 *
+	 * @return String contendo os primeiros quatro bytes em
+	 * formato hexadecimal
+	 */
+	public static String leByteFile(String enderecoArquivo) throws IOException {
+		File teste = new File(enderecoArquivo);
 		if (!teste.exists()) {
 			throw new IllegalArgumentException("O arquivo não"
 					+ " existe");
@@ -22,7 +34,7 @@ public final class ImprimeHexa {
 					+ " dados suficientes.");
 		}
 
-		FileInputStream fis = new FileInputStream(arquivo);
+		FileInputStream fis = new FileInputStream(enderecoArquivo);
 		DataInputStream dis = new DataInputStream(fis);
 
 		int valor = dis.readInt();
