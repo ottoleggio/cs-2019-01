@@ -32,7 +32,7 @@ public final class VerificaFormato {
             throw new IllegalArgumentException("O arquivo não"
         + " existe");
         }
-
+        //System.out.println("tamanho = " + teste.length());
         if (teste.length() == 0) {
             throw new IllegalArgumentException("O arquivo não contem"
         + " dados suficientes.");
