@@ -7,39 +7,42 @@ import java.io.IOException;
 
 public final class ImprimeHexa {
 
-	/**
-	 * Método construtor da classe.
-	 */
-	private ImprimeHexa() {
+    /**
+     * Método construtor da classe.
+     */
+    private ImprimeHexa() {
 
-	}
+    }
 
-	/**
-	 * Método que retorna os primeiros quatro bytes em formato
-	 * hexadecimal de um arquivo enviado como parâmetro.
-	 *
-	 * @param enderecoArquivo Endereço do arquivo a ser lido
-	 *
-	 * @return String contendo os primeiros quatro bytes em
-	 * formato hexadecimal
-	 */
-	public static String leByteFile(String enderecoArquivo) throws IOException {
-		File teste = new File(enderecoArquivo);
-		if (!teste.exists()) {
-			throw new IllegalArgumentException("O arquivo não"
-					+ " existe");
-		}
-		if (teste.length() < 4) {
-			throw new IllegalArgumentException("O arquivo não contem"
-					+ " dados suficientes.");
-		}
+    /**
+     * Método que retorna os primeiros quatro bytes em formato
+     * hexadecimal de um arquivo enviado como parâmetro.
+     *
+     * @param enderecoArquivo Endereço do arquivo a ser lido
+     *
+     * @return String contendo os primeiros quatro bytes em
+     * formato hexadecimal
+     * @throws IOException se ocorrer exception de IO
+     */
+    public static String leByteFile(final String enderecoArquivo) throws IOException {
+        File teste = new File(enderecoArquivo);
+        if (!teste.exists()) {
+            throw new IllegalArgumentException("O arquivo não"
+                    + " existe");
+        }
 
-		FileInputStream fis = new FileInputStream(enderecoArquivo);
-		DataInputStream dis = new DataInputStream(fis);
+        final int limiteBytes = 4;
+        if (teste.length() < limiteBytes) {
+            throw new IllegalArgumentException("O arquivo não contem"
+                    + " dados suficientes.");
+        }
 
-		int valor = dis.readInt();
+        FileInputStream fis = new FileInputStream(enderecoArquivo);
+        DataInputStream dis = new DataInputStream(fis);
 
-		dis.close();
-		return Integer.toHexString(valor);
-	}
+        int valor = dis.readInt();
+
+        dis.close();
+        return Integer.toHexString(valor);
+    }
 }
