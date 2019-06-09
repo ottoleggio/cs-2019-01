@@ -20,19 +20,27 @@ public class ProgramaJpegTest extends TestCase {
 
     @Test
     void testJpegTrue() throws IOException {  
-        assertTrue(VerificaFormato.seJpeg(getFilename("imagemTrue1.jpg")));
-        assertTrue(VerificaFormato.seJpeg(getFilename("imagemTrue2.jpg")));
+        assertTrue(VerificaFormato.confereByteJpeg(getFilename("imagemTrue1.jpg")));
+        assertTrue(VerificaFormato.confereByteJpeg(getFilename("imagemTrue2.jpg")));
     }
 
     @Test
     void testOutrosFormatos() throws IOException {  
-        assertFalse(VerificaFormato.seJpeg(getFilename("textoFalse.txt")));
-        assertFalse(VerificaFormato.seJpeg(getFilename("gifFalse.gif")));
+        assertFalse(VerificaFormato.confereByteJpeg(getFilename("textoFalse.txt")));
+        assertFalse(VerificaFormato.confereByteJpeg(getFilename("gifFalse.gif")));
     }
 
     @Test
     void testArquivoIncorreto() throws IOException {
-        assertThrows(IllegalArgumentException.class,() -> VerificaFormato.seJpeg(getFilename("vazio.txt")));
-        assertThrows(IllegalArgumentException.class,() -> VerificaFormato.seJpeg("a.txt"));
+        assertThrows(IllegalArgumentException.class,() -> VerificaFormato.confereByteJpeg(getFilename("vazio.txt")));
+        assertThrows(IllegalArgumentException.class,() -> VerificaFormato.confereByteJpeg("a.txt"));
+    }
+
+    @Test
+    void testRetorno() throws IOException {
+        assertEquals("O arquivo é um Jpeg.", VerificaFormato.seJpeg(
+                VerificaFormato.confereByteJpeg(getFilename("imagemTrue1.jpg"))));
+        assertEquals("O arquivo não é um Jpeg.", VerificaFormato.seJpeg(
+                VerificaFormato.confereByteJpeg(getFilename("textoFalse.txt"))));
     }
 }
