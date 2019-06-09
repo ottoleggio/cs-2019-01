@@ -26,7 +26,7 @@ public final class EncontraPalavra {
      * False caso contrário
      * @throws IOException se ocorrer exception de IO
      */
-    public static int contaOcorrencias(final String enderecoArquivo, final String palavraBuscada) throws IOException {
+    public static String contaOcorrencias(final String enderecoArquivo, final String palavraBuscada) throws IOException {
         File teste = new File(enderecoArquivo);
         if (!teste.exists()) {
             throw new IllegalArgumentException("O arquivo não"
@@ -62,9 +62,18 @@ public final class EncontraPalavra {
 
         br.close();
 
-        return ocorrencias;
+        return  "Encontradas: " + ocorrencias + ".";
     }
 
+    /**
+     * Método que busca uma palavra passada como parametro
+     * e especifica a linha e coluna das ocorrencias encontradas
+     *
+     * @param enderecoArquivo Endereço do arquivo a ser lido
+     * @param palavraBuscada Palavra a ser buscada no arquivo
+     *
+     * @throws IOException se ocorrer exception de IO
+     */
     public static void contarLinhasEColunas(final String enderecoArquivo, final String palavraBuscada) throws IOException {
         File teste = new File(enderecoArquivo);
         if (!teste.exists()) {
@@ -78,12 +87,10 @@ public final class EncontraPalavra {
         }
 
         FileInputStream fis = new FileInputStream(enderecoArquivo);
-        DataInputStream dis = new DataInputStream(fis);
         InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
         BufferedReader br = new BufferedReader(isr);
 
         String linhas;
-        String palavras[];
         int indiceLinha = 0;
         int indiceColuna = 0;
         int iaux = 0;
@@ -97,11 +104,7 @@ public final class EncontraPalavra {
             
             for (int i = 0; i < linhas.length(); i++) {
                 encontrou = 0;
-                if(flagPalavra) {
-                    System.out.println(retornaSaida(indiceLinha, indiceColuna, frase));
-                    flagPalavra = false;
-                    break;
-                }
+               
                 if(linhas.charAt(i) == palavraBuscada.charAt(0)) {
                     iaux = i; //possivel coluna
                     for (int j = 0; j < palavraBuscada.length(); j++) {
@@ -122,6 +125,11 @@ public final class EncontraPalavra {
                         i++;
                     }
                 }
+                if(flagPalavra) {
+                    System.out.println(retornaSaida(indiceLinha, indiceColuna, frase));
+                    flagPalavra = false;
+                    break;
+                }
             }
             if (linhas.isEmpty()) {
                 break;
@@ -130,7 +138,17 @@ public final class EncontraPalavra {
 
         br.close();
     }
-    
+
+    /**
+     * Método que retorna linhas e colunas
+     * em formato de texto específico.
+     *
+     * @param linha Número da linha da palavra encontrada
+     * @param coluna Número da coluna da palavra encontrada
+     * @param frase Frase em que a palavra foi encontrada
+     *
+     * @throws IOException se ocorrer exception de IO
+     */
     public static String retornaSaida(int linha, int coluna, String frase) {
         return "L" + linha + " C" + coluna + ": " + frase;
     }
