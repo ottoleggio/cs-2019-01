@@ -10,6 +10,20 @@ import java.io.InputStreamReader;
 public final class VerificaFormato {
 
     /**
+     * Tamanho do vetor que armazena as linhas
+     * do arquivo.
+     */
+    private static final int TAMANHOLINHA = 1024;
+    /**
+     * Primeiro byte que identifica Jpeg.
+     */
+    private static final int ULTIMOBYTEJPEG = 0xffffffd9;
+    /**
+     * Último byte que identifica Jpeg.
+     */
+    private static final int PRIMEIROBYTEJPEG = 0xffd8ffe0;
+
+    /**
      * Método construtor da classe.
      */
     private VerificaFormato() {
@@ -26,7 +40,7 @@ public final class VerificaFormato {
      * False caso contrário
      * @throws IOException se ocorrer exception de IO
      */
-    public static boolean seJpeg(final String enderecoArquivo) throws IOException {
+    public static boolean confereByteJpeg(final String enderecoArquivo) throws IOException {
         File teste = new File(enderecoArquivo);
         if (!teste.exists()) {
             throw new IllegalArgumentException("O arquivo não"
@@ -45,24 +59,32 @@ public final class VerificaFormato {
 
         int valor = dis.readInt();
 
-        if (valor != 0xffd8ffe0) {
+        if (valor != PRIMEIROBYTEJPEG) {
             br.close();
             return false;
         }
 
         int readBytes;
         int byteFinal = 0;
-        byte[] data = new byte[1024];
+        byte[] data = new byte[TAMANHOLINHA];
         while ((readBytes = fis.read(data)) != -1) {
             byteFinal = readBytes - 1;
         }
 
-        if (data[byteFinal] == 0xffffffd9) {
+        if (data[byteFinal] == ULTIMOBYTEJPEG) {
             br.close();
             return true;
         } else {
             br.close();
             return false;
+        }
+    }
+
+    public static String seJpeg(final boolean checkJpeg) {
+        if (checkJpeg) {
+            return "O arquivo é um Jpeg.";
+        } else {
+            return "O arquivo não é um Jpeg.";
         }
     }
 }
