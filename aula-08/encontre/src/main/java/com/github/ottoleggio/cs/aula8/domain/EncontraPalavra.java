@@ -1,7 +1,6 @@
 package com.github.ottoleggio.cs.aula8.domain;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -98,7 +97,7 @@ public final class EncontraPalavra {
         int encontrou = 0;
         boolean flagPalavra = false;
         String frase = null;
-        
+
         while ((linhas = br.readLine()) != null) {
             contadorLinhas++;
             
