@@ -27,10 +27,6 @@ public final class EncontraPalavra {
      */
     public static String contaOcorrencias(final String enderecoArquivo, final String palavraBuscada) throws IOException {
         File teste = new File(enderecoArquivo);
-        if (!teste.exists()) {
-            throw new IllegalArgumentException("O arquivo não"
-        + " existe");
-        }
 
         if (teste.length() == 0) {
             throw new IllegalArgumentException("O arquivo não contem"
@@ -53,9 +49,6 @@ public final class EncontraPalavra {
                 if(palavraBuscada.equals(palavras[i])) {
                     ocorrencias ++;
                 }
-            }
-            if (linhas.isEmpty()) {
-                break;
             }
         }
 
@@ -129,9 +122,6 @@ public final class EncontraPalavra {
                     flagPalavra = false;
                     break;
                 }
-            }
-            if (linhas.isEmpty()) {
-                break;
             }
         }
 

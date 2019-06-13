@@ -21,9 +21,19 @@ class EncontraPalavraTest {
     void testContaOcorrencias() throws IOException {
         assertEquals("Encontradas: 7.",
                 EncontraPalavra.contaOcorrencias(getFilename("7ocorrencias.txt"), "aqui"));
+        assertEquals("Encontradas: 2.",
+                EncontraPalavra.contaOcorrencias(getFilename("2ocorrenciasLinhaVazia.txt"), "aqui"));
+        assertEquals("Encontradas: 2.",
+                EncontraPalavra.contaOcorrencias(getFilename("umaLinha.txt"), "teste"));
     }
 
     @Test
+    void testExcepContaOcorrencias() throws IOException {
+        assertThrows(IllegalArgumentException.class,() -> 
+        EncontraPalavra.contaOcorrencias(getFilename("vazio.txt"), "aqui"));
+    }
+
+  /*  @Test
     void testContarLinhasEColunas() {
         fail("Not yet implemented");
     }
@@ -31,6 +41,6 @@ class EncontraPalavraTest {
     @Test
     void testRetornaSaida() {
         fail("Not yet implemented");
-    }
+    } */
 
 }

@@ -40,7 +40,13 @@ public class ProgramaJpegTest extends TestCase {
     void testRetorno() throws IOException {
         assertEquals("O arquivo é um Jpeg.", VerificaFormato.seJpeg(
                 VerificaFormato.confereByteJpeg(getFilename("imagemTrue1.jpg"))));
+    /*    assertEquals("O arquivo não é um Jpeg.", VerificaFormato.seJpeg(
+                VerificaFormato.confereByteJpeg(getFilename("textoFalse.txt"))));*/
+    }
+
+    @Test
+    void testCorrompido() throws IOException {
         assertEquals("O arquivo não é um Jpeg.", VerificaFormato.seJpeg(
-                VerificaFormato.confereByteJpeg(getFilename("textoFalse.txt"))));
+                VerificaFormato.confereByteJpeg(getFilename("teste.txt"))));
     }
 }
