@@ -12,7 +12,8 @@ public final class ProgramaEncontra {
     public static void main(final String[] args) throws IOException {
         //System.out.println(EncontraPalavra.seJpeg(
         //        EncontraPalavra.confereByteJpeg(args[0])));
-        System.out.println(EncontraPalavra.contaOcorrencias("/home/otto/repos/cs-2019-01/aula-08/encontre/src/test/resources/7ocorrencias.txt", "aqui"));
-        EncontraPalavra.contarLinhasEColunas("/home/otto/repos/cs-2019-01/aula-08/encontre/src/test/resources/7ocorrencias.txt", "aqui");
+        System.out.println(EncontraPalavra.retornaSaida("/home/otto/repos/cs-2019-01/aula-08/"
+                + "encontre/src/test/resources/umaLinha.txt", "teste"));
+        //EncontraPalavra.contarLinhasEColunas("/home/otto/repos/cs-2019-01/aula-08/encontre/src/test/resources/naoExiste.txt", "aqui");
     }
 }

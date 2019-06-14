@@ -27,10 +27,6 @@ public final class EncontraPalavra {
      */
     public static String contaOcorrencias(final String enderecoArquivo, final String palavraBuscada) throws IOException {
         File teste = new File(enderecoArquivo);
-        if (!teste.exists()) {
-            throw new IllegalArgumentException("O arquivo não"
-        + " existe");
-        }
 
         if (teste.length() == 0) {
             throw new IllegalArgumentException("O arquivo não contem"
@@ -54,9 +50,6 @@ public final class EncontraPalavra {
                     ocorrencias ++;
                 }
             }
-            if (linhas.isEmpty()) {
-                break;
-            }
         }
 
         br.close();
@@ -73,12 +66,8 @@ public final class EncontraPalavra {
      *
      * @throws IOException se ocorrer exception de IO
      */
-    public static void contarLinhasEColunas(final String enderecoArquivo, final String palavraBuscada) throws IOException {
+    public static String contarLinhasEColunas(final String enderecoArquivo, final String palavraBuscada) throws IOException {
         File teste = new File(enderecoArquivo);
-        if (!teste.exists()) {
-            throw new IllegalArgumentException("O arquivo não"
-        + " existe");
-        }
 
         if (teste.length() == 0) {
             throw new IllegalArgumentException("O arquivo não contem"
@@ -97,6 +86,7 @@ public final class EncontraPalavra {
         int encontrou = 0;
         boolean flagPalavra = false;
         String frase = null;
+        StringBuilder resultado = new StringBuilder();
 
         while ((linhas = br.readLine()) != null) {
             contadorLinhas++;
@@ -125,17 +115,17 @@ public final class EncontraPalavra {
                     }
                 }
                 if(flagPalavra) {
-                    System.out.println(retornaSaida(indiceLinha, indiceColuna, frase));
+                    //System.out.println(retornaSaida(indiceLinha, indiceColuna, frase));
+                    resultado.append(String.format("%nL%d C%d: %s",indiceLinha, indiceColuna, frase));
+                    
                     flagPalavra = false;
                     break;
                 }
             }
-            if (linhas.isEmpty()) {
-                break;
-            }
         }
 
         br.close();
+        return resultado.toString();
     }
 
     /**
@@ -143,12 +133,17 @@ public final class EncontraPalavra {
      * em formato de texto específico.
      *
      * @param linha Número da linha da palavra encontrada
-     * @param coluna Número da coluna da palavra encontrada
+     * @param coluna Número da coluna da palavrba encontrada
      * @param frase Frase em que a palavra foi encontrada
      *
      * @throws IOException se ocorrer exception de IO
      */
-    public static String retornaSaida(int linha, int coluna, String frase) {
-        return "L" + linha + " C" + coluna + ": " + frase;
+    public static String retornaSaida(final String enderecoArquivo, final String palavraBuscada) throws IOException {
+        
+        StringBuilder saida = new StringBuilder();
+        saida.append(contaOcorrencias(enderecoArquivo, palavraBuscada));
+        saida.append(contarLinhasEColunas(enderecoArquivo, palavraBuscada));
+
+        return saida.toString();
     }
 }

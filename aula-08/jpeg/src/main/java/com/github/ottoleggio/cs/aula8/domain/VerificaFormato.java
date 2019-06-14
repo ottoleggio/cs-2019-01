@@ -57,11 +57,11 @@ public final class VerificaFormato {
         InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
         BufferedReader br = new BufferedReader(isr);
 
+        boolean isJpeg = false;
         int valor = dis.readInt();
 
-        if (valor != PRIMEIROBYTEJPEG) {
-            br.close();
-            return false;
+        if (valor == PRIMEIROBYTEJPEG) {
+            isJpeg = true;
         }
 
         int readBytes;
@@ -71,13 +71,12 @@ public final class VerificaFormato {
             byteFinal = readBytes - 1;
         }
 
-        if (data[byteFinal] == ULTIMOBYTEJPEG) {
-            br.close();
-            return true;
-        } else {
-            br.close();
-            return false;
+        if(data[byteFinal] == ULTIMOBYTEJPEG) {
+            isJpeg = true;
         }
+        br.close();
+        dis.close();
+        return isJpeg;
     }
 
     public static String seJpeg(final boolean checkJpeg) {
