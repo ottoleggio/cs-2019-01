@@ -33,14 +33,29 @@ class EncontraPalavraTest {
         EncontraPalavra.contaOcorrencias(getFilename("vazio.txt"), "aqui"));
     }
 
-  /*  @Test
-    void testContarLinhasEColunas() {
-        fail("Not yet implemented");
+    @Test
+    void testContarLinhasEColunas() throws IOException {
+        String teste = "Encontradas: 2.\n" + 
+                "L1 C10: frase de teste teste";
+        assertEquals(teste,
+                EncontraPalavra.retornaSaida(getFilename("umaLinha.txt"), "teste"));
     }
 
     @Test
-    void testRetornaSaida() {
-        fail("Not yet implemented");
-    } */
+    void testExcepContarLinhasEColunas() throws IOException {
+        assertThrows(IllegalArgumentException.class,() -> 
+        EncontraPalavra.contarLinhasEColunas(getFilename("vazio.txt"), "aqui"));
+    }
 
+    @Test
+    void testRetornaSaida() throws IOException {
+        String teste = "Encontradas: 7.\n" + 
+                "L1 C1: aqui\n" + 
+                "L2 C10: testando aqui aqui aqui\n" + 
+                "L3 C12: esse teste aqui\n" + 
+                "L4 C1: aqui\n" + 
+                "L7 C1: aqui";
+        assertEquals(teste,
+                EncontraPalavra.retornaSaida(getFilename("7ocorrencias.txt"), "aqui"));
+    }
 }
