@@ -10,6 +10,6 @@ public final class ProgramaEncontra {
     }
 
     public static void main(final String[] args) throws IOException {
-        System.out.println(EncontraPalavra.retornaSaida(args[0],args[0]));
+        System.out.println(EncontraPalavra.retornaSaida(args[0], args[0]));
     }
 }

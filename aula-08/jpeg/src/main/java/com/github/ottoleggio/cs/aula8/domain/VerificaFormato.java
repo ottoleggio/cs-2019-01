@@ -71,7 +71,7 @@ public final class VerificaFormato {
             byteFinal = readBytes - 1;
         }
 
-        if(data[byteFinal] == ULTIMOBYTEJPEG) {
+        if (data[byteFinal] == ULTIMOBYTEJPEG) {
             isJpeg = true;
         }
         br.close();
