@@ -3,11 +3,17 @@ package com.github.ottoleggio.cs.aula8.domain;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-public final class VerificaFormato {
+/**
+ * Classe responsável pelos métodos confereByteJpeg,
+ * seJpeg.
+ */
+public final class VerificaFormatoUtils {
 
     /**
      * Tamanho do vetor que armazena as linhas
@@ -26,7 +32,7 @@ public final class VerificaFormato {
     /**
      * Método construtor da classe.
      */
-    private VerificaFormato() {
+    private VerificaFormatoUtils() {
 
     }
 
@@ -41,7 +47,7 @@ public final class VerificaFormato {
      * @throws IOException se ocorrer exception de IO
      */
     public static boolean confereByteJpeg(final String enderecoArquivo) throws IOException {
-        File teste = new File(enderecoArquivo);
+        final File teste = new File(enderecoArquivo);
         if (!teste.exists()) {
             throw new IllegalArgumentException("O arquivo não"
         + " existe");
@@ -52,13 +58,13 @@ public final class VerificaFormato {
         + " dados suficientes.");
         }
 
-        FileInputStream fis = new FileInputStream(enderecoArquivo);
-        DataInputStream dis = new DataInputStream(fis);
-        InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
-        BufferedReader br = new BufferedReader(isr);
+        final InputStream fis = Files.newInputStream(Paths.get(enderecoArquivo));
+        final DataInputStream dis = new DataInputStream(fis);
+        final InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+        final BufferedReader br = new BufferedReader(isr);
 
         boolean isJpeg = false;
-        int valor = dis.readInt();
+        final int valor = dis.readInt();
 
         if (valor == PRIMEIROBYTEJPEG) {
             isJpeg = true;
@@ -66,9 +72,12 @@ public final class VerificaFormato {
 
         int readBytes;
         int byteFinal = 0;
-        byte[] data = new byte[TAMANHOLINHA];
-        while ((readBytes = fis.read(data)) != -1) {
+        final byte[] data = new byte[TAMANHOLINHA];
+
+        readBytes = fis.read(data);
+        while (readBytes != -1) {
             byteFinal = readBytes - 1;
+            readBytes = fis.read(data);
         }
 
         if (data[byteFinal] == ULTIMOBYTEJPEG) {
@@ -79,6 +88,17 @@ public final class VerificaFormato {
         return isJpeg;
     }
 
+    /**
+     * Método que auxilia na formatação de retorno do
+     * método main.
+     *
+     * @param checkJpeg Booleando identificando a 
+     * validação do arquivo pelo programa.
+     *
+     * @return Retorna True se o formato do arquivo for JPEG e
+     * False caso contrário
+     * @throws IOException se ocorrer exception de IO
+     */
     public static String seJpeg(final boolean checkJpeg) {
         if (checkJpeg) {
             return "O arquivo é um Jpeg.";
