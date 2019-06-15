@@ -25,6 +25,12 @@ class EncontraPalavraTest {
                 EncontraPalavra.contaOcorrencias(getFilename("2ocorrenciasLinhaVazia.txt"), "aqui"));
         assertEquals("Encontradas: 2.",
                 EncontraPalavra.contaOcorrencias(getFilename("umaLinha.txt"), "teste"));
+        assertEquals("Encontradas: 0.",
+                EncontraPalavra.contaOcorrencias(getFilename("umaLinha.txt"), ""));
+        assertEquals("Encontradas: 2.",
+                EncontraPalavra.contaOcorrencias(getFilename("espacoNoFim.txt"), "aqui"));
+        assertEquals("Encontradas: 0.",
+                EncontraPalavra.contaOcorrencias(getFilename("zeroOcorrencias.txt"), "aqui"));
     }
 
     @Test
