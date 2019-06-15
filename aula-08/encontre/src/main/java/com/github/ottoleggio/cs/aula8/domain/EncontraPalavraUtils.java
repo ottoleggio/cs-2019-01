@@ -2,16 +2,20 @@ package com.github.ottoleggio.cs.aula8.domain;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-public final class EncontraPalavra {
+/**
+ * Classe responsável pelos métodos contaOcorrencias,
+ * contarLinhasEColunas e retornaSaida.
+ */
+public final class EncontraPalavraUtils {
 
     /**
      * Método construtor da classe.
      */
-    private EncontraPalavra() {
+    private EncontraPalavraUtils() {
 
     }
 
@@ -28,22 +32,21 @@ public final class EncontraPalavra {
      */
     public static String contaOcorrencias(final String enderecoArquivo,
     final String palavraBuscada) throws IOException {
-        File teste = new File(enderecoArquivo);
+        final File teste = new File(enderecoArquivo);
 
         if (teste.length() == 0) {
             throw new IllegalArgumentException("O arquivo não contem"
         + " dados suficientes.");
         }
 
-        FileInputStream fis = new FileInputStream(enderecoArquivo);
-        InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
-        BufferedReader br = new BufferedReader(isr);
+        final BufferedReader br = Files.newBufferedReader(Paths.get(enderecoArquivo));
 
         String linhas;
         String[] palavras;
         int ocorrencias = 0;
 
-        while ((linhas = br.readLine()) != null) {
+        linhas = br.readLine();
+        while (linhas != null) {
             palavras = linhas.split(" ");
 
             for (int i = 0; i < palavras.length; i++) {
@@ -51,6 +54,7 @@ public final class EncontraPalavra {
                     ocorrencias++;
                 }
             }
+            linhas = br.readLine();
         }
 
         br.close();
@@ -70,31 +74,31 @@ public final class EncontraPalavra {
      */
     public static String contarLinhasEColunas(final String enderecoArquivo,
     final String palavraBuscada) throws IOException {
-        File teste = new File(enderecoArquivo);
+        final File teste = new File(enderecoArquivo);
 
         if (teste.length() == 0) {
             throw new IllegalArgumentException("O arquivo não contem"
         + " dados suficientes.");
         }
 
-        FileInputStream fis = new FileInputStream(enderecoArquivo);
-        InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
-        BufferedReader br = new BufferedReader(isr);
+        final BufferedReader br = Files.newBufferedReader(Paths.get(enderecoArquivo));
 
         int contadorLinhas = 0;
-        StringBuilder resultado = new StringBuilder();
-        StringBuilder leitorLinha = new StringBuilder();
+        final StringBuilder resultado = new StringBuilder();
+        final StringBuilder leitorLinha = new StringBuilder();
         String recebeLinha;
 
-        while ((recebeLinha = br.readLine()) != null) {
+        recebeLinha = br.readLine();
+        while (recebeLinha != null) {
             leitorLinha.append(recebeLinha);
             contadorLinhas++;
             if (leitorLinha.toString().contains(palavraBuscada)) {
-                int i = 1;
+
                 resultado.append(String.format("%nL%d C%d: %s", contadorLinhas,
-                leitorLinha.indexOf(palavraBuscada) + i, leitorLinha.toString()));
+                leitorLinha.indexOf(palavraBuscada) + 1, leitorLinha.toString()));
             }
             leitorLinha.setLength(0);
+            recebeLinha = br.readLine();
         }
 
         br.close();
@@ -114,9 +118,9 @@ public final class EncontraPalavra {
      */
     public static String retornaSaida(final String enderecoArquivo, final String palavraBuscada) throws IOException {
 
-        StringBuilder saida = new StringBuilder();
-        saida.append(contaOcorrencias(enderecoArquivo, palavraBuscada));
-        saida.append(contarLinhasEColunas(enderecoArquivo, palavraBuscada));
+        final StringBuilder saida = new StringBuilder();
+        saida.append(contaOcorrencias(enderecoArquivo, palavraBuscada)).
+        append(contarLinhasEColunas(enderecoArquivo, palavraBuscada));
 
         return saida.toString();
     }

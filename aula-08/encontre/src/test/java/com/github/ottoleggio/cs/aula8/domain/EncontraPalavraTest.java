@@ -20,23 +20,23 @@ class EncontraPalavraTest {
     @Test
     void testContaOcorrencias() throws IOException {
         assertEquals("Encontradas: 7.",
-                EncontraPalavra.contaOcorrencias(getFilename("7ocorrencias.txt"), "aqui"));
+                EncontraPalavraUtils.contaOcorrencias(getFilename("7ocorrencias.txt"), "aqui"));
         assertEquals("Encontradas: 2.",
-                EncontraPalavra.contaOcorrencias(getFilename("2ocorrenciasLinhaVazia.txt"), "aqui"));
+                EncontraPalavraUtils.contaOcorrencias(getFilename("2ocorrenciasLinhaVazia.txt"), "aqui"));
         assertEquals("Encontradas: 2.",
-                EncontraPalavra.contaOcorrencias(getFilename("umaLinha.txt"), "teste"));
+                EncontraPalavraUtils.contaOcorrencias(getFilename("umaLinha.txt"), "teste"));
         assertEquals("Encontradas: 0.",
-                EncontraPalavra.contaOcorrencias(getFilename("umaLinha.txt"), ""));
+                EncontraPalavraUtils.contaOcorrencias(getFilename("umaLinha.txt"), ""));
         assertEquals("Encontradas: 2.",
-                EncontraPalavra.contaOcorrencias(getFilename("espacoNoFim.txt"), "aqui"));
+                EncontraPalavraUtils.contaOcorrencias(getFilename("espacoNoFim.txt"), "aqui"));
         assertEquals("Encontradas: 0.",
-                EncontraPalavra.contaOcorrencias(getFilename("zeroOcorrencias.txt"), "aqui"));
+                EncontraPalavraUtils.contaOcorrencias(getFilename("zeroOcorrencias.txt"), "aqui"));
     }
 
     @Test
     void testExcepContaOcorrencias() throws IOException {
         assertThrows(IllegalArgumentException.class,() -> 
-        EncontraPalavra.contaOcorrencias(getFilename("vazio.txt"), "aqui"));
+        EncontraPalavraUtils.contaOcorrencias(getFilename("vazio.txt"), "aqui"));
     }
 
     @Test
@@ -44,13 +44,13 @@ class EncontraPalavraTest {
         String teste = "Encontradas: 2.\n" + 
                 "L1 C10: frase de teste teste";
         assertEquals(teste,
-                EncontraPalavra.retornaSaida(getFilename("umaLinha.txt"), "teste"));
+                EncontraPalavraUtils.retornaSaida(getFilename("umaLinha.txt"), "teste"));
     }
 
     @Test
     void testExcepContarLinhasEColunas() throws IOException {
         assertThrows(IllegalArgumentException.class,() -> 
-        EncontraPalavra.contarLinhasEColunas(getFilename("vazio.txt"), "aqui"));
+        EncontraPalavraUtils.contarLinhasEColunas(getFilename("vazio.txt"), "aqui"));
     }
 
     @Test
@@ -62,6 +62,6 @@ class EncontraPalavraTest {
                 "L4 C1: aqui\n" + 
                 "L7 C1: aqui";
         assertEquals(teste,
-                EncontraPalavra.retornaSaida(getFilename("7ocorrencias.txt"), "aqui"));
+                EncontraPalavraUtils.retornaSaida(getFilename("7ocorrencias.txt"), "aqui"));
     }
 }
