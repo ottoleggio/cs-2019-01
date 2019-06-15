@@ -543,11 +543,11 @@
                         <configuration>
                             <targetClasses>
                                 <param>
-                                    com.github.ottoleggio.cs.aula1.domain.Exercicio
+                                    com.github.ottoleggio.cs.aula8.domain.EncontraPalavra.java
                                 </param>
                             </targetClasses>
                             <targetTests>
-                                <param>com.github.ottoleggio.cs.aula1.*</param>
+                                <param>com.github.ottoleggio.cs.aula8.domain.EncontraPalavra.java</param>
                             </targetTests>
                         </configuration>
                     </plugin>
