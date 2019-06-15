@@ -3,7 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;
-import com.github.ottoleggio.cs.aula8.domain.ImprimeHexa;
+import com.github.ottoleggio.cs.aula8.domain.ImprimeHexaUtils;
 
 class ProgramaInteiroTest {
 
@@ -18,19 +18,19 @@ class ProgramaInteiroTest {
     @Test
     void testImprimeHexa() throws IOException {        
         assertEquals("436f6e73",
-                ImprimeHexa.leByteFile(getFilename("436f6e73.txt")));
+                ImprimeHexaUtils.leByteFile(getFilename("436f6e73.txt")));
     }
 
     @Test
     void testImprimeClass() throws IOException {
         assertEquals("cafebabe",
-                ImprimeHexa.leByteFile(getFilename("cafebabe.class")));
+                ImprimeHexaUtils.leByteFile(getFilename("cafebabe.class")));
     }
 
     @Test
     void testArquivoIncorreto() throws IOException {
-        assertThrows(IllegalArgumentException.class,() -> ImprimeHexa.leByteFile(getFilename("vazio.txt")));
-        assertThrows(IllegalArgumentException.class,() -> ImprimeHexa.leByteFile(getFilename("duas_letras.txt")));
-        assertThrows(IllegalArgumentException.class,() -> ImprimeHexa.leByteFile("a.txt"));
+        assertThrows(IllegalArgumentException.class,() -> ImprimeHexaUtils.leByteFile(getFilename("vazio.txt")));
+        assertThrows(IllegalArgumentException.class,() -> ImprimeHexaUtils.leByteFile(getFilename("duas_letras.txt")));
+        assertThrows(IllegalArgumentException.class,() -> ImprimeHexaUtils.leByteFile("a.txt"));
     }
 }

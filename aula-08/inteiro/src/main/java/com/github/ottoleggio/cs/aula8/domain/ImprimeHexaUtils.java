@@ -2,15 +2,20 @@ package com.github.ottoleggio.cs.aula8.domain;
 
 import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-public final class ImprimeHexa {
+/**
+ * Classe responsável pelo método leByteFile.
+ */
+public final class ImprimeHexaUtils {
 
     /**
      * Método construtor da classe.
      */
-    private ImprimeHexa() {
+    private ImprimeHexaUtils() {
 
     }
 
@@ -25,7 +30,7 @@ public final class ImprimeHexa {
      * @throws IOException se ocorrer exception de IO
      */
     public static String leByteFile(final String enderecoArquivo) throws IOException {
-        File teste = new File(enderecoArquivo);
+        final File teste = new File(enderecoArquivo);
         if (!teste.exists()) {
             throw new IllegalArgumentException("O arquivo não"
                     + " existe");
@@ -37,10 +42,10 @@ public final class ImprimeHexa {
                     + " dados suficientes.");
         }
 
-        FileInputStream fis = new FileInputStream(enderecoArquivo);
-        DataInputStream dis = new DataInputStream(fis);
+        final InputStream fis = Files.newInputStream(Paths.get(enderecoArquivo));
+        final DataInputStream dis = new DataInputStream(fis);
 
-        int valor = dis.readInt();
+        final int valor = dis.readInt();
 
         dis.close();
         return Integer.toHexString(valor);
