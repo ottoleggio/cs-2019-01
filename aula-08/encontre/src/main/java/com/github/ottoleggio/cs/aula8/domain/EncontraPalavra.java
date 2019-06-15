@@ -16,13 +16,14 @@ public final class EncontraPalavra {
     }
 
     /**
-     * Método que verifica o primeiro e ultimo byte de arquivo
-     * a fim de verificar se o formato é JPEG ou não.
+     * Método que conta a quantidade de ocorrência de uma
+     * palavra fornecida como parametro em um arquivo.
      *
      * @param enderecoArquivo Endereço do arquivo a ser lido
+     * @param palavraBuscada Palavra a ser buscada no arquivo
      *
-     * @return Retorna True se o formato do arquivo for JPEG e
-     * False caso contrário
+     * @return Retorna a quantidade de ocorrências da palavra buscada
+     * em formato específico
      * @throws IOException se ocorrer exception de IO
      */
     public static String contaOcorrencias(final String enderecoArquivo, final String palavraBuscada) throws IOException {
@@ -53,7 +54,6 @@ public final class EncontraPalavra {
         }
 
         br.close();
-
         return  "Encontradas: " + ocorrencias + ".";
     }
 
@@ -63,7 +63,9 @@ public final class EncontraPalavra {
      *
      * @param enderecoArquivo Endereço do arquivo a ser lido
      * @param palavraBuscada Palavra a ser buscada no arquivo
-     *
+     * 
+     * @return retorna posicao de linha e coluna da palavra
+     * encontrada, e a frase completa
      * @throws IOException se ocorrer exception de IO
      */
     public static String contarLinhasEColunas(final String enderecoArquivo, final String palavraBuscada) throws IOException {
@@ -78,50 +80,18 @@ public final class EncontraPalavra {
         InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
         BufferedReader br = new BufferedReader(isr);
 
-        String linhas;
-        int indiceLinha = 0;
-        int indiceColuna = 0;
-        int iaux = 0;
         int contadorLinhas = 0;
-        int encontrou = 0;
-        boolean flagPalavra = false;
-        String frase = null;
         StringBuilder resultado = new StringBuilder();
+        StringBuilder leitorLinha = new StringBuilder();
+        String recebeLinha;
 
-        while ((linhas = br.readLine()) != null) {
+        while ((recebeLinha = br.readLine()) != null) {
+            leitorLinha.append(recebeLinha);
             contadorLinhas++;
-            
-            for (int i = 0; i < linhas.length(); i++) {
-                encontrou = 0;
-               
-                if(linhas.charAt(i) == palavraBuscada.charAt(0)) {
-                    iaux = i; //possivel coluna
-                    for (int j = 0; j < palavraBuscada.length(); j++) {
-                        encontrou ++;
-                        if(encontrou == palavraBuscada.length() &&
-                                (linhas.length() == i+1 ||
-                                linhas.charAt(i+1) == ' ')) {
-                            indiceColuna = iaux+1;
-                            indiceLinha = contadorLinhas;
-                            frase = linhas;
-                            flagPalavra = true;
-                            break;
-                        }
-                        if(linhas.charAt(i) != palavraBuscada.charAt(j)) {
-                            encontrou = 0;
-                            break;
-                        }
-                        i++;
-                    }
-                }
-                if(flagPalavra) {
-                    //System.out.println(retornaSaida(indiceLinha, indiceColuna, frase));
-                    resultado.append(String.format("%nL%d C%d: %s",indiceLinha, indiceColuna, frase));
-                    
-                    flagPalavra = false;
-                    break;
-                }
+            if(leitorLinha.toString().contains(palavraBuscada)) {
+                resultado.append(String.format("%nL%d C%d: %s", contadorLinhas, leitorLinha.indexOf(palavraBuscada)+1, leitorLinha.toString()));
             }
+            leitorLinha.setLength(0);
         }
 
         br.close();
@@ -129,17 +99,18 @@ public final class EncontraPalavra {
     }
 
     /**
-     * Método que retorna linhas e colunas
+     * Método que agrupa contagem de ocorrências
+     * e posição de linhas e colunas 
      * em formato de texto específico.
      *
-     * @param linha Número da linha da palavra encontrada
-     * @param coluna Número da coluna da palavrba encontrada
-     * @param frase Frase em que a palavra foi encontrada
+     * @param enderecoArquivo Endereço do arquivo a ser lido
+     * @param palavraBuscada Palavra a ser buscada no arquivo
      *
+     * @return Retorna saida do programa formatada
      * @throws IOException se ocorrer exception de IO
      */
     public static String retornaSaida(final String enderecoArquivo, final String palavraBuscada) throws IOException {
-        
+
         StringBuilder saida = new StringBuilder();
         saida.append(contaOcorrencias(enderecoArquivo, palavraBuscada));
         saida.append(contarLinhasEColunas(enderecoArquivo, palavraBuscada));
