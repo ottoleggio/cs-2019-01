@@ -31,16 +31,15 @@ public final class ProgramaDiaDaSemana {
     * @throws IOException se ocorrer exception de IO
     */
     public static void main(final String[] args) {
+       
+        String[] entrada = new String[4];
+        entrada[0] = "20181231";
+        entrada[1] = "2000";
+        entrada[2] = "20181231";
+        entrada[3] = "2";
+        System.out.println(ValidaEntradaUtils.validadorEntrada(entrada));
+        //System.exit(ValidaEntradaUtils.validadorEntrada(args));
         
-       /* String entrada = "201906aa";
-        int ano = Integer.parseInt(entrada.substring(0, 4));
-        int mes = Integer.parseInt(entrada.substring(4, 6));
-        int dia = Integer.parseInt(entrada.substring(6,8));
-        
-        System.out.println(ano+"/"+mes+"/"+dia);*/
-
-        
-        //if(args.length == 0)
 
     }
 }

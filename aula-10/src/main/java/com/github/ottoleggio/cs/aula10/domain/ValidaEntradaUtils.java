@@ -41,13 +41,12 @@ public final class ValidaEntradaUtils {
      */
     public static int seInteiro(final String[] argumentos) {
         int isValidInteger = -1;
-        int indiceArg = 0;
         int sePositivo = 0;
 
         for(int i = 0; i < argumentos.length; i++) {
             try
             {
-               sePositivo = Integer.parseInt(argumentos[indiceArg]);
+               sePositivo = Integer.parseInt(argumentos[i]);
 
                isValidInteger = 1;
             }
@@ -91,7 +90,6 @@ public final class ValidaEntradaUtils {
      * @return Retorna 1 para verdadeiro e 
      * -1 para faso
      */
-    /*
     public static int anoBissextoCheck(final int anoBissexto) {
         if(anoBissexto < 1) {
             return -1;
@@ -99,7 +97,6 @@ public final class ValidaEntradaUtils {
             return 1;
         }
     }
-    */
 
     /**
      * Método que verifica se o parametro de 
@@ -112,35 +109,42 @@ public final class ValidaEntradaUtils {
      * -1 para faso
      */
     public static int dataInvalida(final String argumentos) {
-        int seValido = -1;
-
-        if(argumentos.length() == LIMITE_DATA) {
-            seValido = 1;
+        if(argumentos.length() != LIMITE_DATA) {
+            return -1;
         }
 
         if(argumentos.charAt(0) == '0') {
-            seValido = -1;
+            return -1;
         }
 
         if(ProcessaDataUtils.extraiMes(argumentos) == 0) {
-            seValido = -1;
+            return -1;
         }
 
         if(ProcessaDataUtils.extraiMes(argumentos) > LIMITE_MES) {
-            seValido = -1;
+            return -1;
         }
 
         if(ProcessaDataUtils.extraiDia(argumentos) == 0) {
-            seValido = -1;
+            return -1;
         }
 
         if(ProcessaDataUtils.extraiDia(argumentos) > LIMITE_DIA) {
-            seValido = -1;
+            return -1;
         }
 
-        return seValido;
+        return 1;
     }
 
+    /**
+     * Método que processa todos os critérios
+     * de excessão do argumento do programa.
+     *
+     * @param argumentos String a ser avaliado
+     *
+     * @return Retorna 1 para verdadeiro e 
+     * -1 para faso
+     */
     public static int validadorEntrada(final String[] argumentos) {
         if(qtdArgCheck(argumentos) != 1) {
             return -1;
@@ -154,7 +158,9 @@ public final class ValidaEntradaUtils {
             return -1;
         }
 
-        //seValido = anoBissextoCheck(ProcessaDataUtils.extraiAno(argumentos[1]));
+        if(anoBissextoCheck(Integer.parseInt(argumentos[1])) != 1) {
+            return -1;
+        }
         if(dataInvalida(argumentos[0]) != 1) {
             return -1;
         }
