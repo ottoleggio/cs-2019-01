@@ -28,6 +28,6 @@ public final class ProgramaInteiro {
     * @throws IOException se ocorrer exception de IO
     */
     public static void main(final String[] args) throws IOException {
-        log.fine(ImprimeHexaUtils.leByteFile(args[0]));
+        log.info(ImprimeHexaUtils.leByteFile(args[0]));
     }
 }
