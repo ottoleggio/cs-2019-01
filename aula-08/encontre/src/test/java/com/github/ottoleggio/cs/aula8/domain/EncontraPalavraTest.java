@@ -7,8 +7,6 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
-import com.github.ottoleggio.cs.aula8.application.console.ProgramaEncontra;
-
 class EncontraPalavraTest {
 
     private String getFilename(String string) {
@@ -65,11 +63,5 @@ class EncontraPalavraTest {
                 "L7 C1: aqui";
         assertEquals(teste,
                 EncontraPalavraUtils.retornaSaida(getFilename("7ocorrencias.txt"), "aqui"));
-    }
-
-    @Test
-    void testMain() throws IOException {
-        String[] args = {getFilename("7ocorrencias.txt")};
-        ProgramaEncontra.main(args);
     }
 }

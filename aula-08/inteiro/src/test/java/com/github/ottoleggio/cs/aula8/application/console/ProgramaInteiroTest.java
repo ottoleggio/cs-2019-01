@@ -33,10 +33,4 @@ class ProgramaInteiroTest {
         assertThrows(IllegalArgumentException.class,() -> ImprimeHexaUtils.leByteFile(getFilename("duas_letras.txt")));
         assertThrows(IllegalArgumentException.class,() -> ImprimeHexaUtils.leByteFile("a.txt"));
     }
-
-    @Test
-    void testMain() throws IOException {
-        String[] args = {getFilename("436f6e73.txt")};
-        ProgramaInteiro.main(args);
-    }
 }

@@ -7,8 +7,6 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
-import com.github.ottoleggio.cs.aula8.application.console.ProgramaJpeg;
-
 import junit.framework.TestCase;
 
 public class ProgramaJpegTest extends TestCase {
@@ -50,11 +48,5 @@ public class ProgramaJpegTest extends TestCase {
     void testCorrompido() throws IOException {
         assertEquals("O arquivo não é um Jpeg.", VerificaFormatoUtils.seJpeg(
                 VerificaFormatoUtils.confereByteJpeg(getFilename("teste.txt"))));
-    }
-
-    @Test
-    void testMain() throws IOException {
-        String[] args = {getFilename("imagemTrue1.jpg")};
-        ProgramaJpeg.main(args);
     }
 }
