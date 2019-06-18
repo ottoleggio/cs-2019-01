@@ -92,7 +92,7 @@ public final class VerificaFormatoUtils {
      * Método que auxilia na formatação de retorno do
      * método main.
      *
-     * @param checkJpeg Booleando identificando a 
+     * @param checkJpeg Booleando identificando a
      * validação do arquivo pelo programa.
      *
      * @return Retorna True se o formato do arquivo for JPEG e

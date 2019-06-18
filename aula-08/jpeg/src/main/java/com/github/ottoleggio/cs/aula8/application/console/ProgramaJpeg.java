@@ -1,7 +1,6 @@
 package com.github.ottoleggio.cs.aula8.application.console;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 
 import com.github.ottoleggio.cs.aula8.domain.VerificaFormatoUtils;
 
@@ -11,10 +10,6 @@ import com.github.ottoleggio.cs.aula8.domain.VerificaFormatoUtils;
 * @author Octavio Lo Leggio
 */
 public final class ProgramaJpeg {
-    /**
-     * Mensagem de retorno do programa.
-     */
-     private static Logger log = Logger.getLogger(ProgramaJpeg.class.getName());
      /**
      * Método construtor da classe main.
      */
@@ -28,7 +23,7 @@ public final class ProgramaJpeg {
      * @throws IOException se ocorrer exception de IO
      */
     public static void main(final String[] args) throws IOException {
-        log.fine(VerificaFormatoUtils.seJpeg(
+        System.console().writer().println(VerificaFormatoUtils.seJpeg(
                 VerificaFormatoUtils.confereByteJpeg(args[0])));
     }
 }

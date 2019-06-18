@@ -1,7 +1,6 @@
 package com.github.ottoleggio.cs.aula8.application.console;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 
 import com.github.ottoleggio.cs.aula8.domain.EncontraPalavraUtils;
 
@@ -11,10 +10,6 @@ import com.github.ottoleggio.cs.aula8.domain.EncontraPalavraUtils;
 * @author Octavio Lo Leggio
 */
 public final class ProgramaEncontra {
-    /**
-    * Mensagem de retorno do programa.
-    */
-    private static Logger log = Logger.getLogger(ProgramaEncontra.class.getName());
     /**
     * Método construtor da classe main.
     */
@@ -28,6 +23,7 @@ public final class ProgramaEncontra {
     * @throws IOException se ocorrer exception de IO
     */
     public static void main(final String[] args) throws IOException {
-        log.fine(EncontraPalavraUtils.retornaSaida(args[0], args[0]));
+        System.console().writer().println(EncontraPalavraUtils.
+                retornaSaida(args[0], args[0]));
     }
 }
