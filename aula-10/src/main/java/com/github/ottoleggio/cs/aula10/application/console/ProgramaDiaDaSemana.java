@@ -33,12 +33,12 @@ public final class ProgramaDiaDaSemana {
     public static void main(final String[] args) {
        
         String[] entrada = new String[4];
-        entrada[0] = "20181231";
+        entrada[0] = "20181232";
         entrada[1] = "2000";
         entrada[2] = "20181231";
         entrada[3] = "2";
         System.out.println(ValidaEntradaUtils.validadorEntrada(entrada));
-        //System.exit(ValidaEntradaUtils.validadorEntrada(args));
+        System.exit(ValidaEntradaUtils.validadorEntrada(entrada));
         
 
     }
