@@ -23,9 +23,9 @@ public final class ValidaEntradaUtils {
      * @return int que representa o dia
      */
     public static int qtdArgCheck(final String[] argumentos) {
-        if(argumentos.length != 4) {
+        if (argumentos.length != 4) {
             return -1;
-        }else {
+        } else {
             return 1;
         }
     }
@@ -36,26 +36,23 @@ public final class ValidaEntradaUtils {
      *
      * @param argumentos String a ser avaliado
      *
-     * @return Retorna 1 para verdadeiro e 
+     * @return Retorna 1 para verdadeiro e
      * -1 para faso
      */
     public static int seInteiro(final String[] argumentos) {
         int isValidInteger = -1;
         int sePositivo = 0;
 
-        for(int i = 0; i < argumentos.length; i++) {
-            try
-            {
+        for (int i = 0; i < argumentos.length; i++) {
+            try {
                sePositivo = Integer.parseInt(argumentos[i]);
 
                isValidInteger = 1;
-            }
-            catch (NumberFormatException ex)
-            {
+            } catch (NumberFormatException ex) {
                return -1;
             }
 
-            if(sePositivo < 0) {
+            if (sePositivo < 0) {
                 return -1;
             }
         }
@@ -64,72 +61,72 @@ public final class ValidaEntradaUtils {
      }
 
     /**
-     * Método que verifica se o parametro de 
+     * Método que verifica se o parametro de
      * dia da semana é menor ou igual a 6.
      *
-     * @param argumentos String a ser avaliado
+     * @param argDiaSemana String a ser avaliado
      *
-     * @return Retorna 1 para verdadeiro e 
+     * @return Retorna 1 para verdadeiro e
      * -1 para faso
      */
     public static int limiteSemanaCheck(final int argDiaSemana) {
-        if(argDiaSemana > LIMITE_DIASEMANA) {
+        if (argDiaSemana > LIMITE_DIASEMANA) {
             return -1;
-        }else {
+        } else {
             return 1;
         }
     }
 
     /**
-     * Método que verifica se o parametro de 
+     * Método que verifica se o parametro de
      * passado como ano bissexto é maio ou
      * igual a 1.
      *
-     * @param argumentos String a ser avaliado
+     * @param anoBissexto String a ser avaliado
      *
-     * @return Retorna 1 para verdadeiro e 
+     * @return Retorna 1 para verdadeiro e
      * -1 para faso
      */
     public static int anoBissextoCheck(final int anoBissexto) {
-        if(anoBissexto < 1) {
+        if (anoBissexto < 1) {
             return -1;
-        }else {
+        } else {
             return 1;
         }
     }
 
     /**
-     * Método que verifica se o parametro de 
+     * Método que verifica se o parametro de
      * passado como data está dentro dos critérios
      * válidos de uma data.
      *
      * @param argumentos String a ser avaliado
      *
-     * @return Retorna 1 para verdadeiro e 
+     * @return Retorna 1 para verdadeiro e
      * -1 para faso
      */
     public static int dataInvalida(final String argumentos) {
-        if(argumentos.length() != LIMITE_DATA) {
+        if (argumentos.length() != LIMITE_DATA) {
             return -1;
         }
 
-        if(argumentos.charAt(0) == '0') {
+        if (argumentos.charAt(0) == '0') {
             return -1;
         }
 
-        if(ProcessaDataUtils.extraiMes(argumentos) == 0) {
+        if (ProcessaDataUtils.extraiMes(argumentos) == 0) {
             return -1;
         }
 
-        if(ProcessaDataUtils.extraiMes(argumentos) > LIMITE_MES) {
+        if (ProcessaDataUtils.extraiMes(argumentos) > LIMITE_MES) {
             return -1;
         }
 
-        if(ProcessaDataUtils.extraiDia(argumentos) == 0) {
+        if (ProcessaDataUtils.extraiDia(argumentos) == 0) {
             return -1;
         }
 
-        if(ProcessaDataUtils.extraiDia(argumentos) > LIMITE_DIA) {
+        if (ProcessaDataUtils.extraiDia(argumentos) > LIMITE_DIA) {
             return -1;
         }
 
@@ -142,30 +139,31 @@ public final class ValidaEntradaUtils {
      *
      * @param argumentos String a ser avaliado
      *
-     * @return Retorna 1 para verdadeiro e 
+     * @return Retorna 1 para verdadeiro e
      * -1 para faso
      */
     public static int validadorEntrada(final String[] argumentos) {
-        if(qtdArgCheck(argumentos) != 1) {
+        if (qtdArgCheck(argumentos) != 1) {
             return -1;
         }
 
-        if(seInteiro(argumentos) != 1) {
+        if (seInteiro(argumentos) != 1) {
             return -1;
         }
 
-        if(limiteSemanaCheck(Integer.parseInt(argumentos[3])) != 1) {
+        if (limiteSemanaCheck(Integer.parseInt(argumentos[3])) != 1) {
             return -1;
         }
 
-        if(anoBissextoCheck(Integer.parseInt(argumentos[1])) != 1) {
-            return -1;
-        }
-        if(dataInvalida(argumentos[0]) != 1) {
+        if (anoBissextoCheck(Integer.parseInt(argumentos[1])) != 1) {
             return -1;
         }
 
-        if(dataInvalida(argumentos[2]) != 1) {
+        if (dataInvalida(argumentos[0]) != 1) {
+            return -1;
+        }
+
+        if (dataInvalida(argumentos[2]) != 1) {
             return -1;
         }
 
