@@ -13,10 +13,10 @@ public final class ProcessaDataUtils {
     }
 
     /**
-     * Método que recebe uma data no formato 'aaaammdd'
+     * Recebe uma data no formato 'aaaammdd'
      * e extrai o dia correspondente em formato int.
      *
-     * @param String de uma data no formato 'aaaammdd'
+     * @param dataEntrada String de uma data no formato 'aaaammdd'
      *
      * @return int que representa o dia
      */
@@ -26,10 +26,10 @@ public final class ProcessaDataUtils {
     }
 
     /**
-     * Método que recebe uma data no formato 'aaaammdd'
+     * Recebe uma data no formato 'aaaammdd'
      * e extrai o mes correspondente em formato int.
      *
-     * @param String de uma data no formato 'aaaammdd'
+     * @param dataEntrada String de uma data no formato 'aaaammdd'
      *
      * @return int que representa o mes
      */
@@ -39,10 +39,10 @@ public final class ProcessaDataUtils {
     }
 
     /**
-     * Método que recebe uma data no formato 'aaaammdd'
+     * Recebe uma data no formato 'aaaammdd'
      * e extrai o ano correspondente em formato int.
      *
-     * @param String de uma data no formato 'aaaammdd'
+     * @param dataEntrada String de uma data no formato 'aaaammdd'
      *
      * @return int que representa o ano
      */
@@ -51,6 +51,16 @@ public final class ProcessaDataUtils {
         return ano;
     }
 
+    /**
+     * Identifica se um ano é bissexto de acordo com critérios
+     * especificados nos requisitos.
+     *
+     * @param ano Ano que se deseja saber se é bissexto
+     * @param bissextoRef Ano bissexto de referência
+     *
+     * @return verdadeiro quando bissexto e falso caso
+     * o constrário
+     */
     public static boolean SeBissexto(final int ano, final int bissextoRef) {
         if (ano == bissextoRef) {
             return true;
