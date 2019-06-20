@@ -108,4 +108,51 @@ public final class ProcessaDataUtils {
             return 0;
         }
     }
+    
+    public static boolean ComparaDatas(final int diaUm, final int mesUm, final int anoUm,
+            final int diaDois,final int  mesDois,final int  anoDois) {
+        if(anoUm == anoDois) {
+            if(mesUm == mesDois) {
+                if(diaUm == diaDois) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static int IteraData(final String dataOrigem, final String dataDestino, final int bissextoRef) {
+        int diaOrigem = extraiDia(dataOrigem);
+        int mesOrigem = extraiMes(dataOrigem);
+        int anoOrigem = extraiAno(dataOrigem);
+        int diaDestino = extraiDia(dataDestino);
+        int mesDestino = extraiMes(dataDestino);
+        int anoDestino = extraiAno(dataDestino);
+        int contadorDias = 0;
+
+        
+        while(!ComparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+            for(int j = mesOrigem; j <= 12; j++) {
+                for(int i = diaOrigem; i <= UltimoDiaDoMes(mesOrigem,anoOrigem,bissextoRef); i++) {
+                    if(ComparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+                        break;
+                    }
+                    diaOrigem++;
+                    contadorDias++;
+                }
+                if(ComparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+                    break;
+                }
+                diaOrigem = 1;
+                mesOrigem++;
+            }
+            if(ComparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+                break;
+            }
+            mesOrigem = 1;
+            anoOrigem++;
+        }
+
+        return contadorDias;
+    }
 }
