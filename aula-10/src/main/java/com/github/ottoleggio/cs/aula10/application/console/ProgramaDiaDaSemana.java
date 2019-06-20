@@ -1,5 +1,6 @@
 package com.github.ottoleggio.cs.aula10.application.console;
 
+import com.github.ottoleggio.cs.aula10.domain.ProcessaDataUtils;
 import com.github.ottoleggio.cs.aula10.domain.ValidaEntradaUtils;
 
 //import com.github.ottoleggio.cs.aula10.domain.ProcessaDataUtils;
@@ -23,7 +24,7 @@ public final class ProgramaDiaDaSemana {
     * @throws IOException se ocorrer exception de IO
     */
     public static void main(final String[] args) {
-
+/*
         String[] entrada = new String[4];
         entrada[0] = "20181232";
         entrada[1] = "2000";
@@ -31,5 +32,7 @@ public final class ProgramaDiaDaSemana {
         entrada[3] = "2";
         System.out.println(ValidaEntradaUtils.validadorEntrada(entrada));
         System.exit(ValidaEntradaUtils.validadorEntrada(entrada));
+        */
+        System.out.println(ProcessaDataUtils.IteraData("20180101", "20190101", 2018));
     }
 }

@@ -61,10 +61,12 @@ public final class ProcessaDataUtils {
      * @return verdadeiro quando bissexto e falso caso
      * o constrário
      */
-    public static boolean SeBissexto(final int ano, final int bissextoRef) {
+    public static boolean SeBissexto(final int ano,
+            final int bissextoRef) {
         if (ano == bissextoRef) {
             return true;
-        } else if ((ano - bissextoRef) % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0)) {
+        } else if ((ano - bissextoRef) % 4 == 0 &&
+                (ano % 100 != 0 || ano % 400 == 0)) {
             return true;
         }
         return false;
@@ -107,5 +109,83 @@ public final class ProcessaDataUtils {
         default:
             return 0;
         }
+    }
+
+    /**
+     * Compara se duas datas passadas como inteiros
+     * são iguais.
+     *
+     * @param diaUm Dia da primeira data a se comparar
+     * @param mesUm Mês da primeira data a se comparar
+     * @param anoUm Ano da primeira data a se comparar
+     * @param diaDois Dia da segunda data a se comparar
+     * @param mesDois Mês da segunda data a se comparar
+     * @param anoDois Ano da segunda data a se comparar
+     *
+     * @return verdadeiro se as duas datas forem iguais e
+     * falso caso o contrário
+     */
+    public static boolean ComparaDatas(final int diaUm,
+            final int mesUm, final int anoUm, final int diaDois,
+            final int mesDois,final int anoDois) {
+        if(anoUm == anoDois) {
+            if(mesUm == mesDois) {
+                if(diaUm == diaDois) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Conta a diferença de dias entre uma data e outra
+     * considerando um ano bissexto informado como parâmetro.
+     *
+     * @param dataOrigem Data de origem
+     * @param dataDestino Data de destino
+     * @param bissextoRef Ano bissexto de referência
+     *
+     * @return inteiro do número de dias de diferença entre
+     * as datas fornecidas
+     */
+    public static int IteraData(final String dataOrigem,
+            final String dataDestino, final int bissextoRef) {
+        int diaOrigem = extraiDia(dataOrigem);
+        int mesOrigem = extraiMes(dataOrigem);
+        int anoOrigem = extraiAno(dataOrigem);
+        int diaDestino = extraiDia(dataDestino);
+        int mesDestino = extraiMes(dataDestino);
+        int anoDestino = extraiAno(dataDestino);
+        int contadorDias = 0;
+
+        while(!ComparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                diaDestino, mesDestino, anoDestino)) {
+            for(int j = mesOrigem; j <= 12; j++) {
+                for(int i = diaOrigem; i <= UltimoDiaDoMes(mesOrigem,
+                        anoOrigem, bissextoRef); i++) {
+                    if(ComparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                            diaDestino, mesDestino, anoDestino)) {
+                        break;
+                    }
+                    diaOrigem++;
+                    contadorDias++;
+                }
+                if(ComparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                        diaDestino, mesDestino, anoDestino)) {
+                    break;
+                }
+                diaOrigem = 1;
+                mesOrigem++;
+            }
+            if(ComparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                    diaDestino, mesDestino, anoDestino)) {
+                break;
+            }
+            mesOrigem = 1;
+            anoOrigem++;
+        }
+
+        return contadorDias;
     }
 }
