@@ -1,7 +1,11 @@
 package com.github.ottoleggio.cs.aula10.domain;
 
 /**
- * Classe responsável por traduzir Strings de data.
+ * Incremente ou decrementa uma data um dia
+ * de cada vez levando em conta o último dia
+ * de cada mês e o ano bissexto passado como
+ * parâmetro em Strings que representam datas
+ * no formato 'aaaammdd'.
  */
 public final class ProcessaDataUtils {
 
@@ -139,7 +143,7 @@ public final class ProcessaDataUtils {
     }
 
     /**
-     * Conta a diferença de dias entre uma data e outra
+     * Conta a diferença de dias entre uma data menor e outra maior
      * considerando um ano bissexto informado como parâmetro.
      *
      * @param dataOrigem Data de origem
@@ -189,6 +193,17 @@ public final class ProcessaDataUtils {
         return contadorDias;
     }
 
+    /**
+     * Conta a diferença de dias entre uma data maior e outra menor
+     * considerando um ano bissexto informado como parâmetro.
+     *
+     * @param dataOrigem Data de origem
+     * @param dataDestino Data de destino
+     * @param bissextoRef Ano bissexto de referência
+     *
+     * @return inteiro do número de dias de diferença entre
+     * as datas fornecidas
+     */
     public static int recuaData(final String dataOrigem,
             final String dataDestino, final int bissextoRef) {
         int diaOrigem = extraiDia(dataOrigem);
@@ -199,23 +214,28 @@ public final class ProcessaDataUtils {
         int anoDestino = extraiAno(dataDestino);
         int contadorDias = 0;
 
-        while(!comparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+        while(!comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                diaDestino, mesDestino, anoDestino)) {
             for(int j = mesOrigem; j > 0; j--) {
                 for(int i = diaOrigem; i > 0; i--) {
                     if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                             diaDestino, mesDestino, anoDestino)) {
                         break;
                     }
-                    diaOrigem = recuaDia(bissextoRef, diaOrigem, mesOrigem, anoOrigem);
+                    diaOrigem = recuaDia(bissextoRef, diaOrigem,
+                            mesOrigem, anoOrigem);
                     contadorDias++;
                 }
-                if(comparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+                if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                        diaDestino, mesDestino, anoDestino)) {
                     break;
                 }
                 mesOrigem = recuaMes(mesOrigem);
-                diaOrigem = ultimoDiaDoMes(mesOrigem, anoOrigem, bissextoRef);
+                diaOrigem = ultimoDiaDoMes(mesOrigem, anoOrigem,
+                        bissextoRef);
             }
-            if(comparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+            if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                    diaDestino, mesDestino, anoDestino)) {
                 break;
             }
             anoOrigem--;
@@ -224,21 +244,41 @@ public final class ProcessaDataUtils {
         return contadorDias;
     }
 
-    private static int recuaDia(final int bissextoRef, int diaOrigem, int mesOrigem, int anoOrigem) {
-        if(diaOrigem == 1) {
-            diaOrigem = ultimoDiaDoMes(mesOrigem-1, anoOrigem, bissextoRef);
+    /**
+     * Retroage um dia numa data especificada
+     * considerando o ano bissexto informado.
+     *
+     * @param dia Dia da data a recuar
+     * @param mes Mês da data a recuar
+     * @param ano Ano da data a recuar
+     * @param bissextoRef Ano bissexto de referência
+     * 
+     * @return inteiro representando o dia anterior
+     * da data informada
+     */
+    private static int recuaDia(final int bissextoRef, int dia, int mes, int ano) {
+        if(dia == 1) {
+            dia = ultimoDiaDoMes(mes-1, ano, bissextoRef);
         } else {
-            diaOrigem--;
+            dia--;
         }
-        return diaOrigem;
+        return dia;
     }
 
-    private static int recuaMes(int mesOrigem) {
-        if(mesOrigem == 1) {
-            mesOrigem = 12;
+    /**
+     * Retroage um mês para o mês anterior.
+     *
+     * @param mes Mês da data a recuar
+     * 
+     * @return inteiro representando o mês anterior
+     * do mês informado
+     */
+    private static int recuaMes(int mes) {
+        if(mes == 1) {
+            mes = 12;
         } else {
-            mesOrigem--;
+            mes--;
         }
-        return mesOrigem;
+        return mes;
     }
 }
