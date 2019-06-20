@@ -61,7 +61,7 @@ public final class ProcessaDataUtils {
      * @return verdadeiro quando bissexto e falso caso
      * o constrário
      */
-    public static boolean SeBissexto(final int ano,
+    public static boolean seBissexto(final int ano,
             final int bissextoRef) {
         if (ano == bissextoRef) {
             return true;
@@ -82,9 +82,9 @@ public final class ProcessaDataUtils {
      *
      * @return um int representando o último dia do mês
      */
-    public static int UltimoDiaDoMes(final int mes, final int ano,
+    public static int ultimoDiaDoMes(final int mes, final int ano,
             final int bissextoRef) {
-        boolean seBissexto = SeBissexto(ano, bissextoRef);
+        boolean seBissexto = seBissexto(ano, bissextoRef);
 
         switch(mes) {
         case 1:
@@ -125,7 +125,7 @@ public final class ProcessaDataUtils {
      * @return verdadeiro se as duas datas forem iguais e
      * falso caso o contrário
      */
-    public static boolean ComparaDatas(final int diaUm,
+    public static boolean comparaDatas(final int diaUm,
             final int mesUm, final int anoUm, final int diaDois,
             final int mesDois,final int anoDois) {
         if(anoUm == anoDois) {
@@ -149,7 +149,7 @@ public final class ProcessaDataUtils {
      * @return inteiro do número de dias de diferença entre
      * as datas fornecidas
      */
-    public static int IteraData(final String dataOrigem,
+    public static int iteraData(final String dataOrigem,
             final String dataDestino, final int bissextoRef) {
         int diaOrigem = extraiDia(dataOrigem);
         int mesOrigem = extraiMes(dataOrigem);
@@ -159,26 +159,26 @@ public final class ProcessaDataUtils {
         int anoDestino = extraiAno(dataDestino);
         int contadorDias = 0;
 
-        while(!ComparaDatas(diaOrigem, mesOrigem, anoOrigem,
+        while(!comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                 diaDestino, mesDestino, anoDestino)) {
             for(int j = mesOrigem; j <= 12; j++) {
-                for(int i = diaOrigem; i <= UltimoDiaDoMes(mesOrigem,
+                for(int i = diaOrigem; i <= ultimoDiaDoMes(mesOrigem,
                         anoOrigem, bissextoRef); i++) {
-                    if(ComparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                    if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                             diaDestino, mesDestino, anoDestino)) {
                         break;
                     }
                     diaOrigem++;
                     contadorDias++;
                 }
-                if(ComparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                         diaDestino, mesDestino, anoDestino)) {
                     break;
                 }
                 diaOrigem = 1;
                 mesOrigem++;
             }
-            if(ComparaDatas(diaOrigem, mesOrigem, anoOrigem,
+            if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                     diaDestino, mesDestino, anoDestino)) {
                 break;
             }
@@ -187,5 +187,58 @@ public final class ProcessaDataUtils {
         }
 
         return contadorDias;
+    }
+
+    public static int recuaData(final String dataOrigem,
+            final String dataDestino, final int bissextoRef) {
+        int diaOrigem = extraiDia(dataOrigem);
+        int mesOrigem = extraiMes(dataOrigem);
+        int anoOrigem = extraiAno(dataOrigem);
+        int diaDestino = extraiDia(dataDestino);
+        int mesDestino = extraiMes(dataDestino);
+        int anoDestino = extraiAno(dataDestino);
+        int contadorDias = 0;
+
+        while(!comparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+            for(int j = mesOrigem; j > 0; j--) {
+                for(int i = diaOrigem; i > 0; i--) {
+                    if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                            diaDestino, mesDestino, anoDestino)) {
+                        break;
+                    }
+                    diaOrigem = recuaDia(bissextoRef, diaOrigem, mesOrigem, anoOrigem);
+                    contadorDias++;
+                }
+                if(comparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+                    break;
+                }
+                mesOrigem = recuaMes(mesOrigem);
+                diaOrigem = ultimoDiaDoMes(mesOrigem, anoOrigem, bissextoRef);
+            }
+            if(comparaDatas(diaOrigem, mesOrigem, anoOrigem, diaDestino, mesDestino, anoDestino)) {
+                break;
+            }
+            anoOrigem--;
+        }
+
+        return contadorDias;
+    }
+
+    private static int recuaDia(final int bissextoRef, int diaOrigem, int mesOrigem, int anoOrigem) {
+        if(diaOrigem == 1) {
+            diaOrigem = ultimoDiaDoMes(mesOrigem-1, anoOrigem, bissextoRef);
+        } else {
+            diaOrigem--;
+        }
+        return diaOrigem;
+    }
+
+    private static int recuaMes(int mesOrigem) {
+        if(mesOrigem == 1) {
+            mesOrigem = 12;
+        } else {
+            mesOrigem--;
+        }
+        return mesOrigem;
     }
 }

@@ -33,6 +33,6 @@ public final class ProgramaDiaDaSemana {
         System.out.println(ValidaEntradaUtils.validadorEntrada(entrada));
         System.exit(ValidaEntradaUtils.validadorEntrada(entrada));
         */
-        System.out.println(ProcessaDataUtils.IteraData("20180101", "20190101", 2018));
+        System.out.println(ProcessaDataUtils.recuaData("20181231", "20170101", 2018));
     }
 }
