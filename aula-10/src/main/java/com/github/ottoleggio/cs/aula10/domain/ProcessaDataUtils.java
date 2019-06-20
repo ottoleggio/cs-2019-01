@@ -50,4 +50,13 @@ public final class ProcessaDataUtils {
         int ano = Integer.parseInt(dataEntrada.substring(0,4));
         return ano;
     }
+
+    public static boolean SeBissexto(final int ano, final int bissextoRef) {
+        if (ano == bissextoRef) {
+            return true;
+        } else if ((ano - bissextoRef) % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0)) {
+            return true;
+        }
+        return false;
+    }
 }
