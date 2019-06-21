@@ -328,6 +328,17 @@ public final class ProcessaDataUtils {
         return iteradorDia;
     }
 
+    /**
+     * Identifica se uma data enviada como String
+     * no formato 'yyyymmdd' é maior, menor ou igual que uma 
+     * segunda data.
+     *
+     * @param dataOrigem Data de origem
+     * @param dataDestino Data de destino
+     * 
+     * @return Retorna 1 para maior, 0 para igual e -1 
+     * para menor
+     */
     public static int qualDataMaior(String dataOrigem, String dataDestino) {
         int diaOrigem = extraiDia(dataOrigem);
         int mesOrigem = extraiMes(dataOrigem);
@@ -357,8 +368,20 @@ public final class ProcessaDataUtils {
         }
     }
 
+    /**
+     * Recebe vetor de Strings, analisa todos os casos
+     * de excessão e, caso válido, executa a iteração
+     * das datas.
+     *
+     * @param argumentos Vetor de Strings em que se espera
+     * data de interesse, ano bissexto, data de referência e
+     * dia da semana de referência
+     * 
+     * @return Retorna -1 para inválido ou um int que representa
+     * um dia da semana, começando em 0 para segunda-feira e
+     * finalizando em 6 para domingo
+     */
     public static int executaPrograma(String[] argumentos) {
-        //String[] argumentos = {dataDestino, anoBissexto, dataInicial, semanaReferencia};
         if(ValidaEntradaUtils.validadorEntrada(argumentos) == -1) {
             return -1;
         }
