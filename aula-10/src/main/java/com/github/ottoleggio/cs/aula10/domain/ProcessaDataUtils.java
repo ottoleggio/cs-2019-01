@@ -129,7 +129,7 @@ public final class ProcessaDataUtils {
      * @return verdadeiro se as duas datas forem iguais e
      * falso caso o contrário
      */
-    public static boolean comparaDatas(final int diaUm,
+    private static boolean comparaDatas(final int diaUm,
             final int mesUm, final int anoUm, final int diaDois,
             final int mesDois,final int anoDois) {
         if(anoUm == anoDois) {
@@ -153,7 +153,7 @@ public final class ProcessaDataUtils {
      * @return inteiro do número de dias de diferença entre
      * as datas fornecidas
      */
-    public static int iteraData(final String dataOrigem,
+    public static int avancaData(final String dataOrigem,
             final String dataDestino, final int bissextoRef) {
         int diaOrigem = extraiDia(dataOrigem);
         int mesOrigem = extraiMes(dataOrigem);
@@ -296,12 +296,12 @@ public final class ProcessaDataUtils {
         int iteradorDia = diaSemanaRef;
 
         for(int i = 0; i < qtdDia; i++) {
-            if(iteradorDia == 8) {
+            iteradorDia++;
+            if(iteradorDia == 7) {
                 iteradorDia = 0;
             }
-            iteradorDia++;
         }
-        
+
         return iteradorDia;
     }
 
@@ -321,10 +321,62 @@ public final class ProcessaDataUtils {
         for(int i = 0; i < qtdDia; i++) {
             iteradorDia--;
             if(iteradorDia == -1) {
-                iteradorDia = 7;
+                iteradorDia = 6;
             }
         }
         
         return iteradorDia;
+    }
+
+    public static int qualDataMaior(String dataOrigem, String dataDestino) {
+        int diaOrigem = extraiDia(dataOrigem);
+        int mesOrigem = extraiMes(dataOrigem);
+        int anoOrigem = extraiAno(dataOrigem);
+        int diaDestino = extraiDia(dataDestino);
+        int mesDestino = extraiMes(dataDestino);
+        int anoDestino = extraiAno(dataDestino);
+
+        if(anoDestino == anoOrigem) {
+            if(mesDestino == mesOrigem) {
+                if(diaOrigem > diaDestino) {
+                    return -1;
+                } else if(diaOrigem == diaDestino) {
+                    return 0;
+                } else {
+                    return 1;
+                }
+            } else if(mesDestino > mesOrigem) {
+                return 1;
+            } else {
+                return -1;
+            }
+        } else if(anoDestino > anoOrigem) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    public static int executaPrograma(String dataDestino, String anoBissexto, String dataInicial, String semanaReferencia) {
+        String[] argumentos = {dataDestino, anoBissexto, dataInicial, semanaReferencia};
+        if(ValidaEntradaUtils.validadorEntrada(argumentos) == -1) {
+            return -1;
+        }
+
+        int resultado = -1;
+
+        if(qualDataMaior(argumentos[2], argumentos[0]) == 0) {
+            resultado = Integer.parseInt(argumentos[3]);
+        }
+
+        if(qualDataMaior(argumentos[2], argumentos[0]) == 1) {
+            resultado = avancaDiaDaSemana(avancaData(argumentos[2], argumentos[0], Integer.parseInt(argumentos[1])), Integer.parseInt(argumentos[3]));
+        }
+
+        if(qualDataMaior(argumentos[2], argumentos[0]) == -1) {
+            resultado = recuaDiaDaSemana(recuaData(argumentos[2], argumentos[0], Integer.parseInt(argumentos[1])), Integer.parseInt(argumentos[3]));
+        }
+
+        return resultado;
     }
 }
