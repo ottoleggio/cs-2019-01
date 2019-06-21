@@ -281,4 +281,50 @@ public final class ProcessaDataUtils {
         }
         return mes;
     }
+
+    /**
+     * Avança ao longo dos 7 dias da semana de acordo
+     * com a quantidade de dias solicitado.
+     *
+     * @param qtdDia Quantidade dias a se avançar
+     * @param diaSemanaRef Dia da semana inicial
+     * 
+     * @return inteiro que representa o dia da semana
+     * após a iteração
+     */
+    public static int avancaDiaDaSemana(final int qtdDia, final int diaSemanaRef) {
+        int iteradorDia = diaSemanaRef;
+
+        for(int i = 0; i < qtdDia; i++) {
+            if(iteradorDia == 8) {
+                iteradorDia = 0;
+            }
+            iteradorDia++;
+        }
+        
+        return iteradorDia;
+    }
+
+    /**
+     * Recua ao longo dos 7 dias da semana de acordo
+     * com a quantidade de dias solicitado.
+     *
+     * @param qtdDia Quantidade dias a se recuar
+     * @param diaSemanaRef Dia da semana inicial
+     * 
+     * @return inteiro que representa o dia da semana
+     * após a iteração
+     */
+    public static int recuaDiaDaSemana(final int qtdDia, final int diaSemanaRef) {
+        int iteradorDia = diaSemanaRef;
+
+        for(int i = 0; i < qtdDia; i++) {
+            iteradorDia--;
+            if(iteradorDia == -1) {
+                iteradorDia = 7;
+            }
+        }
+        
+        return iteradorDia;
+    }
 }
