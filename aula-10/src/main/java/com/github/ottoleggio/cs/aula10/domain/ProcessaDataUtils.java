@@ -357,8 +357,8 @@ public final class ProcessaDataUtils {
         }
     }
 
-    public static int executaPrograma(String dataDestino, String anoBissexto, String dataInicial, String semanaReferencia) {
-        String[] argumentos = {dataDestino, anoBissexto, dataInicial, semanaReferencia};
+    public static int executaPrograma(String[] argumentos) {
+        //String[] argumentos = {dataDestino, anoBissexto, dataInicial, semanaReferencia};
         if(ValidaEntradaUtils.validadorEntrada(argumentos) == -1) {
             return -1;
         }

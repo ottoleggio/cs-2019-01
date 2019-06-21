@@ -20,21 +20,15 @@ class ProcessaDataUtilsTest {
     String[] teste12 = {"20160928", "2016", "20160928", "2"};
     String[] teste13 = {"20160301", "2016", "20160228", "6"};
     String[] teste14 = {"20160331", "2018", "20160331", "3"};
-
-    @Test
-    void testExtraiDia() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    void testExtraiMes() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    void testExtraiAno() {
-        fail("Not yet implemented");
-    }
+    String[] teste15 = {"20160131", "2016", "20160331", "3"};
+    String[] teste16 = {"20150131", "2016", "20160331", "5"};
+    String[] teste17 = {"20160331", "2016", "20150131", "5"};
+    String[] teste18 = {"2018", "20160331", "3"};
+    String[] teste19 = {"a", "2018", "20160331", "3"};
+    String[] teste20 = {"20160331", "2018", "20160331", "-3"};
+    String[] teste21 = {"20160331", "2018", "20160331", "7"};
+    String[] teste22 = {"20160331", "0", "20160331", "3"};
+    String[] teste23 = {"20160331", "2018", "20160332", "3"};
 
     @Test
     void testSeBissexto() {
@@ -77,20 +71,28 @@ class ProcessaDataUtilsTest {
 
     @Test
     void testExecutaPrograma() {
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("2010101", "1", "23450101", "1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("100000101", "", "23450101", "1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("20161301", "", "23450101", "1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("20160001", "", "23450101", "1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("20160931", "", "23450101", "1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("20160900", "", "23450101", "1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("", "0", "23450101", "1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("", "-1", "23450101", "1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("", "", "20191232", "1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("", "", "23450101", "-1"));
-        assertEquals(-1, ProcessaDataUtils.executaPrograma("", "", "23450101", "7"));
-        assertEquals(2, ProcessaDataUtils.executaPrograma("20160928", "2016", "20160928", "2"));
-        assertEquals(1, ProcessaDataUtils.executaPrograma("20160301", "2016", "20160228", "6"));
-        assertEquals(3, ProcessaDataUtils.executaPrograma("20160331", "2018", "20160331", "3"));
-        assertEquals(6, ProcessaDataUtils.executaPrograma("20160131", "2016", "20160331", "3"));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste1));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste2));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste3));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste4));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste5));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste6));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste7));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste8));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste9));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste10));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste11));
+        assertEquals(2, ProcessaDataUtils.executaPrograma(teste12));
+        assertEquals(1, ProcessaDataUtils.executaPrograma(teste13));
+        assertEquals(3, ProcessaDataUtils.executaPrograma(teste14));
+        assertEquals(6, ProcessaDataUtils.executaPrograma(teste15));
+        assertEquals(0, ProcessaDataUtils.executaPrograma(teste16));
+        assertEquals(3, ProcessaDataUtils.executaPrograma(teste17));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste18));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste19));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste20));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste21));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste22));
+        assertEquals(-1, ProcessaDataUtils.executaPrograma(teste23));
     }
 }
