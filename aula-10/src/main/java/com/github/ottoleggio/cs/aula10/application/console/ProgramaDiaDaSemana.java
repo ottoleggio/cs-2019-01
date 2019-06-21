@@ -26,13 +26,13 @@ public final class ProgramaDiaDaSemana {
     public static void main(final String[] args) {
 
         String[] entrada = new String[4];
-        entrada[0] = "20160312";
-        entrada[1] = "2016";
-        entrada[2] = "20160228";
-        entrada[3] = "5";
-        /*     
-        System.out.println(ProcessaDataUtils.executaPrograma(entrada[0], entrada[1], entrada[2], entrada[3]));
-*/
-        System.exit(ProcessaDataUtils.executaPrograma(entrada[0], entrada[1], entrada[2], entrada[3]));
+        entrada[0] = "20160331";
+        entrada[1] = "2018";
+        entrada[2] = "20160331";
+        entrada[3] = "3";
+            
+        System.out.println(ProcessaDataUtils.executaPrograma(entrada));
+
+        System.exit(ProcessaDataUtils.executaPrograma(entrada));
     }
 }
