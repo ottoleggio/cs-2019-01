@@ -95,4 +95,12 @@ class ProcessaDataUtilsTest {
         assertEquals(-1, ProcessaDataUtils.executaPrograma(teste22));
         assertEquals(-1, ProcessaDataUtils.executaPrograma(teste23));
     }
+
+    @Test
+    void testAvancaERecuaData() {
+        assertEquals(1, ProcessaDataUtils.avancaData("20190101", "20190102", 2018));
+        assertEquals(0, ProcessaDataUtils.avancaData("20190101", "20190101", 2018));
+        assertEquals(1, ProcessaDataUtils.recuaData("20190102", "20190101", 2018));
+        assertEquals(0, ProcessaDataUtils.recuaData("20190101", "20190101", 2018));
+    }
 }
