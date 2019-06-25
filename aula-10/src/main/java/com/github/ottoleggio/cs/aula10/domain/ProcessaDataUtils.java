@@ -9,6 +9,27 @@ package com.github.ottoleggio.cs.aula10.domain;
  */
 public final class ProcessaDataUtils {
 
+    private static final int ULTIMO_DIA_VINTEEOITO = 28;
+    private static final int ULTIMO_DIA_VINTEENOVE = 29;
+    private static final int ULTIMO_DIA_TRINTA = 30;
+    private static final int ULTIMO_DIA_TRINTAEUM = 31;
+    private static final int MES_FEVEREIRO = 2;
+    private static final int MES_NOVEMBRO = 11;
+    private static final int MES_SETEMBRO = 9;
+    private static final int MES_JUNHO = 6;
+    private static final int MES_ABRIL = 4;
+    private static final int MES_DEZEMBRO = 12;
+    private static final int MES_OUTUBRO = 10;
+    private static final int MES_AGOSTO = 8;
+    private static final int MES_JULHO = 7;
+    private static final int MES_MAIO = 5;
+    private static final int MES_MARCO = 3;
+    private static final int MES_JANEIRO = 1;
+    private static final int ARG_DATA_INTERESSE = 0;
+    private static final int ARG_ANO_BISSEXTO = 1;
+    private static final int ARG_DATA_REFERENCIA = 2;
+    private static final int ARG_DIA_DA_SEMANA = 3;
+
     /**
      * Método construtor da classe.
      */
@@ -91,24 +112,24 @@ public final class ProcessaDataUtils {
         boolean seBissexto = seBissexto(ano, bissextoRef);
 
         switch (mes) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-            return 31;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            return 30;
-        case 2:
+        case MES_JANEIRO:
+        case MES_MARCO:
+        case MES_MAIO:
+        case MES_JULHO:
+        case MES_AGOSTO:
+        case MES_OUTUBRO:
+        case MES_DEZEMBRO:
+            return ULTIMO_DIA_TRINTAEUM;
+        case MES_ABRIL:
+        case MES_JUNHO:
+        case MES_SETEMBRO:
+        case MES_NOVEMBRO:
+            return ULTIMO_DIA_TRINTA;
+        case MES_FEVEREIRO:
             if (seBissexto) {
-                return 29;
+                return ULTIMO_DIA_VINTEENOVE;
             } else {
-                return 28;
+                return ULTIMO_DIA_VINTEEOITO;
             }
         default:
             return 0;
@@ -162,10 +183,11 @@ public final class ProcessaDataUtils {
         int mesDestino = extraiMes(dataDestino);
         int anoDestino = extraiAno(dataDestino);
         int contadorDias = 0;
+        final int dezembro = 12;
 
         while (!comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                 diaDestino, mesDestino, anoDestino)) {
-            for (int j = mesOrigem; j <= 12; j++) {
+            for (int j = mesOrigem; j <= dezembro; j++) {
                 for (int i = diaOrigem; i <= ultimoDiaDoMes(mesOrigem,
                         anoOrigem, bissextoRef); i++) {
                     if (comparaDatas(diaOrigem, mesOrigem, anoOrigem,
@@ -274,9 +296,12 @@ public final class ProcessaDataUtils {
      * @return inteiro representando o mês anterior
      * do mês informado
      */
-    private static int recuaMes(int mes) {
+    private static int recuaMes(final int mesRef) {
+        int mes = mesRef;
+        final int dezembro = 12;
+
         if(mes == 1) {
-            mes = 12;
+            mes = dezembro;
         } else {
             mes--;
         }
@@ -296,10 +321,11 @@ public final class ProcessaDataUtils {
     public static int avancaDiaDaSemana(final int qtdDia,
         final int diaSemanaRef) {
         int iteradorDia = diaSemanaRef;
+        final int limiteDias = 7;
 
         for (int i = 0; i < qtdDia; i++) {
             iteradorDia++;
-            if (iteradorDia == 7) {
+            if (iteradorDia == limiteDias) {
                 iteradorDia = 0;
             }
         }
@@ -320,11 +346,12 @@ public final class ProcessaDataUtils {
     public static int recuaDiaDaSemana(final int qtdDia,
         final int diaSemanaRef) {
         int iteradorDia = diaSemanaRef;
+        final int domingo = 6;
 
         for (int i = 0; i < qtdDia; i++) {
             iteradorDia--;
             if (iteradorDia == -1) {
-                iteradorDia = 6;
+                iteradorDia = domingo;
             }
         }
 
@@ -392,20 +419,20 @@ public final class ProcessaDataUtils {
 
         int resultado = -1;
 
-        if (qualDataMaior(argumentos[2], argumentos[0]) == 0) {
-            resultado = Integer.parseInt(argumentos[3]);
+        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA], argumentos[ARG_DATA_INTERESSE]) == 0) {
+            resultado = Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]);
         }
 
-        if (qualDataMaior(argumentos[2], argumentos[0]) == 1) {
-            resultado = avancaDiaDaSemana(avancaData(argumentos[2],
-             argumentos[0], Integer.parseInt(argumentos[1])),
-              Integer.parseInt(argumentos[3]));
+        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA], argumentos[ARG_DATA_INTERESSE]) == 1) {
+            resultado = avancaDiaDaSemana(avancaData(argumentos[ARG_DATA_REFERENCIA],
+             argumentos[ARG_DATA_INTERESSE], Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])),
+              Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]));
         }
 
-        if (qualDataMaior(argumentos[2], argumentos[0]) == -1) {
-            resultado = recuaDiaDaSemana(recuaData(argumentos[2],
-             argumentos[0], Integer.parseInt(argumentos[1])),
-              Integer.parseInt(argumentos[3]));
+        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA], argumentos[ARG_DATA_INTERESSE]) == -1) {
+            resultado = recuaDiaDaSemana(recuaData(argumentos[ARG_DATA_REFERENCIA],
+             argumentos[ARG_DATA_INTERESSE], Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])),
+              Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]));
         }
 
         return resultado;
