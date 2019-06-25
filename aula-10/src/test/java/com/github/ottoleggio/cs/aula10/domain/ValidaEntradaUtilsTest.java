@@ -26,6 +26,7 @@ class ValidaEntradaUtilsTest {
     String[] teste18 = {"20160331", "2018", "20160331", "7"};
     String[] teste19 = {"20160331", "0", "20160331", "3"};
     String[] teste20 = {"20160331", "2018", "20160332", "3"};
+    String[] teste21 = {"20190229", "2018", "20190301", "3"};
 
     @Test
     void testQtdArgCheck() {
@@ -50,11 +51,11 @@ class ValidaEntradaUtilsTest {
 
     @Test
     void testDataInvalida() {
-        assertEquals(-1, ValidaEntradaUtils.dataInvalida("00190615"));
-        assertEquals(-1, ValidaEntradaUtils.dataInvalida("20190015"));
-        assertEquals(-1, ValidaEntradaUtils.dataInvalida("20191315"));
-        assertEquals(-1, ValidaEntradaUtils.dataInvalida("20190600"));
-        assertEquals(-1, ValidaEntradaUtils.dataInvalida("20190632"));
+        assertEquals(-1, ValidaEntradaUtils.dataInvalida("00190615", 2018));
+        assertEquals(-1, ValidaEntradaUtils.dataInvalida("20190015", 2018));
+        assertEquals(-1, ValidaEntradaUtils.dataInvalida("20191315", 2018));
+        assertEquals(-1, ValidaEntradaUtils.dataInvalida("20190600", 2018));
+        assertEquals(-1, ValidaEntradaUtils.dataInvalida("20190632", 2018));
     }
 
     @Test
@@ -77,6 +78,7 @@ class ValidaEntradaUtilsTest {
         assertEquals(-1, ValidaEntradaUtils.validadorEntrada(teste18));
         assertEquals(-1, ValidaEntradaUtils.validadorEntrada(teste19));
         assertEquals(-1, ValidaEntradaUtils.validadorEntrada(teste20));
+        assertEquals(-1, ValidaEntradaUtils.validadorEntrada(teste21));
     }
 
 }

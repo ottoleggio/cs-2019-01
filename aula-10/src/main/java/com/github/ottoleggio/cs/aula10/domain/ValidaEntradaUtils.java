@@ -2,7 +2,6 @@ package com.github.ottoleggio.cs.aula10.domain;
 
 public final class ValidaEntradaUtils {
 
-    private static final int LIMITE_DIA = 31;
     private static final int LIMITE_MES = 12;
     private static final int LIMITE_DATA = 8;
     private static final int LIMITE_DIASEMANA = 6;
@@ -105,7 +104,7 @@ public final class ValidaEntradaUtils {
      * @return Retorna 1 para verdadeiro e
      * -1 para faso
      */
-    public static int dataInvalida(final String argumentos) {
+    public static int dataInvalida(final String argumentos, final int anoBissexto) {
         if (argumentos.length() != LIMITE_DATA) {
             return -1;
         }
@@ -126,7 +125,9 @@ public final class ValidaEntradaUtils {
             return -1;
         }
 
-        if (ProcessaDataUtils.extraiDia(argumentos) > LIMITE_DIA) {
+        if (ProcessaDataUtils.extraiDia(argumentos) > 
+                ProcessaDataUtils.ultimoDiaDoMes(ProcessaDataUtils.extraiMes(argumentos),
+                ProcessaDataUtils.extraiAno(argumentos), anoBissexto)) {
             return -1;
         }
 
@@ -159,11 +160,11 @@ public final class ValidaEntradaUtils {
             return -1;
         }
 
-        if (dataInvalida(argumentos[0]) != 1) {
+        if (dataInvalida(argumentos[0], Integer.parseInt(argumentos[1])) != 1) {
             return -1;
         }
 
-        if (dataInvalida(argumentos[2]) != 1) {
+        if (dataInvalida(argumentos[2], Integer.parseInt(argumentos[1])) != 1) {
             return -1;
         }
 
