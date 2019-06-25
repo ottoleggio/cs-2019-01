@@ -100,11 +100,13 @@ public final class ValidaEntradaUtils {
      * válidos de uma data.
      *
      * @param argumentos String a ser avaliado
+     * @param anoBissexto Ano bissexto de referência
      *
      * @return Retorna 1 para verdadeiro e
      * -1 para faso
      */
-    public static int dataInvalida(final String argumentos, final int anoBissexto) {
+    public static int dataInvalida(final String argumentos,
+        final int anoBissexto) {
         if (argumentos.length() != LIMITE_DATA) {
             return -1;
         }
@@ -125,8 +127,9 @@ public final class ValidaEntradaUtils {
             return -1;
         }
 
-        if (ProcessaDataUtils.extraiDia(argumentos) > 
-                ProcessaDataUtils.ultimoDiaDoMes(ProcessaDataUtils.extraiMes(argumentos),
+        if (ProcessaDataUtils.extraiDia(argumentos)
+                > ProcessaDataUtils.ultimoDiaDoMes(
+                    ProcessaDataUtils.extraiMes(argumentos),
                 ProcessaDataUtils.extraiAno(argumentos), anoBissexto)) {
             return -1;
         }
