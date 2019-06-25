@@ -9,25 +9,121 @@ package com.github.ottoleggio.cs.aula10.domain;
  */
 public final class ProcessaDataUtils {
 
+    /**
+     * Posição da string de data no formato 'yyyymmdd' onde
+     * está o início do dia.
+     */
+    private static final int STR_DIA_INICIO = 6;
+    /**
+     * Posição da string de data no formato 'yyyymmdd' onde
+     * está o fim do dia.
+     */
+    private static final int STR_DIA_FIM = 8;
+    /**
+     * Posição da string de data no formato 'yyyymmdd' onde
+     * está o início do mês.
+     */
+    private static final int STR_MES_INICIO = 4;
+    /**
+     * Posição da string de data no formato 'yyyymmdd' onde
+     * está o fim do mês.
+     */
+    private static final int STR_MES_FIM = 6;
+    /**
+     * Posição da string de data no formato 'yyyymmdd' onde
+     * está o início do ano.
+     */
+    private static final int STR_ANO_INICIO = 0;
+    /**
+     * Posição da string de data no formato 'yyyymmdd' onde
+     * está o fim do ano.
+     */
+    private static final int STR_ANO_FIM = 4;
+    /**
+     * Quantidade de dias que o mês de fevereiro tem em anos
+     * não bissextos.
+     */
     private static final int ULTIMO_DIA_VINTEEOITO = 28;
+    /**
+     * Quantidade de dias que o mês de fevereiro tem em anos
+     * bissextos.
+     */
     private static final int ULTIMO_DIA_VINTEENOVE = 29;
+    /**
+     * Quantidade de dias para meses com 30 dias.
+     */
     private static final int ULTIMO_DIA_TRINTA = 30;
+    /**
+     * Quantidade de dias para meses com 31 dias.
+     */
     private static final int ULTIMO_DIA_TRINTAEUM = 31;
-    private static final int MES_FEVEREIRO = 2;
-    private static final int MES_NOVEMBRO = 11;
-    private static final int MES_SETEMBRO = 9;
-    private static final int MES_JUNHO = 6;
-    private static final int MES_ABRIL = 4;
-    private static final int MES_DEZEMBRO = 12;
-    private static final int MES_OUTUBRO = 10;
-    private static final int MES_AGOSTO = 8;
-    private static final int MES_JULHO = 7;
-    private static final int MES_MAIO = 5;
-    private static final int MES_MARCO = 3;
+    /**
+     * Número que representa o mês de janeiro.
+     */
     private static final int MES_JANEIRO = 1;
+    /**
+     * Número que representa o mês de fevereiro.
+     */
+    private static final int MES_FEVEREIRO = 2;
+    /**
+     * Número que representa o mês de março.
+     */
+    private static final int MES_MARCO = 3;
+    /**
+     * Número que representa o mês de abril.
+     */
+    private static final int MES_ABRIL = 4;
+    /**
+     * Número que representa o mês de maio.
+     */
+    private static final int MES_MAIO = 5;
+    /**
+     * Número que representa o mês de junho.
+     */
+    private static final int MES_JUNHO = 6;
+    /**
+     * Número que representa o mês de julho.
+     */
+    private static final int MES_JULHO = 7;
+    /**
+     * Número que representa o mês de agosto.
+     */
+    private static final int MES_AGOSTO = 8;
+    /**
+     * Número que representa o mês de setembro.
+     */
+    private static final int MES_SETEMBRO = 9;
+    /**
+     * Número que representa o mês de outubro.
+     */
+    private static final int MES_OUTUBRO = 10;
+    /**
+     * Número que representa o mês de novembro.
+     */
+    private static final int MES_NOVEMBRO = 11;
+    /**
+     * Número que representa o mês de dezembro.
+     */
+    private static final int MES_DEZEMBRO = 12;
+    /**
+     * Posição do vetor de strings passado como argumento
+     * que representa a data de interesse.
+     */
     private static final int ARG_DATA_INTERESSE = 0;
+    /**
+     * Posição do vetor de strings passado como argumento
+     * que representa o ano bissexto.
+     */
     private static final int ARG_ANO_BISSEXTO = 1;
+    /**
+     * Posição do vetor de strings passado como argumento
+     * que representa a data de referência.
+     */
     private static final int ARG_DATA_REFERENCIA = 2;
+    /**
+     * Posição do vetor de strings passado como argumento
+     * que representa o dia da semana.
+     */
     private static final int ARG_DIA_DA_SEMANA = 3;
 
     /**
@@ -46,7 +142,8 @@ public final class ProcessaDataUtils {
      * @return int que representa o dia
      */
     public static int extraiDia(final String dataEntrada) {
-        int dia = Integer.parseInt(dataEntrada.substring(6, 8));
+        int dia = Integer.parseInt(dataEntrada.substring(
+            STR_DIA_INICIO, STR_DIA_FIM));
         return dia;
     }
 
@@ -59,7 +156,8 @@ public final class ProcessaDataUtils {
      * @return int que representa o mes
      */
     public static int extraiMes(final String dataEntrada) {
-        int mes = Integer.parseInt(dataEntrada.substring(4, 6));
+        int mes = Integer.parseInt(dataEntrada.substring(
+            STR_MES_INICIO, STR_MES_FIM));
         return mes;
     }
 
@@ -72,7 +170,8 @@ public final class ProcessaDataUtils {
      * @return int que representa o ano
      */
     public static int extraiAno(final String dataEntrada) {
-        int ano = Integer.parseInt(dataEntrada.substring(0, 4));
+        int ano = Integer.parseInt(dataEntrada.substring(
+            STR_ANO_INICIO, STR_ANO_FIM));
         return ano;
     }
 
@@ -88,10 +187,14 @@ public final class ProcessaDataUtils {
      */
     public static boolean seBissexto(final int ano,
             final int bissextoRef) {
+        final int quatrocentos = 400;
+        final int cem = 100;
+        final int quatro = 4;
+
         if (ano == bissextoRef) {
             return true;
-        } else if ((ano - bissextoRef) % 4 == 0 &&
-                (ano % 100 != 0 || ano % 400 == 0)) {
+        } else if ((ano - bissextoRef) % quatro == 0
+                && (ano % cem != 0 || ano % quatrocentos == 0)) {
             return true;
         }
         return false;
@@ -270,7 +373,7 @@ public final class ProcessaDataUtils {
      * Retroage um dia numa data especificada
      * considerando o ano bissexto informado.
      *
-     * @param dia Dia da data a recuar
+     * @param diaRef Dia da data a recuar
      * @param mes Mês da data a recuar
      * @param ano Ano da data a recuar
      * @param bissextoRef Ano bissexto de referência
@@ -278,8 +381,10 @@ public final class ProcessaDataUtils {
      * @return inteiro representando o dia anterior
      * da data informada
      */
-    private static int recuaDia(final int bissextoRef, int dia,
+    private static int recuaDia(final int bissextoRef, final int diaRef,
         final int mes, final int ano) {
+        int dia = diaRef;
+
         if (dia == 1) {
             dia = ultimoDiaDoMes(mes - 1, ano, bissextoRef);
         } else {
@@ -291,7 +396,7 @@ public final class ProcessaDataUtils {
     /**
      * Retroage um mês para o mês anterior.
      *
-     * @param mes Mês da data a recuar
+     * @param mesRef Mês da data a recuar
      *
      * @return inteiro representando o mês anterior
      * do mês informado
@@ -300,7 +405,7 @@ public final class ProcessaDataUtils {
         int mes = mesRef;
         final int dezembro = 12;
 
-        if(mes == 1) {
+        if (mes == 1) {
             mes = dezembro;
         } else {
             mes--;
@@ -419,20 +524,27 @@ public final class ProcessaDataUtils {
 
         int resultado = -1;
 
-        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA], argumentos[ARG_DATA_INTERESSE]) == 0) {
+        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA],
+        argumentos[ARG_DATA_INTERESSE]) == 0) {
             resultado = Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]);
         }
 
-        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA], argumentos[ARG_DATA_INTERESSE]) == 1) {
-            resultado = avancaDiaDaSemana(avancaData(argumentos[ARG_DATA_REFERENCIA],
-             argumentos[ARG_DATA_INTERESSE], Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])),
-              Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]));
+        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA],
+        argumentos[ARG_DATA_INTERESSE]) == 1) {
+            resultado = avancaDiaDaSemana(avancaData(
+                argumentos[ARG_DATA_REFERENCIA],
+                argumentos[ARG_DATA_INTERESSE],
+                Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])),
+                Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]));
         }
 
-        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA], argumentos[ARG_DATA_INTERESSE]) == -1) {
-            resultado = recuaDiaDaSemana(recuaData(argumentos[ARG_DATA_REFERENCIA],
-             argumentos[ARG_DATA_INTERESSE], Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])),
-              Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]));
+        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA],
+        argumentos[ARG_DATA_INTERESSE]) == -1) {
+            resultado = recuaDiaDaSemana(recuaData(
+                argumentos[ARG_DATA_REFERENCIA],
+                argumentos[ARG_DATA_INTERESSE],
+                Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])),
+                Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]));
         }
 
         return resultado;

@@ -1,9 +1,46 @@
 package com.github.ottoleggio.cs.aula10.domain;
 
+/**
+ * Valida as entradas enviadas pelo terminal de acordo com
+ * restrições de datas e números inteiros.
+ */
 public final class ValidaEntradaUtils {
 
+    /**
+     * Quantidade de argumentos passados no terminal.
+     */
+    private static final int TAMANHO_ARGUMENTO = 4;
+    /**
+     * Posição do vetor de strings passado como argumento
+     * que representa a data de interesse.
+     */
+    private static final int ARG_DATA_INTERESSE = 0;
+    /**
+     * Posição do vetor de strings passado como argumento
+     * que representa o ano bissexto.
+     */
+    private static final int ARG_ANO_BISSEXTO = 1;
+    /**
+     * Posição do vetor de strings passado como argumento
+     * que representa a data de referência.
+     */
+    private static final int ARG_DATA_REFERENCIA = 2;
+    /**
+     * Posição do vetor de strings passado como argumento
+     * que representa o dia da semana.
+     */
+    private static final int ARG_DIA_DA_SEMANA = 3;
+    /**
+     * Limite de meses que um ano pode conter.
+     */
     private static final int LIMITE_MES = 12;
+    /**
+     * Tamanho que excede a quantidade de dias de uma semana.
+     */
     private static final int LIMITE_DATA = 8;
+    /**
+     * Quantidade de dias de uma semana começando de zero.
+     */
     private static final int LIMITE_DIASEMANA = 6;
 
     /**
@@ -22,7 +59,7 @@ public final class ValidaEntradaUtils {
      * @return int que representa o dia
      */
     public static int qtdArgCheck(final String[] argumentos) {
-        if (argumentos.length != 4) {
+        if (argumentos.length != TAMANHO_ARGUMENTO) {
             return -1;
         } else {
             return 1;
@@ -155,19 +192,23 @@ public final class ValidaEntradaUtils {
             return -1;
         }
 
-        if (limiteSemanaCheck(Integer.parseInt(argumentos[3])) != 1) {
+        if (limiteSemanaCheck(Integer.parseInt(
+            argumentos[ARG_DIA_DA_SEMANA])) != 1) {
             return -1;
         }
 
-        if (anoBissextoCheck(Integer.parseInt(argumentos[1])) != 1) {
+        if (anoBissextoCheck(Integer.parseInt(
+            argumentos[ARG_ANO_BISSEXTO])) != 1) {
             return -1;
         }
 
-        if (dataInvalida(argumentos[0], Integer.parseInt(argumentos[1])) != 1) {
+        if (dataInvalida(argumentos[ARG_DATA_INTERESSE],
+        Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])) != 1) {
             return -1;
         }
 
-        if (dataInvalida(argumentos[2], Integer.parseInt(argumentos[1])) != 1) {
+        if (dataInvalida(argumentos[ARG_DATA_REFERENCIA],
+        Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])) != 1) {
             return -1;
         }
 
