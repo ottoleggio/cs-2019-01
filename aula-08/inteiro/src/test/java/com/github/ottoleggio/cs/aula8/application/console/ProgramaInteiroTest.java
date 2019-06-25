@@ -7,7 +7,7 @@ import com.github.ottoleggio.cs.aula8.domain.ImprimeHexaUtils;
 
 class ProgramaInteiroTest {
 
-    private String getFilename(String string) {
+    private String getFilename(String string) throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(string).getFile());
 
