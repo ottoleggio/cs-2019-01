@@ -25,7 +25,7 @@ public final class ProcessaDataUtils {
      * @return int que representa o dia
      */
     public static int extraiDia(final String dataEntrada) {
-        int dia = Integer.parseInt(dataEntrada.substring(6,8));
+        int dia = Integer.parseInt(dataEntrada.substring(6, 8));
         return dia;
     }
 
@@ -38,7 +38,7 @@ public final class ProcessaDataUtils {
      * @return int que representa o mes
      */
     public static int extraiMes(final String dataEntrada) {
-        int mes = Integer.parseInt(dataEntrada.substring(4,6));
+        int mes = Integer.parseInt(dataEntrada.substring(4, 6));
         return mes;
     }
 
@@ -51,7 +51,7 @@ public final class ProcessaDataUtils {
      * @return int que representa o ano
      */
     public static int extraiAno(final String dataEntrada) {
-        int ano = Integer.parseInt(dataEntrada.substring(0,4));
+        int ano = Integer.parseInt(dataEntrada.substring(0, 4));
         return ano;
     }
 
@@ -77,7 +77,7 @@ public final class ProcessaDataUtils {
     }
 
     /**
-     * Identifica o último dia do mês de acordo com 
+     * Identifica o último dia do mês de acordo com
      * a data fornecida e o ano bissexto calculado.
      *
      * @param mes mês em que se deseja saber o último dia
@@ -90,7 +90,7 @@ public final class ProcessaDataUtils {
             final int bissextoRef) {
         boolean seBissexto = seBissexto(ano, bissextoRef);
 
-        switch(mes) {
+        switch (mes) {
         case 1:
         case 3:
         case 5:
@@ -105,7 +105,7 @@ public final class ProcessaDataUtils {
         case 11:
             return 30;
         case 2:
-            if(seBissexto) {
+            if (seBissexto) {
                 return 29;
             } else {
                 return 28;
@@ -131,10 +131,10 @@ public final class ProcessaDataUtils {
      */
     private static boolean comparaDatas(final int diaUm,
             final int mesUm, final int anoUm, final int diaDois,
-            final int mesDois,final int anoDois) {
-        if(anoUm == anoDois) {
-            if(mesUm == mesDois) {
-                if(diaUm == diaDois) {
+            final int mesDois, final int anoDois) {
+        if (anoUm == anoDois) {
+            if (mesUm == mesDois) {
+                if (diaUm == diaDois) {
                     return true;
                 }
             }
@@ -163,26 +163,26 @@ public final class ProcessaDataUtils {
         int anoDestino = extraiAno(dataDestino);
         int contadorDias = 0;
 
-        while(!comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+        while (!comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                 diaDestino, mesDestino, anoDestino)) {
-            for(int j = mesOrigem; j <= 12; j++) {
-                for(int i = diaOrigem; i <= ultimoDiaDoMes(mesOrigem,
+            for (int j = mesOrigem; j <= 12; j++) {
+                for (int i = diaOrigem; i <= ultimoDiaDoMes(mesOrigem,
                         anoOrigem, bissextoRef); i++) {
-                    if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                    if (comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                             diaDestino, mesDestino, anoDestino)) {
                         break;
                     }
                     diaOrigem++;
                     contadorDias++;
                 }
-                if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                if (comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                         diaDestino, mesDestino, anoDestino)) {
                     break;
                 }
                 diaOrigem = 1;
                 mesOrigem++;
             }
-            if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+            if (comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                     diaDestino, mesDestino, anoDestino)) {
                 break;
             }
@@ -214,11 +214,11 @@ public final class ProcessaDataUtils {
         int anoDestino = extraiAno(dataDestino);
         int contadorDias = 0;
 
-        while(!comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+        while (!comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                 diaDestino, mesDestino, anoDestino)) {
-            for(int j = mesOrigem; j > 0; j--) {
-                for(int i = diaOrigem; i > 0; i--) {
-                    if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+            for (int j = mesOrigem; j > 0; j--) {
+                for (int i = diaOrigem; i > 0; i--) {
+                    if (comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                             diaDestino, mesDestino, anoDestino)) {
                         break;
                     }
@@ -226,7 +226,7 @@ public final class ProcessaDataUtils {
                             mesOrigem, anoOrigem);
                     contadorDias++;
                 }
-                if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+                if (comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                         diaDestino, mesDestino, anoDestino)) {
                     break;
                 }
@@ -234,7 +234,7 @@ public final class ProcessaDataUtils {
                 diaOrigem = ultimoDiaDoMes(mesOrigem, anoOrigem,
                         bissextoRef);
             }
-            if(comparaDatas(diaOrigem, mesOrigem, anoOrigem,
+            if (comparaDatas(diaOrigem, mesOrigem, anoOrigem,
                     diaDestino, mesDestino, anoDestino)) {
                 break;
             }
@@ -252,13 +252,14 @@ public final class ProcessaDataUtils {
      * @param mes Mês da data a recuar
      * @param ano Ano da data a recuar
      * @param bissextoRef Ano bissexto de referência
-     * 
+     *
      * @return inteiro representando o dia anterior
      * da data informada
      */
-    private static int recuaDia(final int bissextoRef, int dia, int mes, int ano) {
-        if(dia == 1) {
-            dia = ultimoDiaDoMes(mes-1, ano, bissextoRef);
+    private static int recuaDia(final int bissextoRef, int dia,
+        final int mes, final int ano) {
+        if (dia == 1) {
+            dia = ultimoDiaDoMes(mes - 1, ano, bissextoRef);
         } else {
             dia--;
         }
@@ -269,7 +270,7 @@ public final class ProcessaDataUtils {
      * Retroage um mês para o mês anterior.
      *
      * @param mes Mês da data a recuar
-     * 
+     *
      * @return inteiro representando o mês anterior
      * do mês informado
      */
@@ -288,16 +289,17 @@ public final class ProcessaDataUtils {
      *
      * @param qtdDia Quantidade dias a se avançar
      * @param diaSemanaRef Dia da semana inicial
-     * 
+     *
      * @return inteiro que representa o dia da semana
      * após a iteração
      */
-    public static int avancaDiaDaSemana(final int qtdDia, final int diaSemanaRef) {
+    public static int avancaDiaDaSemana(final int qtdDia,
+        final int diaSemanaRef) {
         int iteradorDia = diaSemanaRef;
 
-        for(int i = 0; i < qtdDia; i++) {
+        for (int i = 0; i < qtdDia; i++) {
             iteradorDia++;
-            if(iteradorDia == 7) {
+            if (iteradorDia == 7) {
                 iteradorDia = 0;
             }
         }
@@ -311,35 +313,37 @@ public final class ProcessaDataUtils {
      *
      * @param qtdDia Quantidade dias a se recuar
      * @param diaSemanaRef Dia da semana inicial
-     * 
+     *
      * @return inteiro que representa o dia da semana
      * após a iteração
      */
-    public static int recuaDiaDaSemana(final int qtdDia, final int diaSemanaRef) {
+    public static int recuaDiaDaSemana(final int qtdDia,
+        final int diaSemanaRef) {
         int iteradorDia = diaSemanaRef;
 
-        for(int i = 0; i < qtdDia; i++) {
+        for (int i = 0; i < qtdDia; i++) {
             iteradorDia--;
-            if(iteradorDia == -1) {
+            if (iteradorDia == -1) {
                 iteradorDia = 6;
             }
         }
-        
+
         return iteradorDia;
     }
 
     /**
      * Identifica se uma data enviada como String
-     * no formato 'yyyymmdd' é maior, menor ou igual que uma 
+     * no formato 'yyyymmdd' é maior, menor ou igual que uma
      * segunda data.
      *
      * @param dataOrigem Data de origem
      * @param dataDestino Data de destino
-     * 
-     * @return Retorna 1 para maior, 0 para igual e -1 
+     *
+     * @return Retorna 1 para maior, 0 para igual e -1
      * para menor
      */
-    public static int qualDataMaior(String dataOrigem, String dataDestino) {
+    public static int qualDataMaior(final String dataOrigem,
+        final String dataDestino) {
         int diaOrigem = extraiDia(dataOrigem);
         int mesOrigem = extraiMes(dataOrigem);
         int anoOrigem = extraiAno(dataOrigem);
@@ -347,21 +351,21 @@ public final class ProcessaDataUtils {
         int mesDestino = extraiMes(dataDestino);
         int anoDestino = extraiAno(dataDestino);
 
-        if(anoDestino == anoOrigem) {
-            if(mesDestino == mesOrigem) {
-                if(diaOrigem > diaDestino) {
+        if (anoDestino == anoOrigem) {
+            if (mesDestino == mesOrigem) {
+                if (diaOrigem > diaDestino) {
                     return -1;
-                } else if(diaOrigem == diaDestino) {
+                } else if (diaOrigem == diaDestino) {
                     return 0;
                 } else {
                     return 1;
                 }
-            } else if(mesDestino > mesOrigem) {
+            } else if (mesDestino > mesOrigem) {
                 return 1;
             } else {
                 return -1;
             }
-        } else if(anoDestino > anoOrigem) {
+        } else if (anoDestino > anoOrigem) {
             return 1;
         } else {
             return -1;
@@ -376,28 +380,32 @@ public final class ProcessaDataUtils {
      * @param argumentos Vetor de Strings em que se espera
      * data de interesse, ano bissexto, data de referência e
      * dia da semana de referência
-     * 
+     *
      * @return Retorna -1 para inválido ou um int que representa
      * um dia da semana, começando em 0 para segunda-feira e
      * finalizando em 6 para domingo
      */
-    public static int executaPrograma(String[] argumentos) {
-        if(ValidaEntradaUtils.validadorEntrada(argumentos) == -1) {
+    public static int executaPrograma(final String[] argumentos) {
+        if (ValidaEntradaUtils.validadorEntrada(argumentos) == -1) {
             return -1;
         }
 
         int resultado = -1;
 
-        if(qualDataMaior(argumentos[2], argumentos[0]) == 0) {
+        if (qualDataMaior(argumentos[2], argumentos[0]) == 0) {
             resultado = Integer.parseInt(argumentos[3]);
         }
 
-        if(qualDataMaior(argumentos[2], argumentos[0]) == 1) {
-            resultado = avancaDiaDaSemana(avancaData(argumentos[2], argumentos[0], Integer.parseInt(argumentos[1])), Integer.parseInt(argumentos[3]));
+        if (qualDataMaior(argumentos[2], argumentos[0]) == 1) {
+            resultado = avancaDiaDaSemana(avancaData(argumentos[2],
+             argumentos[0], Integer.parseInt(argumentos[1])),
+              Integer.parseInt(argumentos[3]));
         }
 
-        if(qualDataMaior(argumentos[2], argumentos[0]) == -1) {
-            resultado = recuaDiaDaSemana(recuaData(argumentos[2], argumentos[0], Integer.parseInt(argumentos[1])), Integer.parseInt(argumentos[3]));
+        if (qualDataMaior(argumentos[2], argumentos[0]) == -1) {
+            resultado = recuaDiaDaSemana(recuaData(argumentos[2],
+             argumentos[0], Integer.parseInt(argumentos[1])),
+              Integer.parseInt(argumentos[3]));
         }
 
         return resultado;
