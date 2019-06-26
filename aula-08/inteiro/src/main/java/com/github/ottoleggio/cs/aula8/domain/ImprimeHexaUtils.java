@@ -20,29 +20,29 @@ public final class ImprimeHexaUtils {
     }
 
     /**
-     * Método que retorna os primeiros quatro bytes em formato
-     * hexadecimal de um arquivo enviado como parâmetro.
+     * Método que retorna os primeiros quatro bytes em formato hexadecimal de um
+     * arquivo enviado como parâmetro.
      *
      * @param enderecoArquivo Endereço do arquivo a ser lido
      *
-     * @return String contendo os primeiros quatro bytes em
-     * formato hexadecimal
+     * @return String contendo os primeiros quatro bytes em formato hexadecimal
      * @throws IOException se ocorrer exception de IO
      */
-    public static String leByteFile(final String enderecoArquivo) throws IOException {
+    public static String leByteFile(final String enderecoArquivo)
+            throws IOException {
         final File teste = new File(enderecoArquivo);
         if (!teste.exists()) {
-            throw new IllegalArgumentException("O arquivo não"
-                    + " existe");
+            throw new IllegalArgumentException("O arquivo não existegetgetget");
         }
 
         final int limiteBytes = 4;
         if (teste.length() < limiteBytes) {
-            throw new IllegalArgumentException("O arquivo não contem"
-                    + " dados suficientes.");
+            throw new IllegalArgumentException(
+                    "O arquivo não contem" + " dados suficientes.");
         }
 
-        final InputStream fis = Files.newInputStream(Paths.get(enderecoArquivo));
+        final InputStream fis = Files
+                .newInputStream(Paths.get(enderecoArquivo));
         final DataInputStream dis = new DataInputStream(fis);
 
         final int valor = dis.readInt();
