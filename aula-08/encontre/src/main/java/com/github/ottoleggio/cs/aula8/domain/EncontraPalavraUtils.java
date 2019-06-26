@@ -7,8 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * Classe responsável pelos métodos contaOcorrencias,
- * contarLinhasEColunas e retornaSaida.
+ * Classe responsável pelos métodos contaOcorrencias, contarLinhasEColunas e
+ * retornaSaida.
  */
 public final class EncontraPalavraUtils {
 
@@ -20,26 +20,27 @@ public final class EncontraPalavraUtils {
     }
 
     /**
-     * Método que conta a quantidade de ocorrência de uma
-     * palavra fornecida como parametro em um arquivo.
+     * Método que conta a quantidade de ocorrência de uma palavra fornecida como
+     * parametro em um arquivo.
      *
      * @param enderecoArquivo Endereço do arquivo a ser lido
-     * @param palavraBuscada Palavra a ser buscada no arquivo
+     * @param palavraBuscada  Palavra a ser buscada no arquivo
      *
-     * @return Retorna a quantidade de ocorrências da palavra buscada
-     * em formato específico
+     * @return Retorna a quantidade de ocorrências da palavra buscada em formato
+     *         específico
      * @throws IOException se ocorrer exception de IO
      */
     public static String contaOcorrencias(final String enderecoArquivo,
-    final String palavraBuscada) throws IOException {
+            final String palavraBuscada) throws IOException {
         final File teste = new File(enderecoArquivo);
 
         if (teste.length() == 0) {
-            throw new IllegalArgumentException("O arquivo não contem"
-        + " dados suficientes.");
+            throw new IllegalArgumentException(
+                    "O arquivo não contem dados suficientes.");
         }
 
-        final BufferedReader br = Files.newBufferedReader(Paths.get(enderecoArquivo));
+        final BufferedReader br = Files
+                .newBufferedReader(Paths.get(enderecoArquivo));
 
         String linhas;
         String[] palavras;
@@ -58,30 +59,31 @@ public final class EncontraPalavraUtils {
         }
 
         br.close();
-        return  "Encontradas: " + ocorrencias + ".";
+        return "Encontradas: " + ocorrencias + ".";
     }
 
     /**
-     * Método que busca uma palavra passada como parametro
-     * e especifica a linha e coluna das ocorrencias encontradas.
+     * Método que busca uma palavra passada como parametro e especifica a linha
+     * e coluna das ocorrencias encontradas.
      *
      * @param enderecoArquivo Endereço do arquivo a ser lido
-     * @param palavraBuscada Palavra a ser buscada no arquivo
+     * @param palavraBuscada  Palavra a ser buscada no arquivo
      *
-     * @return retorna posicao de linha e coluna da palavra
-     * encontrada, e a frase completa
+     * @return retorna posicao de linha e coluna da palavra encontrada, e a
+     *         frase completa
      * @throws IOException se ocorrer exception de IO
      */
     public static String contarLinhasEColunas(final String enderecoArquivo,
-    final String palavraBuscada) throws IOException {
+            final String palavraBuscada) throws IOException {
         final File teste = new File(enderecoArquivo);
 
         if (teste.length() == 0) {
-            throw new IllegalArgumentException("O arquivo não contem"
-        + " dados suficientes.");
+            throw new IllegalArgumentException(
+                    "O arquivo não contem dados suficientes.");
         }
 
-        final BufferedReader br = Files.newBufferedReader(Paths.get(enderecoArquivo));
+        final BufferedReader br = Files
+                .newBufferedReader(Paths.get(enderecoArquivo));
 
         int contadorLinhas = 0;
         final StringBuilder resultado = new StringBuilder();
@@ -95,7 +97,8 @@ public final class EncontraPalavraUtils {
             if (leitorLinha.toString().contains(palavraBuscada)) {
 
                 resultado.append(String.format("%nL%d C%d: %s", contadorLinhas,
-                leitorLinha.indexOf(palavraBuscada) + 1, leitorLinha.toString()));
+                        leitorLinha.indexOf(palavraBuscada) + 1,
+                        leitorLinha.toString()));
             }
             leitorLinha.setLength(0);
             recebeLinha = br.readLine();
@@ -106,21 +109,21 @@ public final class EncontraPalavraUtils {
     }
 
     /**
-     * Método que agrupa contagem de ocorrências
-     * e posição de linhas e colunas
+     * Método que agrupa contagem de ocorrências e posição de linhas e colunas
      * em formato de texto específico.
      *
      * @param enderecoArquivo Endereço do arquivo a ser lido
-     * @param palavraBuscada Palavra a ser buscada no arquivo
+     * @param palavraBuscada  Palavra a ser buscada no arquivo
      *
      * @return Retorna saida do programa formatada
      * @throws IOException se ocorrer exception de IO
      */
-    public static String retornaSaida(final String enderecoArquivo, final String palavraBuscada) throws IOException {
+    public static String retornaSaida(final String enderecoArquivo,
+            final String palavraBuscada) throws IOException {
 
         final StringBuilder saida = new StringBuilder();
-        saida.append(contaOcorrencias(enderecoArquivo, palavraBuscada)).
-        append(contarLinhasEColunas(enderecoArquivo, palavraBuscada));
+        saida.append(contaOcorrencias(enderecoArquivo, palavraBuscada))
+                .append(contarLinhasEColunas(enderecoArquivo, palavraBuscada));
 
         return saida.toString();
     }

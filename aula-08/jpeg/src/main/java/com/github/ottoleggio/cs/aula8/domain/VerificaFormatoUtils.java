@@ -46,7 +46,8 @@ public final class VerificaFormatoUtils {
      * False caso contrário
      * @throws IOException se ocorrer exception de IO
      */
-    public static boolean confereByteJpeg(final String enderecoArquivo) throws IOException {
+    public static boolean confereByteJpeg(
+            final String enderecoArquivo) throws IOException {
         final File teste = new File(enderecoArquivo);
         if (!teste.exists()) {
             throw new IllegalArgumentException("O arquivo não"
@@ -58,7 +59,8 @@ public final class VerificaFormatoUtils {
         + " dados suficientes.");
         }
 
-        final InputStream fis = Files.newInputStream(Paths.get(enderecoArquivo));
+        final InputStream fis = Files.newInputStream(
+                Paths.get(enderecoArquivo));
         final DataInputStream dis = new DataInputStream(fis);
         final InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
         final BufferedReader br = new BufferedReader(isr);
