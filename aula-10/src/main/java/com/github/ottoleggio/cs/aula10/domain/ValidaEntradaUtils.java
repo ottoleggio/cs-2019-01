@@ -14,22 +14,22 @@ public final class ValidaEntradaUtils {
      * Posição do vetor de strings passado como argumento
      * que representa a data de interesse.
      */
-    private static final int ARG_DATA_INTERESSE = 0;
+    private static final int DATA_INTERESSE = 0;
     /**
      * Posição do vetor de strings passado como argumento
      * que representa o ano bissexto.
      */
-    private static final int ARG_ANO_BISSEXTO = 1;
+    private static final int ANO_BISSEXTO = 1;
     /**
      * Posição do vetor de strings passado como argumento
      * que representa a data de referência.
      */
-    private static final int ARG_DATA_REFERENCIA = 2;
+    private static final int DATA_REFERENCIA = 2;
     /**
      * Posição do vetor de strings passado como argumento
      * que representa o dia da semana.
      */
-    private static final int ARG_DIA_DA_SEMANA = 3;
+    private static final int DIA_DA_SEMANA = 3;
     /**
      * Limite de meses que um ano pode conter.
      */
@@ -59,10 +59,10 @@ public final class ValidaEntradaUtils {
      * @return int que representa o dia
      */
     public static int qtdArgCheck(final String[] argumentos) {
-        if (argumentos.length != TAMANHO_ARGUMENTO) {
-            return -1;
-        } else {
+        if (argumentos.length == TAMANHO_ARGUMENTO) {
             return 1;
+        } else {
+            return -1;
         }
     }
 
@@ -193,22 +193,22 @@ public final class ValidaEntradaUtils {
         }
 
         if (limiteSemanaCheck(Integer.parseInt(
-            argumentos[ARG_DIA_DA_SEMANA])) != 1) {
+            argumentos[DIA_DA_SEMANA])) != 1) {
             return -1;
         }
 
         if (anoBissextoCheck(Integer.parseInt(
-            argumentos[ARG_ANO_BISSEXTO])) != 1) {
+            argumentos[ANO_BISSEXTO])) != 1) {
             return -1;
         }
 
-        if (dataInvalida(argumentos[ARG_DATA_INTERESSE],
-        Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])) != 1) {
+        if (dataInvalida(argumentos[DATA_INTERESSE],
+        Integer.parseInt(argumentos[ANO_BISSEXTO])) != 1) {
             return -1;
         }
 
-        if (dataInvalida(argumentos[ARG_DATA_REFERENCIA],
-        Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])) != 1) {
+        if (dataInvalida(argumentos[DATA_REFERENCIA],
+        Integer.parseInt(argumentos[ANO_BISSEXTO])) != 1) {
             return -1;
         }
 

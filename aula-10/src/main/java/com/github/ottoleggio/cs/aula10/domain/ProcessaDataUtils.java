@@ -43,20 +43,20 @@ public final class ProcessaDataUtils {
      * Quantidade de dias que o mês de fevereiro tem em anos
      * não bissextos.
      */
-    private static final int ULTIMO_DIA_VINTEEOITO = 28;
+    private static final int ULT_DIA_28 = 28;
     /**
      * Quantidade de dias que o mês de fevereiro tem em anos
      * bissextos.
      */
-    private static final int ULTIMO_DIA_VINTEENOVE = 29;
+    private static final int ULT_DIA_29 = 29;
     /**
      * Quantidade de dias para meses com 30 dias.
      */
-    private static final int ULTIMO_DIA_TRINTA = 30;
+    private static final int ULT_DIA_30 = 30;
     /**
      * Quantidade de dias para meses com 31 dias.
      */
-    private static final int ULTIMO_DIA_TRINTAEUM = 31;
+    private static final int ULT_DIA_31 = 31;
     /**
      * Número que representa o mês de janeiro.
      */
@@ -109,22 +109,22 @@ public final class ProcessaDataUtils {
      * Posição do vetor de strings passado como argumento
      * que representa a data de interesse.
      */
-    private static final int ARG_DATA_INTERESSE = 0;
+    private static final int DATA_INTERESSE = 0;
     /**
      * Posição do vetor de strings passado como argumento
      * que representa o ano bissexto.
      */
-    private static final int ARG_ANO_BISSEXTO = 1;
+    private static final int ANO_BISSEXTO = 1;
     /**
      * Posição do vetor de strings passado como argumento
      * que representa a data de referência.
      */
-    private static final int ARG_DATA_REFERENCIA = 2;
+    private static final int DATA_REF = 2;
     /**
      * Posição do vetor de strings passado como argumento
      * que representa o dia da semana.
      */
-    private static final int ARG_DIA_DA_SEMANA = 3;
+    private static final int DIA_DA_SEMANA = 3;
 
     /**
      * Método construtor da classe.
@@ -142,9 +142,8 @@ public final class ProcessaDataUtils {
      * @return int que representa o dia
      */
     public static int extraiDia(final String dataEntrada) {
-        int dia = Integer.parseInt(dataEntrada.substring(
+        return Integer.parseInt(dataEntrada.substring(
             STR_DIA_INICIO, STR_DIA_FIM));
-        return dia;
     }
 
     /**
@@ -156,9 +155,8 @@ public final class ProcessaDataUtils {
      * @return int que representa o mes
      */
     public static int extraiMes(final String dataEntrada) {
-        int mes = Integer.parseInt(dataEntrada.substring(
+        return Integer.parseInt(dataEntrada.substring(
             STR_MES_INICIO, STR_MES_FIM));
-        return mes;
     }
 
     /**
@@ -170,9 +168,8 @@ public final class ProcessaDataUtils {
      * @return int que representa o ano
      */
     public static int extraiAno(final String dataEntrada) {
-        int ano = Integer.parseInt(dataEntrada.substring(
+        return Integer.parseInt(dataEntrada.substring(
             STR_ANO_INICIO, STR_ANO_FIM));
-        return ano;
     }
 
     /**
@@ -212,7 +209,7 @@ public final class ProcessaDataUtils {
      */
     public static int ultimoDiaDoMes(final int mes, final int ano,
             final int bissextoRef) {
-        boolean seBissexto = seBissexto(ano, bissextoRef);
+        final boolean seBissexto = seBissexto(ano, bissextoRef);
 
         switch (mes) {
         case MES_JANEIRO:
@@ -222,20 +219,24 @@ public final class ProcessaDataUtils {
         case MES_AGOSTO:
         case MES_OUTUBRO:
         case MES_DEZEMBRO:
-            return ULTIMO_DIA_TRINTAEUM;
+            return ULT_DIA_31;
         case MES_ABRIL:
         case MES_JUNHO:
         case MES_SETEMBRO:
         case MES_NOVEMBRO:
-            return ULTIMO_DIA_TRINTA;
+            return ULT_DIA_30;
         case MES_FEVEREIRO:
-            if (seBissexto) {
-                return ULTIMO_DIA_VINTEENOVE;
-            } else {
-                return ULTIMO_DIA_VINTEEOITO;
-            }
+            return ultDiaFevereiro(seBissexto);
         default:
             return 0;
+        }
+    }
+
+    private static int ultDiaFevereiro(final boolean seBissexto) {
+        if (seBissexto) {
+            return ULT_DIA_29;
+        } else {
+            return ULT_DIA_28;
         }
     }
 
@@ -256,14 +257,7 @@ public final class ProcessaDataUtils {
     private static boolean comparaDatas(final int diaUm,
             final int mesUm, final int anoUm, final int diaDois,
             final int mesDois, final int anoDois) {
-        if (anoUm == anoDois) {
-            if (mesUm == mesDois) {
-                if (diaUm == diaDois) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return (anoUm == anoDois && mesUm == mesDois && diaUm == diaDois);
     }
 
     /**
@@ -282,9 +276,9 @@ public final class ProcessaDataUtils {
         int diaOrigem = extraiDia(dataOrigem);
         int mesOrigem = extraiMes(dataOrigem);
         int anoOrigem = extraiAno(dataOrigem);
-        int diaDestino = extraiDia(dataDestino);
-        int mesDestino = extraiMes(dataDestino);
-        int anoDestino = extraiAno(dataDestino);
+        final int diaDestino = extraiDia(dataDestino);
+        final int mesDestino = extraiMes(dataDestino);
+        final int anoDestino = extraiAno(dataDestino);
         int contadorDias = 0;
         final int dezembro = 12;
 
@@ -334,9 +328,9 @@ public final class ProcessaDataUtils {
         int diaOrigem = extraiDia(dataOrigem);
         int mesOrigem = extraiMes(dataOrigem);
         int anoOrigem = extraiAno(dataOrigem);
-        int diaDestino = extraiDia(dataDestino);
-        int mesDestino = extraiMes(dataDestino);
-        int anoDestino = extraiAno(dataDestino);
+        final int diaDestino = extraiDia(dataDestino);
+        final int mesDestino = extraiMes(dataDestino);
+        final int anoDestino = extraiAno(dataDestino);
         int contadorDias = 0;
 
         while (!comparaDatas(diaOrigem, mesOrigem, anoOrigem,
@@ -384,8 +378,9 @@ public final class ProcessaDataUtils {
     private static int recuaDia(final int bissextoRef, final int diaRef,
         final int mes, final int ano) {
         int dia = diaRef;
+        final int primeiroDia = 1;
 
-        if (dia == 1) {
+        if (dia == primeiroDia) {
             dia = ultimoDiaDoMes(mes - 1, ano, bissextoRef);
         } else {
             dia--;
@@ -404,8 +399,9 @@ public final class ProcessaDataUtils {
     private static int recuaMes(final int mesRef) {
         int mes = mesRef;
         final int dezembro = 12;
+        final int janeiro = 1;
 
-        if (mes == 1) {
+        if (mes == janeiro) {
             mes = dezembro;
         } else {
             mes--;
@@ -476,12 +472,12 @@ public final class ProcessaDataUtils {
      */
     public static int qualDataMaior(final String dataOrigem,
         final String dataDestino) {
-        int diaOrigem = extraiDia(dataOrigem);
-        int mesOrigem = extraiMes(dataOrigem);
-        int anoOrigem = extraiAno(dataOrigem);
-        int diaDestino = extraiDia(dataDestino);
-        int mesDestino = extraiMes(dataDestino);
-        int anoDestino = extraiAno(dataDestino);
+        final int diaOrigem = extraiDia(dataOrigem);
+        final int mesOrigem = extraiMes(dataOrigem);
+        final int anoOrigem = extraiAno(dataOrigem);
+        final int diaDestino = extraiDia(dataDestino);
+        final int mesDestino = extraiMes(dataDestino);
+        final int anoDestino = extraiAno(dataDestino);
 
         if (anoDestino == anoOrigem) {
             if (mesDestino == mesOrigem) {
@@ -523,28 +519,33 @@ public final class ProcessaDataUtils {
         }
 
         int resultado = -1;
+        final int igual = 0;
 
-        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA],
-        argumentos[ARG_DATA_INTERESSE]) == 0) {
-            resultado = Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]);
+        if (qualDataMaior(argumentos[DATA_REF],
+        argumentos[DATA_INTERESSE]) == igual) {
+            resultado = Integer.parseInt(argumentos[DIA_DA_SEMANA]);
         }
 
-        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA],
-        argumentos[ARG_DATA_INTERESSE]) == 1) {
+        final int maior = 1;
+
+        if (qualDataMaior(argumentos[DATA_REF],
+        argumentos[DATA_INTERESSE]) == maior) {
             resultado = avancaDiaDaSemana(avancaData(
-                argumentos[ARG_DATA_REFERENCIA],
-                argumentos[ARG_DATA_INTERESSE],
-                Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])),
-                Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]));
+                argumentos[DATA_REF],
+                argumentos[DATA_INTERESSE],
+                Integer.parseInt(argumentos[ANO_BISSEXTO])),
+                Integer.parseInt(argumentos[DIA_DA_SEMANA]));
         }
 
-        if (qualDataMaior(argumentos[ARG_DATA_REFERENCIA],
-        argumentos[ARG_DATA_INTERESSE]) == -1) {
+        final int menor = -1;
+
+        if (qualDataMaior(argumentos[DATA_REF],
+        argumentos[DATA_INTERESSE]) == menor) {
             resultado = recuaDiaDaSemana(recuaData(
-                argumentos[ARG_DATA_REFERENCIA],
-                argumentos[ARG_DATA_INTERESSE],
-                Integer.parseInt(argumentos[ARG_ANO_BISSEXTO])),
-                Integer.parseInt(argumentos[ARG_DIA_DA_SEMANA]));
+                argumentos[DATA_REF],
+                argumentos[DATA_INTERESSE],
+                Integer.parseInt(argumentos[ANO_BISSEXTO])),
+                Integer.parseInt(argumentos[DIA_DA_SEMANA]));
         }
 
         return resultado;
