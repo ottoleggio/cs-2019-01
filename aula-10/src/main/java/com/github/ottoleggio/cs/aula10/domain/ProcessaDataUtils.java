@@ -257,7 +257,7 @@ public final class ProcessaDataUtils {
     private static boolean comparaDatas(final int diaUm,
             final int mesUm, final int anoUm, final int diaDois,
             final int mesDois, final int anoDois) {
-        return (anoUm == anoDois && mesUm == mesDois && diaUm == diaDois);
+        return anoUm == anoDois && mesUm == mesDois && diaUm == diaDois;
     }
 
     /**
