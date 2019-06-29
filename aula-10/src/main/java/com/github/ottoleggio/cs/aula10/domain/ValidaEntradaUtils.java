@@ -76,14 +76,14 @@ public final class ValidaEntradaUtils {
      * -1 para faso
      */
     public static int seInteiro(final String[] argumentos) {
-        int isValidInteger = -1;
+        int seInteiro = -1;
         int sePositivo = 0;
 
         for (int i = 0; i < argumentos.length; i++) {
             try {
                sePositivo = Integer.parseInt(argumentos[i]);
 
-               isValidInteger = 1;
+               seInteiro = 1;
             } catch (NumberFormatException ex) {
                return -1;
             }
@@ -93,7 +93,7 @@ public final class ValidaEntradaUtils {
             }
         }
 
-        return isValidInteger;
+        return seInteiro;
      }
 
     /**
@@ -124,7 +124,8 @@ public final class ValidaEntradaUtils {
      * -1 para faso
      */
     public static int anoBissextoCheck(final int anoBissexto) {
-        if (anoBissexto < 1) {
+        final int limiteBissexto = 1;
+        if (anoBissexto < limiteBissexto) {
             return -1;
         } else {
             return 1;
@@ -148,7 +149,9 @@ public final class ValidaEntradaUtils {
             return -1;
         }
 
-        if (argumentos.charAt(0) == '0') {
+        final char anoInvalido = '0';
+
+        if (argumentos.charAt(0) == anoInvalido) {
             return -1;
         }
 
@@ -184,31 +187,33 @@ public final class ValidaEntradaUtils {
      * -1 para faso
      */
     public static int validadorEntrada(final String[] argumentos) {
-        if (qtdArgCheck(argumentos) != 1) {
+        final int verdadeiro = 1;
+
+        if (qtdArgCheck(argumentos) != verdadeiro) {
             return -1;
         }
 
-        if (seInteiro(argumentos) != 1) {
+        if (seInteiro(argumentos) != verdadeiro) {
             return -1;
         }
 
         if (limiteSemanaCheck(Integer.parseInt(
-            argumentos[DIA_DA_SEMANA])) != 1) {
+            argumentos[DIA_DA_SEMANA])) != verdadeiro) {
             return -1;
         }
 
         if (anoBissextoCheck(Integer.parseInt(
-            argumentos[ANO_BISSEXTO])) != 1) {
+            argumentos[ANO_BISSEXTO])) != verdadeiro) {
             return -1;
         }
 
         if (dataInvalida(argumentos[DATA_INTERESSE],
-        Integer.parseInt(argumentos[ANO_BISSEXTO])) != 1) {
+        Integer.parseInt(argumentos[ANO_BISSEXTO])) != verdadeiro) {
             return -1;
         }
 
         if (dataInvalida(argumentos[DATA_REFERENCIA],
-        Integer.parseInt(argumentos[ANO_BISSEXTO])) != 1) {
+        Integer.parseInt(argumentos[ANO_BISSEXTO])) != verdadeiro) {
             return -1;
         }
 
