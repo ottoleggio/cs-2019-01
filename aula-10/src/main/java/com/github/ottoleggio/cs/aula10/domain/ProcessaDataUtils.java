@@ -1,5 +1,8 @@
 package com.github.ottoleggio.cs.aula10.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Incremente ou decrementa uma data um dia
  * de cada vez levando em conta o último dia
@@ -210,26 +213,34 @@ public final class ProcessaDataUtils {
     public static int ultimoDiaDoMes(final int mes, final int ano,
             final int bissextoRef) {
         final boolean seBissexto = seBissexto(ano, bissextoRef);
+        int ultimoDia = 0;
 
-        switch (mes) {
-        case MES_JANEIRO:
-        case MES_MARCO:
-        case MES_MAIO:
-        case MES_JULHO:
-        case MES_AGOSTO:
-        case MES_OUTUBRO:
-        case MES_DEZEMBRO:
-            return ULT_DIA_31;
-        case MES_ABRIL:
-        case MES_JUNHO:
-        case MES_SETEMBRO:
-        case MES_NOVEMBRO:
-            return ULT_DIA_30;
-        case MES_FEVEREIRO:
-            return ultDiaFevereiro(seBissexto);
-        default:
-            return 0;
+        final ArrayList<Integer> trintaEum = new ArrayList<Integer>();
+        trintaEum.addAll(Arrays.asList(MES_JANEIRO,
+        MES_MARCO,
+        MES_MAIO,
+        MES_JULHO,
+        MES_AGOSTO,
+        MES_OUTUBRO,
+        MES_DEZEMBRO));
+
+        final ArrayList<Integer> trinta = new ArrayList<Integer>();
+        trinta.addAll(Arrays.asList(MES_ABRIL,
+        MES_JUNHO,
+        MES_SETEMBRO,
+        MES_NOVEMBRO));
+
+        if (trintaEum.contains(mes)) {
+            ultimoDia = ULT_DIA_31;
         }
+        if (trinta.contains(mes)) {
+            ultimoDia = ULT_DIA_30;
+        }
+        if (mes == MES_FEVEREIRO) {
+            ultimoDia = ultDiaFevereiro(seBissexto);
+        }
+
+        return ultimoDia;
     }
 
     private static int ultDiaFevereiro(final boolean seBissexto) {
